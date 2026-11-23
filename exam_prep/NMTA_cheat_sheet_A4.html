@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-GB"><head><meta charset="utf-8"><title>NMTA Final Exam: A4 Cheat Sheet</title>
+<style>
+@page{size:A4;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:210mm}
+body{font-family:"Liberation Sans",Arial,Helvetica,sans-serif;font-size:6.7pt;line-height:1.2;color:#111}
+.page{width:210mm;height:297mm;padding:4.6mm 4.6mm 4mm;overflow:hidden;break-after:page;display:flex;flex-direction:column}
+.page:last-child{break-after:auto}
+.head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1.2pt solid #1f3b5a;padding-bottom:.6mm;margin-bottom:1mm}
+.head b{font-family:Inter,sans-serif;font-size:9pt;color:#1f3b5a}
+.head span{font-size:6pt;color:#333}
+.cols{flex:1;column-count:4;column-gap:2.4mm;column-fill:auto;column-rule:.3pt solid #c9ced6;min-height:0}
+.wk{font-family:Inter,sans-serif;font-weight:700;font-size:7.6pt;color:#fff;background:#1f3b5a;padding:.35mm 1.2mm;margin:1mm 0 .6mm;break-after:avoid;border-radius:1mm}
+.wk i{font-style:normal;font-weight:400;font-size:5.6pt;opacity:.9}
+.wk.ex{background:#6a3d7a}
+h4{font-family:Inter,sans-serif;font-weight:700;font-size:6.9pt;color:#1f3b5a;margin:.7mm 0 .2mm;break-after:avoid}
+h4 i{font-style:normal;font-weight:400;color:#777;font-size:5.4pt}
+p{margin:0 0 .45mm}
+.blk{break-inside:avoid}
+b{font-weight:700}
+.f{font-family:"DejaVu Sans",sans-serif;font-size:6.4pt;background:#eef3f9;border-left:1.2pt solid #1f3b5a;padding:.25mm 1mm;margin:.3mm 0 .5mm}
+.tr{background:#fbecec;border-left:1.2pt solid #b23a3a;padding:.25mm 1mm;margin:.3mm 0 .5mm}
+.tp{background:#eaf5ee;border-left:1.2pt solid #2e7d4f;padding:.25mm 1mm;margin:.3mm 0 .5mm}
+table{border-collapse:collapse;width:100%;margin:.2mm 0 .6mm;font-size:6.2pt;line-height:1.12}
+td,th{hyphens:auto;border:.3pt solid #b8bec8;padding:.15mm .6mm;vertical-align:top;text-align:left}
+th{background:#e7ebf1;font-weight:700}
+td.n,th.n{text-align:right}
+.bg{color:#555}
+table.sm{font-size:5.5pt;table-layout:fixed}
+.head span{max-width:62%;text-align:right}
+.bg b{color:#333}
+</style></head><body>
+
+<!-- ======================= SIDE 1 ======================= -->
+<div class="page">
+<div class="head"><b>NMTA Final · side 1 · Weeks 1-4</b><span>Thu 26 Nov 08:00-09:30 · Rm 412 · A 15×2 MCQ · B 5×6 (3-5 sentences) · C 2×20 cases · scope: Slide Checklist 18 Nov</span></div>
+<div class="cols">
+
+<div class="wk">W1 · Fundamentals I <i>s.23-27, 37-53, 69-94</i></div>
+<div class="blk"><h4>The field <i>s.23-27</i></h4>
+<p>NMTA = how digital media + data analytics reshape three areas. <b>Business</b>: how firms create &amp; capture value (platform models, pricing, channels, monetisation). <b>Information Systems</b>: tech &amp; data infrastructure (platforms, recommendation, pipelines, AI/AIGC). <b>Marketing</b>: how firms reach, understand, measure people (consumers, engagement, targeting, campaign measurement).</p></div>
+<div class="blk"><h4>4 technologies + their data <i>s.37-50</i></h4>
+<table><tr><th>Tech</th><th>What it is</th><th>Data it produces</th></tr>
+<tr><td>Social media</td><td>users make content, feeds rank by engagement; scaled attention; 5.7 bn users (WeChat 1.4 bn MAU; Douyin 600 m+ DAU)</td><td>profiles · content &amp; engagement (timestamped) · transactions · network ties</td></tr>
+<tr><td>Live-streaming</td><td>shows with checkout; Taobao Live, Douyin, Kuaishou vs TikTok Shop, Amazon Live, Shopee</td><td>traffic &amp; engagement per second · commerce per product per minute · host conversion, GMV/hour</td></tr>
+<tr><td>AI &amp; AIGC</td><td>curator (ranks feeds) + producer (generates content); Doubao, ERNIE, Kling vs ChatGPT, Sora</td><td>generated content floods data → authenticity is an analytics problem (detection = W4 classification)</td></tr>
+<tr><td>XR (AR/VR/MR)</td><td>AR try-on, virtual stores; Sephora, IKEA Place, Vision Pro, Quest; virtual idols</td><td>gaze, dwell</td></tr></table>
+<p>One purchase uses all four: discover in feed → watch live → check reviews (some AI) → try with AR.</p></div>
+<div class="blk"><h4>Five data types &amp; platform shift <i>s.51-53</i></h4>
+<p><b>Behavioural events</b> (event log) · <b>text</b> (comments, reviews, danmaku) · <b>networks</b> (follows, mentions, shares) · <b>transactions</b> (orders, refunds) · <b>profiles</b> (who the user is). <b>Shifts</b>: mobile (minute-long sessions anywhere; location/motion), feeds (algorithm decides what you see), creators (platform makes nothing you consume). Primary feature = the one whose removal kills the app.</p></div>
+<div class="blk"><h4>Analytics ladder &amp; process <i>s.69-70, 87-90</i></h4>
+<p><b>Describe</b> (what happened: dashboards) → <b>Diagnose</b> (why: break it apart) → <b>Predict</b> (score the future: classification, regression) → <b>Prescribe</b> (what to do: compare actions). Process: Question → Data → Prepare → Model → Decide. Start from a column you already have.</p></div>
+<div class="blk"><h4>Objects, attributes, scales <i>s.71-78</i></h4>
+<p><b>Object</b> = row (record, case, observation). <b>Attribute</b> = column (variable, feature). Scale = rule mapping a property to values.</p>
+<table><tr><th>Scale</th><th>Has → allowed</th><th>Stats</th><th>Examples</th></tr>
+<tr><td>Nominal</td><td>labels → = ≠</td><td>mode, counts, entropy, χ²</td><td>room ID, category, gender</td></tr>
+<tr><td>Ordinal</td><td>order, unequal gaps → &lt; &gt;</td><td>median, percentile, Spearman</td><td>popularity H/M/L, tier, recommended, 1-5 satisfaction</td></tr>
+<tr><td>Interval</td><td>equal gaps, no true 0 → + −</td><td>mean, SD</td><td>heat index, rating, last-live date, °C</td></tr>
+<tr><td>Ratio</td><td>true zero → × ÷</td><td>all, incl. ratios</td><td>followers, hours live, GMV, shares, resolution</td></tr></table>
+<p>Ladder: each level allows all operations of the level below. Count with true zero → "80 shares = 2× 40". Slide 74: Room N, Gender N, Last live I, Category N, Followers R, Popularity O, Heat I, Recommended O, Resolution R, Tier O, Hours live R, Rating I. <b>Discrete</b> (countable, incl. binary) vs <b>continuous</b> (real numbers). IDs: never average.</p></div>
+<div class="blk"><h4>Describing data <i>s.79-82</i></h4>
+<p>Mode (nominal) · median/percentile (ordinal; 85 gifts = 95th pct → 95% got fewer) · mean, SD (interval/ratio). One superstar drags the mean, median resists.</p>
+<p class="f">Entropy H = −Σ p·log₂p &nbsp;(max = log₂k when all equal)</p>
+<p>Room (6 distinct) 2.58 · gender (5/6, 1/6) 0.65 · category (2,2,1,1 of 6) 1.92. Higher H = harder to guess = more spread.</p>
+<p class="f">χ²: e = row total × col total / N; χ² = Σ(f−e)²/e; df=(r−1)(c−1)</p>
+<p>Gender × category 2×4: df 3, χ² 3.03 &lt; critical 6.25 (α 0.1) → <b>no evidence of a link</b> (≠ proof of none).</p>
+<p class="f">Spearman r_s = 1 − 6Σd²/(n(n²−1)), d = rank gap</p>
+<p>+1 rankings move together, 0 none, −1 opposite. Ordinal: correlate ranks.</p></div>
+<div class="blk"><h4>Data shapes, quality, preparation <i>s.83-86</i></h4>
+<p>Shapes: record table · baskets (W3) · text as document-term matrix (W7) · networks (W8) · time series. <b>Quality</b>, collection side: measurement error, missing values (drop/estimate/ignore), noise; bots &amp; "water armies" inflate counts. Use side: timeliness, relevance, documentation. <b>Prepare</b>: aggregate (events → per-stream totals), discretize (equal width / equal frequency / k-means), binarize (category → one 0/1 column each).</p>
+<p class="f">Euclidean d = √(Δx² + Δy² + …)</p>
+<p>Similarity: 1 = identical; distance: 0 = identical. S2(2,0)–S3(3,1): √2 = <b>1.41</b> closest pair.</p></div>
+<div class="blk"><h4>Metric families <i>s.91-94</i></h4>
+<p><b>Engagement</b> (views, likes, comments, shares) · <b>Conversion</b> (CTR, conversion rate = orders/viewers, GMV, refunds) · <b>Retention</b> (repeat purchase, churn). Always check the denominator.</p></div>
+
+<div class="wk">W2 · Fundamentals II <i>s.7-9, 15-22, 64-70, 72-73</i></div>
+<div class="blk"><h4>Five forces on a platform <i>s.7</i></h4>
+<p>New entrants (channel opens in a day) · substitutes (short video, stream, search ads split one budget) · supplier power (top hosts name their price) · buyer power (one swipe to next shop) · rivalry (coupon wars in one category). Porter 1980.</p></div>
+<div class="blk"><h4>Generic strategies <i>s.8-9</i></h4>
+<p><b>Cost leadership</b>: total cost below every rival → above-average profit; win on margin, not price tag. Routes: simplified product, improved design, material saving, lower labour cost, production innovation/automation (factory-direct live). <b>Differentiation</b>: unique where buyers look (dermatologist hosts, exclusive shades); fits when many valued ways to differ, varied needs, few rivals differentiating. <b>Focus</b>: one buyer group/product line/region; cost focus = cheaper, differentiation focus = better for that niche.</p></div>
+<div class="blk"><h4>Segmentation, targeting <i>s.15-20</i></h4>
+<p>Mass → segment → niche → segment of one. Disruption from below (Christensen 1997): incumbents overshoot, entrants serve low end cheaply, then climb. Variables: <b>geographic</b> (city tier, climate), <b>demographic</b> (age, income, life stage), <b>psychographic</b> (lifestyle, values), <b>behavioral</b> (occasion, loyalty, benefit sought).</p>
+<p><b>Undifferentiated</b> (one mix, whole market) · <b>Differentiated</b> (mix per segment) · <b>Concentrated</b> (all strength on one/few; high share of small market). Coverage: single-segment, selective specialization, market specialization (many products → one segment), product specialization (one product → many segments), full coverage.</p>
+<table class="sm"><tr><th style="width:15%"></th><th>Firm</th><th>Prod hom.</th><th>Mkt hom.</th><th style="width:19%">PLC</th><th style="width:15%">Rival strat.</th><th>Rivals</th></tr>
+<tr><td>Undiff.</td><td>strong</td><td>high</td><td>high</td><td>intro/growth</td><td>any</td><td>few</td></tr>
+<tr><td>Diff.</td><td>strong</td><td>low</td><td>low</td><td>maturity</td><td>diff.</td><td>many</td></tr>
+<tr><td>Conc.</td><td>limited</td><td>low</td><td>low</td><td>decline</td><td>any</td><td>many</td></tr></table>
+<p>Limited strength usually decides → concentrated.</p></div>
+<div class="blk"><h4>Positioning <i>s.21-22</i></h4>
+<p>Distinct place in target buyer's mind. <b>First place</b> (be first into a slot) · <b>consolidate</b> (strengthen the slot you own) · <b>excavate</b> (find an unclaimed attribute) · <b>share</b> (coexist with leader, "we try harder") · <b>reposition</b> (change what rival's slot means). STP comes before the 4Ps.</p></div>
+<div class="blk"><h4>Key terms <i>s.72-73</i></h4>
+<p><b>4Ps</b> product, price, place, promotion · <b>4Cs</b> customer solution, cost, convenience, communication · <b>AISAS</b> attention, interest, search, action, share (share loops back) · <b>DREK</b> differentiation + relevance = brand <b>strength</b>; esteem + knowledge = brand <b>stature</b> · <b>PLC</b> intro, growth, maturity, decline · <b>tidy data</b> one row per object, one column per attribute · <b>outlier</b> keep or flag, never silently delete · <b>GMV</b> total order value before refunds (revenue, not profit).</p>
+<p class="bg"><b>Background (mock):</b> customer delivered value = total customer value − total customer cost (money + time + effort + energy). Pricing bases: cost (markup), value (WTP), competition (anchor to rivals).</p></div>
+<div class="blk"><h4>Data types &amp; cleaning <i>s.64-70</i></h4>
+<p>4 shapes: tables, nested JSON, text/images/video, networks. Traps: IDs, ratios on small bases, bots.</p>
+<p><b>Order:</b> tidy → duplicates (dedupe first) → missing (drop or flag; never silently fill) → units &amp; coding (fix before judging outliers) → outliers (keep/flag). Log each fix. Lab: 12 streams but 13 rows → drop duplicate; reshape wide→long (melt) → weekly GMV <b>41,352 · 49,128 · 57,287 · 71,617</b> (sum 219,384).</p></div>
+
+<div class="wk">W3 · Association <i>s.15-28</i></div>
+<div class="blk"><p class="f">s(I)=σ(I)/N · s(X→Y)=σ(X∪Y)/N · c(X→Y)=σ(X∪Y)/σ(X) · lift = c/s(Y) = s(X∪Y)/(s(X)s(Y))</p>
+<p>X, Y disjoint. Frequent if s ≥ minsup (you choose). Support symmetric; confidence directional; lift symmetric. Lift &lt;1 substitutes, =1 independent, &gt;1 go together. Basket = presence 1/0, not quantity; support counts orders, not units.</p></div>
+<div class="blk"><h4>Slide examples <i>s.15-21</i></h4>
+<p>5 viewers: {Comedy,Gaming,Music} σ=2, s .40 · {Comedy,Music}→{Film} s .40, c 2/3=.67 · {Gaming}→{Comedy} s 3/5=.60, c 3/4=.75.</p>
+<p><b>Base-rate trap</b> N 5,000: Gaming 3,000, Comedy 3,750, both 2,000 → s .40, c .667 but P(Comedy) .75 → <b>lift .89</b>, don't push. {Gaming}→{not Comedy}: s .20, c .333 &gt; .25 base → fits better (lift ≈1.33).</p></div>
+<div class="blk"><h4>Judging rules <i>s.18, 22-25</i></h4>
+<table><tr><th>support</th><th>confidence</th><th>reading</th></tr><tr><td>high</td><td>high</td><td>act on it</td></tr><tr><td>high</td><td>low</td><td>weak rule</td></tr><tr><td>low</td><td>high</td><td>seductive but thin</td></tr><tr><td>low</td><td>low</td><td>ignore</td></tr></table>
+<p>Streamer 1→99: c 1.00, tiny support, lift 1.02 → ignore. Matcha→bamboo whisk s .089 c .810 lift 7.80 → act. Thresholds come from the <b>decision</b>, not data.</p>
+<p>Bakery (2,800 orders): flour→yeast .098/.658/4.43 · cake mold→parchment .101/.674/3.98 · piping bag→nozzle .095/.616/4.39 · flour+yeast→improver .069/.703/6.96.</p>
+<p class="tr"><b>Doilies decoy:</b> support .280 (most bought) but lift 0.850-1.073 with all 24 items (≈1) → rides along with everything, predicts nothing. High support ≠ association.</p></div>
+<div class="blk"><h4>Search size <i>s.26-28</i></h4>
+<p class="f">Rules from d items: R = 3^d − 2^(d+1) + 1</p>
+<p>d=3:12 · 4:50 · 5:180 · 6:602 · 7:1,932 · 8:6,050. Two steps: frequent itemsets (expensive) → rules (cheap). <span class="bg"><b>Apriori</b> (mock): every subset of a frequent set is frequent → drop any candidate with an infrequent subset. Min count = minsup × N. Survivors must still be counted.</span></p></div>
+
+<div class="wk">W4 · Classification <i>s.14-25, 45-49, 52-55</i></div>
+<div class="blk"><h4>Score, threshold, two errors <i>s.14-20</i></h4>
+<p>Model gives probability; <b>threshold</b> turns it into a verdict. "Model proposes, threshold disposes." Positive = spam.</p>
+<table><tr><th></th><th>pred genuine</th><th>pred spam</th></tr><tr><td>actual genuine</td><td>TN 679 kept</td><td>FP 9 false alarm (voice lost)</td></tr><tr><td>actual spam</td><td>FN 14 miss (scam stays)</td><td>TP 298 caught</td></tr></table>
+<p class="f">Acc=(TP+TN)/N · Prec=TP/(TP+FP) · Rec=TP/(TP+FN) · F1=2PR/(P+R) · FPR=FP/(FP+TN)</p>
+<p>Acc .977 vs "delete nothing" 688/1000 = <b>.688</b> (accuracy flatters lopsided data). Precision 298/307 = <b>.971</b> (felt by genuine user deleted). Recall 298/312 = <b>.955</b> (felt by audience &amp; brand). F1 <b>.963</b>.</p>
+<p>Raise threshold → precision ↑ recall ↓; lower → recall ↑ precision ↓.</p></div>
+<div class="blk"><h4>Threshold table, curve, review queue <i>s.21-25</i></h4>
+<table><tr><th>t</th><th class="n">spam caught /312</th><th class="n">genuine deleted /688</th></tr><tr><td>1.0</td><td class="n">0</td><td class="n">0</td></tr><tr><td>0.9</td><td class="n">267 (85.6%)</td><td class="n">8</td></tr><tr><td>0.5</td><td class="n">300 (96.2%)</td><td class="n">9</td></tr><tr><td>0.1</td><td class="n">302 (96.8%)</td><td class="n">37</td></tr><tr><td>0</td><td class="n">312</td><td class="n">688</td></tr></table>
+<p>Curve: each threshold = one point; up-left better; diagonal = coin flip; picking a point = pricing the two errors. <b>Two dials</b>: keep &lt;0.1 · human review 0.1-0.9 · delete ≥0.9 (audit sample).</p></div>
+<div class="blk"><h4>TeaPop case <i>s.45-49</i></h4>
+<p>4,000 comments, 31.2% spam, team of 4. Hold-out 1,000 (312/688):</p>
+<table><tr><th>filter</th><th>acc</th><th>F1</th><th>caught</th><th>deleted</th></tr><tr><td>Logistic</td><td>.979</td><td>.966</td><td>300</td><td>9</td></tr><tr><td>Tree depth 6</td><td>.977</td><td>.963</td><td>298</td><td>9</td></tr><tr><td>Forest 200</td><td>.980</td><td>.968</td><td>301</td><td>9</td></tr></table>
+<p>Near tie → choose interpretable (tree/scorecard explains an appeal); forest's +0.001 buys nothing. Postures: strict .9 (267, 8) · balanced .5 (300, 9) · sweep .1 (302, 37). Balanced→strict saves 1 genuine, lets 33 more spam through; →sweep catches 2 more, deletes 28 more genuine. Scam links = 9.0% of stream.</p></div>
+<div class="blk"><h4>Error costs &amp; private domain <i>s.52-55</i></h4>
+<p>Invite tiers: T1 watches most + bought &gt;1 → invite + named host · T2 often watches, bought once → invite with repeat offer, review in a month · T3 one stream, never bought → public reach only. FP = staff time on non-buyer; FN = lost repeat revenue. Decide by which error costs more.</p>
+<p class="bg"><b>Trees (mock):</b> follow conditions literally ("10 days" is not "&lt;7 days"); a pure split (40/40 → 40/0 + 0/40) beats one leaving mixed nodes. Deeper tree: train ↑, test ↓ (overfit).</p></div>
+
+</div></div>
+
+<!-- ======================= SIDE 2 ======================= -->
+<div class="page">
+<div class="head"><b>NMTA Final · side 2 · Weeks 5-8</b><span>Formula meaning &gt; formula · numbers + meaning + decision + limit · association ≠ causation</span></div>
+<div class="cols">
+
+<div class="wk">W5 · Regression <i>s.16-27, 29-40</i></div>
+<div class="blk"><p class="f">y = β₀ + β₁x₁ + … + βₚxₚ + ε · residual = actual − fitted</p>
+<table><tr><th style="width:17%"></th><th class="n">coef</th><th class="n">SE</th><th class="n">t</th><th class="n">p</th><th class="n">95% CI</th></tr>
+<tr><td>Intercept</td><td class="n">−3.604</td><td class="n">1.279</td><td class="n">−2.818</td><td class="n">.009</td><td class="n">−6.225, −0.984</td></tr>
+<tr><td>Ad spend</td><td class="n">2.097</td><td class="n">.248</td><td class="n">8.454</td><td class="n">.000</td><td class="n">1.589, 2.605</td></tr></table>
+<p><b>Slope</b>: one more unit of x comes with 2.097 more units of y (multiple regression: <b>holding the other features fixed</b>). Coefficient inherits units (check "thousands"). <b>Intercept</b>: fitted y at x = 0; an anchor, not a forecast (negative sales impossible). Association, <b>not a lever</b>; causation needs an experiment.</p></div>
+<div class="blk"><h4>Significance <i>s.21-27</i></h4>
+<p class="f">t = (estimate − null)/SE → 2.097/.248 = 8.45 · df = n − k = 30 − 2 = 28</p>
+<p class="f">two-sample t = (x̄₂−x̄₁)/√(s₁²/n₁ + s₂²/n₂) = 5/√(144/200 + 169/150) = 5/1.359 = 3.68</p>
+<p>Fudan 75 (n 200, sd 12) vs Tongji 80 (n 150, sd 13): gap = 3.68 noise units → reject H₀ (gap real).</p>
+<p><b>α = .05</b> = false-alarm budget (P reject a true H₀). Two-tailed: 2.5% each tail. <b>p</b> = P(result this extreme | H₀ true); p &lt; .05 → reject H₀. p ".000" means &lt; .0005. Three signals agree: |t| in tail ⇔ p &lt; .05 ⇔ 95% CI excludes 0. F 71.47 (sig 3.41E-09) tests all slopes = 0; one feature: F = t².</p>
+<p class="tr">Not significant ≠ no effect (may be noise or overlap with other features). p is not P(H₀ true).</p></div>
+<div class="blk"><h4>Fit <i>s.29-33</i></h4>
+<p class="f">SST = SSR + SSE · R² = SSR/SST = 1 − SSE/SST · Adj R² = 1 − (1−R²)(n−1)/(n−k−1)</p>
+<p>Multiple R .848 (corr actual vs fitted; .848² = .719) · <b>R² .719</b> ≈ 72% of variation explained · <b>Adj R² .708</b> (penalty per feature; R² never falls when adding columns) · <b>Std error 2.320</b> = typical miss in y units · n 30.</p>
+<p><b>Residual plot</b>: random cloud = fine; <b>curve/pattern</b> = structure left (add curve/feature); funnel = spread changes. Residuals summing to 0 ≠ no error → square them.</p></div>
+<div class="blk"><h4>Overfitting, error, penalties <i>s.34-40</i></h4>
+<p>Wiggly polynomial fits history perfectly, new data badly ("tailor-made suit"). Judge on <b>new data</b>.</p>
+<p class="f">E[(y−ŷ)²] = bias² + variance + irreducible noise</p>
+<p>Simple → high bias; flexible → high variance; sweet spot in middle. Train error keeps falling, test error U-shaped.</p>
+<p class="f">OLS min SSE · Ridge (L2) SSE + λΣβ² · LASSO (L1) SSE + λΣ|β|</p>
+<p><b>Ridge</b> shrinks all, usually none to 0 (many correlated predictors). <b>LASSO</b> can set exactly <b>0</b> → feature selection. λ ↑ → coefficients → 0. Standardise first; intercept unpenalised. Path: OLS +1.80, −1.00, +0.35 · Ridge +.82, −.45, +.16 · LASSO +.60, 0, 0. <b>Choose λ on validation data</b>: feasible settings (e.g. ≤4 predictors) first, then lowest validation error; strongest penalty not automatically best. Zero coef = no direct role in this fitted equation, not "never matters".</p>
+<p class="bg"><b>Mock:</b> squared prediction error on the same hold-out weeks: residuals +10, −10, 0 → 200; +20, −15, −5 → 650 → pick 200, lower training error does not count.</p></div>
+
+<div class="wk">W6 · Clustering <i>s.32-42, 52-58</i></div>
+<div class="blk"><p class="bg"><b>K-means (mock):</b> choose k → seed centroids → assign each point to nearest (|x−c| in 1-D, Euclidean) → move centroid to mean → repeat until no change. Converged = local solution; restart from several seeds, keep lowest WCSS (best found, not proven best). Standardise: <b>z = (x−μ)/σ</b>, e.g. (180−240)/120 = −0.5.</p></div>
+<div class="blk"><h4>Choosing k <i>s.32-37</i></h4>
+<p class="f">WCSS = Σ squared distance to own centroid (always falls as k ↑)</p>
+<p><b>Elbow</b>: stop where extra k stops buying much drop; no automatic rule.</p>
+<p class="f">silhouette s = (b − a)/max(a, b)</p>
+<p>a = mean distance to own cluster; b = mean distance to nearest other cluster. a 2.0, b 5.0 → <b>.6</b>; a 4.8, b 5.0 → <b>.04</b> (on the boundary); b &lt; a → negative (misfiled). Range −1 to +1. Average s per k, pick the peak. Plot: wide even bars good, thin/negative bars = weak. Elbow and silhouette agree when structure real.</p></div>
+<div class="blk"><h4>Business tests <i>s.38-41</i></h4>
+<p>Kotler &amp; Keller 2016: <b>Measurable, Substantial, Reachable, Actionable</b> (all four). Floor: 3 campaigns → k ≥ 3. Geometry (k=2) vs business (k=5 with a 4% premium niche): business usually wins. <b>Stability</b>: rerun on resamples/seeds; same segments? A tiny sliver passes if size × conversion × value − cost &gt; 0 and it reappears.</p></div>
+<div class="blk"><h4>Etsy <i>s.42</i></h4>
+<p>Bhadauria et al. 2024: K-means on product image + text features → ~1,000 interest groups; with buyer history, recommends by <b>lasting interests</b> (stays relevant after the first purchase). Clustering products, not people.</p></div>
+<div class="blk"><h4>SkillCraft segments <i>s.52-58</i></h4>
+<table class="sm"><tr><th style="width:21%">segment</th><th class="n" style="width:17%">n (%)</th><th class="n">watch</th><th class="n">compl</th><th class="n">live</th><th class="n">saves</th><th class="n">Q</th><th class="n" style="width:13%">conv</th></tr>
+<tr><td>Casual scrollers</td><td class="n">1,890 (47.2)</td><td class="n">115</td><td class="n">32.6</td><td class="n">0.8</td><td class="n">1.0</td><td class="n">0.6</td><td class="n">10.2%</td></tr>
+<tr><td>Live regulars</td><td class="n">1,024 (25.6)</td><td class="n">243</td><td class="n">46.9</td><td class="n">5.3</td><td class="n">1.6</td><td class="n">1.3</td><td class="n">15.4%</td></tr>
+<tr><td>Systematic learners</td><td class="n">716 (17.9)</td><td class="n">377</td><td class="n">61.6</td><td class="n">2.0</td><td class="n">5.8</td><td class="n">2.9</td><td class="n">35.8%</td></tr>
+<tr><td>Credential seekers</td><td class="n">370 (9.2)</td><td class="n">318</td><td class="n">78.2</td><td class="n">5.5</td><td class="n">13.9</td><td class="n">7.9</td><td class="n">84.1%</td></tr></table>
+<p>Name from the extremes; segment = size + value + behaviour in plain units. Certificate bundle → credential seekers, metric = <b>segment conversion vs their own 84.1% baseline</b> (not file 22.9%). Budget → systematic learners (engaged, room to move); casual = free top-of-funnel; live regulars = nurture in live room. R² segment ID <b>.4372</b> vs all 8 behaviours <b>.6807</b> (gap .244): segments = language for action, behaviours = forecasting.</p></div>
+
+<div class="wk">W7 · Text &amp; NLP <i>s.16-36, 38-51</i></div>
+<div class="blk"><h4>Representations &amp; cleaning <i>s.16-22</i></h4>
+<p>Four ways to turn text into numbers: counts, TF-IDF (rarity weight), n-grams (local order), embeddings (meaning). Pick for the question.</p>
+<p><b>Tokenize</b> = split into tokens · <b>lemmatize</b> = dictionary form (was/were/is → be; batteries → battery) · <b>stem</b> = rule cut, may not be a word (automation → automat). English tokens by spaces (nltk); Chinese needs a dictionary segmenter (jieba) + add brand terms first. Stop words: English list 179; Chinese particles (de, le, zai). <b>Keep negation</b> (not, no, never; bu, mei): removing it flips meaning.</p></div>
+<div class="blk"><h4>Counts &amp; weights <i>s.23-27</i></h4>
+<p>Bag of words loses order: "Great sound, terrible battery" = "Terrible sound, great battery".</p>
+<p class="f">TF-IDF = TF × IDF · IDF = ln(N/df)</p>
+<p>N 3: df 2 → ln 1.5 = <b>.41</b>; df 1 → ln 3 = <b>1.10</b>; "battery" twice in one doc → 2 × 1.10 = <b>2.20</b>. Frequent here + rare elsewhere = distinctive; in every doc → IDF 0.</p>
+<p><b>n-grams</b>: unigram "not" · bigram "not good" · trigram "not good value"; longer = bigger, sparser vocabulary.</p></div>
+<div class="blk"><h4>Embeddings &amp; similarity <i>s.28-32</i></h4>
+<p>Words/texts as dense vectors; meaning by context; king − man + woman ≈ queen (analogy, not a rule).</p>
+<p class="f">cos(a,b) = a·b / (‖a‖‖b‖)</p>
+<p>1 same direction · 0 unrelated · −1 opposite; length ignored. High cosine ≠ same complaint: read the texts.</p>
+<table><tr><th>method</th><th>order</th><th>cost</th><th>best for</th></tr><tr><td>BoW</td><td>none</td><td>low</td><td>frequency, small vocab</td></tr><tr><td>TF-IDF</td><td>none</td><td>low</td><td>distinguishing terms, baseline</td></tr><tr><td>n-grams</td><td>short spans</td><td>low</td><td>phrases, negation</td></tr><tr><td>embeddings</td><td>context</td><td>compute + data</td><td>meaning search, multilingual</td></tr></table></div>
+<div class="blk"><h4>Topics (LDA) <i>s.33-36</i></h4>
+<p>Blei, Ng &amp; Jordan 2003. Review = mixture of topics (θ); topic = distribution over words (φ).</p>
+<p class="f">P(word) = Σₖ θₖ·φₖ = .60×.06 + .40×.35 = .176</p>
+<p>You pick K (and prior α); compare K, preprocessing, repeated fits. Lower perplexity ≠ clearer topics. Label a topic only after reading top words + original reviews; one topic can hold praise, complaint, question.</p></div>
+<div class="blk"><h4>Sentiment <i>s.38-51</i></h4>
+<p><b>Levels</b>: document (one label; "mixed" hides the issue) · <b>aspect</b> (sound +, battery −) → actionable · rating check (text vs stars).</p>
+<p><b>Lexicon</b>: score = positive hits − negative hits (&gt;0 pos); VADER for social English; SnowNLP (Chinese) 0-1, ≥.5 pos → <b>243/355 = 68.45%</b> agreement. Fast, cheap, inspectable; fails on slang ("sick fit"), negation, domain words, sarcasm ("Amazing battery, I charge them twice a day"), mixed language.</p>
+<p><b>Supervised</b>: labels → TF-IDF features → logistic/forest → evaluate on held-out. Ratings 1★602 2★588 3★355 4★1,051 5★1,404 (4,000); provided labels pos 432, neg 242, neu 95 = 769; "4★ = positive" is a separate labelling rule (24 of 201 4★ are neutral). LR coef: + raises P(pos), − lowers, holding others fixed.</p>
+<p><b>LLM zero-shot</b>: prompt with fixed fields (sentiment, aspect, sarcasm, reason); catches sarcasm/aspects; costly at scale, answers vary → LLM explores a sample, validated cheaper model runs at scale.</p>
+<p>Route: clean standard text → lexicon · stable labelled task → supervised · aspects/sarcasm/mixed language → LLM-assisted (check consistency, cost). <span class="bg">NER (mock) extracts named things: product, place, person.</span></p></div>
+
+<div class="wk">W8 · Social networks <i>s.17-27, 29-35</i></div>
+<div class="blk"><p>Corner graph, 8 edges: A003–A005, A003–A038, A005–A038, A038–A173, A003–A012, A012–A126, A126–A073, A126–A089.</p>
+<table><tr><th>measure</th><th>definition</th><th>corner values</th><th>buys you</th></tr>
+<tr><td>Degree</td><td>number of ties</td><td>A003, A038, A126 = 3; A005, A012 = 2</td><td>reach, seeding price; misses position; fake followers inflate</td></tr>
+<tr><td>Betweenness</td><td>no. of pairs whose shortest path runs through you</td><td>A003 12, A012 12, A126 11, A038 6, rest 0</td><td>broker between groups, change agent; single point of failure</td></tr>
+<tr><td>Closeness</td><td>(n−1)/Σ distances</td><td>A003 7/13 = .538, A012 .538, A126 7/15 = .467</td><td>speed: launches, crisis</td></tr>
+<tr><td>Eigenvector / PageRank</td><td>tied to well-connected</td><td>(not computed)</td><td>prestige</td></tr></table>
+<p>Full 240-account graph: A003 degree rank 1 (34 ties); A126 betweenness rank 1 but degree rank 10 (15 ties) → <b>two leaders, two meanings</b>. Remove A003 or A012 → left/right split; A038 → cuts off A173; A126 → 3 pieces. Every clean cut runs through a broker.</p></div>
+<div class="blk"><h4>Communities <i>s.29-35</i></h4>
+<p>Community = denser inside than outside. <b>Modularity Q</b> = share of edges inside − share expected by chance; higher = tighter (≈0.3+ real structure).</p>
+<p class="f">Q = Σ_c [ e_c/m − (d_c/2m)² ]</p>
+<p>Corner: {A003, A005, A038, A173} | {A012, A126, A073, A089}: Q = [4/8 − (9/16)²] + [3/8 − (7/16)²] = <b>.367</b>. <b>Louvain</b> (Blondel 2008): start alone, move each node to the group that raises Q most, merge, repeat until nothing moves; finds k itself; may merge small groups. Label propagation: labels spread until stable.</p>
+<table><tr><th></th><th>Clustering (W6)</th><th>Communities (W8)</th></tr><tr><td>data</td><td>features</td><td>ties</td></tr><tr><td>k</td><td>you choose</td><td>algorithm finds</td></tr><tr><td>close =</td><td>similar features</td><td>short paths</td></tr></table>
+<p>Community = Kotler's measurable, reachable segment found in the data; also flags fraud rings.</p>
+<p class="bg"><b>Background (mock):</b> component = no path to the rest (moving the drawing adds no edge). Directed edge one way only. Cascade: seed = round 0; each newly active node sends next round; activate once, count distinct nodes. Fair seed test: same network, probabilities, budget, rounds; repeat; mean distinct reach. Registrations ≠ active ties.</p></div>
+
+<div class="wk ex">How to score <i>mock marking guide</i></div>
+<div class="blk"><p><b>Every written answer = 4 moves:</b> (1) the <b>number</b> from the exhibit with setup shown, (2) what it <b>means</b> in plain words, (3) the <b>decision</b> it supports, (4) one specific <b>limit</b>. 1 mark per distinct point; setup line earns method mark even if arithmetic slips; carried errors not penalised twice. Put units on everything. Choose first, then justify by comparison.</p>
+<p class="tp"><b>Reusable limits:</b> "best among these starts, not proof of best possible" · "training fit ≠ prediction on new weeks" · "residuals summing to 0 ≠ no error" · "3 weeks = limited evidence, validate further" · "registrations ≠ active ties" · "comments support investigation, not frequency claims" · "compare on same network/probabilities/budget/rounds, repeat, report mean". <b>"All models are imperfect" = 0 marks.</b></p>
+<p><b>Part A:</b> apply definitions exactly. Grid letter is marked if it differs from circle. Answer in English, label every answer with Q number.</p></div>
+
+<div class="wk ex">Classic traps</div>
+<div class="blk"><p class="tr">Accuracy flatters lopsided data · high support ≠ association (check lift) · confidence ignores base rate · coefficient ≠ lever · significance ≠ size ≠ importance · R² on training ≠ prediction · converged ≠ global best · lowest WCSS k ≠ best k · geometry ≠ business segment · degree ≠ position · "mixed" label hides aspects · high cosine ≠ same issue · GMV ≠ profit · ordinal: no mean · thresholds &amp; λ &amp; k &amp; K come from the decision/validation, not the data alone.</p></div>
+
+</div></div>
+</body></html>
