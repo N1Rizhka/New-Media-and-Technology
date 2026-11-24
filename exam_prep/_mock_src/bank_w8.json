@@ -1,0 +1,782 @@
+{
+ "week": 8,
+ "mcq": [
+  {
+   "id": "w8-a01",
+   "topic": "Nodes, edges and components",
+   "tests": "Directed versus undirected ties: an arrow X to Y does not imply Y to X.",
+   "stem": "A short-video platform keeps one row per repost: the account that reposted and the account whose clip was reposted. An analyst draws each row as an arrow from the reposting account to the original creator. Which statement about this network is correct?",
+   "formula": "",
+   "options": [
+    "The ties are undirected, because both accounts appear in the same row.",
+    "The ties are directed: an arrow from X to Y does not mean Y reposted X.",
+    "Each account is an edge and each repost is a node of the network.",
+    "Two accounts in the same component must have reposted each other directly."
+   ],
+   "answer": "b",
+   "explanation": "A repost has a direction (who reposted whom), so the tie is directed; the reverse repost is a separate arrow that may not exist. Accounts are nodes and reposts are edges, and sharing a component only requires some path, not a direct tie."
+  },
+  {
+   "id": "w8-a02",
+   "topic": "Nodes, edges and components",
+   "tests": "Counting components from an edge list: appearing in the list does not make one island.",
+   "stem": "A florist chain maps nine partner accounts with undirected ties. The complete edge list is: K1&ndash;K2, K2&ndash;K3, K4&ndash;K5, K6&ndash;K7, K7&ndash;K8, K8&ndash;K6, K8&ndash;K9. How many components does the network have, and how many accounts are in the largest one?",
+   "formula": "",
+   "options": [
+    "One component, because all nine accounts appear in the edge list.",
+    "Three components; the largest holds three accounts.",
+    "Three components; the largest holds four accounts.",
+    "Two components; the largest holds six accounts."
+   ],
+   "answer": "c",
+   "explanation": "Following the ties gives three islands: {K1, K2, K3}, {K4, K5} and {K6, K7, K8, K9}. No edge joins them, so the largest component has four accounts."
+  },
+  {
+   "id": "w8-a03",
+   "topic": "Clustering versus communities, and segments you did not declare",
+   "tests": "A high Q does not establish business meaning; compare detected groups with an outside variable.",
+   "stem": "A creator platform runs Louvain on its collaboration ties and obtains six communities with modularity Q = 0.71. The algorithm never saw the creators' content categories. What is the sound next step before naming the communities as business segments?",
+   "formula": "",
+   "options": [
+    "Compare each community with an outside variable, such as content category or city, to see what it means.",
+    "Accept the six groups as meaningful segments, because a Q above 0.3 proves their business meaning.",
+    "Rerun the search with k fixed at six, because Louvain needs the number of groups declared first.",
+    "Drop the ties and regroup by follower counts, because communities ignore the accounts' features."
+   ],
+   "answer": "a",
+   "explanation": "Q says the split is tight (denser inside than outside), not what the groups mean. The course checks meaning by comparing the detected groups with the real scene, for example content categories. Louvain does not need k declared."
+  },
+  {
+   "id": "w8-a04",
+   "topic": "Nodes, edges and components",
+   "tests": "Reading map positions: periphery is loosely attached and is where new members attach.",
+   "stem": "On a map of a city's café accounts, a newly opened café has a single tie, to one established café, and no other ties. Which reading of its position matches the course's four positions on a map?",
+   "formula": "",
+   "options": [
+    "It is a hub, because its single tie links it to an established account.",
+    "It is a bridge, because every account with one tie is the only path across.",
+    "It is a cluster, because it sits next to a dense neighbourhood of cafés.",
+    "It is on the periphery: loosely attached, and where new members attach."
+   ],
+   "answer": "d",
+   "explanation": "A hub has many ties, a bridge is the only path across between two parts, and a cluster is a dense neighbourhood. One loose tie is the periphery, which the course notes is not unimportant: it is where new members attach."
+  },
+  {
+   "id": "w8-a05",
+   "topic": "Which account matters most? Three instincts",
+   "tests": "Matching the 'broker' instinct to the question betweenness answers.",
+   "stem": "Using the course's three instincts about which account matters most, an analyst calls one account 'the broker'. Which question is the matching measure built to answer?",
+   "formula": "",
+   "options": [
+    "How many ties does the account hold with other accounts?",
+    "How quickly can the account reach every other account?",
+    "How often is it on the shortest path between two others?",
+    "How well connected are the accounts that it is tied to?"
+   ],
+   "answer": "c",
+   "explanation": "The broker is the betweenness instinct: how often you are the bridge on others' shortest paths. Ties counted is degree (the popular one), fast reach is closeness (the insider), and well-connected contacts is eigenvector prestige."
+  },
+  {
+   "id": "w8-a06",
+   "topic": "Which account matters most? Three instincts",
+   "tests": "Eigenvector/PageRank as prestige: important if your contacts are important, even at equal degree.",
+   "stem": "Accounts R and S each have 10 ties. R's ten contacts are among the most-tied accounts on the platform; S's ten contacts each have only one or two ties. Which statement fits the course's idea of the prestige account?",
+   "formula": "",
+   "options": [
+    "R scores higher on eigenvector centrality, because it is connected to the well-connected.",
+    "R and S score the same on eigenvector centrality, because their degrees are equal.",
+    "S scores higher on eigenvector centrality, because its contacts depend on it more.",
+    "Neither can be scored, because PageRank applies only to web pages, not to accounts."
+   ],
+   "answer": "a",
+   "explanation": "Eigenvector centrality (and PageRank, the same trick) makes an account important if its contacts are important. Equal degree does not mean equal prestige; R's contacts are well connected, so R scores higher."
+  },
+  {
+   "id": "w8-a07",
+   "topic": "Degree: counting ties",
+   "tests": "Computing degree from an edge list and the check that degrees sum to twice the number of ties.",
+   "stem": "A sports-drink brand maps eight accounts with these nine undirected ties: J1&ndash;J2, J1&ndash;J3, J1&ndash;J4, J2&ndash;J3, J4&ndash;J5, J4&ndash;J6, J5&ndash;J6, J6&ndash;J7, J6&ndash;J8. Which statement is correct?",
+   "formula": "Degree = number of ties an account has.",
+   "options": [
+    "J1 and J4 tie for the highest degree, with three ties each.",
+    "The degrees of all eight accounts add up to 9, the number of ties.",
+    "J6 has degree 3, the same as J1 and J4.",
+    "J6 has the highest degree, four, and the degrees sum to 18."
+   ],
+   "answer": "d",
+   "explanation": "J6 appears in four ties (J4, J5, J7, J8); J1 and J4 have three. Every tie has two ends, so the degrees sum to 2 &times; 9 = 18 (3+2+2+3+2+4+1+1)."
+  },
+  {
+   "id": "w8-a08",
+   "topic": "Degree: counting ties",
+   "tests": "What degree misses: bought followers raise the count without raising real reach.",
+   "stem": "An agency ranks creators by follower count to price sponsored posts. One creator bought 20,000 followers last month. What does this do to degree as a measure of that creator, according to the course?",
+   "formula": "",
+   "options": [
+    "It turns the creator into a broker between real communities, so the higher count is earned.",
+    "It raises the count without raising real reach, so degree overstates the creator's audience.",
+    "It makes degree a measure of position, because the count now shows where the ties lead.",
+    "It leaves degree unchanged, because degree counts only ties to well-connected accounts."
+   ],
+   "answer": "b",
+   "explanation": "Degree only counts ties; bought followers inflate the count without adding real reach. Degree never shows where ties lead, and counting ties to well-connected accounts is the eigenvector idea, not degree."
+  },
+  {
+   "id": "w8-a09",
+   "topic": "Betweenness: counting the paths through you",
+   "tests": "Betweenness by hand on a chain: count only pairs whose shortest path passes through the account.",
+   "stem": "Five accounts form a chain of undirected ties: A&ndash;B, B&ndash;C, C&ndash;D, D&ndash;E. What is the betweenness of C?",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).",
+   "options": [
+    "4",
+    "6",
+    "2",
+    "3"
+   ],
+   "answer": "a",
+   "explanation": "The pairs routed through C are A&ndash;D, A&ndash;E, B&ndash;D and B&ndash;E: 2 &times; 2 = 4. The pairs A&ndash;B and D&ndash;E do not use C, so 6 (all pairs of the other four) overcounts; 3 is the value of B or D."
+  },
+  {
+   "id": "w8-a10",
+   "topic": "Betweenness: counting the paths through you",
+   "tests": "Betweenness via the cut shortcut: multiply group sizes on each side of the only crossing.",
+   "stem": "Account B is tied to each of L1, L2 and L3 and to each of R1, R2, R3 and R4. L1, L2 and L3 are all tied to each other; R1 to R4 are all tied to each other. There are no other ties. What is B's betweenness?",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).",
+   "options": [
+    "7",
+    "21",
+    "12",
+    "9"
+   ],
+   "answer": "c",
+   "explanation": "Every L account reaches every R account only through B: 3 &times; 4 = 12 pairs. Pairs inside each group are tied directly and do not use B. 7 is B's degree; 21 counts all pairs of seven accounts."
+  },
+  {
+   "id": "w8-a11",
+   "topic": "Betweenness: counting the paths through you",
+   "tests": "Position, not popularity: a two-tie account can out-broker a three-tie account with zero betweenness.",
+   "stem": "P, Q, R and S are all tied to each other (six ties). S is also tied to T, and T is tied to U. There are no other ties. Which statement is correct?",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).",
+   "options": [
+    "P has a higher betweenness than T, because P has three ties and T has two.",
+    "S has betweenness 4, because it holds four ties.",
+    "T has betweenness 0, because it sits at the edge of the map.",
+    "T has betweenness 4, even though P, with more ties, has 0."
+   ],
+   "answer": "d",
+   "explanation": "U reaches P, Q, R and S only through T: 4 pairs. P is tied directly to Q, R and S, so no shortest path needs it: 0. S's betweenness is 3 &times; 2 = 6, not its degree."
+  },
+  {
+   "id": "w8-a12",
+   "topic": "Betweenness: counting the paths through you",
+   "tests": "Shared shortest paths: when a pair has two equally short routes, each route carries half a point.",
+   "stem": "Four accounts form a ring: A&ndash;B, B&ndash;C, C&ndash;D, D&ndash;A. The pair A and C has two equally short paths, one through B and one through D. What is B's betweenness?",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).",
+   "options": [
+    "1, because one A&ndash;C path passes through B.",
+    "0.5, because B is on one of two shortest A&ndash;C paths.",
+    "0, because B is never the only route between two accounts.",
+    "2, because B is tied to both A and C."
+   ],
+   "answer": "b",
+   "explanation": "Only the pair A&ndash;C can route through B, and it has two equally short paths, so B gets half a point: 0.5. The pair B&ndash;D does not count for B because B is an endpoint."
+  },
+  {
+   "id": "w8-a13",
+   "topic": "Closeness: how fast you reach everyone",
+   "tests": "Closeness arithmetic: use n &minus; 1 in the numerator and the distance sum in the denominator.",
+   "stem": "Six accounts: P, Q, R and S are all tied to each other; S is tied to T; T is tied to U. There are no other ties. What is T's closeness, to three decimal places?",
+   "formula": "Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account.",
+   "options": [
+    "1.600",
+    "0.750",
+    "0.625",
+    "0.500"
+   ],
+   "answer": "c",
+   "explanation": "T's distances: S 1, U 1, P 2, Q 2, R 2; sum 8. Closeness = 5/8 = 0.625. 1.600 flips the fraction (8/5); 0.750 wrongly uses n = 6 instead of n &minus; 1 = 5."
+  },
+  {
+   "id": "w8-a14",
+   "topic": "Closeness: how fast you reach everyone",
+   "tests": "Distance sum and closeness move in opposite directions; lower sum means faster reach.",
+   "stem": "In a network of 13 accounts, account M has a distance sum of 24 and account N has a distance sum of 30. Which statement is correct?",
+   "formula": "Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account.",
+   "options": [
+    "M's closeness is 0.50 and N's is 0.40, so M reaches everyone faster.",
+    "N's closeness is higher, because a larger distance sum means wider reach.",
+    "M's closeness is 2.00 and N's is 2.50, so N reaches everyone faster.",
+    "M's closeness is 0.54 and N's is 0.43, so M reaches everyone faster."
+   ],
+   "answer": "a",
+   "explanation": "With n &minus; 1 = 12: M = 12/24 = 0.50 and N = 12/30 = 0.40. A lower distance sum gives higher closeness. Option (c) flips the fraction; option (d) divides n = 13 instead of n &minus; 1."
+  },
+  {
+   "id": "w8-a15",
+   "topic": "Closeness: how fast you reach everyone",
+   "tests": "Closeness bounds: an account tied directly to everyone scores 1; a leaf of a star scores (n&minus;1)/(1+2(n&minus;2)).",
+   "stem": "A brand account H is tied to six fan accounts, and the fans have no other ties. What are the closeness scores of H and of one fan, to two decimal places?",
+   "formula": "Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account.",
+   "options": [
+    "H 6.00; fan 1.00",
+    "H 1.00; fan 0.17",
+    "H 0.86; fan 0.55",
+    "H 1.00; fan 0.55"
+   ],
+   "answer": "d",
+   "explanation": "n = 7, so n &minus; 1 = 6. H is 1 hop from all six: 6/6 = 1.00, the maximum. A fan is 1 hop from H and 2 hops from five fans: sum 11, so 6/11 = 0.55."
+  },
+  {
+   "id": "w8-a16",
+   "topic": "What each measure buys you, and the full graph's two leaders",
+   "tests": "The job table: betweenness is the measure for seeding a message across communities.",
+   "stem": "Which pairing of a centrality measure with a business job follows the course's table of what each measure buys you?",
+   "formula": "",
+   "options": [
+    "Closeness: pricing an influencer deal by the size of its audience.",
+    "Betweenness: seeding a message to cross into another community.",
+    "Degree: finding which account hears a crisis message first.",
+    "Eigenvector: finding the single point of failure between two groups."
+   ],
+   "answer": "b",
+   "explanation": "Betweenness buys brokers: seed there to cross communities. Audience size is degree, who hears first is closeness, and the single point of failure is the risk side of betweenness, not eigenvector prestige."
+  },
+  {
+   "id": "w8-a17",
+   "topic": "What each measure buys you, and the full graph's two leaders",
+   "tests": "Choosing closeness for a speed job (launch day, crisis communication).",
+   "stem": "A city tourism office must make sure every partner account hears about a road closure as quickly as possible, starting from one account. Which choice of starting account follows the course?",
+   "formula": "",
+   "options": [
+    "The account with the highest closeness, because it has the lowest distance sum.",
+    "The account with the highest degree, because popularity guarantees the fastest reach.",
+    "The account with the highest betweenness, because brokers always have the lowest distance sum.",
+    "Any account, because every account in one component reaches everyone equally fast."
+   ],
+   "answer": "a",
+   "explanation": "Speed (who hears it first, crisis communication) is the closeness job: the lowest distance sum reaches everyone in the fewest hops. Degree is local, brokers need not have the lowest sum, and accounts in one component differ in distance."
+  },
+  {
+   "id": "w8-a18",
+   "topic": "What each measure buys you, and the full graph's two leaders",
+   "tests": "The full graph's two leaders: degree leader and betweenness leader differ, so the choice depends on the job.",
+   "stem": "On the course's full map of 240 accounts, A003 ranks first on degree with 34 ties, while A126 ranks first on betweenness with 15 ties (degree rank 10). Which conclusion matches the course?",
+   "formula": "",
+   "options": [
+    "A126's betweenness must be an error, because a leader on paths must also lead on ties.",
+    "A003 is the most important account for every job, because it holds more than twice the ties.",
+    "The two leaders reflect two definitions of mattering, so the choice depends on the job.",
+    "A126 can be ignored for retention, because a degree rank of 10 shows a peripheral position."
+   ],
+   "answer": "c",
+   "explanation": "Degree measures the count and betweenness the crossing; the full graph crowns two different leaders. Pick the measure to match the job: no measure does every job."
+  },
+  {
+   "id": "w8-a19",
+   "topic": "Which account matters most? Three instincts",
+   "tests": "Managerial use of centrality: 'whom to retain' points to the broker whose exit splits groups.",
+   "stem": "The course turns centrality into three decisions: whom to seed, whom to retain, whom to watch. Which account is the clearest 'whom to retain' case?",
+   "formula": "",
+   "options": [
+    "An account with many bought followers, because its count may fall later.",
+    "A peripheral account that has just joined, because it will soon attach to a hub.",
+    "The account with the lowest closeness, because messages reach it last.",
+    "The broker whose exit would leave two groups with no connection."
+   ],
+   "answer": "d",
+   "explanation": "Retention is about whom you cannot afford to lose. A broker whose departure splits groups is a retention risk and a succession question; the other accounts carry no such structural loss."
+  },
+  {
+   "id": "w8-a20",
+   "topic": "Which removal breaks the corner?",
+   "tests": "Reading the result of a removal: which account leaves three pieces.",
+   "stem": "Seven accounts have these undirected ties: A&ndash;B, B&ndash;C, C&ndash;A, A&ndash;H, H&ndash;X, H&ndash;Y, Y&ndash;Z. Removing which single account leaves exactly three separate pieces?",
+   "formula": "",
+   "options": [
+    "A",
+    "H",
+    "Y",
+    "B"
+   ],
+   "answer": "b",
+   "explanation": "Removing H leaves {A, B, C}, {X} and {Y, Z}: three pieces. Removing A cuts off {B, C} (two pieces), removing Y cuts off Z (two pieces), and removing B splits nothing."
+  },
+  {
+   "id": "w8-a21",
+   "topic": "Which removal breaks the corner?",
+   "tests": "A broker is a single point of failure only where no second road exists; large networks usually have other paths.",
+   "stem": "Removing the top-betweenness account split a small eight-account map into pieces. An analyst concludes that removing the betweenness leader of the company's 5,000-account network will also split it. Which response matches the course?",
+   "formula": "",
+   "options": [
+    "Correct: removing the top broker always splits a network, whatever its size.",
+    "Correct, but only if the top broker also has the highest degree.",
+    "Not guaranteed: a broker splits the map only where no second road exists.",
+    "Not possible: betweenness cannot be computed on networks above a few hundred accounts."
+   ],
+   "answer": "c",
+   "explanation": "The course states the risk carefully: a broker can be a single point of failure where no second road exists. In large networks other paths usually exist, so the short roads get longer instead of the map splitting."
+  },
+  {
+   "id": "w8-a22",
+   "topic": "Which removal breaks the corner?",
+   "tests": "The cut is a position, not a count: a high-degree account in a dense area splits nothing.",
+   "stem": "D is tied to E, F, G and H; the rim ties are E&ndash;F, F&ndash;G, G&ndash;H and H&ndash;E; E is also tied to J, and J to K. D and E hold the most ties (four each). Which of the following accounts, if removed, splits the network?",
+   "formula": "",
+   "options": [
+    "D",
+    "F",
+    "G",
+    "J"
+   ],
+   "answer": "d",
+   "explanation": "Removing J cuts K off. Removing D, F or G splits nothing, because the rim keeps the other accounts linked. The cut follows position, not the number of ties."
+  },
+  {
+   "id": "w8-a23",
+   "topic": "What a community is",
+   "tests": "The course's definition of a community: denser inside than outside.",
+   "stem": "Which statement gives the course's definition of a community in a network?",
+   "formula": "",
+   "options": [
+    "A set of nodes that is denser inside than outside.",
+    "A set of nodes that share the same content category.",
+    "A set of nodes that each have more ties than average.",
+    "A set of nodes with no ties to the rest of the map."
+   ],
+   "answer": "a",
+   "explanation": "Denser inside than outside is the whole definition. Shared categories are features, not ties; having no outside ties at all describes a separate component, not a community."
+  },
+  {
+   "id": "w8-a24",
+   "topic": "What a community is",
+   "tests": "Uses of communities: a fraud ring appears as an abnormal community of accounts trading only with each other.",
+   "stem": "A resale marketplace finds a group of nine new accounts that trade almost only with each other and barely with anyone else. Which use of community detection does this illustrate?",
+   "formula": "",
+   "options": [
+    "A regional pocket, because the nine accounts must share one city.",
+    "A possible fraud ring: an abnormal community trading only inside.",
+    "A natural segment to target with a loyalty discount straight away.",
+    "A hub, because dense inside trading makes each account central."
+   ],
+   "answer": "b",
+   "explanation": "The course's third use of communities is fraud rings: accounts that trade only with each other light up as abnormal communities. Nothing in the stem shows a shared location, and a hub is one account with many ties, not a group."
+  },
+  {
+   "id": "w8-a25",
+   "topic": "Modularity and the Louvain search",
+   "tests": "The three Louvain steps in order, without declaring k.",
+   "stem": "Which sequence describes the Louvain search as taught in the course?",
+   "formula": "",
+   "options": [
+    "Declare k groups, assign each account to the nearest centre, move the centres until stable.",
+    "Start with all accounts in one group, cut the weakest tie, repeat until k groups remain.",
+    "Rank accounts by degree and let each of the top k accounts collect its nearest neighbours.",
+    "Start each account alone, move each to the group raising Q most, repeat until nothing moves."
+   ],
+   "answer": "d",
+   "explanation": "Louvain: start alone, move to raise Q, repeat until no move raises Q. The number of groups comes out of the search; option (a) describes K-means."
+  },
+  {
+   "id": "w8-a26",
+   "topic": "Modularity and the Louvain search",
+   "tests": "The honest limit of modularity: small groups get merged into larger ones.",
+   "stem": "A payments app looks for a ring of four colluding accounts inside a network of two million accounts, using a modularity-based Louvain search. Which risk does the course name?",
+   "formula": "",
+   "options": [
+    "Louvain will place each of the four accounts in a group of its own.",
+    "Q will turn negative because the ring is denser inside than outside.",
+    "The ring may be merged into a bigger community: Q has a size blind spot.",
+    "Louvain will stop early because it must be told how many rings exist."
+   ],
+   "answer": "c",
+   "explanation": "The honest limit: small groups get merged into big ones because the score cannot see a group below a certain size. A dense ring raises Q rather than making it negative, and Louvain needs no k."
+  },
+  {
+   "id": "w8-a27",
+   "topic": "Modularity and the Louvain search",
+   "tests": "Reading modularity values: higher Q is tighter; Q near zero is no better than chance.",
+   "stem": "Two different splits of the same collaboration network score Q = 0.42 and Q = 0.03. Which reading matches the course?",
+   "formula": "Q = (share of ties inside the groups) &minus; (share expected inside the groups by chance).",
+   "options": [
+    "The first split is tighter; the second is barely better than chance.",
+    "The second split is better, because a lower Q means fewer ties are cut.",
+    "Both are equally valid, because Q only counts how many groups were found.",
+    "The first split has proved that its groups are meaningful customer segments."
+   ],
+   "answer": "a",
+   "explanation": "Q scores inside ties beyond what chance would give; higher is tighter and near zero means no better than chance. A high Q still does not prove business meaning."
+  },
+  {
+   "id": "w8-a28",
+   "topic": "Modularity and the Louvain search",
+   "tests": "Computing Q for a two-group split with the formula, including the chance term.",
+   "stem": "Two triangles of accounts, {A, B, C} and {D, E, F}, are joined by the single tie C&ndash;D, so there are 7 ties. Each triangle is one group. What is the modularity Q of this split, to two decimal places?",
+   "formula": "Q = &Sigma; over groups c of [ l<sub>c</sub>/m &minus; (d<sub>c</sub>/2m)<sup>2</sup> ], where m = total ties, l<sub>c</sub> = ties inside group c, d<sub>c</sub> = sum of the degrees of the accounts in c.",
+   "options": [
+    "0.50",
+    "0.36",
+    "0.86",
+    "0.18"
+   ],
+   "answer": "b",
+   "explanation": "Each group has l = 3 inside ties and degree sum d = 2+2+3 = 7. Each term = 3/7 &minus; (7/14)<sup>2</sup> = 0.429 &minus; 0.250 = 0.179; two groups give Q = 0.36. 0.86 is the inside share 6/7 without the chance term; 0.18 is one group only."
+  },
+  {
+   "id": "w8-a29",
+   "topic": "Modularity and the Louvain search",
+   "tests": "Label propagation as the alternative community search.",
+   "stem": "Besides Louvain, the course names label propagation as a way to find communities. Which description fits it?",
+   "formula": "",
+   "options": [
+    "Each account copies the content label written in its profile handle.",
+    "Analysts label a sample of accounts and a classifier predicts the rest.",
+    "Labels spread from account to account along the ties until they stabilise.",
+    "Each account takes the label of the nearest feature centroid."
+   ],
+   "answer": "c",
+   "explanation": "In label propagation every account starts with its own label and adopts the label common among its neighbours; labels spread through dense areas until they stabilise. It reads ties, not handles or features."
+  },
+  {
+   "id": "w8-a30",
+   "topic": "Where does A012 belong? The corner, split",
+   "tests": "Ties beat handles: community detection places a borderline account by its ties, not its name.",
+   "stem": "An account with the handle 'trailmix_runs_04' sits between a running group and a parents' group. It has one tie into the running group and three into the parents' group. Louvain places it with the parents. Which explanation fits the course?",
+   "formula": "",
+   "options": [
+    "Louvain made an error, because the handle shows the account belongs with the runners.",
+    "Louvain reads handles first and uses ties only when a handle is missing.",
+    "Louvain placed it by degree: accounts with four ties always join the larger group.",
+    "The algorithm reads ties, not handles, and its ties pull it to the parents."
+   ],
+   "answer": "d",
+   "explanation": "Community detection uses only the ties; the handle is never read. Like A012 in the corner, the handle says one thing and the ties another, and the ties win."
+  },
+  {
+   "id": "w8-a31",
+   "topic": "Clustering versus communities, and segments you did not declare",
+   "tests": "What 'close' means: path length for communities versus feature similarity for K-means.",
+   "stem": "In what sense are two accounts 'close' in Week 8 community detection, compared with Week 6 K-means clustering?",
+   "formula": "",
+   "options": [
+    "Communities: few hops separate them; K-means: their feature values are similar.",
+    "Communities: their feature values are similar; K-means: few hops separate them.",
+    "In both methods: their feature values are similar after standardising.",
+    "In both methods: few hops separate them on the collaboration map."
+   ],
+   "answer": "a",
+   "explanation": "Clustering groups by features, so distance means feature similarity; communities group by ties, so distance means path length."
+  },
+  {
+   "id": "w8-a32",
+   "topic": "Clustering versus communities, and segments you did not declare",
+   "tests": "A detected community as Kotler's measurable, reachable segment, discovered not declared.",
+   "stem": "A food-delivery app's Louvain run finds a community of 3,000 customers who place group orders together, almost all in one university district. The course links such a community to Kotler's segmentation ideas. Which statement fits?",
+   "formula": "",
+   "options": [
+    "It is a declared segment, because the marketing plan must have named it first.",
+    "It is a measurable, reachable segment, discovered in the data rather than declared.",
+    "It is not a segment, because segments must come from K-means with k chosen first.",
+    "It is a fraud ring, because its members order mostly with each other."
+   ],
+   "answer": "b",
+   "explanation": "A detected community is Kotler's measurable, reachable segment, found in the data instead of declared in a plan: you can count it, and its ties are channels to reach it. Group orders in one district are a regional pocket, not abnormal trading."
+  }
+ ],
+ "short": [
+  {
+   "id": "w8-b01",
+   "topic": "Degree: counting ties",
+   "tests": "Computing degree with the handshake check, then explaining what degree buys and what it misses on a concrete map.",
+   "title": "Degree as the price list: what the count buys and misses",
+   "stem": "Quillon Stationery maps seven creator accounts that have collaborated with each other. The complete list of undirected ties is: Q1&ndash;Q2, Q1&ndash;Q3, Q1&ndash;Q4, Q2&ndash;Q3, Q2&ndash;Q4, Q3&ndash;Q4, Q4&ndash;Q5, Q5&ndash;Q6, Q6&ndash;Q7. Its agency proposes paying each creator a fee proportional to the number of ties. (i) Give each account's degree and check the total against the number of ties. (ii) Explain what degree buys a brand that makes it a reasonable first filter. (iii) Using this map, explain two things degree misses.",
+   "formula": "Degree = number of ties an account has.",
+   "reference": "(i) Q4 has degree 4; Q1, Q2 and Q3 have 3 each; Q5 and Q6 have 2; Q7 has 1. The total is 4 + 3 + 3 + 3 + 2 + 2 + 1 = 18 = 2 &times; 9 ties, because every tie has two ends. (ii) Degree measures reach: it is a quick audience-size filter for shortlisting accounts, it prices a seeding placement, and it needs no algorithm. (iii) Degree misses position: Q1, Q2 and Q3 each hold three ties, but all their ties stay inside the dense group, so removing any one of them changes nothing, whereas Q5 holds only two ties and is the only link from Q6 and Q7 to the rest. Degree also cannot tell real ties from bought followers, which raise the count without raising real reach. A fee by count would therefore pay Q1 to Q3 more than Q5, the account that actually connects the map.",
+   "marking": "Award 2 marks for part (i): 1 for the correct degrees of all seven accounts (allow one slip for this mark only if the total check is still correctly reasoned), 1 for the sum of 18 equal to twice the 9 ties. Award 1 mark for part (ii): one accurate use of degree (audience size / first shortlist filter, pricing a placement, or fast to read). Award 3 marks for part (iii): 1 for stating that degree ignores where ties lead (position), 1 for a correct example from this map (Q5 with two ties holds the only route to Q6 and Q7, or Q1&ndash;Q3 with three ties are not needed for any connection), 1 for a second, different limitation such as bought followers inflating the count. Do not accept 'degree misses betweenness' without explaining what is missed. No betweenness calculation is required."
+  },
+  {
+   "id": "w8-b02",
+   "topic": "Betweenness: counting the paths through you",
+   "tests": "Betweenness by hand for three equal-degree accounts, identifying the broker, and naming its uses and risk.",
+   "title": "Three accounts with three ties: which one is the broker?",
+   "stem": "Fernhill Ceramics works with seven studio accounts. The complete list of undirected collaboration ties is: M1&ndash;M2, M1&ndash;M3, M2&ndash;M3, M3&ndash;M4, M4&ndash;M5, M4&ndash;M6, M5&ndash;M6, M6&ndash;M7. Every pair of accounts has exactly one shortest path. M3, M4 and M6 each hold three ties. (i) Compute the betweenness of M3, M4 and M6, showing which pairs pass through each. (ii) Name the broker, and give one use of a high-betweenness account and one risk it carries.",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).",
+   "reference": "(i) M3: M1 and M2 reach M4, M5, M6 and M7 only through M3, so 2 &times; 4 = 8 pairs. M4: M1, M2 and M3 reach M5, M6 and M7 only through M4, so 3 &times; 3 = 9. M6: M7's only tie is to M6, so M7 reaches the other five accounts through M6: 5. (M1, M2, M5 and M7 score 0.) (ii) M4 is the broker, with the highest betweenness, 9, even though all three accounts have the same degree. Seeding at M4 carries a message from the M1&ndash;M3 side into the M5&ndash;M7 side, and an account in that position is the kind of change agent who carries ideas between groups. The risk is that it is a single point of failure: removing M4 leaves {M1, M2, M3} and {M5, M6, M7} with no connection.",
+   "marking": "Award 1 mark each for M3 = 8, M4 = 9 and M6 = 5, each with the pairs or group sizes shown (3 marks; a correct number without any working earns the mark only if the group sizes are visible elsewhere). Award 1 mark for naming M4 as the broker and noting that equal degree did not separate the three. Award 1 mark for one use (seeding to cross groups, or change agents sit on betweenness). Award 1 mark for the single-point-of-failure risk tied to this map (removing M4 splits it). Carry forward an arithmetic error into the broker choice without a second penalty."
+  },
+  {
+   "id": "w8-b03",
+   "topic": "Closeness: how fast you reach everyone",
+   "tests": "Closeness for several accounts, a tie at the top, and choosing a starting account for an urgent message.",
+   "title": "An urgent recall notice: closeness and two centres",
+   "stem": "Saltmarsh Coffee's eight store managers pass messages along these undirected ties: S1&ndash;S2, S1&ndash;S3, S2&ndash;S3, S3&ndash;S4, S4&ndash;S5, S5&ndash;S6, S5&ndash;S7, S7&ndash;S8. S3's distance sum is 15. (i) Compute the distance sums and closeness of S4, S5 and S8 (three decimal places). (ii) A batch recall notice must reach all managers as fast as possible, starting from one manager. Recommend where to start and explain what the results show about S4, which holds only two ties.",
+   "formula": "Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account.",
+   "reference": "(i) With n &minus; 1 = 7: S4's distances are S3 1, S5 1, S1 2, S2 2, S6 2, S7 2, S8 3, sum 13, closeness 7/13 = 0.538. S5's are S4 1, S6 1, S7 1, S3 2, S8 2, S1 3, S2 3, sum 13, closeness 0.538. S8's are S7 1, S5 2, S4 3, S6 3, S3 4, S1 5, S2 5, sum 23, closeness 7/23 = 0.304. (S3 is 7/15 = 0.467.) (ii) Speed is the closeness job, so start at S4 or S5: they tie at the top with the lowest distance sum, so the network has two centres and either reaches everyone within three hops. S4 holds only two ties, fewer than S3 or S5, yet it is a joint centre because of where it sits in the middle of the chain; the number of ties does not decide reach speed. A low distance sum is the good direction; S8, at 23, would be the slowest start.",
+   "marking": "Award 3 marks for part (i): 1 each for S4, S5 and S8, each needing the correct distance sum and closeness (0.538, 0.538, 0.304). Award 1 mark for recommending S4 or S5 (either, or both) because closeness measures speed. Award 1 mark for recognising the exact tie as two centres. Award 1 mark for explaining that S4's two ties do not prevent it being a centre: position, not count, decides closeness. A flipped ratio (13/7 = 1.86) loses that value's mark but the recommendation can still earn its marks if the student correctly uses the lowest distance sum."
+  },
+  {
+   "id": "w8-b04",
+   "topic": "What each measure buys you, and the full graph's two leaders",
+   "tests": "Two leaders with different definitions of mattering; choosing between them for a retention contract by the job and the loss.",
+   "title": "One retention contract: the count's leader or the crossing's leader?",
+   "stem": "Corvid Gear, a gaming-accessories brand, maps 300 creator accounts. Account G1 has 52 ties (degree rank 1) and betweenness rank 14; all its ties are inside the console-gaming community. Account G2 has 17 ties (degree rank 22) and betweenness rank 1; it is the only account with many ties in both the console community and the PC community. Corvid can offer one long-term retention contract. In three to five sentences: say what each leader measures, recommend one account, explain what Corvid would lose if each account left, and name one check to run before signing.",
+   "formula": "",
+   "reference": "G1 is the count's leader: degree measures reach, the audience it can address directly. G2 is the crossing's leader: betweenness measures how often an account lies on the shortest paths between others, here between the console and PC communities. If the contract's goal is to keep Corvid's message flowing between both communities, G2 is the better choice. If G1 left, reach inside the console community would thin, but its neighbours, all inside one dense community, are likely to stay connected to each other; if G2 left, the shortest road between the two communities could disappear, so G2 is the retention risk and succession question. Before signing, remove G2 from the map and check whether the communities split or whether second roads exist; if other paths carry the connection, the case for G2 weakens.",
+   "marking": "Award 1 mark for correctly describing what degree measures for G1 and 1 mark for what betweenness measures for G2. Award 1 mark for a recommendation justified by the job (either account can earn this mark if the job is stated and matches the measure; 'G1 because it has the most ties' without a job does not). Award 2 marks for the losses: 1 for G1 (reach thins / audience shrinks, but its community stays connected) and 1 for G2 (the crossing between communities can be cut). Award 1 mark for a sensible check, such as a removal test for second roads, or confirming G2's ties are real active collaborations. Do not award marks for 'the most popular account is always most important'."
+  },
+  {
+   "id": "w8-b05",
+   "topic": "Which removal breaks the corner?",
+   "tests": "Using the cut shortcut to compute a broker's betweenness from the pieces after removal, and the management readings of the cut.",
+   "title": "Which removal breaks the map, and what to do about it",
+   "stem": "Tidepool Swimwear's nine partner accounts have these undirected ties: D1&ndash;D2, D1&ndash;D3, D2&ndash;D3, D3&ndash;D4, D4&ndash;D5, D4&ndash;D6, D4&ndash;D7, D7&ndash;D8, D8&ndash;D9, D7&ndash;D9. (i) List the pieces left if D4 is removed, and use them to compute D4's betweenness. (ii) Name the other two accounts whose removal splits the map, and what each cuts off. (iii) Give two management readings of these results.",
+   "formula": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point). Shortcut when the account is the only route between its pieces: total pairs of the other accounts minus pairs inside the same piece. Pairs among k accounts = k(k &minus; 1)/2.",
+   "reference": "(i) Removing D4 leaves four pieces: {D1, D2, D3}, {D5}, {D6} and {D7, D8, D9}. Every pair in different pieces must pass through D4. The eight other accounts form 8 &times; 7 / 2 = 28 pairs; pairs inside a piece are 3 + 0 + 0 + 3 = 6, so D4's betweenness is 28 &minus; 6 = 22. (ii) Removing D3 cuts off {D1, D2}, and removing D7 cuts off {D8, D9}; each leaves two pieces. Removing anyone else splits nothing. (iii) D4 is a retention risk and a succession question: if it leaves, the network falls into four pieces, so Tidepool needs a plan for who could take that role, for example building a second tie between the D3 and D7 groups. D4 is also the account to put on any change programme, because every crossing passes through it.",
+   "marking": "Award 1 mark for the four pieces after removing D4. Award 2 marks for betweenness 22: 1 for a valid method (pairs across pieces, or 28 minus 6, or 3&times;1+3&times;1+3&times;3+1&times;1+1&times;3+1&times;3), 1 for the value. Award 1 mark for naming D3 and D7 with what each cuts off (both needed). Award 2 marks for two management readings, 1 each: retention risk/succession, change programme or seeding at the broker, or adding a second road to reduce dependence. Carry forward a wrong piece list into the betweenness method mark if the method is applied consistently."
+  },
+  {
+   "id": "w8-b06",
+   "topic": "Which account matters most? Three instincts",
+   "tests": "The three instincts plus the prestige account: assigning roles from evidence and explaining eigenvector/PageRank as a concept.",
+   "title": "Popular, broker or prestige: reading three advocate candidates",
+   "stem": "Marigold Pet Foods wants one advocate for a premium range and shortlists three accounts.<br><table class=\"ex\"><tr><th>Account</th><th>Ties</th><th>Other evidence</th></tr><tr><td>P1</td><td>40</td><td>Contacts average 3 ties each; low betweenness</td></tr><tr><td>P2</td><td>25</td><td>Tied to 12 of the platform's 20 most-tied accounts</td></tr><tr><td>P3</td><td>12</td><td>Highest betweenness: links the cat-owner and dog-owner groups</td></tr></table>Name the course's instinct (or concept) each account best represents and the measure behind it. Explain the prestige idea and its link to PageRank. Which account fits a brief to win 'advocates that the well-connected follow', and why is the most-tied account not automatically the answer?",
+   "formula": "",
+   "reference": "P1 is the popular account (degree, most ties), P3 is the broker (betweenness, the crossing between the two groups), and P2 is the prestige account (eigenvector centrality). Prestige means an account is important if its contacts are important: being tied to the well-connected counts for more than ties to isolated accounts. PageRank, introduced by Google in 1998 to rank web pages, uses the same trick: a page matters if pages that matter link to it. For advocates the well-connected follow, P2 fits, because its 25 ties reach 12 of the 20 most-tied accounts. P1's 40 ties lead mostly to small accounts, so its count shows reach, not prestige; the measure has to match the job.",
+   "marking": "Award 3 marks for the roles, 1 each: P1 popular/degree, P3 broker/betweenness, P2 prestige/eigenvector. Award 1 mark for explaining prestige as importance borrowed from important contacts and 1 mark for linking PageRank to the same idea. Award 1 mark for choosing P2 for this brief with the reason that degree counts ties without showing whom they reach. No calculation of eigenvector scores is expected; do not penalise its absence."
+  },
+  {
+   "id": "w8-b07",
+   "topic": "What a community is",
+   "tests": "Applying the 'denser inside than outside' definition to candidate groups and naming what a community buys.",
+   "title": "Which candidate groups are communities, and what they buy",
+   "stem": "Basil &amp; Bowl, a meal-kit app, maps referral ties between customers and checks three candidate groups.<br><table class=\"ex\"><tr><th>Group</th><th>Ties inside the group</th><th>Ties leaving the group</th><th>Location of members</th></tr><tr><td>A</td><td>40</td><td>6</td><td>Spread across the city</td></tr><tr><td>B</td><td>12</td><td>30</td><td>Spread across the city</td></tr><tr><td>C</td><td>25</td><td>5</td><td>80% in one postcode</td></tr></table>(i) Compute each group's inside share (two decimals) and state which groups fit the course's definition of a community. (ii) Name the use of communities that group C illustrates, and the other two uses the course lists. (iii) Suggest one action for group C.",
+   "formula": "Inside share = ties inside / (ties inside + ties leaving). Community: denser inside than outside.",
+   "reference": "(i) A: 40/46 = 0.87; B: 12/42 = 0.29; C: 25/30 = 0.83. A and C are denser inside than outside, so they fit the definition; B has most of its ties leaving the group, so it is not a community, just a set of accounts. (ii) C is a regional pocket: ties cluster in one place. The course's other two uses are natural segments (groups who actually interact) and fraud rings (accounts that trade only with each other). (iii) Treat C as a local segment: for example, run a neighbourhood referral offer or delivery promotion in that postcode, using the existing referral ties as the channel, and compare its uptake with the rest of the city.",
+   "marking": "Award 2 marks for part (i): 1 for the three shares (all needed), 1 for accepting A and C and rejecting B with the reason. Award 1 mark for naming group C a regional pocket. Award 2 marks for the other two uses, 1 each: natural segments, fraud rings. Award 1 mark for a concrete action tied to C's location or ties. Do not award the definition mark for 'A is a community because it is the biggest'."
+  },
+  {
+   "id": "w8-b08",
+   "topic": "Modularity and the Louvain search",
+   "tests": "Explaining the Louvain search (no k declared), reading Q, and the honest limit that small groups get merged.",
+   "title": "'Set it to five groups': explaining Louvain and its limit",
+   "stem": "Aster, a language-exchange app, ran Louvain on its conversation ties and found 9 communities with Q = 0.58. The product head asks: (1) 'Why did we get nine? Set it to five, like our five language markets.' (2) 'Our six professional tutors talk mostly to each other, so why are they not their own community?' Answer both in three to five sentences, describing the Louvain steps and what Q = 0.58 says.",
+   "formula": "",
+   "reference": "Louvain is not told how many groups to find: every account starts alone, each account is moved to the group that raises modularity Q most, and this repeats until nothing moves, so nine is what the ties produced. Q = 0.58 means the split has far more ties inside the groups than chance alone would give, a tight split; forcing five groups to match the plan would ignore what the ties show and would likely lower Q. The tutors are the honest limit: modularity cannot see a group below a certain size, so a small group of six can be merged into a larger community. To look at them, the team can examine the tutors' ties directly or study the community that contains them separately.",
+   "marking": "Award 2 marks for the Louvain steps: 1 for start alone and move to raise Q, 1 for repeat until nothing moves / the number of groups comes from the search, not set in advance. Award 1 mark for reading Q = 0.58 as many more inside ties than chance would give (tight). Award 1 mark for explaining why forcing five groups to match the plan is not justified by the ties. Award 2 marks for the tutors: 1 for the size limit (small groups merged into big ones), 1 for a sensible follow-up. Do not accept 'Louvain is random' as the reason for nine."
+  },
+  {
+   "id": "w8-b09",
+   "topic": "Where does A012 belong? The corner, split",
+   "tests": "Computing Q for one split from inside ties and degree sums, and using Q (not the handle) to place a borderline account.",
+   "title": "A borderline account: Q decides, not the handle",
+   "stem": "Fable &amp; Fern, a bookshop network, has ten ties among eight reader accounts. Account X, handle 'scifi_reads_12', has one tie into the poetry group {P1, P2, P3} and one tie into the sci-fi group {R1, R2, R3, R4}. Two splits are possible:<br><table class=\"ex\"><tr><th>Split</th><th>Groups</th><th>Q</th></tr><tr><td>Split 1: X with poetry</td><td>Poetry + X: 4 inside ties, degree sum 9; Sci-fi: 5 inside ties, degree sum 11</td><td>?</td></tr><tr><td>Split 2: X with sci-fi</td><td>Poetry: 3 inside ties, degree sum 7; Sci-fi + X: 6 inside ties, degree sum 13</td><td>0.355</td></tr></table>(i) Compute Q for Split 1. (ii) State where the algorithm places X and why its tie count alone could not decide. (iii) A manager insists X belongs with sci-fi because of its handle. Respond.",
+   "formula": "Q = &Sigma; over groups c of [ l<sub>c</sub>/m &minus; (d<sub>c</sub>/2m)<sup>2</sup> ], where m = total ties, l<sub>c</sub> = ties inside group c, d<sub>c</sub> = sum of the degrees of the accounts in c. Here m = 10.",
+   "reference": "(i) Split 1: poetry + X gives 4/10 &minus; (9/20)<sup>2</sup> = 0.400 &minus; 0.2025 = 0.1975; sci-fi gives 5/10 &minus; (11/20)<sup>2</sup> = 0.500 &minus; 0.3025 = 0.1975; Q = 0.395. (ii) The algorithm keeps the split with the higher Q, so X goes with poetry (0.395 &gt; 0.355). X has one tie on each side, so a simple count is a draw; the chance term breaks it, because adding X to the already larger sci-fi group raises the ties chance alone would expect there. (iii) Community detection reads ties, not handles: the handle says sci-fi, but X's collaboration pattern does not favour that group, and the split with X on the poetry side is tighter. The handle is useful afterwards as an outside check of what the groups mean, not as the rule for placing X.",
+   "marking": "Award 3 marks for part (i): 1 for each group term (0.1975 each; accept 0.20) and 1 for Q = 0.395 (accept 0.40). Award 1 mark for placing X with poetry because Q is higher. Award 1 mark for explaining that one tie each side is a draw that the score breaks. Award 1 mark for 'ties, not handles' applied to the manager's claim. Error carried forward: if Split 1's Q is miscalculated, award the placement mark when the choice follows the student's own value and the higher-Q rule."
+  },
+  {
+   "id": "w8-b10",
+   "topic": "Clustering versus communities, and segments you did not declare",
+   "tests": "Contrasting K-means clustering and Louvain communities on three dimensions and choosing the right one for a referral campaign.",
+   "title": "Visit-pattern clusters or referral communities?",
+   "stem": "Cobalt Gym's analyst ran K-means with k = 4 on members' visit features (visits per week, average session length, share of classes) and found four segments. A second analyst ran Louvain on the 'referred a friend' ties between members and found seven communities. The manager asks which is right. Compare the two methods on the three dimensions the course uses, say which grouping you would use for a bring-a-friend campaign and why, and give one job for which the K-means segments are the better input.",
+   "formula": "",
+   "reference": "The two answer the same segmentation question with different data. K-means groups by features (how members train), and Louvain groups by ties (who referred whom). K-means needs k declared in advance (here 4), while Louvain finds the number of groups itself (here 7). In K-means, close means similar feature values; in a community, close means few hops on the referral map. For a bring-a-friend campaign, the communities are the better input: they are measurable, reachable segments whose ties are the very channels a referral travels along. For a job such as designing class timetables or membership tiers around how people train, the K-means segments fit better, because that decision depends on behaviour, not on who knows whom.",
+   "marking": "Award 3 marks for the three dimensions, 1 each: features versus ties; k declared versus found by the search; feature similarity versus path length. Award 2 marks for choosing the communities for the referral campaign (1) with the reason that the ties are the channels / reachable segment (1). Award 1 mark for a sensible job where feature-based segments fit better. Do not award marks for saying one method is simply 'more accurate'."
+  },
+  {
+   "id": "w8-b11",
+   "topic": "Nodes, edges and components",
+   "tests": "Nodes, directed edges and components; reachability must follow the arrows and the edge list, not the drawing.",
+   "title": "Directed repost ties: who can reach whom",
+   "stem": "Pebble Radio, a podcast app, records which account reposted whom as an arrow from the original poster to the reposter, the direction in which a clip travels. The complete list of arrows is: U1 &rarr; U2, U2 &rarr; U3, U3 &rarr; U1, U3 &rarr; U4, U5 &rarr; U4, U6 &rarr; U7. (i) Name the nodes and edges here and explain why the edges are directed. (ii) Ignoring direction, how many components are there and which is the largest? (iii) Can a clip starting at U1 reach U4, and in how many hops? Can a clip starting at U4 reach U1? (iv) On the dashboard U6 is drawn right next to U4. Does that give U6's clips a way into the larger group?",
+   "formula": "",
+   "reference": "(i) The accounts are the nodes and the reposts are the edges; the edges are directed because a clip travels from poster to reposter, and U1 &rarr; U2 does not mean U2's clips travel to U1 by that arrow. (ii) There are two components: {U1, U2, U3, U4, U5} and {U6, U7}; the first, with five accounts, is the largest. (iii) Yes: U1 &rarr; U2 &rarr; U3 &rarr; U4 is three hops. No: U4 has no outgoing arrow, so nothing starting at U4 can travel anywhere, and a clip cannot move against an arrow. (iv) No. The drawing is only a layout; with no edge between the two components, nothing can cross from {U6, U7} into the larger group.",
+   "marking": "Award 1 mark for nodes = accounts, edges = reposts, with the reason for direction. Award 2 marks for part (ii): 1 for two components, 1 for naming the largest {U1&ndash;U5}. Award 2 marks for part (iii): 1 for U1 reaching U4 in three hops, 1 for U4 not reaching U1 with the arrow-direction reason. Award 1 mark for part (iv): no edge, no route, whatever the layout. Do not award the part (iii) second mark for 'no' without the direction reason."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w8-c01",
+   "topics": [
+    "Degree: counting ties",
+    "Betweenness: counting the paths through you",
+    "Closeness: how fast you reach everyone",
+    "Which removal breaks the corner?",
+    "What each measure buys you, and the full graph's two leaders"
+   ],
+   "tests": "Degree, betweenness and closeness by hand on one map; removals and the broker's management readings; matching measures to a speed job and a crossing job.",
+   "name": "Pinewood Outfitters",
+   "scenario": "<p>Pinewood Outfitters sells hiking and camping gear and works with ten creator accounts. Four are hiking creators (H1 to H4) and five are camping creators (C1 to C5). K is a gear-review account. A tie means the two accounts have made at least two videos together. Exhibit 1 lists every tie; ties are undirected. Every pair of accounts has exactly one shortest path.</p><p>The marketing team has two upcoming jobs: a launch-day announcement of a new tent that must reach all ten accounts as fast as possible from one starting account, and a campaign to bring hiking audiences to the camping range. The analyst has filled in part of Exhibit 2.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Complete list of undirected ties (11 ties)",
+     "html": "<table class=\"ex\"><tr><th>Tie</th><th>Tie</th><th>Tie</th><th>Tie</th></tr><tr><td>H1&ndash;H2</td><td>H1&ndash;H3</td><td>H2&ndash;H3</td><td>H1&ndash;H4</td></tr><tr><td>H3&ndash;K</td><td>K&ndash;C1</td><td>C1&ndash;C2</td><td>C1&ndash;C3</td></tr><tr><td>C2&ndash;C3</td><td>C3&ndash;C4</td><td>C1&ndash;C5</td><td></td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 2: Partly completed centrality table (n = 10)",
+     "html": "<table class=\"ex\"><tr><th>Account</th><th>Degree</th><th>Betweenness</th><th>Distance sum</th></tr><tr><td>H1</td><td>3</td><td>8</td><td>25</td></tr><tr><td>H2</td><td>2</td><td>0</td><td>26</td></tr><tr><td>H3</td><td>?</td><td>?</td><td>?</td></tr><tr><td>H4</td><td>1</td><td>0</td><td>33</td></tr><tr><td>K</td><td>?</td><td>?</td><td>?</td></tr><tr><td>C1</td><td>4</td><td>23</td><td>18</td></tr><tr><td>C2</td><td>2</td><td>0</td><td>24</td></tr><tr><td>C3</td><td>3</td><td>8</td><td>23</td></tr><tr><td>C4</td><td>1</td><td>0</td><td>31</td></tr><tr><td>C5</td><td>1</td><td>0</td><td>26</td></tr></table>",
+     "note": "Betweenness of v = number of pairs of other accounts whose shortest path passes through v (if a pair has several equally short paths, each path carries an equal share of the point).<br>Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Complete the missing cells for H3 and K: degree, betweenness (show the pairs or group sizes) and distance sum. Then compute the closeness of H3, K and C1 to two decimal places. Which accounts lead on each of the three measures?",
+     "answer": "H3 has degree 3 (H1, H2, K) and K has degree 2 (H3, C1). Betweenness of H3: H1, H2 and H4 reach K and all five camping accounts only through H3, so 3 &times; 6 = 18. Betweenness of K: the four hiking accounts reach the five camping accounts only through K, so 4 &times; 5 = 20. Distance sum of H3: H1 1, H2 1, K 1, H4 2, C1 2, C2 3, C3 3, C5 3, C4 4 = 20. Distance sum of K: H3 1, C1 1, H1 2, H2 2, C2 2, C3 2, C5 2, H4 3, C4 3 = 18. Closeness with n &minus; 1 = 9: H3 = 9/20 = 0.45; K = 9/18 = 0.50; C1 = 9/18 = 0.50. Leaders: degree, C1 (4 ties); betweenness, C1 (23), with K second (20) and H3 third (18); closeness, K and C1 tied at 0.50, so the map has two centres.",
+     "marking": "Award 1 mark for both degrees (H3 = 3, K = 2). Award 2 marks for H3's betweenness 18 (1 for the 3 &times; 6 reasoning, 1 for the value) and 2 marks for K's betweenness 20 (1 for 4 &times; 5, 1 for the value). Award 1 mark for both distance sums (20 and 18). Award 1 mark for the three closeness values (0.45, 0.50, 0.50; all three needed). Award 1 mark for the leaders, including the closeness tie between K and C1. Carry forward a wrong distance sum into the closeness mark if the formula is applied correctly; a flipped ratio (sum/9) does not earn the closeness mark."
+    },
+    {
+     "marks": 6,
+     "stem": "For each of K, H3 and C1, state the pieces the map falls into if that account is removed. K has only two ties: what does this show about degree? Give two management readings for Pinewood.",
+     "answer": "Removing K leaves {H1, H2, H3, H4} and {C1, C2, C3, C4, C5}: hiking and camping are cut apart. Removing H3 leaves {H1, H2, H4} and {K, C1, C2, C3, C4, C5}. Removing C1 leaves three pieces: {H1, H2, H3, H4, K}, {C2, C3, C4} and {C5}. K, with only two ties (fewer than H1, H3, C1 or C3), is the exact seam between the two creator groups: the cut is a position, not a count, which degree cannot see. For Pinewood, K is a retention risk and a succession question: if the review account stopped collaborating, hiking and camping creators would have no route between them, so it is worth building a second tie between the groups (for example a joint video by H1 and C3). K is also the natural account to involve in any cross-range programme, because every crossing between the groups passes through it.",
+     "marking": "Award 3 marks for the removal results, 1 each for K, H3 and C1 (C1 must show three pieces). Award 1 mark for stating that K's two ties show degree misses position (the cut follows betweenness, not the count). Award 2 marks for two management readings, 1 each: retention risk/succession, building a second road, or using the broker on a change or cross-range programme. Do not award a reading that only repeats 'K is important' without a decision."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend one starting account for the launch-day announcement and one for the hiking-to-camping campaign, each justified with the right measure. State one limitation of using this ten-account map for these decisions.",
+     "answer": "Launch day is a speed job, so use closeness: K or C1 (both 0.50, the lowest distance sum of 18), reaching every account within three hops. K is a sensible pick because it also sits on the crossing, but C1 is equally fast. The hiking-to-camping campaign is a crossing job, so use betweenness and seed at the broker between the groups: K (20) is tied directly to H3 on the hiking side and C1 on the camping side, so a message seeded there enters both groups at once. C1 has the highest betweenness overall (23) and also lies on the routes into the camping side, but it sits inside the camping group with no direct tie to any hiker, whereas K is the seam with one tie on each side. Limitation: the map covers only ten accounts with ties defined as repeated co-production; Pinewood's wider network may contain second roads between hikers and campers, and the ties say nothing about audience size or whether those audiences buy gear, so the choice should be checked against reach data or tested in a small campaign.",
+     "marking": "Award 2 marks for the launch-day choice: 1 for naming K or C1 (either), 1 for the closeness justification (lowest distance sum / 0.50). Award 2 marks for the campaign choice: 1 for K, 1 for the betweenness/crossing justification. Accept H3 for 1 of these 2 marks if justified as a broker on the crossing; accept C1 for 1 mark only if the student argues from its betweenness rank. Award 2 marks for a limitation: 1 for a relevant limitation (small map, second roads in the full network, ties not equal to audience or purchase) and 1 for its consequence or a check. A bare 'more data is needed' earns 0."
+    }
+   ]
+  },
+  {
+   "id": "w8-c02",
+   "topics": [
+    "Modularity and the Louvain search",
+    "Clustering versus communities, and segments you did not declare",
+    "Where does A012 belong? The corner, split",
+    "What a community is"
+   ],
+   "tests": "Computing and comparing modularity for a Louvain split and a feature-based split; features versus ties; placing a borderline account by ties; the honest limit and checking meaning.",
+   "name": "Harbourlight Games",
+   "scenario": "<p>Harbourlight Games runs an online multiplayer game. It maps who plays together: an account is a node and a tie means two players finished at least five matches together last month. The sample has 100 ties. The data team ran Louvain on these ties and found three communities (Exhibit 1). Separately, the marketing team grouped the same players with K-means (k = 2) on play-time features, giving a 'Strategy' segment and a 'Casual' segment, and asked the data team to score that grouping on the play-together ties too (Exhibit 2).</p><p>Harbourlight wants to launch a guild-invite campaign in which players invite friends into in-game guilds. One account, 'ironvale_tactics', has a strategy-style name and was placed in the Strategy segment by K-means, but Louvain put it in community G3. Exhibit 3 shows its ties. The marketing head also notes that a well-known group of five speed-runners does not appear as a community of its own.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Louvain communities on the play-together ties (m = 100)",
+     "html": "<table class=\"ex\"><tr><th>Community</th><th>Ties inside (l<sub>c</sub>)</th><th>Degree sum (d<sub>c</sub>)</th></tr><tr><td>G1</td><td>30</td><td>70</td></tr><tr><td>G2</td><td>28</td><td>70</td></tr><tr><td>G3</td><td>24</td><td>60</td></tr></table>",
+     "note": "Q = &Sigma; over groups c of [ l<sub>c</sub>/m &minus; (d<sub>c</sub>/2m)<sup>2</sup> ], where m = total ties, l<sub>c</sub> = ties inside group c, d<sub>c</sub> = sum of the degrees of the accounts in c."
+    },
+    {
+     "title": "Exhibit 2: The K-means segments, scored on the same ties (m = 100)",
+     "html": "<table class=\"ex\"><tr><th>Segment</th><th>Ties inside (l<sub>c</sub>)</th><th>Degree sum (d<sub>c</sub>)</th></tr><tr><td>Strategy</td><td>40</td><td>110</td></tr><tr><td>Casual</td><td>30</td><td>90</td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 3: Ties of 'ironvale_tactics'",
+     "html": "<table class=\"ex\"><tr><th>Community of the other player</th><th>Ties</th></tr><tr><td>G1</td><td>1</td></tr><tr><td>G2</td><td>0</td></tr><tr><td>G3</td><td>4</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Compute the modularity Q of the Louvain split and of the K-means segments on these ties (three decimal places). Explain what the two values say, and why the K-means segments can score low on ties without being 'wrong' as feature groups.",
+     "answer": "Louvain: G1 = 30/100 &minus; (70/200)<sup>2</sup> = 0.300 &minus; 0.1225 = 0.1775; G2 = 0.280 &minus; 0.1225 = 0.1575; G3 = 0.240 &minus; (60/200)<sup>2</sup> = 0.240 &minus; 0.090 = 0.150; Q = 0.485. K-means segments: Strategy = 0.400 &minus; (110/200)<sup>2</sup> = 0.400 &minus; 0.3025 = 0.0975; Casual = 0.300 &minus; (90/200)<sup>2</sup> = 0.300 &minus; 0.2025 = 0.0975; Q = 0.195. The Louvain split is much tighter: 82 of the 100 ties fall inside its communities, far more than chance would place there. The K-means segments hold 70 ties inside, but they are two large groups, so chance alone would already put many ties inside them, and the gain over chance is small. That is expected: K-means grouped players by how they play (features), not by whom they play with (ties), so a low Q only says the segments are not where the play-together structure lies.",
+     "marking": "Award 1 mark for a correct setup of the formula with m = 100 and 2m = 200. Award 3 marks for the Louvain terms, 1 each (0.1775, 0.1575, 0.150), and 1 mark for Q = 0.485. Award 2 marks for the K-means Q: 1 for the terms (0.0975 each), 1 for Q = 0.195. Award 1 mark for the interpretation: Louvain's split is tighter than chance by more, and K-means groups are feature groups, so a low tie-based Q does not make them wrong as feature segments. Accept answers rounded to two decimals (0.49 and 0.20). Carry forward an arithmetic slip in one term into Q without a second penalty."
+    },
+    {
+     "marks": 6,
+     "stem": "Using the course's comparison of Week 6 clustering and Week 8 communities, explain why the two methods placed 'ironvale_tactics' differently, and why Louvain's placement is not a mistake. What does the course say a detected community is in segmentation terms?",
+     "answer": "Clustering groups by features (what players do), needs k declared in advance (here 2), and treats players as close when their feature values are similar. Communities group by ties (whom players play with), Louvain finds the number of groups itself (here 3), and closeness means few hops. ironvale_tactics plays like a strategy player, which is why K-means put it in Strategy, but 4 of its 5 ties are to G3 players, so on the ties it belongs with G3. Louvain never reads its name or features: the handle says strategy, the ties say G3, and the ties win. A detected community is Kotler's measurable, reachable segment, discovered in the data instead of declared in a plan.",
+     "marking": "Award 3 marks for the three dimensions, 1 each: features versus ties; k declared versus found; feature similarity versus path length. Award 2 marks for ironvale_tactics: 1 for using Exhibit 3 (4 of 5 ties into G3), 1 for 'the algorithm reads ties, not names or features'. Award 1 mark for Kotler's measurable, reachable segment, discovered not declared. Do not award marks for claiming either method is wrong."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend whether the guild-invite campaign should be organised around the Louvain communities or the K-means segments, and justify it. Then explain the missing speed-runners using the method's honest limit, and give one further limitation of relying on Q.",
+     "answer": "Organise the guild-invite campaign around the Louvain communities. Invites travel along play-together ties, and the communities are where those ties are dense (Q = 0.485 against 0.195), so invitations sent within G1, G2 and G3 reach players who already play together; the K-means segments mix players who never meet. The speed-runners illustrate the honest limit: modularity cannot see a group below a certain size, so small groups get merged into larger communities; a group of five can sit inside G1, G2 or G3. Harbourlight can examine those five players' ties directly if it wants a separate offer for them. Further limitation: a high Q only says the split is tight; it does not show that the communities mean anything commercially, so the team should compare G1&ndash;G3 with outside variables (game mode, region, spend) before naming and targeting them.",
+     "marking": "Award 2 marks for the recommendation: 1 for choosing the communities, 1 for the reason (invites move along ties; Q comparison). Accept the K-means segments for 1 mark only if justified by a feature-based campaign element, which this brief does not ask for. Award 2 marks for the speed-runners: 1 for small groups being merged / size blind spot, 1 for a sensible follow-up. Award 2 marks for the Q limitation: 1 for 'Q measures tightness, not business meaning', 1 for a check against an outside variable."
+    }
+   ]
+  },
+  {
+   "id": "w8-c03",
+   "topics": [
+    "Closeness: how fast you reach everyone",
+    "What each measure buys you, and the full graph's two leaders",
+    "Which account matters most? Three instincts",
+    "Degree: counting ties",
+    "Which removal breaks the corner?"
+   ],
+   "tests": "Closeness on a larger map from given distance sums; leaders on different measures; matching measures (including prestige) to jobs; a retention decision between the count's and the crossing's leader.",
+   "name": "Vela Fitness",
+   "scenario": "<p>Vela Fitness, a workout app, maps 61 trainer and member accounts that regularly co-host live sessions. Its analytics team has summarised five accounts in Exhibit 1. Distance sums are computed over the 60 other accounts. Exhibit 2 adds notes from the team.</p><p>Vela has three jobs coming up: (i) an app launch-day announcement that should reach every account as fast as possible; (ii) a push to bring its runners' community into its yoga community, which barely interact; (iii) finding an advocate for a premium tier whom well-connected trainers follow. It can also offer one twelve-month retention contract.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Five accounts (n = 61)",
+     "html": "<table class=\"ex\"><tr><th>Account</th><th>Handle</th><th>Ties</th><th>Degree rank</th><th>Betweenness rank</th><th>Distance sum</th></tr><tr><td>V07</td><td>coach_mira</td><td>42</td><td>1</td><td>9</td><td>120</td></tr><tr><td>V15</td><td>stride_and_stretch</td><td>18</td><td>11</td><td>1</td><td>100</td></tr><tr><td>V22</td><td>hiit_with_ola</td><td>25</td><td>4</td><td>4</td><td>96</td></tr><tr><td>V31</td><td>core_by_dan</td><td>30</td><td>2</td><td>2</td><td>125</td></tr><tr><td>V48</td><td>slow_flow_kim</td><td>12</td><td>19</td><td>15</td><td>150</td></tr></table>",
+     "note": "Closeness = (n &minus; 1) / distance sum, where n = number of accounts and the distance sum is the total of the shortest hop distances to every other account."
+    },
+    {
+     "title": "Exhibit 2: Team notes",
+     "html": "<table class=\"ex\"><tr><th>Account</th><th>Note</th></tr><tr><td>V07</td><td>An audit flags about 30% of its 42 ties as accounts created last week that have never posted.</td></tr><tr><td>V15</td><td>The only account with many ties into both the runners' community and the yoga community.</td></tr><tr><td>V31</td><td>9 of its 30 ties are to the ten most-tied accounts on the map.</td></tr><tr><td>V22</td><td>Co-hosts sessions with accounts in four of the five communities.</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 7,
+     "stem": "Compute the closeness of all five accounts (three decimal places). Name the leader among these five on degree, on betweenness and on closeness, and say what the result shows about 'the most important account'.",
+     "answer": "With n &minus; 1 = 60: V07 = 60/120 = 0.500; V15 = 60/100 = 0.600; V22 = 60/96 = 0.625; V31 = 60/125 = 0.480; V48 = 60/150 = 0.400. Leaders: degree, V07 (42 ties); betweenness, V15 (rank 1); closeness, V22 (0.625, lowest distance sum). Three measures crown three different accounts, so 'most important' depends on the job: no measure does every job.",
+     "marking": "Award 5 marks for the closeness values, 1 each (0.500, 0.600, 0.625, 0.480, 0.400). Award 1 mark for the three leaders (all three needed). Award 1 mark for the conclusion that the measure must match the job. A flipped ratio (distance sum/60) earns no value marks, but the leaders mark can still be earned if the student ranks by lowest distance sum."
+    },
+    {
+     "marks": 7,
+     "stem": "Assign one account to each of the three jobs and justify each with the course's measure. Explain why V07, despite the most ties, is not automatically the account to pay for an audience buy.",
+     "answer": "(i) Launch day is a speed job: closeness. V22 has the highest closeness (0.625), the lowest distance sum, and co-hosts across four communities, so it reaches everyone in the fewest hops. (ii) Bringing runners into yoga is a crossing job: betweenness. V15 ranks first on betweenness and is the only account tied into both communities, so a message seeded there crosses between them; its 18 ties would rank it only 11th on degree. (iii) An advocate whom the well-connected follow is the prestige idea: eigenvector centrality, the same trick as PageRank. V31 is tied to 9 of the ten most-tied accounts, so its importance comes from its contacts. V07's 42 ties are degree, which measures reach, but the audit suggests about 13 of those ties (30% of 42) are bought or fake accounts: bought followers raise the count without raising real reach, so its real audience may be closer to 29 active ties and its price should be checked.",
+     "marking": "Award 2 marks for each job (6 marks): 1 for the correct account (V22, V15, V31) and 1 for the matching measure and reason (closeness/speed; betweenness/crossing; eigenvector or PageRank/prestige). Award 1 mark for the V07 point: degree can be inflated by bought followers (the arithmetic 13 or 29 is welcome but not required). Accept V15 for job (i) only if the student argues from its closeness of 0.600 and acknowledges V22 is faster: 1 of 2 marks."
+    },
+    {
+     "marks": 6,
+     "stem": "Vela can give one retention contract, to either V07 or V15. Recommend one, explain what Vela would lose if each account left, and state one limitation of the evidence together with a check Vela could run.",
+     "answer": "Recommend V15. If V07 left, Vela would lose reach, but much of that reach may be inflated, and its contacts sit inside dense communities that remain connected. If V15 left, the runners' and yoga communities could lose their main bridge: it is the retention risk and succession question, and the account Vela needs for its cross-community push. Limitation: a betweenness rank shows that V15 lies on many shortest paths, not that it is the only road; in a 61-account map other accounts may provide second routes, in which case losing V15 only lengthens paths. Vela can check by removing V15 from the map and recomputing whether the two communities split or how far the distances grow, and by confirming V15's ties are recent, active co-hosting.",
+     "marking": "Award 1 mark for a recommendation consistent with the stated goals (V15 expected; V07 can earn this mark only if justified by an explicit pure-reach goal and the bought-follower issue is addressed). Award 2 marks for the losses, 1 for each account. Award 1 mark for the limitation (a broker is a single point of failure only where no second road exists, or the ties may be stale). Award 2 marks for the check: 1 for a removal or recomputation test, 1 for stating what result would change the decision."
+    }
+   ]
+  },
+  {
+   "id": "w8-c04",
+   "topics": [
+    "What a community is",
+    "Modularity and the Louvain search",
+    "Betweenness: counting the paths through you",
+    "What each measure buys you, and the full graph's two leaders"
+   ],
+   "tests": "Applying the community definition to find an abnormal community (fraud-ring use), the size limit of modularity, and choosing a broker over a hub to carry a programme across communities.",
+   "name": "Kestrel Market",
+   "scenario": "<p>Kestrel Market is a second-hand electronics marketplace. Its analysts built last month's trade network: an account is a node and a tie means the two accounts completed at least one trade with each other. Louvain split the network into four communities with modularity Q = 0.62 (Exhibit 1).</p><p>Kestrel is also launching a buyer-protection badge that it wants sellers to promote, starting in the phones community K1 and spreading into the laptops community K2. Exhibit 2 compares two candidate accounts to seed the programme.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Louvain communities, last month (Q = 0.62)",
+     "html": "<table class=\"ex\"><tr><th>Community</th><th>Accounts</th><th>Ties inside</th><th>Ties leaving</th><th>Median account age (days)</th></tr><tr><td>K1 (mostly phones)</td><td>120</td><td>300</td><td>60</td><td>410</td></tr><tr><td>K2 (mostly laptops)</td><td>90</td><td>180</td><td>45</td><td>380</td></tr><tr><td>K3</td><td>6</td><td>15</td><td>1</td><td>9</td></tr><tr><td>K4 (mostly cameras)</td><td>150</td><td>270</td><td>90</td><td>520</td></tr></table>",
+     "note": "Inside share = ties inside / (ties inside + ties leaving). Pairs among k accounts = k(k &minus; 1)/2."
+    },
+    {
+     "title": "Exhibit 2: Two candidate seed accounts",
+     "html": "<table class=\"ex\"><tr><th>Account</th><th>Ties</th><th>Degree rank</th><th>Betweenness rank</th><th>Where its ties are</th></tr><tr><td>kx_117</td><td>64</td><td>1</td><td>38</td><td>All ties inside K1</td></tr><tr><td>kx_204</td><td>11</td><td>96</td><td>1</td><td>6 ties in K1, 5 ties in K2</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Compute the inside share of each community (two decimals). Identify the community that looks abnormal and explain, using the course's definition and uses of communities and the exhibit's numbers, why it stands out. What should Kestrel conclude, and not conclude, from this alone?",
+     "answer": "K1: 300/360 = 0.83; K2: 180/225 = 0.80; K3: 15/16 = 0.94; K4: 270/360 = 0.75. All four are denser inside than outside, so all are communities, but K3 is abnormal. Six accounts can form at most 6 &times; 5 / 2 = 15 pairs, so every K3 account has traded with every other K3 account, while the group has only one tie to the rest of the marketplace, and its median account age is 9 days against 380 to 520 days elsewhere. That is the course's fraud-ring pattern: accounts that trade only with each other light up as an abnormal community. Kestrel should conclude that K3 deserves a closer review (for example of its trades, ratings and payment details); it should not conclude that fraud is proven, because the network shows only who traded with whom, and a small group of new sellers trading among themselves could have an innocent explanation.",
+     "marking": "Award 2 marks for the four inside shares (all four correct = 2; three correct = 1). Award 1 mark for identifying K3. Award 3 marks for the explanation, 1 each: all 15 possible pairs present (complete inside), only one tie leaving, very new accounts; linking these to the fraud-ring use earns the explanation marks only if at least one exhibit number is used. Award 1 mark for 'review, not proof' and 1 mark for a sensible next step. Do not award marks for treating K3 as a regional pocket without evidence of location."
+    },
+    {
+     "marks": 6,
+     "stem": "The risk manager says: 'Louvain found only one suspicious group, and Q is a high 0.62, so there are no other rings.' Explain what Q = 0.62 does and does not tell Kestrel, explain the method's honest limit, and propose one way to look further.",
+     "answer": "Q = 0.62 says the four-way split has far more ties inside the communities than chance alone would give: the split is tight. It does not say that each community is homogeneous, nor that every meaningful group has been found. The honest limit is that modularity cannot see a group below a certain size: small groups get merged into larger ones. A ring of three or four accounts could sit unseen inside K4's 150 accounts. Kestrel could look further by running the community search again inside each large community, or by screening for small groups whose trades are almost all with each other and whose accounts are new, then comparing those groups with outside variables such as return or complaint rates.",
+     "marking": "Award 2 marks for Q: 1 for 'inside ties beyond chance / tight split', 1 for what it does not show (meaning, or completeness of small groups). Award 2 marks for the honest limit: 1 for small groups being merged, 1 for applying it to a small ring inside a large community. Award 2 marks for the proposal: 1 for a concrete method, 1 for how it would reveal small rings or check meaning. Do not accept 'run Louvain with more groups' as Louvain is not given k; accept 'search within a community' or an equivalent."
+    },
+    {
+     "marks": 6,
+     "stem": "Choose kx_117 or kx_204 to seed the buyer-protection badge from K1 into K2, and justify the choice with the course's measures. Give one way the choice could fail and one limitation of the analysis behind it.",
+     "answer": "Seed at kx_204. The goal is to cross from phones into laptops, which is the betweenness job: kx_204 has the highest betweenness and holds ties in both K1 (6) and K2 (5), so a message it carries enters both communities. kx_117 has the most ties (64, degree rank 1), which buys reach, but all its ties are inside K1, so the badge would spread among phone traders without crossing. The choice could fail because kx_204 has only 11 ties: if its K2 partners are inactive or do not pass the badge on, little reaches K2, and if kx_204 leaves, the crossing it provides goes with it (Kestrel should treat it as an account to retain and watch). Limitation: the network covers one month of completed trades, so it shows who traded, not who influences whom, and the betweenness rank does not show whether second roads exist between K1 and K2. A sensible approach is to seed kx_204 and, if budget allows, also kx_117 for reach inside K1.",
+     "marking": "Award 2 marks for choosing kx_204 (1) with the betweenness/crossing justification using the exhibit (1). Award 1 mark for explaining why kx_117's degree buys reach but not the crossing. Award 1 mark for a way the choice could fail (small reach, inactive partners, single point of failure). Award 2 marks for the limitation: 1 for a relevant limitation (one month, trade is not influence, second roads unknown), 1 for its consequence or a check. A recommendation of kx_117 can earn the second and third marks only if the student explicitly argues for reach inside K1 first and acknowledges it does not cross into K2."
+    }
+   ]
+  }
+ ]
+}

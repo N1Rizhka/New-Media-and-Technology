@@ -1,0 +1,781 @@
+{
+ "week": 5,
+ "mcq": [
+  {
+   "id": "w5-a01",
+   "topic": "The output table and the slope read aloud",
+   "tests": "The standard error column is the wobble of the estimate from sample to sample, not the slope and not the line's typical miss",
+   "stem": "A regression of weekly app downloads on the number of short videos posted that week (30 weeks) prints this row:<table class=\"ex\"><tr><th></th><th>Coefficient</th><th>Std. error</th><th>t</th><th>p</th><th>Lower 95%</th><th>Upper 95%</th></tr><tr><td>Videos posted</td><td>6.40</td><td>1.60</td><td>4.00</td><td>0.000</td><td>3.12</td><td>9.68</td></tr></table>What does the number 1.60 tell the team?",
+   "formula": "",
+   "options": [
+    "Each extra video posted comes with 1.60 more downloads in that week.",
+    "The estimate of 6.40 would wobble by about 1.60 from one sample to another.",
+    "There is a 1.60 percent chance that videos have no link with downloads.",
+    "The fitted line misses a typical week's downloads by about 1.60."
+   ],
+   "answer": "b",
+   "explanation": "1.60 is the standard error: the noise around the slope estimate (\"give or take about 1.60\"). The slope is 6.40; the typical miss of the whole line is printed in the top block, not in this row."
+  },
+  {
+   "id": "w5-a02",
+   "topic": "The output table and the slope read aloud",
+   "tests": "Reading a slope aloud as per-unit economics: one more unit of the feature comes with b more units of the target",
+   "stem": "A model of daily concert-ticket sales on the number of influencer mentions that day gives a coefficient of 4.5 (p = 0.002). Which sentence reads this coefficient the way the course does?",
+   "formula": "",
+   "options": [
+    "\"Each influencer mention causes 4.5 more tickets to be sold that day.\"",
+    "\"Every 4.5 influencer mentions come with one more ticket sold that day.\"",
+    "\"One more influencer mention comes with 4.5 more tickets sold that day.\"",
+    "\"One more influencer mention raises that day's ticket sales by 4.5 percent.\""
+   ],
+   "answer": "c",
+   "explanation": "A coefficient prices one more unit of the feature in units of the target: one more mention comes with 4.5 more tickets. \"Causes\" overclaims, the reversed and percent readings change the meaning."
+  },
+  {
+   "id": "w5-a03",
+   "topic": "Units, and the intercept as an anchor",
+   "tests": "Rescaling the feature (not the target): recording ad spend in thousands multiplies the slope by 1,000",
+   "stem": "Weekly orders are regressed on ad spend recorded in yuan, giving a slope of 0.004 orders per yuan. The analyst refits after recording ad spend in <b>thousand yuan</b>; orders are still counted one by one. What is the new slope?",
+   "formula": "",
+   "options": [
+    "4 orders per thousand yuan of ad spend.",
+    "0.000004 orders per thousand yuan of ad spend.",
+    "0.004 orders per thousand yuan, since the shop is unchanged.",
+    "0.4 orders per thousand yuan of ad spend."
+   ],
+   "answer": "a",
+   "explanation": "One thousand yuan is 1,000 single yuan, so one more unit of the new feature comes with 1,000 &times; 0.004 = 4 more orders. The coefficient inherits the units: the number moves with the ruler, the shop does not."
+  },
+  {
+   "id": "w5-a04",
+   "topic": "Units, and the intercept as an anchor",
+   "tests": "A negative intercept is the fitted value at zero, an anchor for a local approximation, not a forecast, especially when zero lies outside the data",
+   "stem": "A model of monthly new subscribers on livestream hours was fitted on months with 40 to 120 hours of livestream. The intercept is &minus;35. Which reading follows the course?",
+   "formula": "",
+   "options": [
+    "The app will lose 35 subscribers in any month with no livestream at all.",
+    "The intercept should be positive, so the model is wrong and must be refitted.",
+    "New subscribers fall by 35 for each hour of livestream removed in a month.",
+    "It is the fitted value at zero hours, anchoring a line fitted on 40 to 120 hours."
+   ],
+   "answer": "d",
+   "explanation": "The intercept is the line's value at zero hours. Zero lies outside the 40-120 hour data, so &minus;35 only anchors where the line sits; it is not a prediction of negative subscribers."
+  },
+  {
+   "id": "w5-a05",
+   "topic": "Units, and the intercept as an anchor",
+   "tests": "Coefficient sizes depend on the units of each feature, so a bigger coefficient is not automatically a more important feature",
+   "stem": "A model of daily revenue (yuan) has a coefficient of 900 on livestream hours and 0.05 on follower count. A manager says: \"900 / 0.05 = 18,000, so hours matter 18,000 times as much as followers.\" What is the best response?",
+   "formula": "",
+   "options": [
+    "Invalid: 900 is yuan per hour and 0.05 is yuan per follower, so the sizes reflect units.",
+    "Valid: a larger coefficient always marks the more important feature in the model.",
+    "Invalid: followers matter more, because a smaller coefficient is more precise.",
+    "Valid, but only if both coefficients have p-values below 0.05 in the same table."
+   ],
+   "answer": "a",
+   "explanation": "A coefficient inherits the units of its feature: one hour and one follower are very different steps, so the raw sizes cannot be compared. Ask \"in which units?\" before comparing; significance does not fix the units."
+  },
+  {
+   "id": "w5-a06",
+   "topic": "A coefficient is not a lever",
+   "tests": "A small p-value supports an association, not a causal lever; causal proof needs a designed experiment",
+   "stem": "A shop fits monthly sales (units) on the number of discount coupons issued, using two years of history. The coupon coefficient is 3.1 with p = 0.001. Which conclusion does the course support?",
+   "formula": "",
+   "options": [
+    "Issuing 100 more coupons next month will add 310 units of sales.",
+    "Coupons and sales moved together; proof that coupons cause sales needs an experiment.",
+    "Because p = 0.001, coupons are proven to cause sales, although the size is uncertain.",
+    "Because p is so small, the coupon coefficient is probably noise and should be ignored."
+   ],
+   "answer": "b",
+   "explanation": "The line describes what went together in the data (association). A tiny p says the association is unlikely to be noise, not that pulling the coupon lever will add sales; causal claims go to a designed experiment."
+  },
+  {
+   "id": "w5-a07",
+   "topic": "A coefficient is not a lever",
+   "tests": "What kind of evidence can establish causation: changing the feature on purpose (designed experiment), not more fitting",
+   "stem": "A team wants evidence that raising livestream hours <i>causes</i> higher sales. Which plan provides that kind of evidence?",
+   "formula": "",
+   "options": [
+    "Refit the same regression on three more years of history to obtain a smaller p.",
+    "Add more features to the regression until R<sup>2</sup> rises above 0.90 on the history.",
+    "Randomly pick half the cities for extra hours, keep the rest comparable, compare sales.",
+    "Show that the hours coefficient is the largest coefficient in the regression table."
+   ],
+   "answer": "c",
+   "explanation": "Proof of causation needs a designed experiment in which the feature is changed on purpose (here at random across cities) while everything else stays comparable. A fitted line alone, however precise, cannot deliver that proof."
+  },
+  {
+   "id": "w5-a08",
+   "topic": "Many features at once",
+   "tests": "In a multiple regression each coefficient is read as one more unit of that feature with all other features held fixed",
+   "stem": "A shop's model is: weekly sales (units) = 50 + 2.4 &times; ad spend &minus; 6.0 &times; price + 1.5 &times; streamer hours. Which reading of &minus;6.0 follows the course?",
+   "formula": "",
+   "options": [
+    "One more unit of price comes with 6.0 fewer units of sales, with ad spend and streamer hours held fixed.",
+    "One more unit of price comes with 6.0 fewer units of sales, once ad spend and streamer hours adjust too.",
+    "Six more units of price come with one fewer unit of sales, with ad spend and streamer hours held fixed.",
+    "Price explains 6.0 percent less of the variation in sales than ad spend, with the rest held fixed."
+   ],
+   "answer": "a",
+   "explanation": "Every feature gets its own slope; read each one moving only that feature by one unit while the others stay where they are."
+  },
+  {
+   "id": "w5-a09",
+   "topic": "Many features at once",
+   "tests": "Combining several coefficients: the predicted change when two features move at once is the sum of each slope times its own change",
+   "stem": "Predicted weekly sales = 120 + 3.0 &times; ad spend &minus; 4.0 &times; price + 2.5 &times; streamer hours. Week A has ad spend 10, price 20 and 8 streamer hours. Week B has ad spend 14, price 22 and 8 streamer hours. How does week B's predicted sales compare with week A's?",
+   "formula": "&#375; = b<sub>0</sub> + b<sub>1</sub>X<sub>1</sub> + b<sub>2</sub>X<sub>2</sub> + b<sub>3</sub>X<sub>3</sub>",
+   "options": [
+    "12 units higher.",
+    "20 units higher.",
+    "4 units lower.",
+    "4 units higher."
+   ],
+   "answer": "d",
+   "explanation": "Ad spend adds 4 &times; 3.0 = +12; price adds 2 &times; (&minus;4.0) = &minus;8; hours are unchanged. Net +4 (week A 90, week B 94)."
+  },
+  {
+   "id": "w5-a10",
+   "topic": "Is the gap real? The two-campus t-test",
+   "tests": "Two-group t by hand: square each standard deviation, divide by its own sample size, add, take the root at the end",
+   "stem": "Average order value (yuan) for two livestream hosts. Host A: n = 50 orders, mean 62, standard deviation 10. Host B: n = 200 orders, mean 66, standard deviation 20. H<sub>0</sub>: the two means are equal. What is t (to two decimal places)?",
+   "formula": "t = (mean<sub>B</sub> &minus; mean<sub>A</sub>) / &radic;(s<sub>A</sub><sup>2</sup>/n<sub>A</sub> + s<sub>B</sub><sup>2</sup>/n<sub>B</sub>)",
+   "options": [
+    "1.37",
+    "2.00",
+    "1.00",
+    "7.30"
+   ],
+   "answer": "b",
+   "explanation": "Shares: 10<sup>2</sup>/50 = 2 and 20<sup>2</sup>/200 = 2; sum 4; standard error &radic;4 = 2; t = (66 &minus; 62)/2 = 2.00. 1.37 swaps the sample sizes, 1.00 forgets the root, 7.30 forgets to square."
+  },
+  {
+   "id": "w5-a11",
+   "topic": "Is the gap real? The two-campus t-test",
+   "tests": "The null hypothesis states 'nothing is there' (equal means) and supplies the null value 0 subtracted in the numerator of t",
+   "stem": "A team asks whether mean session length differs between iOS and Android users of its app. Which option correctly gives the null hypothesis and the null value used in the numerator of t?",
+   "formula": "t = (data &minus; null value) / standard error",
+   "options": [
+    "H<sub>0</sub>: Android sessions are longer; the null value is the observed gap.",
+    "H<sub>0</sub>: the gap is significant; the null value is 0.05.",
+    "H<sub>0</sub>: the two mean session lengths are equal; the null value of the gap is 0.",
+    "H<sub>0</sub>: the two samples are the same size; the null value is the pooled mean."
+   ],
+   "answer": "c",
+   "explanation": "H<sub>0</sub> plays the role of \"nothing is there\": the means are equal, so the gap H<sub>0</sub> expects is 0. The numerator is the observed gap minus that 0."
+  },
+  {
+   "id": "w5-a12",
+   "topic": "Significance level, degrees of freedom and the rejection region",
+   "tests": "Degrees of freedom in a regression: observations minus all fitted coefficients, intercept included",
+   "stem": "A regression of weekly sales uses 40 weeks of data and fits an intercept plus three features. How many degrees of freedom does the reference curve for each coefficient's t use?",
+   "formula": "df = n &minus; k",
+   "options": [
+    "39",
+    "37",
+    "43",
+    "36"
+   ],
+   "answer": "d",
+   "explanation": "k counts every fitted coefficient: the intercept plus 3 slopes = 4. df = 40 &minus; 4 = 36."
+  },
+  {
+   "id": "w5-a13",
+   "topic": "Significance level, degrees of freedom and the rejection region",
+   "tests": "Two-sided rejection region at alpha 0.05: only the outer 2.5 percent in each tail rejects; the middle 95 percent does not, however close to a critical value",
+   "stem": "A two-sided test at &alpha; = 0.05 produces a statistic that lies between the two critical values, just short of the upper one. What follows?",
+   "formula": "",
+   "options": [
+    "Reject H<sub>0</sub>, because the statistic lies close to the upper tail.",
+    "Reject H<sub>0</sub>, because 5 percent sits in each tail beyond the critical values.",
+    "Do not reject H<sub>0</sub>, because it lies in the middle 95 percent zone.",
+    "Do not reject H<sub>0</sub>, because only the left tail counts in a two-sided test."
+   ],
+   "answer": "c",
+   "explanation": "The rejection region is the outer 2.5 percent in each tail. A statistic between the critical values sits in the middle 95 percent, the \"do not reject H<sub>0</sub>\" zone."
+  },
+  {
+   "id": "w5-a14",
+   "topic": "Significance level, degrees of freedom and the rejection region",
+   "tests": "Alpha is the false-alarm budget chosen before the test; lowering it cuts false alarms but demands stronger evidence",
+   "stem": "Before running its tests, a team lowers the significance level from &alpha; = 0.05 to &alpha; = 0.01. What changes?",
+   "formula": "",
+   "options": [
+    "The same data now produce smaller p-values, so rejections become easier.",
+    "The test can no longer raise a false alarm when nothing is really there.",
+    "The degrees of freedom fall, so the reference curve becomes flatter.",
+    "Fewer false alarms when H<sub>0</sub> is true, but rejecting H<sub>0</sub> needs stronger evidence."
+   ],
+   "answer": "d",
+   "explanation": "&alpha; is the probability of rejecting a true H<sub>0</sub>, the false-alarm budget. A smaller budget (1 in 100) means fewer false alarms but a stronger signal is needed. It does not change p, df, or remove false alarms entirely."
+  },
+  {
+   "id": "w5-a15",
+   "topic": "The p-value and the decision rule",
+   "tests": "The p-value is the probability of data at least this extreme computed assuming H0 is true, not the probability that H0 is true or that the effect matters",
+   "stem": "Software reports p = 0.04 for the gap between two campaigns' mean click rates. Which statement is correct?",
+   "formula": "p = P(data at least this extreme | H<sub>0</sub> true)",
+   "options": [
+    "If the true means were equal, a gap at least this extreme would appear about 4 percent of the time.",
+    "There is a 4 percent chance that the two campaigns truly have equal mean click rates.",
+    "There is a 96 percent chance that the gap is large enough to matter for revenue.",
+    "The observed gap equals 4 percent of the mean click rate of the two campaigns."
+   ],
+   "answer": "a",
+   "explanation": "p is computed assuming H<sub>0</sub> is true, so it cannot be the probability that H<sub>0</sub> is true. It also says nothing about whether the gap is big enough to matter for money."
+  },
+  {
+   "id": "w5-a16",
+   "topic": "The p-value and the decision rule",
+   "tests": "Two-tail p-values are the common choice for coefficients because a coefficient could be wrongly positive or wrongly negative",
+   "stem": "Why does the course treat the two-tail p-value as the common choice for regression coefficients?",
+   "formula": "",
+   "options": [
+    "Two-tail p-values are always smaller, so significant effects are easier to find.",
+    "A coefficient could be wrongly positive or wrongly negative, so both sides count.",
+    "A regression always has two coefficients, the intercept and one slope, to test.",
+    "The confidence interval has two ends, and both of them must lie above zero."
+   ],
+   "answer": "b",
+   "explanation": "A two-tail p counts results extreme on either side, which suits a coefficient whose true value could lie on either side of zero. Two-tail p-values are larger, not smaller, than one-tail ones for the same t."
+  },
+  {
+   "id": "w5-a17",
+   "topic": "Every number in the table now reads",
+   "tests": "t, p and the 95 percent interval agree: an interval that includes zero implies p above 0.05",
+   "stem": "A regression row gives a 95 percent confidence interval of &minus;0.40 to 1.80 for the coefficient on product photos posted, but the p column is smudged. What can you state at &alpha; = 0.05?",
+   "formula": "",
+   "options": [
+    "p is below 0.05, because most of the interval lies above zero.",
+    "p is exactly 0.05, because the interval is a 95 percent interval.",
+    "Nothing, because p cannot be judged without the t value.",
+    "p is above 0.05, because the interval includes zero."
+   ],
+   "answer": "d",
+   "explanation": "For a single coefficient at &alpha; = 0.05 three signals always agree: |t| in the tails, p below 0.05, and a 95 percent interval excluding zero. This interval includes zero, so p is above 0.05: not significant."
+  },
+  {
+   "id": "w5-a18",
+   "topic": "Every number in the table now reads",
+   "tests": "Computing t as coefficient over standard error and reading a printed p of 0.000 as below 0.0005, not exactly zero",
+   "stem": "A row shows coefficient 0.84, standard error 0.21 and a printed p of 0.000. Which reading is correct?",
+   "formula": "t = coefficient / standard error",
+   "options": [
+    "t = 0.25, so the estimate sits a quarter of a noise unit away from zero.",
+    "t = 4.00, and p = 0.000 means p is exactly zero, so the link is certain.",
+    "t = 4.00, and p = 0.000 means p is below 0.0005, so reject H<sub>0</sub>.",
+    "t = 1.05, the coefficient plus its error, so do not reject H<sub>0</sub>."
+   ],
+   "answer": "c",
+   "explanation": "t = 0.84 / 0.21 = 4.00 noise units from zero. A printed 0.000 is a rounding: p is below 0.0005, not zero, which is still far below 0.05."
+  },
+  {
+   "id": "w5-a19",
+   "topic": "Every number in the table now reads",
+   "tests": "Reading the F line below the table: it tests all slopes together, and a significance printed in E-notation such as 2.1E-06 is a tiny number",
+   "stem": "Below a coefficient table the program prints: F = 38.2, significance 2.1E-06. Which reading is correct?",
+   "formula": "",
+   "options": [
+    "The equation as a whole holds: 2.1E-06 is 0.0000021, far below 0.05.",
+    "The equation fails: 2.1 is above 0.05, so the slopes are not significant.",
+    "Every individual coefficient in the table is now significant at 0.05.",
+    "The F of 38.2 means the line explains 38.2 percent of the variation."
+   ],
+   "answer": "a",
+   "explanation": "The F test asks whether the slopes, taken together, are all zero. 2.1E-06 = 0.0000021, far below 0.05, so the equation as a whole holds. It does not make each coefficient significant, and F is not R<sup>2</sup>."
+  },
+  {
+   "id": "w5-a20",
+   "topic": "From a number to a decision: three discussion questions",
+   "tests": "A non-significant coefficient in a multiple regression is not automatically dropped: large p means cannot tell from zero, not zero",
+   "stem": "In a multiple regression of weekly orders, the coefficient on \"number of hashtags\" has p = 0.31. The manager wants to drop the feature at once. What is the course's answer?",
+   "formula": "",
+   "options": [
+    "Drop it: p above 0.05 proves the true effect of hashtags is zero.",
+    "Not automatically: the data cannot tell it from zero; decide with validation error.",
+    "Keep it: removing any feature always makes the model's predictions worse.",
+    "Drop it, but only after checking that its coefficient is negative in sign."
+   ],
+   "answer": "b",
+   "explanation": "A large p means the data cannot distinguish the effect, holding the others fixed, from zero; it does not prove it is zero. Decide with the business question and performance on new data."
+  },
+  {
+   "id": "w5-a21",
+   "topic": "Three yardsticks, the split of the total miss, and R squared",
+   "tests": "Building SST from SSR + SSE and computing R squared as explained over total",
+   "stem": "For a fitted line, the regression sum of squares (SSR) is 360 and the error sum of squares (SSE) is 240. What is R<sup>2</sup>?",
+   "formula": "SST = SSR + SSE; R<sup>2</sup> = SSR/SST = 1 &minus; SSE/SST",
+   "options": [
+    "0.40",
+    "1.50",
+    "0.60",
+    "0.67"
+   ],
+   "answer": "c",
+   "explanation": "SST = 360 + 240 = 600; R<sup>2</sup> = 360/600 = 0.60 (equivalently 1 &minus; 240/600). 0.40 is SSE/SST, 1.50 is SSR/SSE, 0.67 is SSE/SSR."
+  },
+  {
+   "id": "w5-a22",
+   "topic": "Reading the top of the output",
+   "tests": "Multiple R is the correlation of actual and fitted values; squaring it gives R Square",
+   "stem": "The top block of an output shows Multiple R = 0.90 but the R Square line is torn off. What is R Square?",
+   "formula": "R Square = (Multiple R)<sup>2</sup>",
+   "options": [
+    "0.95",
+    "0.90",
+    "0.19",
+    "0.81"
+   ],
+   "answer": "d",
+   "explanation": "0.90<sup>2</sup> = 0.81: the line explains about 81 percent of the variation. 0.19 is 1 &minus; 0.81, the share left in the residuals."
+  },
+  {
+   "id": "w5-a23",
+   "topic": "Reading the top of the output",
+   "tests": "The standard error in the top block is the typical leftover of the whole line in target units, different from a coefficient's standard error",
+   "stem": "A daily-orders model prints \"Standard error 4.5\" in its top block, while the coefficient table shows a standard error of 0.31 for price. What is the 4.5?",
+   "formula": "",
+   "options": [
+    "The typical size of a residual: a day's orders are missed by about 4.5 orders.",
+    "The noise around the intercept estimate, measured in orders per unit of price.",
+    "The noise around the price slope, rescaled into orders for the whole sample.",
+    "The change in daily orders that comes with one more unit of every feature."
+   ],
+   "answer": "a",
+   "explanation": "The output has two kinds of standard error. The top-block one is the typical leftover of the whole line, in target units; 0.31 is the noise around the price slope."
+  },
+  {
+   "id": "w5-a24",
+   "topic": "Residual plots, and residuals on new weeks",
+   "tests": "A high R squared does not rule out the wrong shape; a curved residual plot shows the line is systematically too low in one range and too high in another",
+   "stem": "A straight line fitted to weekly sales has R<sup>2</sup> = 0.85. Its residual-versus-fitted plot shows residuals that rise and then fall. Which statement is correct?",
+   "formula": "",
+   "options": [
+    "R<sup>2</sup> = 0.85 is high, so the curved pattern can safely be treated as noise.",
+    "Something systematic is left: the line is too low in one range, too high in another.",
+    "The curve shows the misses cancel out, so the line has no error on average.",
+    "The curve proves the feature causes sales, but with a delay of a few weeks."
+   ],
+   "answer": "b",
+   "explanation": "R<sup>2</sup> is one number; the residual plot checks the shape. A curve remaining means structure was left behind, usually because the true relationship bends. High R<sup>2</sup> does not cancel that warning."
+  },
+  {
+   "id": "w5-a25",
+   "topic": "Residual plots, and residuals on new weeks",
+   "tests": "Residual = actual minus predicted, keeping the sign: a negative residual on a new week means the model predicted too high",
+   "stem": "For a new week the model predicted 55 orders; the actual number was 48. What is the residual and what does it say?",
+   "formula": "Residual = actual &minus; predicted",
+   "options": [
+    "+7: the model predicted too low.",
+    "&minus;7: the model predicted too low.",
+    "+7: the model predicted too high.",
+    "&minus;7: the model predicted too high."
+   ],
+   "answer": "d",
+   "explanation": "48 &minus; 55 = &minus;7. A negative residual means the prediction was above the actual value: the model overestimated."
+  },
+  {
+   "id": "w5-a26",
+   "topic": "The wiggly line and the tailor's suit",
+   "tests": "The overfit suit: a perfect fit on the fitting data is evidence of nothing; the test is new data",
+   "stem": "A degree-9 polynomial passes exactly through all 10 weekly points it was fitted on (training error 0). How does the course read this?",
+   "formula": "",
+   "options": [
+    "It has found the true pattern, because no point is missed.",
+    "It is safe to ship, because its training R<sup>2</sup> is 1.",
+    "Perfect on fitting data is evidence of nothing; test it on new weeks.",
+    "It must be causal, because every week is reproduced exactly."
+   ],
+   "answer": "c",
+   "explanation": "Like a suit cut to one customer's every bump, a curve flexible enough fits history perfectly and new data badly. The test is the next customer through the door: weeks the model did not see."
+  },
+  {
+   "id": "w5-a27",
+   "topic": "Training fit versus prediction error",
+   "tests": "Expected prediction error = bias squared + variance + noise; the sweet spot minimises the total, not one component",
+   "stem": "A schematic gives, for three model complexities: level 2: bias<sup>2</sup> 20, variance 2, noise 6; level 4: bias<sup>2</sup> 6, variance 5, noise 6; level 7: bias<sup>2</sup> 2, variance 16, noise 6. Which level is closest to the sweet spot?",
+   "formula": "Total = bias<sup>2</sup> + variance + irreducible noise",
+   "options": [
+    "Level 4, because its total expected error of 17 is the lowest.",
+    "Level 7, because its bias<sup>2</sup> of 2 is the lowest of the three.",
+    "Level 2, because its variance of 2 is the lowest of the three.",
+    "None, because the noise of 6 is the same at every level."
+   ],
+   "answer": "a",
+   "explanation": "Totals: level 2 = 28, level 4 = 17, level 7 = 24. The sweet spot minimises the total error on new data; level 2 underfits (bias), level 7 overfits (variance)."
+  },
+  {
+   "id": "w5-a28",
+   "topic": "The complexity budget and the penalty dial",
+   "tests": "The penalty strength is chosen on validation data, because training error always prefers the weakest penalty",
+   "stem": "A team must set the penalty strength &lambda; for a penalised regression. Which procedure follows the course?",
+   "formula": "",
+   "options": [
+    "Pick the &lambda; that gives the lowest error on the training rows.",
+    "Fit on training rows at several &lambda;; keep the lowest validation error.",
+    "Always set &lambda; as high as possible so the model stays simple.",
+    "Always set &lambda; to zero so that the coefficients stay unshrunk."
+   ],
+   "answer": "b",
+   "explanation": "Choose the strength using validation data (rows held back from fitting). Training error always favours the weakest penalty, and the strongest penalty can remove useful predictors."
+  },
+  {
+   "id": "w5-a29",
+   "topic": "OLS, Ridge and LASSO, and what happens as the penalty grows",
+   "tests": "Telling Ridge from LASSO by their output: Ridge shrinks every coefficient but keeps them nonzero; LASSO can set some exactly to zero",
+   "stem": "Three standardized features are fitted three ways:<table class=\"ex\"><tr><th>Feature</th><th>OLS</th><th>Method X</th><th>Method Y</th></tr><tr><td>F1</td><td>2.00</td><td>1.10</td><td>0.90</td></tr><tr><td>F2</td><td>&minus;1.20</td><td>&minus;0.60</td><td>0</td></tr><tr><td>F3</td><td>0.50</td><td>0.25</td><td>0</td></tr></table>Which statement is correct?",
+   "formula": "",
+   "options": [
+    "X is LASSO, because it shrank every coefficient toward zero.",
+    "Y is Ridge, because it kept the largest coefficient and deleted the rest.",
+    "X is Ridge (shrinks, keeps all); Y is LASSO (sets some exactly to zero).",
+    "X and Y are both OLS, fitted on two samples of different sizes."
+   ],
+   "answer": "c",
+   "explanation": "Ridge (L2) makes every coefficient smaller but usually nonzero; LASSO (L1) can set some exactly to zero, shrinking and selecting at once. Only Y has exact zeros."
+  },
+  {
+   "id": "w5-a30",
+   "topic": "OLS, Ridge and LASSO, and what happens as the penalty grows",
+   "tests": "Predictors are standardized before Ridge or LASSO because coefficient size depends on units, so the penalty would otherwise punish features for their units",
+   "stem": "Why does the course require predictors to be standardized before a Ridge or LASSO penalty is applied?",
+   "formula": "",
+   "options": [
+    "So that the intercept can be penalised in the same way as the slopes.",
+    "So that every coefficient becomes significant at the 0.05 level.",
+    "So that the fitted line passes through zero when all features are zero.",
+    "So that a feature in small units is not penalised harder for its units alone."
+   ],
+   "answer": "d",
+   "explanation": "A coefficient's size moves with the units. Without a common scale, a feature measured in small units gets a large coefficient and is punished harder for no real reason. (The intercept is not penalised.)"
+  },
+  {
+   "id": "w5-a31",
+   "topic": "OLS, Ridge and LASSO, and what happens as the penalty grows",
+   "tests": "The LASSO coefficient path: at lambda 0 it equals OLS, and as the penalty grows coefficients shrink and drop to exactly zero one by one",
+   "stem": "A LASSO model is refitted as the penalty strength &lambda; grows from 0 to very large. Which description of its coefficient paths is correct?",
+   "formula": "Objective = SSE + &lambda; &Sigma;<sub>j=1..p</sub> |b<sub>j</sub>|, &lambda; &ge; 0",
+   "options": [
+    "At &lambda; = 0 they equal OLS; as &lambda; grows they shrink and some reach exactly zero.",
+    "At &lambda; = 0 they are all zero; as &lambda; grows they rise toward their OLS values.",
+    "They shrink as &lambda; grows but never reach zero, however strong the penalty is.",
+    "The intercept shrinks first and reaches zero before any of the slopes do."
+   ],
+   "answer": "a",
+   "explanation": "With &lambda; = 0 the penalty vanishes and LASSO is plain OLS. As the dial turns up, coefficients shrink and weak ones hit exactly zero; never-zero shrinkage describes Ridge, and the intercept is not penalised."
+  },
+  {
+   "id": "w5-a32",
+   "topic": "A complexity budget for your team: three discussion questions",
+   "tests": "Who sets the complexity budget: the manager sets the business limits, the analyst tunes the penalty on validation data inside them, the platform limits what data exist",
+   "stem": "A team debates who should set the complexity budget for next month's livestream sales forecast. Which position is the most defensible in the course's terms?",
+   "formula": "",
+   "options": [
+    "The analyst alone, choosing whatever model gives the highest training R<sup>2</sup>.",
+    "The manager sets the business limits; the analyst tunes &lambda; on validation data.",
+    "The platform alone, because it decides the penalty strength for every seller.",
+    "Nobody: the penalty should always be set to its maximum for safety."
+   ],
+   "answer": "b",
+   "explanation": "Complexity has business costs (data collection, maintenance, explaining the model), so the manager sets the budget; the analyst picks the penalty on validation data within it; the platform only limits which data exist. Highest training R<sup>2</sup> is the weak answer."
+  }
+ ],
+ "short": [
+  {
+   "id": "w5-b01",
+   "topic": "The output table and the slope read aloud",
+   "tests": "Recovering the standard error from coefficient and t, and keeping the slope and its standard error apart in a full row reading",
+   "title": "Recovering the standard error and reading the row",
+   "stem": "PixelPantry, a recipe app, regresses weekly new sign-ups on the number of recipe videos posted that week (30 weeks). One cell of its output is missing:<table class=\"ex\"><tr><th></th><th>Coefficient</th><th>Std. error</th><th>t</th><th>p</th><th>Lower 95%</th><th>Upper 95%</th></tr><tr><td>Recipe videos</td><td>3.60</td><td>?</td><td>4.50</td><td>0.000</td><td>1.96</td><td>5.24</td></tr></table>A colleague writes in the report: \"Each video brings 0.80 new sign-ups.\" Calculate the missing standard error. Read the coefficient aloud in the course's way and correct the colleague's sentence. State what the interval tells the business and what it says about significance.",
+   "formula": "t = coefficient / standard error",
+   "reference": "Standard error = coefficient / t = 3.60 / 4.50 = 0.80 sign-ups per video. Read aloud: \"One more recipe video in a week comes with 3.60 more new sign-ups that week.\" The colleague has read the standard error as the slope: 0.80 is the noise around the estimate (\"give or take about 0.80\"), and \"brings\" claims a cause the regression cannot show. The interval says the true slope is believably somewhere between about 2.0 and 5.2 sign-ups per video, which is the honest range to plan with. It excludes zero, which agrees with t = 4.50 and p below 0.0005: the association is significant at 0.05.",
+   "marking": "1 mark for rearranging t = coefficient / SE (or equivalent); 1 mark for 0.80. 1 mark for a per-unit reading with \"comes with\" and the units (sign-ups per video). 1 mark for identifying 0.80 as the standard error (noise), not the slope; accept also noting that \"brings\" implies causation, but this point alone does not earn the mark without the slope/SE correction. 1 mark for reading 1.96 to 5.24 as the range of believable true slopes in business terms. 1 mark for stating the interval excludes zero, consistent with significance (p below 0.05). Do not accept \"the slope is between 1.96 and 5.24 with 95 percent of videos\". Carry forward a wrong SE if the method is right."
+  },
+  {
+   "id": "w5-b02",
+   "topic": "Units, and the intercept as an anchor",
+   "tests": "Changing the units of both target and feature at once, checking that the prediction is unchanged, and reading a negative intercept outside the data range",
+   "title": "Changing both rulers, and a negative intercept",
+   "stem": "Harbor Noodle Co. fits daily revenue (yuan) on minutes of livestream that day. Its days ranged from 30 to 180 minutes. The fitted line is: revenue = &minus;800 + 50 &times; minutes. The finance team wants revenue in <b>thousand yuan</b> and livestream time in <b>hours</b>. Give the new slope and intercept. Using both versions, predict revenue for a 100-minute day and comment on the result. A trainee says the &minus;800 means \"we lose 800 yuan on a day without a livestream\"; give the correct reading.",
+   "formula": "Coefficient unit = target units per unit of the feature",
+   "reference": "One hour is 60 minutes, so one more hour comes with 50 &times; 60 = 3,000 yuan, which is 3.0 thousand yuan: new slope 3.0 thousand yuan per hour. The intercept is in target units only, so &minus;800 yuan becomes &minus;0.8 thousand yuan. Old units: &minus;800 + 50 &times; 100 = 4,200 yuan. New units: &minus;0.8 + 3.0 &times; (100/60) = &minus;0.8 + 5.0 = 4.2 thousand yuan, the same 4,200 yuan: the number moves with the unit; the shop does not. The intercept is the fitted revenue at zero minutes. Zero minutes lies outside the 30-180 minute range, so it is an anchor that places a locally fitted line, not a forecast of a loss.",
+   "marking": "1 mark for the slope conversion with working; 1 mark for 3.0 thousand yuan per hour. 1 mark for &minus;0.8 thousand yuan. 1 mark for both predictions equal to 4,200 yuan / 4.2 thousand yuan, with the remark that only the ruler changed. 1 mark for the intercept as the fitted value at zero minutes; 1 mark for anchor / local approximation with zero outside the 30-180 range. Do not accept 0.05 or 50,000 for the slope. Error carried forward: a wrong slope used consistently in the prediction loses only the slope marks."
+  },
+  {
+   "id": "w5-b03",
+   "topic": "A coefficient is not a lever",
+   "tests": "Turning a significant coefficient into a lever: compute what the line implies, name a non-causal explanation and the data-range problem, and design the experiment that would settle it",
+   "title": "A notification coefficient is not a lever",
+   "stem": "StepStone Fitness regresses each user's weekly active minutes on the number of push notifications the user received that week. Users received between 2 and 6 notifications per week. The coefficient is 12 minutes per notification (p = 0.002). The product lead plans to raise every user from the current 4 notifications to 15 per week and books the gain the line implies. Calculate that implied gain. Give two reasons the gain may not appear, and describe a study that could show whether more notifications cause more activity.",
+   "formula": "Change in fitted value = coefficient &times; change in feature",
+   "reference": "The line implies 12 &times; (15 &minus; 4) = 132 more active minutes per user per week. First, the coefficient describes association: users who were already more engaged may have switched on more notification types, so notifications and minutes moved together without notifications driving the minutes. Second, 15 notifications is far outside the observed 2 to 6, where the line is only a local approximation; heavy notification may even annoy users. To test causation, the team should run a designed experiment: randomly assign comparable users to, say, 4 versus 8 notifications per week for the same period, keep everything else the same, and compare average active minutes.",
+   "marking": "1 mark for 132 minutes. 1 mark for stating the coefficient is association, not causation. 1 mark for a concrete alternative explanation (engaged users opting in, seasons, campaigns). 1 mark for the data-range / local-approximation point about 15 notifications. 2 marks for the experiment: 1 for random (on-purpose) assignment of notification levels, 1 for keeping other conditions comparable and comparing the outcome between groups. A generic \"collect more data\" or \"get a smaller p\" earns no experiment marks."
+  },
+  {
+   "id": "w5-b04",
+   "topic": "Many features at once",
+   "tests": "Using a multiple-regression equation to compare two plans, decomposing the predicted change feature by feature, and reading one coefficient with the others held fixed",
+   "title": "Two weekly plans through a three-feature equation",
+   "stem": "Brightwave Audio sells earbuds on livestream. Its fitted model is: weekly units = 80 + 2.5 &times; ad spend (thousand yuan) &minus; 0.5 &times; price (yuan) + 4.0 &times; streamer hours.<table class=\"ex\"><tr><th>Plan</th><th>Ad spend</th><th>Price</th><th>Streamer hours</th></tr><tr><td>A</td><td>12</td><td>60</td><td>10</td></tr><tr><td>B</td><td>16</td><td>56</td><td>8</td></tr></table>Calculate predicted units for both plans and split the difference into the contribution of each feature. Read the price coefficient in the course's way. Give one reason why the predicted difference should not be booked as a guaranteed gain.",
+   "formula": "&#375; = b<sub>0</sub> + b<sub>1</sub>X<sub>1</sub> + b<sub>2</sub>X<sub>2</sub> + b<sub>3</sub>X<sub>3</sub>",
+   "reference": "Plan A: 80 + 2.5 &times; 12 &minus; 0.5 &times; 60 + 4.0 &times; 10 = 80 + 30 &minus; 30 + 40 = 120 units. Plan B: 80 + 40 &minus; 28 + 32 = 124 units, so B is 4 units higher. Split: ad spend +4 &times; 2.5 = +10; price &minus;4 &times; (&minus;0.5) = +2; hours &minus;2 &times; 4.0 = &minus;8; total +10 + 2 &minus; 8 = +4. Price reading: one more yuan of price comes with 0.5 fewer units sold per week, with ad spend and streamer hours held fixed. The +4 is not guaranteed: the coefficients describe what moved together in past weeks (association, not a lever), and the plans may lie outside the range of past weeks; the difference is also small relative to typical misses.",
+   "marking": "1 mark each for 120 and 124. 2 marks for the decomposition: 1 for the three contributions (+10, +2, &minus;8), 1 for showing they sum to +4. 1 mark for the price reading including \"held fixed\" and units. 1 mark for one explained limitation (association not causation, data range, or uncertainty of coefficients). Error carried forward on arithmetic slips."
+  },
+  {
+   "id": "w5-b05",
+   "topic": "Is the gap real? The two-campus t-test",
+   "tests": "Running the full test sequence on two regions: H0, noise shares, standard error, t, decision from p and the tail, and alpha as the false-alarm budget",
+   "title": "Two regions, one gap: the full test sequence",
+   "stem": "CloudCanteen, a meal-kit app, compares mean weekly spend (yuan) in two regions.<table class=\"ex\"><tr><th>Region</th><th>Users (n)</th><th>Mean spend</th><th>Standard deviation</th></tr><tr><td>North</td><td>72</td><td>118</td><td>18</td></tr><tr><td>South</td><td>128</td><td>126</td><td>24</td></tr></table>The software reports a two-sided p-value of 0.008. State H<sub>0</sub>. Calculate t showing each noise share and the standard error of the gap. Give the decision at &alpha; = 0.05 and say where t falls on the reference curve. Explain what &alpha; = 0.05 means.",
+   "formula": "t = (mean<sub>S</sub> &minus; mean<sub>N</sub>) / &radic;(s<sub>N</sub><sup>2</sup>/n<sub>N</sub> + s<sub>S</sub><sup>2</sup>/n<sub>S</sub>)",
+   "reference": "H<sub>0</sub>: the mean weekly spend is equal in the two regions. Gap 126 &minus; 118 = 8 yuan. North's share 18<sup>2</sup>/72 = 324/72 = 4.5; South's share 24<sup>2</sup>/128 = 576/128 = 4.5; sum 9; standard error &radic;9 = 3 yuan. t = 8/3 = 2.67: the gap is 2.67 noise units. Since p = 0.008 is below 0.05, reject H<sub>0</sub>: the statistic lies in the right-hand 2.5 percent rejection tail. &alpha; = 0.05 is the false-alarm budget fixed before the test: the probability of rejecting H<sub>0</sub> when the means really are equal, so about 5 tests in 100 would raise an alarm by chance.",
+   "marking": "1 mark for H<sub>0</sub> of equal means. 1 mark for both noise shares (4.5 and 4.5). 1 mark for the standard error 3. 1 mark for t = 2.67. 1 mark for rejecting H<sub>0</sub> because p &lt; 0.05 with t in the rejection tail. 1 mark for &alpha; as the probability of rejecting a true H<sub>0</sub> / false-alarm budget chosen in advance. Do not accept \"&alpha; is the probability that H<sub>0</sub> is true\". Error carried forward from a wrong standard error."
+  },
+  {
+   "id": "w5-b06",
+   "topic": "The p-value and the decision rule",
+   "tests": "Judging three statements about one p-value: probability of H0 (wrong), practical size (wrong), and dependence of the decision on a pre-set alpha (right)",
+   "title": "Three statements about p = 0.03",
+   "stem": "Velvet Reel, a video-editing app, regresses weekly paid upgrades on tutorial views. The tutorial coefficient has a two-tail p-value of 0.03. Three colleagues comment:<ul><li>Colleague 1: \"There is a 3 percent chance that tutorial views have no link with upgrades.\"</li><li>Colleague 2: \"With p this small, the tutorial effect is big enough to justify building a tutorial studio.\"</li><li>Colleague 3: \"At &alpha; = 0.05 we reject H<sub>0</sub>; had we fixed &alpha; = 0.01 in advance, we would not.\"</li></ul>State what the p-value means. Then say whether each comment is right or wrong and why.",
+   "formula": "p = P(data at least this extreme | H<sub>0</sub> true)",
+   "reference": "The p-value is the probability, computed assuming H<sub>0</sub> (true coefficient zero) is true, of a result at least as extreme as the one observed, on either side for a two-tail p. Colleague 1 is wrong: p assumes H<sub>0</sub> is true, so it cannot be the probability that H<sub>0</sub> is true. Colleague 2 is wrong: p says only that the association is unlikely to be pure noise; whether it pays for a studio needs the coefficient in its units, its interval and the costs. Colleague 3 is right: 0.03 is below 0.05 but above 0.01, so the decision depends on the false-alarm budget fixed before the test.",
+   "marking": "1 mark for the definition including \"assuming H<sub>0</sub> is true\" and \"at least this extreme\". 2 marks for colleague 1: 1 for \"wrong\", 1 for the reason. 2 marks for colleague 2: 1 for \"wrong\", 1 for explaining that p does not measure business size (needs coefficient, units or costs). 1 mark for colleague 3 right with 0.01 &lt; 0.03 &lt; 0.05. A verdict without reason earns only the verdict mark."
+  },
+  {
+   "id": "w5-b07",
+   "topic": "From a number to a decision: three discussion questions",
+   "tests": "Turning a significant slope and its interval into a budget decision: predicted rise, its range, payback against cost, and the risks of extrapolation and causation",
+   "title": "Doubling the ad budget: significant but does it pay?",
+   "stem": "Fernway Outdoor sells camping gear. Its regression of weekly units sold on weekly ad spend (thousand yuan) gives a coefficient of 1.8 (p = 0.000, 95 percent interval 1.2 to 2.4). Past weekly spend ranged from 5 to 15 thousand yuan. The shop now spends 10 thousand yuan and proposes 20. Each unit sold earns a margin of 300 yuan. Calculate the extra weekly units the line predicts and the range the interval allows. Compare the extra margin with the extra spend. Give two things that could go wrong and a recommendation.",
+   "formula": "Predicted change = coefficient &times; change in spend; extra margin = extra units &times; margin per unit",
+   "reference": "Spend rises by 10 thousand yuan, so the line predicts 1.8 &times; 10 = 18 more units a week; the interval allows 1.2 &times; 10 = 12 up to 2.4 &times; 10 = 24. Extra margin at the point estimate: 18 &times; 300 = 5,400 yuan, against 10,000 yuan of extra spend; even the top of the interval gives 24 &times; 300 = 7,200 yuan, still below 10,000. So the association is significant, but on these numbers doubling does not pay. What could go wrong: 20 thousand yuan lies outside the 5-15 range, where the line is only a local approximation; and the coefficient is an association, not a lever (spend may have been high in busy weeks), so the real gain could be smaller still. Recommendation: do not double; if the team wants to learn more, test a modest increase in an experiment first.",
+   "marking": "1 mark for 18 units. 1 mark for the range 12 to 24. 1 mark for the payback comparison: 5,400 versus 10,000, and even 7,200 at the upper end falls short. 2 marks for two explained risks, 1 each (data range / local approximation; association not a lever). 1 mark for a recommendation consistent with the arithmetic. Accept a recommendation to test a smaller increase. Do not accept \"p = 0.000 so the spend is guaranteed to pay\"."
+  },
+  {
+   "id": "w5-b08",
+   "topic": "Three yardsticks, the split of the total miss, and R squared",
+   "tests": "Computing SSR and R squared from the total split and rejecting two misreadings: R squared as percent of correct forecasts, and higher training R squared as a better model",
+   "title": "R squared is not the share of correct forecasts",
+   "stem": "Kitecraft Toys fits weekly sales on ad spend. The total sum of squares (SST) is 2,500 and the error sum of squares (SSE) is 900. Calculate the regression sum of squares (SSR) and R<sup>2</sup>, and read R<sup>2</sup> in words. The manager then says: (1) \"So 64 percent of our weekly forecasts are correct\" and (2) \"Adding five more features raised training R<sup>2</sup> to 0.70, so the bigger model is better.\" Respond to each claim.",
+   "formula": "SST = SSR + SSE; R<sup>2</sup> = SSR/SST = 1 &minus; SSE/SST",
+   "reference": "SSR = 2,500 &minus; 900 = 1,600, so R<sup>2</sup> = 1,600/2,500 = 0.64 (also 1 &minus; 900/2,500). The line explains about 64 percent of the week-to-week variation in sales around their mean; about 36 percent is left in the residuals. Claim 1 is wrong: R<sup>2</sup> is a share of variation explained, not a share of forecasts that are exactly right; almost every week can still be missed by some amount. Claim 2 does not follow: on the same training rows, more columns can only lower SSE and raise R<sup>2</sup>, so the rise is guaranteed and may be fitting noise. The bigger model must prove itself on new weeks (prediction error); adjusted R<sup>2</sup> would also charge for the extra features.",
+   "marking": "1 mark for SSR = 1,600. 1 mark for R<sup>2</sup> = 0.64. 1 mark for the reading as share of variation explained (accept 36 percent left over). 1 mark for rejecting claim 1 with reason. 2 marks for claim 2: 1 for explaining that training R<sup>2</sup> cannot fall when features are added (lower SSE, higher R<sup>2</sup>), 1 for requiring comparison on new data (or adjusted R<sup>2</sup>). Error carried forward from SSR."
+  },
+  {
+   "id": "w5-b09",
+   "topic": "Reading the top of the output",
+   "tests": "Reading the top block: R Square from Multiple R, its link to the coefficient test's df, the two different standard errors, and why adjusted R Square is lower",
+   "title": "Reading the top block of the output",
+   "stem": "Moonfern Skincare regresses weekly revenue (thousand yuan) on the number of creator collaborations per week. The output shows:<table class=\"ex\"><tr><th>Fit measure</th><th>Value</th></tr><tr><td>Multiple R</td><td>0.80</td></tr><tr><td>R Square</td><td>?</td></tr><tr><td>Adjusted R Square</td><td>0.62</td></tr><tr><td>Standard error</td><td>3.5</td></tr><tr><td>Observations</td><td>24</td></tr></table>In the coefficient table, collaborations have coefficient 2.6 and standard error 0.4. Fill in R Square and read it. Give the degrees of freedom for the collaboration t. Explain the difference between the standard error of 3.5 and the standard error of 0.4. Why is Adjusted R Square lower than R Square?",
+   "formula": "R Square = (Multiple R)<sup>2</sup>; df = n &minus; k",
+   "reference": "R Square = 0.80<sup>2</sup> = 0.64: the line explains about 64 percent of the variation in weekly revenue. Degrees of freedom: 24 observations minus 2 fitted coefficients (intercept and slope) = 22. The 3.5 in the top block is the typical leftover of the whole line: a typical week's revenue is missed by about 3.5 thousand yuan. The 0.4 is the noise around the collaboration slope: the estimate of 2.6 thousand yuan per collaboration could wobble by about 0.4 from sample to sample. Adjusted R Square takes away a little for each feature, because adding a column can never lower R Square on training data; with one feature it moves only slightly (0.64 to 0.62).",
+   "marking": "1 mark for 0.64; 1 mark for reading it as share of variation explained. 1 mark for df = 22 with n &minus; k. 1 mark for 3.5 as the typical residual in target units; 1 mark for 0.4 as noise around the slope. 1 mark for adjusted R Square as R Square with a per-feature penalty (accept: corrects for R Square never falling when features are added). Do not accept \"3.5 is the standard error of the intercept\"."
+  },
+  {
+   "id": "w5-b10",
+   "topic": "OLS, Ridge and LASSO, and what happens as the penalty grows",
+   "tests": "Evaluating the LASSO objective by hand for two candidate coefficient sets: the penalty can reverse the OLS choice, and the intercept is left out of the penalty",
+   "title": "Fit plus penalty: why LASSO prefers the sparser set",
+   "stem": "Nimbus Notes compares two candidate coefficient sets for a model with three standardized predictors, fitted on the same training rows.<table class=\"ex\"><tr><th>Set</th><th>Intercept b<sub>0</sub></th><th>b<sub>1</sub></th><th>b<sub>2</sub></th><th>b<sub>3</sub></th><th>SSE</th></tr><tr><td>1</td><td>12.0</td><td>2.0</td><td>&minus;1.0</td><td>0.5</td><td>40</td></tr><tr><td>2</td><td>12.0</td><td>1.5</td><td>0</td><td>0</td><td>43</td></tr></table>Which set does OLS prefer? With &lambda; = 2, calculate the LASSO objective for each set and say which LASSO prefers. Explain why the intercept 12.0 does not enter your calculation and what the zeros in set 2 mean for the fitted model.",
+   "formula": "OLS minimises SSE; LASSO minimises SSE + &lambda; &Sigma;<sub>j=1..p</sub> |b<sub>j</sub>|",
+   "reference": "OLS has no penalty and minimises SSE alone, so it prefers set 1 (40 &lt; 43). LASSO penalty for set 1: 2 &times; (2.0 + 1.0 + 0.5) = 2 &times; 3.5 = 7, objective 40 + 7 = 47. Set 2: 2 &times; (1.5 + 0 + 0) = 3, objective 43 + 3 = 46. LASSO prefers set 2 (46 &lt; 47): the small loss of fit is outweighed by the lower complexity cost. The intercept is not penalized (the sum starts at j = 1): it is the anchor that sets the line's level, and shrinking it would only drag predictions toward zero. The zeros remove predictors 2 and 3 from the fitted equation, so LASSO has shrunk and selected at once; that does not prove those features could never matter in other data.",
+   "marking": "1 mark for OLS choosing set 1 by SSE. 1 mark for each LASSO penalty (7 and 3), using absolute values (the negative coefficient counts as 1.0). 1 mark for objectives 47 and 46 and choosing set 2. 1 mark for the intercept not penalized, with reason. 1 mark for the zeros removing those predictors' contribution (shrink and select). Error carried forward: if a penalty is wrong, award the choice mark when it follows from the student's objectives. Including the intercept in the penalty loses the intercept mark."
+  },
+  {
+   "id": "w5-b11",
+   "topic": "Training fit versus prediction error",
+   "tests": "Adding bias squared, variance and noise across complexity levels to locate the sweet spot, and explaining why training error points to the wrong level",
+   "title": "Finding the sweet spot from the error parts",
+   "stem": "Quillstone Learning forecasts weekly course sign-ups with models of rising complexity. A schematic study gives:<table class=\"ex\"><tr><th>Complexity</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>Bias<sup>2</sup></td><td>30</td><td>16</td><td>8</td><td>4</td><td>2</td></tr><tr><td>Variance</td><td>2</td><td>4</td><td>7</td><td>13</td><td>22</td></tr><tr><td>Irreducible noise</td><td>8</td><td>8</td><td>8</td><td>8</td><td>8</td></tr><tr><td>Training error</td><td>38</td><td>26</td><td>18</td><td>11</td><td>5</td></tr></table>Calculate the expected prediction error at each level and identify the sweet spot. Explain what goes wrong at level 1 and at level 5 in the course's terms. Which level would training error pick, and why is that the wrong guide?",
+   "formula": "Total = bias<sup>2</sup> + variance + irreducible noise",
+   "reference": "Totals: level 1 = 30 + 2 + 8 = 40; level 2 = 28; level 3 = 8 + 7 + 8 = 23; level 4 = 25; level 5 = 2 + 22 + 8 = 32. The sweet spot is level 3, with the lowest expected error on new data (23). At level 1 the model is too simple: high bias<sup>2</sup> (30), a missed pattern, so it underfits. At level 5 the model is too flexible: high variance (22), an unstable fit that chases noise, so it overfits. Training error keeps falling and would pick level 5 (5), because more flexibility always fits the training rows better; it cannot see variance, so it cannot find the sweet spot. The noise of 8 stays whatever the model.",
+   "marking": "2 marks for the five totals (1 mark if at least three are right). 1 mark for level 3 as the sweet spot. 1 mark for level 1 as underfitting / high bias (missed pattern). 1 mark for level 5 as overfitting / high variance (unstable fit). 1 mark for training error picking level 5 and why it misleads. Error carried forward from totals."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w5-c01",
+   "topics": [
+    "Many features at once",
+    "Every number in the table now reads",
+    "Units, and the intercept as an anchor",
+    "A coefficient is not a lever",
+    "From a number to a decision: three discussion questions"
+   ],
+   "tests": "Computing t and df in a three-feature regression and reaching verdicts by p and interval together; reading coefficients held fixed and converting target units; judging a feature-drop and a budget extrapolation as a business decision",
+   "name": "Starlit Kitchenware",
+   "scenario": "<p>Starlit Kitchenware sells pans and knives through a weekly livestream. Its analyst has fitted weekly units sold on three features, using 32 weeks of history: ad spend (thousand yuan), the average selling price (yuan) and the number of streamer hours. Exhibit 1 shows the coefficient table; three t values were lost when the table was pasted into the report. Exhibit 2 shows the range each feature covered in the 32 weeks.</p><p>At the planning meeting the sales director makes two proposals. First, drop streamer hours from the model and from the budget discussion \"because it is not significant\". Second, raise weekly ad spend from 8 to 20 thousand yuan, keeping price and hours as they are, because \"the model says each thousand yuan brings 6 units, so that is 72 more units a week\". The finance team also asks for sales to be reported in hundreds of units in future reports.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Coefficient table, weekly units sold (32 weeks)",
+     "html": "<table class=\"ex\"><tr><th></th><th>Coefficient</th><th>Std. error</th><th>t</th><th>p</th><th>Lower 95%</th><th>Upper 95%</th></tr><tr><td>Intercept</td><td>210.0</td><td>60.0</td><td>3.50</td><td>0.002</td><td>87.10</td><td>332.90</td></tr><tr><td>Ad spend (thousand yuan)</td><td>6.0</td><td>1.5</td><td>?</td><td>0.000</td><td>2.93</td><td>9.07</td></tr><tr><td>Price (yuan)</td><td>&minus;2.4</td><td>0.8</td><td>?</td><td>0.006</td><td>&minus;4.04</td><td>&minus;0.76</td></tr><tr><td>Streamer hours</td><td>1.2</td><td>1.0</td><td>?</td><td>0.240</td><td>&minus;0.85</td><td>3.25</td></tr></table>",
+     "note": "t = coefficient / standard error. df = n &minus; k, where k counts all fitted coefficients including the intercept. Decision rule: p below 0.05, reject H<sub>0</sub> (true coefficient zero)."
+    },
+    {
+     "title": "Exhibit 2: Range of each feature in the 32 weeks",
+     "html": "<table class=\"ex\"><tr><th>Feature</th><th>Lowest week</th><th>Highest week</th></tr><tr><td>Ad spend (thousand yuan)</td><td>4</td><td>12</td></tr><tr><td>Price (yuan)</td><td>79</td><td>119</td></tr><tr><td>Streamer hours</td><td>10</td><td>30</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Calculate the three missing t values and the degrees of freedom for these tests. For each of the three features, state whether its coefficient is significant at &alpha; = 0.05, using both the p-value and the 95 percent interval. Explain why the two signals agree.",
+     "answer": "t values: ad spend 6.0/1.5 = 4.00; price &minus;2.4/0.8 = &minus;3.00; streamer hours 1.2/1.0 = 1.20. Degrees of freedom: 32 weeks minus 4 fitted coefficients (intercept and three slopes) = 28. Ad spend: p = 0.000 (below 0.0005) and the interval 2.93 to 9.07 excludes zero, so it is significant. Price: p = 0.006 and the interval &minus;4.04 to &minus;0.76 lies wholly below zero, so it is significant. Streamer hours: p = 0.240 is above 0.05 and the interval &minus;0.85 to 3.25 includes zero, so it is not significant. The two signals agree because both come from the same estimate and noise: a t in the 2.5 percent tails, p below 0.05, and a 95 percent interval excluding zero are three ways of reaching the same verdict for one coefficient.",
+     "marking": "3 marks: 1 for each t value (4.00, &minus;3.00, 1.20); accept 4, &minus;3, 1.2. 1 mark for df = 28 with k = 4. 2 marks for ad spend and price significant, 1 each, each with a correct p or interval reason. 1 mark for streamer hours not significant, citing p 0.240 &gt; 0.05 and/or the interval including zero. 1 mark for explaining that t, p and the interval give the same verdict. Do not accept df = 31 or 30. A sign error on the price t loses that mark only."
+    },
+    {
+     "marks": 6,
+     "stem": "Read the ad-spend and price coefficients aloud in the course's way. Give both coefficients after sales are reported in hundreds of units. The intercept is 210 units: what does it mean, and why should it not be used as a forecast?",
+     "answer": "Ad spend: one more thousand yuan of weekly ad spend comes with 6.0 more units sold that week, with price and streamer hours held fixed. Price: one more yuan of price comes with 2.4 fewer units sold per week, with ad spend and streamer hours held fixed. In hundreds of units, with feature units unchanged, each slope is divided by 100: ad spend 0.06 hundred units per thousand yuan, price &minus;0.024 hundred units per yuan. The shop is unchanged; only the ruler moved. The intercept of 210 is the fitted sales when ad spend, price and hours are all zero. A zero price and zero hours lie far outside the weeks in Exhibit 2, so 210 is an anchor that places the line inside the data cloud, not a prediction of sales.",
+     "marking": "2 marks for the ad-spend reading: 1 for per-unit \"comes with 6.0 units\" in the right units, 1 for \"price and streamer hours held fixed\". 1 mark for the price reading with sign, units and others held fixed. 2 marks for the conversions 0.06 and &minus;0.024, 1 each. 1 mark for the intercept as the fitted value at all features zero, outside the data, so an anchor not a forecast. \"Causes\" instead of \"comes with\" loses the first reading mark."
+    },
+    {
+     "marks": 6,
+     "stem": "Respond to both proposals of the sales director. Show the calculation behind the 72 units and what the interval allows, recommend what Starlit should do, and state one limitation of this regression for that decision.",
+     "answer": "The line implies 6.0 &times; (20 &minus; 8) = 72 more units a week, with price and hours held fixed; but at the interval's low end the slope is 2.93, giving only about 2.93 &times; 12 = 35 units. Twenty thousand yuan is far above the highest week (12), where the line is only a local approximation, and the coefficient is an association: spend may have been raised in busy weeks, so the extra units need not follow. On streamer hours, a p of 0.240 means the data cannot tell the effect from zero holding the others fixed; it does not prove the effect is zero, and the interval still allows up to 3.25 units per hour. Recommendation: keep hours in the model until validation error says otherwise, and test a step-up in ad spend (for example to 12-14 thousand yuan in randomly chosen weeks) before committing to 20. Limitation: 32 weeks of history show what moved together, not what a deliberate budget change will cause.",
+     "marking": "1 mark for 72 with the working. 1 mark for the low-end figure (about 35, accept 35.2) or an equivalent use of the interval. 1 mark for the data-range / local-approximation risk of 20 thousand yuan. 1 mark for rejecting automatic dropping of hours: large p is \"cannot tell from zero\", not \"zero\". 1 mark for a concrete recommendation consistent with these points (test or step-up experiment, keep hours pending validation). 1 mark for one explained limitation (association, not lever; or outside data range if not already credited; or small sample). Do not award the limitation mark for \"all models are imperfect\"."
+    }
+   ]
+  },
+  {
+   "id": "w5-c02",
+   "topics": [
+    "Is the gap real? The two-campus t-test",
+    "Significance level, degrees of freedom and the rejection region",
+    "The p-value and the decision rule"
+   ],
+   "tests": "Running the two-group t-test with unequal noise shares and n minus k degrees of freedom; reading a non-significant two-tail p via the rejection region and the p-value's meaning; rejecting a post-hoc switch to a one-tail p and turning 'not significant' into a sound business test",
+   "name": "Driftwood Coffee",
+   "scenario": "<p>Driftwood Coffee sells roasted beans through livestreams. For the last quarter it ran two formats: weekday-evening streams hosted by its head roaster and weekend-morning streams hosted by a guest barista. The team recorded the order value of 50 randomly sampled orders from each format (Exhibit 1). The statistics software was asked whether the mean order values differ and printed the p-values in Exhibit 2.</p><p>The marketing manager writes: \"Evening orders are 6 yuan higher. The two-tail p misses 0.05, but the one-tail p is 0.046, so evening is significantly better. Let's move every stream to weekday evenings next quarter.\"</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Order value by stream format (yuan)",
+     "html": "<table class=\"ex\"><tr><th>Format</th><th>Orders sampled (n)</th><th>Mean order value</th><th>Standard deviation</th></tr><tr><td>Weekday evening</td><td>50</td><td>86</td><td>15</td></tr><tr><td>Weekend morning</td><td>50</td><td>80</td><td>20</td></tr></table>",
+     "note": "t = (mean<sub>E</sub> &minus; mean<sub>M</sub>) / &radic;(s<sub>E</sub><sup>2</sup>/n<sub>E</sub> + s<sub>M</sub><sup>2</sup>/n<sub>M</sub>). df = n &minus; k (observations minus fitted values; here the two group means are fitted)."
+    },
+    {
+     "title": "Exhibit 2: Software output for the gap in means",
+     "html": "<table class=\"ex\"><tr><th>Quantity</th><th>Value</th></tr><tr><td>p-value, two-tail</td><td>0.093</td></tr><tr><td>p-value, one-tail (evening above morning)</td><td>0.046</td></tr></table>",
+     "note": "p = P(data at least this extreme | H<sub>0</sub> true). Decision rule: p below 0.05, reject H<sub>0</sub>. &alpha; = 0.05, two-sided: 2.5 percent in each tail."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "State the null hypothesis. Calculate t, showing each format's noise share and the standard error of the gap (two decimal places). Give the degrees of freedom and explain where they come from. Read the t value in words.",
+     "answer": "H<sub>0</sub>: the mean order value is the same for the two formats (the true gap is 0). Gap: 86 &minus; 80 = 6 yuan. Evening share: 15<sup>2</sup>/50 = 225/50 = 4.5. Morning share: 20<sup>2</sup>/50 = 400/50 = 8.0. Sum 12.5; standard error of the gap &radic;12.5 = 3.54 yuan. t = 6/3.54 = 1.70. Degrees of freedom: 100 orders minus 2 fitted means = 98; fitting each group's mean uses up one number that is no longer free to move. Reading: the 6-yuan gap is only 1.7 times the noise expected in a gap between two samples of this size, so chance could plausibly produce a gap like this.",
+     "marking": "1 mark for H<sub>0</sub> of equal means. 2 marks for the two noise shares (4.5 and 8.0), 1 each. 1 mark for the standard error 3.54 (accept 3.5). 1 mark for t = 1.70 (accept 1.7; 1.69-1.71). 1 mark for df = 98. 1 mark for explaining df as observations minus fitted values / numbers free to move. 1 mark for reading t as the gap in noise units, modest in size. Swapping a standard deviation with the wrong sample size loses that share mark only; carry the error forward."
+    },
+    {
+     "marks": 6,
+     "stem": "Using the two-tail p-value, give the decision at &alpha; = 0.05 and say where t lies on the reference curve. Explain what 0.093 means, and two things it does not mean.",
+     "answer": "The two-tail p of 0.093 is above 0.05, so do not reject H<sub>0</sub>. On the reference curve under H<sub>0</sub>, t = 1.70 lies inside the middle 95 percent, between the two critical values, not in a 2.5 percent tail; the p-value and the rejection region agree. Meaning: if the two formats truly had equal mean order values, a gap at least as extreme as 6 yuan, in either direction, would appear about 9.3 percent of the time. It does not mean there is a 9.3 percent chance that H<sub>0</sub> is true, because p is calculated assuming H<sub>0</sub>. And not rejecting H<sub>0</sub> does not prove the means are equal: these 100 orders simply cannot tell the gap from zero.",
+     "marking": "1 mark for \"do not reject H<sub>0</sub>\" with 0.093 &gt; 0.05. 1 mark for t in the middle 95 percent / do-not-reject zone. 2 marks for the meaning: 1 for \"assuming H<sub>0</sub> true\", 1 for \"at least this extreme, either direction\". 1 mark for \"not the probability that H<sub>0</sub> is true\". 1 mark for \"not proof of no difference\". Accept \"does not measure whether 6 yuan matters for money\" as an alternative for one of the last two marks."
+    },
+    {
+     "marks": 6,
+     "stem": "Respond to the marketing manager's reasoning and proposal. Recommend what Driftwood should do next and state one limitation of the current comparison.",
+     "answer": "The switch to a one-tail p after seeing that the two-tail p missed 0.05 is not sound. The false-alarm budget and the definition of \"extreme\" are fixed before the test; a gap between formats could go either way, so the two-tail p is the appropriate choice, and choosing the tail after seeing the data quietly spends more than the 5 percent budget. On the agreed test the gap is not significant. Even so, \"not significant\" does not mean the formats are equal, so moving every stream is not justified either way. Recommendation: keep both formats and run a designed comparison, for example randomly assigning the same host and product line to evening and morning slots over several weeks with a larger sample of orders, with the test rule written down in advance. Limitation: the formats differ in host, day and time at once, so even a significant gap would show association with the format, not which change causes higher order values; 50 orders per format is also small.",
+     "marking": "2 marks for rejecting the one-tail switch: 1 for \"tail and &alpha; fixed before the test / two-tail is the common choice when either direction is possible\", 1 for explaining that choosing after the data inflates false alarms. 1 mark for \"not significant is not proof of equality\", so the move is unsupported. 1 mark for a concrete designed test (random assignment of slots, same host or products, larger sample). 1 mark for one explained limitation (confounded host/day/time, association not cause, or small sample). 1 mark for a clear recommendation consistent with the analysis. Do not accept \"evening is better because 86 &gt; 80\" without addressing noise."
+    }
+   ]
+  },
+  {
+   "id": "w5-c03",
+   "topics": [
+    "Three yardsticks, the split of the total miss, and R squared",
+    "Residual plots, and residuals on new weeks",
+    "The wiggly line and the tailor's suit",
+    "Training fit versus prediction error",
+    "A complexity budget for your team: three discussion questions"
+   ],
+   "tests": "Computing R squared from SSE and SST for three models of rising flexibility and reading a curved residual plot; scoring the models on new weeks by total squared prediction error; choosing the sweet-spot model over both the underfit line and the overfit curve",
+   "name": "Petalpost Florist",
+   "scenario": "<p>Petalpost Florist delivers bouquets ordered through its mini-program. To plan staffing, its analyst forecasts weekly orders from weekly ad spend. Three models were fitted on the same 20 earlier weeks: a straight line, a quadratic (one bend) and a degree-8 polynomial. Exhibit 1 gives their training sums of squares. Exhibit 2 describes the residual plot of the straight line. Exhibit 3 gives each model's predictions for four later weeks that none of the models used in fitting.</p><p>The operations head wants to ship the degree-8 model: \"It explains almost everything; the others leave errors on the table.\" The analyst wants to compare all three on the four later weeks, using total squared prediction error; a smaller total is better.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Training fit on the 20 earlier weeks",
+     "html": "<table class=\"ex\"><tr><th>Model</th><th>SST</th><th>SSE</th></tr><tr><td>Straight line</td><td>4,000</td><td>1,200</td></tr><tr><td>Quadratic</td><td>4,000</td><td>560</td></tr><tr><td>Degree-8 polynomial</td><td>4,000</td><td>40</td></tr></table>",
+     "note": "SST = SSR + SSE; R<sup>2</sup> = SSR/SST = 1 &minus; SSE/SST."
+    },
+    {
+     "title": "Exhibit 2: Residual-versus-fitted plot of the straight line (description)",
+     "html": "<table class=\"ex\"><tr><th>Range of fitted orders</th><th>Residuals</th></tr><tr><td>Low (below 160)</td><td>Mostly positive</td></tr><tr><td>Middle (160 to 220)</td><td>Mostly negative</td></tr><tr><td>High (above 220)</td><td>Mostly positive</td></tr></table>",
+     "note": "Residual = actual &minus; fitted."
+    },
+    {
+     "title": "Exhibit 3: Predictions for four later weeks (orders)",
+     "html": "<table class=\"ex\"><tr><th>Week</th><th>Actual</th><th>Straight line</th><th>Quadratic</th><th>Degree-8</th></tr><tr><td>1</td><td>150</td><td>160</td><td>145</td><td>170</td></tr><tr><td>2</td><td>180</td><td>175</td><td>185</td><td>150</td></tr><tr><td>3</td><td>210</td><td>200</td><td>205</td><td>240</td></tr><tr><td>4</td><td>240</td><td>250</td><td>245</td><td>205</td></tr></table>",
+     "note": "Residual = actual &minus; predicted. Total squared prediction error = sum of the squared residuals over the four weeks."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Calculate R<sup>2</sup> for each model, and the regression sum of squares (SSR) for the straight line. Read the straight line's R<sup>2</sup>. What does its residual plot in Exhibit 2 tell you, and what does the course suggest doing about it? Explain why the rise in R<sup>2</sup> from the line to the degree-8 model cannot by itself choose the model.",
+     "answer": "R<sup>2</sup>: line 1 &minus; 1,200/4,000 = 0.70; quadratic 1 &minus; 560/4,000 = 0.86; degree-8 1 &minus; 40/4,000 = 0.99. Line SSR = 4,000 &minus; 1,200 = 2,800 (2,800/4,000 = 0.70). The line explains about 70 percent of the week-to-week variation in orders; 30 percent is left in the residuals. Its residuals are positive at low and high fitted values and negative in the middle: a curve remains, so the line is systematically too low at the ends and too high in the middle. Something systematic is left behind; the relationship bends, and the course's advice is \"if the truth curves, add curves\" (polynomial regression), which the quadratic does. But on the same training weeks, lower SSE always means higher R<sup>2</sup>, and more flexibility always lowers training SSE, so R<sup>2</sup> rising to 0.99 is guaranteed and may be fitting noise; the choice must be made on new weeks.",
+     "marking": "3 marks for the three R<sup>2</sup> values, 1 each. 1 mark for SSR = 2,800. 1 mark for reading 0.70 as share of variation explained. 1 mark for reading the residual pattern as a curve / systematic structure left (line too low at ends, too high in middle). 1 mark for the response: add curves (polynomial term). 1 mark for explaining that training R<sup>2</sup> always rises with flexibility, so it cannot pick the model. Do not accept \"the residual curve means the errors are random\"."
+    },
+    {
+     "marks": 6,
+     "stem": "For each model, calculate the four residuals on the later weeks and the total squared prediction error. Comment on the quadratic's residual sum.",
+     "answer": "Line: 150 &minus; 160 = &minus;10, 180 &minus; 175 = +5, 210 &minus; 200 = +10, 240 &minus; 250 = &minus;10; total (&minus;10)<sup>2</sup> + 5<sup>2</sup> + 10<sup>2</sup> + (&minus;10)<sup>2</sup> = 100 + 25 + 100 + 100 = 325. Quadratic: +5, &minus;5, +5, &minus;5; total 25 &times; 4 = 100. Degree-8: &minus;20, +30, &minus;30, +35; total 400 + 900 + 900 + 1,225 = 3,425. The quadratic's residuals sum to zero, but that is cancelling of over- and under-estimates, not zero error: it still missed every week by 5 orders, which the squared total of 100 shows.",
+     "marking": "2 marks per model (line, quadratic, degree-8): 1 for the four correctly signed residuals, 1 for the total (325, 100, 3,425). Within these, award the quadratic's total mark only if the answer does not claim zero error from the zero residual sum; a comment on cancelling is expected. Reversed signs throughout with correct totals: lose the residual marks for that model only. Error carried forward into totals."
+    },
+    {
+     "marks": 6,
+     "stem": "Which model should Petalpost ship? Respond to the operations head using the course's ideas on overfitting and prediction error, explain why the straight line is not the answer either, and give one limitation of this comparison.",
+     "answer": "Ship the quadratic: its total squared prediction error on the four later weeks is 100, against 325 for the line and 3,425 for the degree-8 model. The degree-8 model's R<sup>2</sup> of 0.99 is training fit on the same weeks it was built from; like a suit cut to one customer's every bump, it followed the noise of those 20 weeks and predicts new weeks badly. That is high variance, an unstable fit: overfitting. The straight line is too simple: its curved residuals show a missed pattern (high bias), so it underfits and errs more than the quadratic on new weeks. The quadratic sits nearest the sweet spot where bias<sup>2</sup> + variance is lowest. Limitation: four later weeks are a small sample, and seasonal peaks such as holidays may favour a different model, so the choice should be re-checked on more new weeks.",
+     "marking": "1 mark for choosing the quadratic. 1 mark for supporting it with the comparison 100 versus 325 and 3,425 on the same later weeks. 2 marks for the degree-8 model: 1 for distinguishing training R<sup>2</sup> from prediction on new weeks, 1 for naming overfitting / variance (or the tailor's suit) with a correct explanation. 1 mark for the line as underfitting / bias, linked to its curved residuals. 1 mark for one explained limitation. Carry forward: a choice that follows correctly from the student's own totals earns the choice marks."
+    }
+   ]
+  },
+  {
+   "id": "w5-c04",
+   "topics": [
+    "The complexity budget and the penalty dial",
+    "OLS, Ridge and LASSO, and what happens as the penalty grows",
+    "A complexity budget for your team: three discussion questions",
+    "Training fit versus prediction error"
+   ],
+   "tests": "Setting the penalty dial by validation rather than training error and reading the U-shape of validation error; contrasting Ridge shrinkage with LASSO selection on a coefficient table; deciding who sets the complexity budget and which features must prove themselves",
+   "name": "Tidepool Games",
+   "scenario": "<p>Tidepool Games runs a mobile puzzle game and forecasts daily in-app revenue to plan server capacity and event budgets. Its analyst has six standardized candidate features. Two of them, likes and shares of the official social posts, mostly rise and fall with the number of daily active players. Collecting likes and shares means paying for a social-listening tool.</p><p>The analyst fitted LASSO at five penalty strengths on the same training days and scored each on the same later validation days (Exhibit 1). Exhibit 2 compares the coefficients of plain OLS, the best Ridge fit and LASSO at &lambda; = 2. The Ridge fit at its best strength had a validation squared error of 42 with all six coefficients nonzero. The studio producer says: \"Training SSE is lowest with no penalty, so use plain OLS.\" The community lead adds: \"Likes had a big coefficient of 1.4 in OLS, so keep paying for the listening tool.\" The finance director prefers \"the strongest penalty, to keep things simple\".</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: LASSO at five penalty strengths",
+     "html": "<table class=\"ex\"><tr><th>LASSO penalty strength &lambda;</th><th>Nonzero coefficients</th><th>Training SSE</th><th>Validation squared error</th></tr><tr><td>0 (plain OLS)</td><td>6</td><td>30</td><td>52</td></tr><tr><td>0.5</td><td>6</td><td>33</td><td>45</td></tr><tr><td>2</td><td>3</td><td>38</td><td>40</td></tr><tr><td>5</td><td>2</td><td>46</td><td>48</td></tr><tr><td>20</td><td>0</td><td>90</td><td>96</td></tr></table>",
+     "note": "LASSO minimises SSE + &lambda; &Sigma;<sub>j=1..p</sub> |b<sub>j</sub>|; &lambda; = 0 gives plain OLS. Predictors standardized; the intercept is not penalized. Lower validation error is better."
+    },
+    {
+     "title": "Exhibit 2: Coefficients by method",
+     "html": "<table class=\"ex\"><tr><th>Standardized feature</th><th>OLS</th><th>Ridge (best strength)</th><th>LASSO (&lambda; = 2)</th></tr><tr><td>Daily active players</td><td>2.6</td><td>1.9</td><td>2.1</td></tr><tr><td>Likes on official posts</td><td>1.4</td><td>0.8</td><td>0</td></tr><tr><td>Shares of official posts</td><td>&minus;0.9</td><td>&minus;0.4</td><td>0</td></tr><tr><td>New installs</td><td>1.1</td><td>0.9</td><td>0.7</td></tr><tr><td>Event day (yes = 1)</td><td>0.8</td><td>0.6</td><td>0.5</td></tr><tr><td>Ad impressions</td><td>0.3</td><td>0.2</td><td>0</td></tr></table>",
+     "note": "Ridge minimises SSE + &lambda; &Sigma;<sub>j=1..p</sub> b<sub>j</sub><sup>2</sup>."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Which penalty strength would training SSE choose, and which does validation error choose? Explain why the producer's rule is unsound. Describe the pattern of validation error across Exhibit 1 in terms of underfitting, overfitting and the sweet spot, and explain what the penalty dial trades off.",
+     "answer": "Training SSE is lowest (30) at &lambda; = 0, plain OLS, and it rises steadily as the penalty grows. Validation error is lowest at &lambda; = 2 (40, with 3 predictors). The producer's rule is unsound because training error always prefers the weakest penalty: more freedom always fits the training days better, so it cannot tell when the extra flexibility stops helping. The penalty strength must be chosen on validation data. Validation error falls from 52 (&lambda; = 0) to 45 and then 40, then rises to 48 and 96: a U shape. At weak penalties the model overfits (unstable coefficients chase noise, high variance); at &lambda; = 20 every coefficient is zero, the model misses the pattern and underfits (high bias); &lambda; = 2 is nearest the sweet spot. The dial sets how strongly the fit discourages large coefficients: the fit benefit of extra flexibility (lower training error) against the complexity cost of large coefficients.",
+     "marking": "1 mark for &lambda; = 0 by training SSE. 1 mark for &lambda; = 2 by validation error (40). 2 marks for rejecting the producer's rule: 1 for \"training error always favours the weakest penalty / most flexible model\", 1 for \"choose using validation data\". 2 marks for the U shape: 1 for overfitting / variance at weak penalties, 1 for underfitting / bias at &lambda; = 20 with all coefficients zero. 1 mark for naming &lambda; = 2 as the sweet spot in this grid. 1 mark for the dial as fit benefit versus complexity cost (strength of discouraging large coefficients)."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, describe what Ridge and LASSO did to the OLS coefficients and name the features LASSO removed. Explain what a zero coefficient means and does not mean, why Ridge suits features like likes and shares, and why the features were standardized first.",
+     "answer": "Ridge shrank all six coefficients (for example likes 1.4 to 0.8, daily active players 2.6 to 1.9) but kept every one nonzero, signs unchanged. LASSO shrank and selected: it kept daily active players (2.1), new installs (0.7) and event day (0.5), and set likes, shares and ad impressions exactly to zero. A zero removes that feature's contribution from the fitted equation, so it need not be collected for this forecast; it does not prove the feature could never matter in other data or periods. Ridge suits many correlated predictors: likes and shares mostly echo daily active players, so OLS splits credit among them unstably, and Ridge calms them together while keeping all. Features were standardized because coefficient size depends on units; without a common scale a feature in small units would be punished harder for no real reason.",
+     "marking": "1 mark for Ridge shrinking all and keeping them nonzero. 1 mark for naming the three LASSO zeros (likes, shares, ad impressions). 1 mark for what a zero does; 1 mark for what it does not prove. 1 mark for Ridge and correlated predictors, linked to likes/shares echoing daily active players. 1 mark for standardizing because size depends on units. Do not accept \"Ridge deleted the correlated features\"."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend which model Tidepool should use, responding to the community lead and the finance director. Who should set the complexity budget for this forecast? Give one limitation of your recommendation.",
+     "answer": "Use LASSO at &lambda; = 2: it has the lowest validation error (40), beats the best Ridge (42) and plain OLS (52), and needs only three features. Likes must prove itself before it enters: its large OLS coefficient was fitted on training days and mostly echoes daily active players; the LASSO fit that set it to zero had the lowest validation error, so the listening tool is not justified for this forecast. The strongest penalty (&lambda; = 20) is not simplest-is-best: it keeps no predictors and validation error jumps to 96. The budget is a business decision: the manager (here the finance director with the producer) sets how much complexity is worth paying for, such as data tools and maintenance; the analyst tunes &lambda; on validation data inside that budget. Limitation: the validation days are one period; new events or a season change may shift which features matter, so the choice should be re-validated on later days.",
+     "marking": "1 mark for choosing LASSO &lambda; = 2 with the validation comparison (40 versus 42 and 52). 1 mark for the likes response: a feature must lower validation error, and an OLS coefficient's size is not proof. 1 mark for rejecting the strongest penalty with the 96 / zero-predictor evidence. 1 mark for the budget roles: manager sets the business budget, analyst tunes the penalty on validation data (accept a defended alternative that keeps validation error as the analyst's guide). 1 mark for a cost or simplicity argument (three features, no listening tool). 1 mark for one explained limitation. Do not accept choosing by training SSE."
+    }
+   ]
+  }
+ ]
+}

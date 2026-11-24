@@ -1,0 +1,770 @@
+{
+ "week": 7,
+ "mcq": [
+  {
+   "id": "w7-a01",
+   "topic": "Why models need numbers: four representations",
+   "tests": "The four representations each add a specific kind of information: TF-IDF adds rarity weighting to counts",
+   "stem": "An analytics lead summarizes the course's four text representations, from simplest to richest, as each keeping a different kind of information. Which pairing of a representation with the information it is designed to capture is correct?",
+   "formula": "",
+   "options": [
+    "TF-IDF: word counts weighted by how rare each word is across the reviews.",
+    "N-grams: word counts weighted by how rare each word is across the reviews.",
+    "Counts: positions in a space where words used alike sit close together.",
+    "Embeddings: how often each exact word occurs, with no other information."
+   ],
+   "answer": "a",
+   "explanation": "Counts record word frequencies, TF-IDF weights terms by rarity, n-grams keep local word order and embeddings represent semantic relationships. The other pairings swap these roles."
+  },
+  {
+   "id": "w7-a02",
+   "topic": "Method 1: lexicon scoring, and its failures",
+   "tests": "Recognizing the slang limitation of lexicon scoring (a praise word on the negative list)",
+   "stem": "A running-gear shop scores reviews with a fixed lexicon in which \"sick\" is on the negative list. The review \"Sick fit, they stay in during every run!\" receives a score of &minus;1 and is classed negative, although the customer gave 5 stars. Which lexicon limitation does this illustrate?",
+   "formula": "score = positive hits &minus; negative hits; score above 0 = positive, below 0 = negative, 0 = neutral.",
+   "options": [
+    "Negation: a missing rule for \"not\" reversed the meaning of a positive word.",
+    "Slang: a word used as praise in this context is scored as a negative hit.",
+    "Sarcasm: positive wording was used to describe a product failure.",
+    "Mixed language: the review switches between two languages mid-sentence."
+   ],
+   "answer": "b",
+   "explanation": "\"Sick\" is slang praise here, but the fixed list scores it as negative, like the course's 'sick fit!' example. There is no negator, no failure described in positive words, and only one language."
+  },
+  {
+   "id": "w7-a03",
+   "topic": "Normalization: tokens, lemmas and stems",
+   "tests": "Distinguishing a stem (may be a non-word, produced by rules) from a lemma (a dictionary form)",
+   "stem": "A cleaning step reduces word forms in delivery reviews. Which of the following outputs can only have been produced by stemming rather than by lemmatization?",
+   "formula": "",
+   "options": [
+    "\"batteries\" and \"battery\" both become \"battery\".",
+    "\"was\" and \"were\" both become \"be\".",
+    "\"earbuds\" and \"earbud\" both become \"earbud\".",
+    "\"charging\" and \"charged\" both become \"charg\"."
+   ],
+   "answer": "d",
+   "explanation": "A stem is whatever remains after rule-based chopping and need not be a dictionary word; \"charg\" is not an English word. The other outputs are dictionary forms, which is what lemmatization produces."
+  },
+  {
+   "id": "w7-a04",
+   "topic": "Normalization: tokens, lemmas and stems",
+   "tests": "Tokenizing only splits text into words and symbols; punctuation marks are tokens and words are unchanged",
+   "stem": "A tokenizer of the kind used in the course splits the review \"The case cracked, sadly!\" into words and symbols, with no other change. How many tokens does it produce?",
+   "formula": "",
+   "options": [
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "answer": "c",
+   "explanation": "The tokens are [ The &middot; case &middot; cracked &middot; , &middot; sadly &middot; ! ]: four words plus the comma and the exclamation mark. Tokenizing splits; it does not drop or merge anything."
+  },
+  {
+   "id": "w7-a05",
+   "topic": "Normalization: tokens, lemmas and stems",
+   "tests": "Applying lemmatization correctly to every token of a sentence",
+   "stem": "The lowercased tokens [ the &middot; earbuds &middot; were &middot; lasting &middot; hours ] are lemmatized. Which output is the correct result?",
+   "formula": "",
+   "options": [
+    "[ the &middot; earbud &middot; were &middot; last &middot; hours ]",
+    "[ the &middot; earbud &middot; be &middot; last &middot; hour ]",
+    "[ the &middot; earbud &middot; wer &middot; last &middot; hour ]",
+    "[ earbuds &middot; lasting &middot; hours ]"
+   ],
+   "answer": "b",
+   "explanation": "Lemmatization maps every form to its dictionary form: earbuds to earbud, were to be, lasting to last, hours to hour. Leaving forms unchanged is incomplete, \"wer\" is a chopped stem, and dropping \"the\" is stop-word removal, not lemmatization."
+  },
+  {
+   "id": "w7-a06",
+   "topic": "English and Chinese tokenization, and the dictionary",
+   "tests": "Why Chinese tokenization uses a dictionary and probabilities while English relies on spaces and punctuation",
+   "stem": "An analyst runs the English tokenizer (nltk) and the Chinese tokenizer (jieba) on the same review file. Why does the Chinese tokenizer depend on a dictionary?",
+   "formula": "",
+   "options": [
+    "Chinese words are always single characters, so the dictionary groups the characters into English words.",
+    "Chinese text usually has no spaces, so word boundaries are chosen using a dictionary and probabilities.",
+    "Chinese reviews contain more stop words, so the dictionary removes them before any splitting.",
+    "The dictionary assigns a sentiment score to each character, which decides where words end."
+   ],
+   "answer": "b",
+   "explanation": "English mostly marks boundaries with spaces and punctuation; Chinese usually does not, so jieba matches dictionary entries and uses probabilities to choose the most likely split. After tokenizing, both languages go through the same counting and weighting steps."
+  },
+  {
+   "id": "w7-a07",
+   "topic": "English and Chinese tokenization, and the dictionary",
+   "tests": "Fixing a split coined brand term: add it to the dictionary before counting",
+   "stem": "A sportswear firm's coined product name 疾风垫 (illustrative \"Gale Cushion\") is not in the tokenizer dictionary. The sentence 疾风垫的回弹很好 (\"The Gale Cushion's rebound is very good\") is split into [ 疾风 &middot; 垫的 &middot; 回弹 &middot; 很好 ]. What is the appropriate fix?",
+   "formula": "",
+   "options": [
+    "Add 的 to the stop list, which rejoins the two parts of the product name into one token.",
+    "Count 疾风 as the product, since the first part of a split name keeps all of its mentions.",
+    "Run the English tokenizer instead, which splits the Chinese sentence correctly at its spaces.",
+    "Add 疾风垫 to the dictionary before counting, so the name stays one token and 的 stands alone."
+   ],
+   "answer": "d",
+   "explanation": "The coined term is cut and its last character is glued to the particle 的. Adding the term to the dictionary keeps it as one token; stop-word removal cannot rejoin pieces, a fragment undercounts the product, and the Chinese sentence has no spaces."
+  },
+  {
+   "id": "w7-a08",
+   "topic": "English and Chinese tokenization, and the dictionary",
+   "tests": "Dictionary maintenance: built-in common words versus coined terms that must be added",
+   "stem": "Next month a Chinese earbud brand launches a campaign. Which of the following is the analyst most likely to need to add to the tokenizer dictionary, one entry per line?",
+   "formula": "",
+   "options": [
+    "入耳式 (in-ear), a common product description word",
+    "降噪 (noise cancellation), a common feature word",
+    "#夏日跑团 (illustrative), a new campaign hashtag",
+    "的 (linking particle), a common grammatical word"
+   ],
+   "answer": "c",
+   "explanation": "Common words such as 入耳式 and 降噪 are built in and segment correctly without customization, and 的 is a particle. Coined brand terms, product codes and campaign hashtags must be added, and new campaigns keep introducing them."
+  },
+  {
+   "id": "w7-a09",
+   "topic": "Stop words: what to remove and what to keep",
+   "tests": "Removing negation terms with the stop list reverses sentiment (不好 becomes 好)",
+   "stem": "A team's Chinese stop list contains 的, 了, 在 and 不. The review 这个耳机不好 (\"These earbuds are not good\") passes through it before sentiment scoring. What does the sentiment step now see?",
+   "formula": "",
+   "options": [
+    "好 without 不, so \"not good\" is read as \"good\" and the meaning is reversed.",
+    "不好 unchanged, because stop lists are never applied before sentiment scoring.",
+    "Only 的 removed, so the meaning of the review is unchanged.",
+    "Nothing at all, because every token in the review is on the stop list."
+   ],
+   "answer": "a",
+   "explanation": "Negation terms such as 不 and 没 should be retained. Removing 不 turns 不好 (not good) into 好 (good), so inspect the stop list before applying it."
+  },
+  {
+   "id": "w7-a10",
+   "topic": "Stop words: what to remove and what to keep",
+   "tests": "Stop lists are language-specific: an English list does not remove Chinese particles",
+   "stem": "An analyst applies the standard English stop list (179 words) to a file of Chinese reviews and then counts words. What is the main consequence?",
+   "formula": "",
+   "options": [
+    "Nothing changes, because the English list already covers the Chinese particles.",
+    "Negation terms 不 and 没 are deleted from the counts, which reverses the negative reviews.",
+    "Particles such as 的 and 了 stay in the counts, because stop lists are language-specific.",
+    "All Chinese tokens are deleted, because none of them appear in the English list."
+   ],
+   "answer": "c",
+   "explanation": "The English list contains English words only; Chinese needs a separate list with particles such as 的, 了 and 在. The English list neither contains 不 and 没 nor deletes words that are absent from it."
+  },
+  {
+   "id": "w7-a11",
+   "topic": "Bag of words: documents as numbers",
+   "tests": "Building a bag-of-words row: counts of each vocabulary word, including repeats and zeros",
+   "stem": "A bag-of-words table uses the vocabulary (battery, good, bad, case, price), in that order, after lowercasing and removing punctuation. Which row represents the review \"Battery good, battery bad, case fine\"?",
+   "formula": "",
+   "options": [
+    "2, 1, 1, 1, 0",
+    "1, 1, 1, 1, 0",
+    "2, 1, 1, 1, 1",
+    "1, 2, 1, 1, 0"
+   ],
+   "answer": "a",
+   "explanation": "Bag of words records how often each vocabulary word occurs: battery twice, good, bad and case once each, price zero. \"fine\" is not in the vocabulary. A row of 1s would record presence only, not counts."
+  },
+  {
+   "id": "w7-a12",
+   "topic": "Bag of words: documents as numbers",
+   "tests": "Bag of words (and TF-IDF built on it) ignores word order; local order needs n-grams",
+   "stem": "The reviews \"Fast charging, slow shipping\" and \"Slow charging, fast shipping\" produce identical bag-of-words rows. Which statement is correct?",
+   "formula": "",
+   "options": [
+    "TF-IDF weights would separate the two reviews, because rarer words get higher weights.",
+    "The rows differ, because the first word in each review receives a higher count.",
+    "Lemmatizing \"charging\" to \"charge\" would separate the two reviews.",
+    "Counts keep no word order; bigrams such as \"fast charging\" would separate them."
+   ],
+   "answer": "d",
+   "explanation": "Both reviews contain the same four words once each, so the rows are identical although the meanings differ. TF-IDF is built on the same counts and also ignores order; bigrams preserve the local phrases that differ."
+  },
+  {
+   "id": "w7-a13",
+   "topic": "TF-IDF: weighting words by frequency and rarity",
+   "tests": "Computing a TF-IDF weight with the natural log",
+   "stem": "In a collection of N = 8 reviews, the word \"strap\" appears in 2 reviews. In review r5 it appears 3 times. What is its TF-IDF weight in r5, to one decimal place?",
+   "formula": "TF-IDF(t, d) = TF(t, d) &times; IDF(t), with IDF(t) = ln(N / df(t)); TF = number of times t appears in d; N = number of documents; df(t) = number of documents containing t. ln is the natural logarithm.",
+   "options": [
+    "1.8",
+    "1.4",
+    "2.1",
+    "4.2"
+   ],
+   "answer": "d",
+   "explanation": "IDF = ln(8/2) = ln(4) = 1.39, so the weight is 3 &times; 1.39 = 4.2 (4.16 unrounded). 1.8 uses log base 10, 1.4 is the IDF alone and 2.1 is ln(8), which treats the word as appearing in only one review."
+  },
+  {
+   "id": "w7-a14",
+   "topic": "TF-IDF: weighting words by frequency and rarity",
+   "tests": "A word that appears in every document has IDF = ln(1) = 0, so its weight is zero however often it appears",
+   "stem": "In a collection of 50 headphone reviews, the word \"earbuds\" appears in all 50. It appears 6 times in review r7. What is its TF-IDF weight in r7?",
+   "formula": "TF-IDF(t, d) = TF(t, d) &times; IDF(t), with IDF(t) = ln(N / df(t)); TF = number of times t appears in d; N = number of documents; df(t) = number of documents containing t.",
+   "options": [
+    "0, because IDF = ln(50/50) = ln(1) = 0.",
+    "6, because a common word's weight equals its count.",
+    "23.47, because 6 &times; ln(50) rewards the repetition.",
+    "1.79, because ln(6) measures repetition only."
+   ],
+   "answer": "a",
+   "explanation": "df = N, so IDF = ln(1) = 0 and the weight is 6 &times; 0 = 0. A word found in every review does not distinguish any review, however often it is repeated."
+  },
+  {
+   "id": "w7-a15",
+   "topic": "TF-IDF: weighting words by frequency and rarity",
+   "tests": "Interpreting a high TF-IDF weight: distinctive, not necessarily a problem; read the context",
+   "stem": "In a group of smartwatch reviews, \"firmware\" has the highest TF-IDF weight. A manager concludes that the firmware is causing complaints. Which reading is best supported?",
+   "formula": "",
+   "options": [
+    "The weight proves a problem, because rare words appear mainly in the negative reviews of a product.",
+    "The word is distinctive here; read the reviews to see if it is praise, a complaint or a question.",
+    "The weight is high because \"firmware\" appears in almost every review in the collection.",
+    "The weight shows negative sentiment, because IDF measures how negative a word is."
+   ],
+   "answer": "b",
+   "explanation": "TF-IDF marks a word as frequent here and rare elsewhere, so it is distinctive, not necessarily bad news. A frequent word everywhere would have a low IDF, and IDF measures rarity, not sentiment."
+  },
+  {
+   "id": "w7-a16",
+   "topic": "TF-IDF: weighting words by frequency and rarity",
+   "tests": "TF and IDF contribute jointly: repetition of a moderately rare word can outweigh one occurrence of a rarer word",
+   "stem": "In N = 10 reviews, \"hiss\" appears in 1 review and occurs once in review r2. \"cable\" appears in 5 reviews and occurs 4 times in r2. Which word has the higher TF-IDF weight in r2, to one decimal place?",
+   "formula": "TF-IDF(t, d) = TF(t, d) &times; IDF(t), with IDF(t) = ln(N / df(t)); TF = number of times t appears in d; N = number of documents; df(t) = number of documents containing t.",
+   "options": [
+    "\"hiss\": 1 &times; ln(10) = 2.3, above \"cable\": 4 &times; 0.5 = 2.0.",
+    "\"cable\": 4 &times; ln(2) = 2.8, above \"hiss\": 1 &times; ln(10) = 2.3.",
+    "\"hiss\", because a word found in only one review always has the higher weight.",
+    "Neither: they tie, because both words appear in review r2."
+   ],
+   "answer": "b",
+   "explanation": "IDF(cable) = ln(10/5) = 0.69, so 4 &times; 0.69 = 2.8; IDF(hiss) = ln(10) = 2.30. Rarity alone does not decide; repetition within the review also counts. The 0.5 option uses df/N instead of ln(N/df)."
+  },
+  {
+   "id": "w7-a17",
+   "topic": "N-grams: keeping local word order",
+   "tests": "Listing the bigrams of a review: consecutive overlapping pairs that keep local order",
+   "stem": "After cleaning, a review has the tokens [ battery &middot; not &middot; good &middot; enough ]. Which list gives all of its bigrams?",
+   "formula": "",
+   "options": [
+    "battery &middot; not &middot; good &middot; enough",
+    "battery not &middot; not good &middot; good enough",
+    "battery not good &middot; not good enough",
+    "battery not &middot; good enough"
+   ],
+   "answer": "b",
+   "explanation": "A bigram is a sequence of two consecutive tokens, so 4 tokens give 3 overlapping bigrams, including \"not good\", which keeps the negation. The other lists are unigrams, trigrams and non-overlapping pairs."
+  },
+  {
+   "id": "w7-a18",
+   "topic": "N-grams: keeping local word order",
+   "tests": "The cost of longer n-grams: larger, sparser vocabularies",
+   "stem": "A team moves its review features from bigrams to 4-grams to capture longer phrases. What is the most likely side effect?",
+   "formula": "",
+   "options": [
+    "The vocabulary becomes smaller, because longer phrases repeat more often across reviews.",
+    "Local word order is lost, because 4-grams are counted without regard to position.",
+    "Labeled reviews become necessary before any of the phrases can be counted.",
+    "The vocabulary becomes larger and sparser: more columns, mostly zero for any one review."
+   ],
+   "answer": "d",
+   "explanation": "Each extra word in the n-gram creates many more possible combinations, so longer n-grams give larger, sparser vocabularies; the length should be chosen for the task. N-grams keep local order and need no labels."
+  },
+  {
+   "id": "w7-a19",
+   "topic": "Embeddings and cosine similarity",
+   "tests": "king &minus; man + woman &asymp; queen is an approximate analogy that depends on training data, not a rule",
+   "stem": "A presentation claims that because king &minus; man + woman &asymp; queen in a word-embedding space, the same arithmetic will reliably answer any analogy about the firm's products. Which statement matches the course?",
+   "formula": "",
+   "options": [
+    "The relation is an exact rule that holds for every word pair in every embedding model ever trained.",
+    "The example shows that embeddings record how often each word occurs in each review.",
+    "Similar offsets can encode a relation, but it is approximate and depends on training data.",
+    "The arithmetic works only because embeddings always have exactly two dimensions."
+   ],
+   "answer": "c",
+   "explanation": "Training adjusts vectors using word contexts, so similar offsets can link related pairs, but the course calls it an analogy, not a rule. The number of dimensions depends on the model, and embeddings are not word counts."
+  },
+  {
+   "id": "w7-a20",
+   "topic": "Embeddings and cosine similarity",
+   "tests": "Computing cosine similarity from two small vectors",
+   "stem": "Two reviews have the vectors a = (2, 1, 2) and b = (1, 2, 2). What is their cosine similarity, to two decimal places?",
+   "formula": "cos &theta; = (a &middot; b) / (&#8214;a&#8214; &#8214;b&#8214;); a &middot; b = sum of products of matching coordinates; &#8214;a&#8214; = square root of the sum of squared coordinates.",
+   "options": [
+    "0.89",
+    "8.00",
+    "1.33",
+    "0.44"
+   ],
+   "answer": "a",
+   "explanation": "a &middot; b = 2 + 2 + 4 = 8; &#8214;a&#8214; = &#8214;b&#8214; = &radic;9 = 3; cos &theta; = 8 / 9 = 0.89. 8.00 is the dot product alone, 1.33 divides by the sum of the lengths and 0.44 divides by twice their product."
+  },
+  {
+   "id": "w7-a21",
+   "topic": "Embeddings and cosine similarity",
+   "tests": "Cosine compares direction only: vector length does not affect it",
+   "stem": "A short review has the vector u = (1, 0, 2). A long review that repeats the same points has v = (3, 0, 6). What is their cosine similarity, and why?",
+   "formula": "cos &theta; = (a &middot; b) / (&#8214;a&#8214; &#8214;b&#8214;); a &middot; b = sum of products of matching coordinates; &#8214;a&#8214; = square root of the sum of squared coordinates.",
+   "options": [
+    "1/3, because v is three times as long as u and cosine scales with length.",
+    "0, because two vectors of different length cannot point in the same direction.",
+    "1, because v points the same way as u; length does not affect cosine.",
+    "&minus;1, because repeating the same words points the vector the opposite way."
+   ],
+   "answer": "c",
+   "explanation": "u &middot; v = 3 + 0 + 12 = 15, &#8214;u&#8214; = &radic;5, &#8214;v&#8214; = &radic;45 = 3&radic;5, so cos &theta; = 15 / 15 = 1. Dividing by the lengths removes size, so only direction matters."
+  },
+  {
+   "id": "w7-a22",
+   "topic": "Choosing a representation, and review search",
+   "tests": "Matching a business task to a representation: cross-language meaning search needs (multilingual) embeddings",
+   "stem": "A firm wants to find Chinese and English reviews that describe the same problem in different words, and it accepts extra computation. Which representation fits best according to the course's comparison?",
+   "formula": "",
+   "options": [
+    "Bag of words, because word counts are identical across the two languages.",
+    "TF-IDF, because the rarest words automatically match across the two languages.",
+    "Multilingual embeddings, which support meaning-based search across languages.",
+    "Trigrams, because longer phrases translate meaning from one language to the other."
+   ],
+   "answer": "c",
+   "explanation": "Only embeddings represent semantic relationships, and multilingual models suit cross-language tasks, at a cost of computation and data. Counts, TF-IDF and n-grams match exact words or phrases only."
+  },
+  {
+   "id": "w7-a23",
+   "topic": "Choosing a representation, and review search",
+   "tests": "A query with no vocabulary words gives a zero vector, whose cosine is undefined (not zero)",
+   "stem": "A TF-IDF review search is built on a shop's existing reviews. A customer searches for \"splashproof\", a word that appears in no review. What happens?",
+   "formula": "",
+   "options": [
+    "Every review gets a cosine of 0, so the reviews are listed in random order instead.",
+    "Every review gets a cosine of 1, because no review differs from the query.",
+    "The longest reviews rank first, because they contain the most words.",
+    "The query vector is zero, so cosine is undefined and no ranking can be produced."
+   ],
+   "answer": "d",
+   "explanation": "With no known words, the TF-IDF query vector is zero. A zero vector has no direction, so its cosine is undefined, not 0, and no ranking is shown (the course's \"waterproof\" check)."
+  },
+  {
+   "id": "w7-a24",
+   "topic": "Choosing a representation, and review search",
+   "tests": "High cosine similarity does not establish the same complaint or the same sentiment",
+   "stem": "The reviews \"The battery lasts for hours\" and \"The battery dies after two hours\" have a cosine similarity of 0.85. A colleague says they report the same complaint. Which response is correct?",
+   "formula": "cos &theta; = (a &middot; b) / (&#8214;a&#8214; &#8214;b&#8214;); a &middot; b = sum of products of matching coordinates; &#8214;a&#8214; = square root of the sum of squared coordinates.",
+   "options": [
+    "Yes: any cosine above 0.7 establishes that two reviews report the same complaint.",
+    "No: a cosine above 0.5 means that the two vectors point in opposite directions.",
+    "Yes: because cosine ignores length, it measures whether two reviews share sentiment.",
+    "No: a high cosine shows similar direction, not the same meaning; one is praise."
+   ],
+   "answer": "d",
+   "explanation": "Cosine measures direction, so reviews sharing most words score high even when they say opposite things. Read the original reviews and validate on the task; &minus;1, not 0.5, marks opposite directions."
+  },
+  {
+   "id": "w7-a25",
+   "topic": "Topic models and latent Dirichlet allocation (LDA)",
+   "tests": "Computing a word's probability in a review from LDA's review mixture and topic-word probabilities",
+   "stem": "An LDA model gives a meal-kit review the mixture Packaging 25% and Freshness 75%. The topic-word probabilities for \"soggy\" are P(soggy | Packaging) = 0.04 and P(soggy | Freshness) = 0.16. What is the probability that a word drawn from this review is \"soggy\"?",
+   "formula": "P(w = v | &theta;<sub>d</sub>, &Phi;) = &Sigma;<sub>k=1..K</sub> &theta;<sub>dk</sub> &phi;<sub>kv</sub>; &theta;<sub>dk</sub> = share of topic k in review d; &phi;<sub>kv</sub> = probability of word v in topic k.",
+   "options": [
+    "0.20",
+    "0.13",
+    "0.10",
+    "0.07"
+   ],
+   "answer": "b",
+   "explanation": "0.25 &times; 0.04 + 0.75 &times; 0.16 = 0.01 + 0.12 = 0.13. 0.20 adds the probabilities without the mixture, 0.10 averages them and 0.07 swaps the topic shares."
+  },
+  {
+   "id": "w7-a26",
+   "topic": "Topic models and latent Dirichlet allocation (LDA)",
+   "tests": "LDA's two estimated tables and their dimensions: review mixtures D &times; K, topic-word probabilities K &times; V",
+   "stem": "An analyst fits LDA to D = 400 reviews with a vocabulary of V = 1,500 words and chooses K = 8 topics. How many numbers does the estimated review-mixture table contain?",
+   "formula": "Review mixtures: D &times; K. Topic-word probabilities: K &times; V.",
+   "options": [
+    "12,000",
+    "600,000",
+    "3,200",
+    "408"
+   ],
+   "answer": "c",
+   "explanation": "The review-mixture table has one row per review and one column per topic: 400 &times; 8 = 3,200. 12,000 is the topic-word table (8 &times; 1,500), and 600,000 is the documents &times; words count table."
+  },
+  {
+   "id": "w7-a27",
+   "topic": "Topic models and latent Dirichlet allocation (LDA)",
+   "tests": "Evaluating topics: lower perplexity need not give clearer topics; compare K, preprocessing and repeated fits",
+   "stem": "An LDA fit with K = 12 has lower perplexity than one with K = 6, but the team finds the K = 12 topics hard to interpret. What should the team conclude?",
+   "formula": "",
+   "options": [
+    "Choose K = 12, because lower perplexity guarantees that the topics are clearer to people.",
+    "Lower perplexity need not mean clearer topics; compare K, preprocessing and repeated fits.",
+    "Let the model choose K itself, because the number of topics is never set by the analyst.",
+    "Choose K = 6, because fewer topics always produce lower perplexity than a larger number of topics."
+   ],
+   "answer": "b",
+   "explanation": "K is chosen by the analyst, and a better statistical fit can still give topics that people find harder to interpret. The course advice is to compare K values, preprocessing and repeated fits before trusting the topics."
+  },
+  {
+   "id": "w7-a28",
+   "topic": "Sentiment analysis at scale",
+   "tests": "Aspect-level sentiment identifies which feature to act on; document level only summarizes",
+   "stem": "A watch review says: \"Delivery was fast, but the strap snapped within a week.\" Which output gives a manager the most actionable reading?",
+   "formula": "",
+   "options": [
+    "Mixed overall; investigate the product in general.",
+    "Delivery &minus;, strap +; investigate the delivery partner.",
+    "Negative overall; refund every customer who bought it.",
+    "Delivery +, strap &minus;; investigate the strap problem."
+   ],
+   "answer": "d",
+   "explanation": "Aspect-level analysis gives a sentiment per feature, which points to the strap. A document-level 'mixed' label summarizes the review but leaves the specific issue unclear."
+  },
+  {
+   "id": "w7-a29",
+   "topic": "Method 1: lexicon scoring, and its failures",
+   "tests": "Scoring a review with a lexicon and a negation rule",
+   "stem": "A lexicon has the positive words great, comfy, love and the negative words bad, loose, poor. A rule flips the sign of a hit when \"not\" appears immediately before it. What is the score of \"Not bad, comfy, but the strap is loose\" with the rule applied, and its class?",
+   "formula": "score = positive hits &minus; negative hits; score above 0 = positive, below 0 = negative, 0 = neutral.",
+   "options": [
+    "+1, positive",
+    "&minus;1, negative",
+    "+3, positive",
+    "0, neutral"
+   ],
+   "answer": "a",
+   "explanation": "With the rule, \"not bad\" counts +1, \"comfy\" +1 and \"loose\" &minus;1, giving +1. Without the rule the score would be &minus;1 + 1 &minus; 1 = &minus;1, negative."
+  },
+  {
+   "id": "w7-a30",
+   "topic": "Method 2: supervised learning on text",
+   "tests": "Reading a logistic regression coefficient (positive sentiment as target), holding other features fixed",
+   "stem": "A logistic regression with positive sentiment as the target class uses TF-IDF word columns. The coefficient on \"refund\" is &minus;1.2. Which interpretation is correct?",
+   "formula": "",
+   "options": [
+    "Holding other features fixed, a higher \"refund\" value lowers the predicted probability of positive sentiment.",
+    "Holding other features fixed, a higher \"refund\" value raises the predicted probability of positive sentiment.",
+    "Removing the word \"refund\" from the firm's replies would make the customers more satisfied.",
+    "The coefficient also covers \"no refund needed\", because unigram features keep the word order."
+   ],
+   "answer": "a",
+   "explanation": "A negative coefficient lowers the predicted probability of the target class, other features fixed. It describes an association in the model, not a lever, and unigram features omit word order."
+  },
+  {
+   "id": "w7-a31",
+   "topic": "Method 3: zero-shot analysis with a large language model",
+   "tests": "Meaning of zero-shot LLM analysis: no labeled examples and no task-specific training",
+   "stem": "A team asks a large language model for the sentiment, aspects and a short reason for each review, using a \"zero-shot\" request. What makes the request zero-shot?",
+   "formula": "",
+   "options": [
+    "It returns a sentiment score of zero whenever the review is neutral.",
+    "It scores each review from a fixed word list without any learning.",
+    "It supplies no labeled examples and requires no task-specific training.",
+    "It trains a classifier on TF-IDF columns and tests it on held-out reviews."
+   ],
+   "answer": "c",
+   "explanation": "Zero-shot means the model is simply asked, without labeled examples or training for the task. A fixed word list is the lexicon method, and training on TF-IDF columns is the supervised method."
+  },
+  {
+   "id": "w7-a32",
+   "topic": "Comparing the three methods and routing reviews",
+   "tests": "Routing guide: a stable task with labeled reviews goes to a supervised model, checked on held-out errors and label quality",
+   "stem": "A firm has 20,000 reviews with validated sentiment labels for a product line whose vocabulary has stayed stable for two years. It needs daily scores at low cost per review. According to the routing guide, which method should it test and what should it check before use?",
+   "formula": "",
+   "options": [
+    "A supervised model; check held-out errors and the quality of the labels.",
+    "LLM-assisted analysis; check output consistency and the cost per review.",
+    "A lexicon; check whether negation and domain words are handled.",
+    "A supervised model; check that the word list covers current slang."
+   ],
+   "answer": "a",
+   "explanation": "A stable task with labeled reviews maps to a supervised model, checked on held-out errors and label quality; inference is low-cost at scale. A word list belongs to the lexicon method."
+  }
+ ],
+ "short": [
+  {
+   "id": "w7-b01",
+   "topic": "Normalization: tokens, lemmas and stems",
+   "tests": "Diagnosing a pipeline's output: token count, which outputs are lemmas versus a stem, and the risk of dropping 'not'",
+   "title": "Tokens, lemmas, a stem and a lost negation",
+   "stem": "Kettlewise, a kitchen-appliance brand, receives the review \"The lids were not sealing, kettles leaked!\". A vendor's cleaning pipeline returns [ lid &middot; be &middot; seal &middot; kettl &middot; leak ].<br>(1) How many tokens does the lowercased review give after tokenizing only, counting each punctuation mark as a token? (2) Which outputs are lemmas and which output is a stem? Explain how you can tell. (3) Explain what the pipeline has done to \"not\", why it matters for the review's meaning, and what the analyst should inspect.",
+   "formula": "",
+   "reference": "(1) Tokenizing gives [ the &middot; lids &middot; were &middot; not &middot; sealing &middot; , &middot; kettles &middot; leaked &middot; ! ], which is 9 tokens; tokenizing only splits and changes no word. (2) lid, be, seal and leak are lemmas: each is the dictionary form of lids, were, sealing and leaked. \"kettl\" is a stem: rules have chopped the ending, and the result is not a dictionary word (the lemma would be \"kettle\"). (3) The pipeline has dropped \"not\" (and \"the\"). Without \"not\", the remaining features say the lids seal, which turns a complaint about lids that do not seal into a neutral or positive statement. The analyst should inspect the tokenizer's and cleaning step's input and output, and make sure negation terms are retained.",
+   "marking": "Award 1 mark for 9 tokens (accept 9 with the list shown; do not accept 7, which omits punctuation). Award 2 marks for classifying lid, be, seal, leak as lemmas and kettl as a stem, 1 mark each. Award 1 mark for the reason: a lemma is a dictionary form, a stem need not be a dictionary word. Award 1 mark for explaining that dropping \"not\" reverses or removes the negative meaning (lids seal versus lids do not seal). Award 1 mark for a concrete check: inspect the pipeline's input and output, or keep negation terms such as not, never, no. Naming only \"preprocessing errors\" without the meaning change does not earn the reversal mark."
+  },
+  {
+   "id": "w7-b02",
+   "topic": "English and Chinese tokenization, and the dictionary",
+   "tests": "Chinese segmentation of a coined brand term: two errors before the fix, the fix, and dictionary maintenance",
+   "title": "A split brand term and dictionary maintenance",
+   "stem": "Xingyao Wearables, a smartwatch maker, analyses Chinese reviews. Its coined product name 星芒环 (illustrative \"Star Ring\") is not in the tokenizer dictionary. The sentence 星芒环的续航很长 (\"The Star Ring's battery life is very long\") is tokenized as follows:<table class=\"ex\"><tr><th>Dictionary</th><th>Tokens</th></tr><tr><td>Default</td><td>[ 星芒 &middot; 环的 &middot; 续航 &middot; 很长 ]</td></tr><tr><td>After adding one entry</td><td>[ 星芒环 &middot; 的 &middot; 续航 &middot; 很长 ]</td></tr></table>With the default dictionary, a count of 星芒环 across 2,000 reviews returns 0. (1) Identify the two segmentation errors in the default output and their effect on the count. (2) State the fix. (3) Next month the firm launches a campaign with a new hashtag and a new product code. Explain who must act and what could go wrong if nobody does.",
+   "formula": "",
+   "reference": "(1) With the default dictionary the product name is split into 星芒 and 环, and 环 is glued to the particle 的 to form 环的, a wrong token. So the product is never counted as itself (the count of 0 is a tokenization artefact, not an absence of mentions), and 的 joins the wrong token. (2) Add 星芒环 to the dictionary, one entry per line, before counting; the term then stays one token and 的 returns to marking possession. (3) The analytics team maintaining the dictionary must add the new hashtag and product code before the campaign's reviews are counted. Common words such as 续航 already segment correctly, but coined terms do not; an outdated dictionary causes segmentation errors that flow into every later count, weight and sentiment score.",
+   "marking": "Award 1 mark for the split product name and 1 mark for 的 attached to the wrong token (环的). Award 1 mark for explaining that the count of 0 understates real mentions. Award 1 mark for adding the term to the dictionary before counting. Award 1 mark for naming a responsibility to update the dictionary for new campaign terms (hashtags, product codes). Award 1 mark for the consequence: segmentation errors affect later counts, weights or sentiment. Answers that propose switching to the English tokenizer earn no fix mark."
+  },
+  {
+   "id": "w7-b03",
+   "topic": "Stop words: what to remove and what to keep",
+   "tests": "Adapting a stop list to the analytical task: remove grammatical words, retain negation, judge 很 by task; share of affected reviews",
+   "title": "Adapting a stop list to the task",
+   "stem": "Pinecrest Coffee wants to (i) count what its reviews are about and (ii) score their sentiment. A proposed bilingual stop list is: the, a, and, of, not, never, 的, 了, 在, 不, 没, 很. In a sample of 200 reviews labeled negative, 64 contain 不 or 没.<br>(1) Calculate the percentage of the negative reviews that contain 不 or 没. (2) Which terms on the list should be removed for both tasks, and which should be retained? Explain the consequence of removing the retained ones. (3) Explain why 很 (very) may be treated differently in the two tasks, and state the principle for using any stop list.",
+   "formula": "Percentage = reviews containing the terms / all reviews in the sample &times; 100.",
+   "reference": "(1) 64 / 200 = 0.32, so 32% of the negative reviews contain 不 or 没. (2) Grammatical words with little topic information, such as the, a, and, of, 的, 了 and 在, can be removed for both tasks. The negation terms not, never, 不 and 没 should be retained; removing them would turn, for example, 不好 (not good) into 好 (good), so up to about a third of these negative reviews could lose the word that carries their negative meaning. (3) 很 adds little for counting topics but strengthens sentiment, so its relevance depends on the analytical task: it may be removed for topic counts and kept for sentiment. The principle is to inspect the stop list before applying it and adapt it to the analytical question.",
+   "marking": "Award 1 mark for 32%. Award 1 mark for removing the grammatical words (at least three correct examples, with at least one Chinese particle). Award 1 mark for retaining all four negation terms and 1 mark for explaining the reversal (不好 to 好 or equivalent), linked to the reviews at risk. Award 1 mark for the task-dependent treatment of 很. Award 1 mark for the principle: inspect and adapt the stop list to the question. Do not award the retention mark if any negation term is removed."
+  },
+  {
+   "id": "w7-b04",
+   "topic": "Bag of words: documents as numbers",
+   "tests": "Bag-of-words rows lose order; bigrams separate them at the cost of a larger vocabulary",
+   "title": "Identical count rows and the bigram fix",
+   "stem": "Glowfin Aquariums receives two reviews: d1 \"quiet pump, loud filter\" and d2 \"loud pump, quiet filter\". Text is lowercased and punctuation is removed.<br>(1) Write the bag-of-words rows of d1 and d2 over the vocabulary (quiet, pump, loud, filter), and state what a manager would wrongly conclude from them. (2) List the bigrams of each review and the number of distinct bigram columns across both reviews. (3) Explain what the bigrams fix and one cost of adding them.",
+   "formula": "",
+   "reference": "(1) Both rows are 1, 1, 1, 1: the two reviews look identical, so a model or manager would treat them as the same opinion, although d1 complains about the filter and d2 about the pump. Bag of words does not preserve word order. (2) d1: quiet pump, pump loud, loud filter. d2: loud pump, pump quiet, quiet filter. No bigram is shared, so there are 6 distinct bigram columns, compared with 4 unigram columns. (3) Bigrams keep local word order, so \"loud filter\" and \"loud pump\" become separate features and the rows now differ, pointing each complaint to the right part. The cost is a larger, sparser vocabulary: more columns, most of them zero for any one review, and it grows quickly with longer n-grams.",
+   "marking": "Award 1 mark for both rows 1, 1, 1, 1 and 1 mark for explaining the lost word order and the wrong conclusion. Award 1 mark for the correct bigram lists (accept them without the cross-comma pairs pump loud and pump quiet if the student states that phrases stop at punctuation, giving 4 distinct bigrams), and 1 mark for the matching distinct count (6, or 4 under that stated convention). Award 1 mark for explaining that local order now separates the complaints. Award 1 mark for the larger, sparser vocabulary cost. Claiming that TF-IDF alone would separate the reviews earns no fix mark."
+  },
+  {
+   "id": "w7-b05",
+   "topic": "TF-IDF: weighting words by frequency and rarity",
+   "tests": "Computing TF-IDF for several words in one review, ranking them, and the caution before naming a problem",
+   "title": "TF-IDF weights in one camping review",
+   "stem": "Trailnest sells camping gear and has N = 6 reviews. The table shows, for four words, the number of reviews containing the word and its count in review r4.<table class=\"ex\"><tr><th>Word</th><th>Reviews containing the word (df)</th><th>Count in r4 (TF)</th></tr><tr><td>tent</td><td>6</td><td>2</td></tr><tr><td>zip</td><td>3</td><td>1</td></tr><tr><td>leak</td><td>2</td><td>2</td></tr><tr><td>seam</td><td>1</td><td>1</td></tr></table>(1) Compute the IDF and TF-IDF weight of each word in r4, to two decimal places. (2) Rank the words and say which best characterizes r4. (3) Explain why \"tent\" scores as it does, and what the product team should do before reporting a \"leak problem\".",
+   "formula": "TF-IDF(t, d) = TF(t, d) &times; IDF(t), with IDF(t) = ln(N / df(t)); TF = number of times t appears in d; N = number of documents; df(t) = number of documents containing t. ln is the natural logarithm.",
+   "reference": "(1) IDF: tent = ln(6/6) = 0; zip = ln(6/3) = ln 2 = 0.69; leak = ln(6/2) = ln 3 = 1.10; seam = ln(6/1) = ln 6 = 1.79. Weights: tent = 2 &times; 0 = 0; zip = 1 &times; 0.69 = 0.69; leak = 2 &times; 1.10 = 2.20; seam = 1 &times; 1.79 = 1.79. (2) leak (2.20) &gt; seam (1.79) &gt; zip (0.69) &gt; tent (0). \"leak\" best characterizes r4: it is fairly rare and repeated. \"seam\" is the rarest word but appears once, so repetition lets \"leak\" rank higher. (3) \"tent\" appears in every review, so its IDF is ln(1) = 0 and it distinguishes no review, however often it occurs. A high weight means distinctive, not necessarily a complaint, and one review is not evidence of frequency: the team should read r4 and the other reviews containing \"leak\" before reporting a problem.",
+   "marking": "Award 2 marks for the four IDF values (1 mark if three are correct). Award 1 mark for the four weights (accept 2.19 or 2.20 for leak). Award 1 mark for the ranking with leak highest and the joint-effect explanation. Award 1 mark for tent's zero weight explained by df = N. Award 1 mark for the caution: read the reviews, distinctive is not the same as a problem. Use error carried forward: a wrong IDF used correctly in the weights and ranking loses only the IDF mark. Using log base 10 throughout loses the IDF marks but can earn the remaining marks if consistent."
+  },
+  {
+   "id": "w7-b06",
+   "topic": "Embeddings and cosine similarity",
+   "tests": "Computing and ranking cosines with hand-assigned vectors; length invariance; high cosine does not prove the same complaint",
+   "title": "Ranking support tickets by cosine similarity",
+   "stem": "HelpNest, a home-repair booking app, tests a meaning-based search using hand-assigned three-dimensional vectors (coordinates chosen by an analyst; no model is trained). The query \"Booked plumber never showed up\" has q = (2, 2, 1).<table class=\"ex\"><tr><th>Ticket</th><th>Text</th><th>Vector</th></tr><tr><td>t1</td><td>\"Plumber did not arrive; I waited all day for the plumber, who did not arrive\"</td><td>(4, 4, 2)</td></tr><tr><td>t2</td><td>\"The electrician came two hours late\"</td><td>(0, 3, 4)</td></tr><tr><td>t3</td><td>\"Great price for the cleaning service\"</td><td>(2, &minus;1, &minus;2)</td></tr></table>(1) Compute the cosine similarity of q with each ticket, to two decimal places, and rank the tickets. (2) Explain why t1 scores as it does although it is twice as long as needed. (3) A colleague wants to treat every ticket with cosine above 0.6 as the same complaint as the query. Give one reason this is unsafe and what to do instead.",
+   "formula": "cos &theta; = (a &middot; b) / (&#8214;a&#8214; &#8214;b&#8214;); a &middot; b = sum of products of matching coordinates; &#8214;a&#8214; = square root of the sum of squared coordinates.",
+   "reference": "(1) &#8214;q&#8214; = &radic;(4 + 4 + 1) = 3. t1: q &middot; t1 = 8 + 8 + 2 = 18, &#8214;t1&#8214; = 6, cos = 18 / 18 = 1.00. t2: q &middot; t2 = 0 + 6 + 4 = 10, &#8214;t2&#8214; = 5, cos = 10 / 15 = 0.67. t3: q &middot; t3 = 4 &minus; 2 &minus; 2 = 0, cos = 0 / 9 = 0.00. Ranking: t1, t2, t3. (2) t1's vector is exactly twice q, so it points in the same direction; cosine divides by the lengths, so length does not affect it and the score is 1. (3) A high cosine shows a similar vector direction, not the same complaint: t2 (0.67) is a late electrician, not a missing plumber. Here the coordinates were also chosen by hand, so the ranking follows the assigned mapping. The team should read the original tickets and validate the search on its own task before grouping complaints.",
+   "marking": "Award 3 marks for the three cosines (1 each; accept 0.66 or 0.67 for t2) and 1 mark for the ranking t1, t2, t3. Award 1 mark for explaining that t1 points in the same direction and length does not affect cosine. Award 1 mark for explaining that high cosine is not proof of the same complaint, with a supported example or the hand-assigned-coordinates point, plus reading or validating as the remedy. Carry forward arithmetic errors into the ranking. A cosine of 0 for t3 should be read as perpendicular (unrelated), not undefined."
+  },
+  {
+   "id": "w7-b07",
+   "topic": "Topic models and latent Dirichlet allocation (LDA)",
+   "tests": "LDA word probability with three topics, the dominant contribution, and why a topic label is not a sentiment",
+   "title": "A billing topic is not a billing complaint",
+   "stem": "Lingora, a language-learning app, fits LDA with K = 3 topics. A review's mixture is: topic 1 = 0.5, topic 2 = 0.3, topic 3 = 0.2. For the word \"charge\", the topic-word probabilities are 0.02 (topic 1), 0.30 (topic 2) and 0.05 (topic 3). Topic 2's top words are charge, renew, price, refund, plan.<br>(1) Compute the probability that a word drawn from this review is \"charge\", and say which topic contributes most. (2) The analyst proposes labeling topic 2 \"billing complaints\" and cutting prices because it is a large topic. Explain what the model does and does not tell her, with examples of what topic 2 could contain. (3) State what she should do before choosing an action.",
+   "formula": "P(w = v | &theta;<sub>d</sub>, &Phi;) = &Sigma;<sub>k=1..K</sub> &theta;<sub>dk</sub> &phi;<sub>kv</sub>; &theta;<sub>dk</sub> = share of topic k in review d; &phi;<sub>kv</sub> = probability of word v in topic k.",
+   "reference": "(1) P(charge) = 0.5 &times; 0.02 + 0.3 &times; 0.30 + 0.2 &times; 0.05 = 0.01 + 0.09 + 0.01 = 0.11 (11%). Topic 2 contributes 0.09 of the 0.11, although it is only 30% of the review, because \"charge\" is far more likely within it. (2) LDA only produces word probabilities; the label is added by a person, and a topic groups words, not attitudes. Topic 2 tells her that people talk about billing, but it can mix praise (\"the annual plan is good value\"), complaints (\"I was charged twice\") and questions (\"how do I renew my plan?\"). A large topic is not evidence of a price problem. (3) She should inspect topic 2's top words and read original reviews with a high share of it, check their sentiment, and compare fits with different K or preprocessing before acting; the action could be fixing double charges or clearer renewal information rather than a price cut.",
+   "marking": "Award 1 mark for the setup and 1 mark for 0.11. Award 1 mark for identifying topic 2 as the main contributor with the reason. Award 1 mark for explaining that the model does not name topics or measure sentiment. Award 1 mark for showing that a topic can contain praise, complaints and questions (at least two of the three with examples). Award 1 mark for a concrete check before acting: reading original reviews and checking sentiment (comparing K or repeated fits is acceptable as an addition, not alone). Error carried forward applies to the dominant-topic statement."
+  },
+  {
+   "id": "w7-b08",
+   "topic": "Sentiment analysis at scale",
+   "tests": "Document versus aspect versus rating check, and why a star-rating threshold is a separate labeling rule (mislabel share)",
+   "title": "Aspect-level reading and star-rating labels",
+   "stem": "Cloudberry Hotels receives a 3-star review: \"Room was spotless and staff were kind, but the Wi-Fi dropped every hour.\" Its team also wants to save labeling effort by treating every 4-star review as positive. Among 250 reviews with 4 stars and a provided sentiment label, 205 are labeled positive and 45 neutral.<br>(1) Give the document-level and the aspect-level reading of the review, and the management action each supports. (2) Calculate the percentage of these 4-star reviews that the rule \"4 stars = positive\" would mislabel. (3) Explain why a rating threshold should not replace the provided labels when evaluating a text-analysis method.",
+   "formula": "Mislabel share = reviews whose provided label differs from the rule's label / reviews checked &times; 100.",
+   "reference": "(1) Document level: one label, about 'mixed', which summarizes the review but leaves the specific issue unclear. Aspect level: room cleanliness +, staff +, Wi-Fi &minus;; this points to a concrete action, investigating the Wi-Fi connection. A rating check reads the 3 stars beside the text; here they roughly agree, but disagreements should be reviewed. (2) 45 / 250 = 0.18, so 18% would be mislabeled (82% agree). (3) A rating threshold is a separate labeling rule, a different definition of the target: stars and text can point in different directions (for example sarcastic praise beside 1 star), and stars do not capture neutral text. The provided sentiment labels should be used to evaluate text analysis.",
+   "marking": "Award 1 mark for the document-level reading and why it is insufficient. Award 1 mark for the correct aspect-level reading (at least two aspects with the right signs including Wi-Fi &minus;) and 1 mark for a specific action tied to Wi-Fi. Award 1 mark for 18%. Award 2 marks for explaining that a rating threshold is a different target definition (1) with a supported reason, such as neutral text at 4 stars or text and rating disagreeing (1). \"Improve the hotel\" earns no action mark."
+  },
+  {
+   "id": "w7-b09",
+   "topic": "Method 1: lexicon scoring, and its failures",
+   "tests": "Validating lexicon scores: agreement rate, a sarcastic error traced word by word, and the three validation steps",
+   "title": "Validating a lexicon before reporting",
+   "stem": "Ferncrest Pet Foods scores English reviews with a lexicon. Its dashboard figure \"81% positive\" is about to be reported. On 345 reviews with provided labels, the lexicon's class matches the label on 276. One mismatch is a 1-star review: \"Wonderful, the bag split open on delivery.\" \"Wonderful\" is on the positive list; \"bag\", \"split\" and \"delivery\" are not on either list.<br>(1) Calculate the agreement rate. (2) Score the 1-star review, state its class, and name the failure. (3) Describe the course's three validation steps before reporting the dashboard figure.",
+   "formula": "score = positive hits &minus; negative hits; score above 0 = positive, below 0 = negative, 0 = neutral. Agreement rate = matching reviews / labeled reviews.",
+   "reference": "(1) 276 / 345 = 0.80, so the lexicon agrees with the provided labels on 80% of the labeled reviews; about one in five is classed differently. (2) \"Wonderful\" = +1, no other hits, score +1, classed positive. This is sarcasm: positive wording describes a failure, which the 1-star rating confirms; word-level scoring cannot see it. (3) First, inspect about 50 randomly selected scored reviews. Second, examine reviews with positive wording beside a 1-star rating, like this one. Third, evaluate lexicon rules and classifier thresholds separately before changing either, so the effect of each change is known. Until then the 81% figure should not be quoted as reliable.",
+   "marking": "Award 1 mark for 80%. Award 1 mark for the score +1 and positive class, and 1 mark for identifying sarcasm with the 1-star evidence. Award 3 marks for the three validation steps, 1 each: random sample of about 50; positive words beside 1 star; rules and thresholds evaluated separately. \"Check the data\" without a specific step earns nothing for that step."
+  },
+  {
+   "id": "w7-b10",
+   "topic": "Method 2: supervised learning on text",
+   "tests": "The four-step supervised pipeline for text, reading coefficient signs, and why unigram coefficients and star labels mislead",
+   "title": "A supervised sentiment model for an airline",
+   "stem": "SkyKite Air trains a logistic regression on TF-IDF word columns, with positive sentiment as the target class and labels created from star ratings (4-5 stars = positive). On 500 held-out reviews, 430 are classified correctly. Some fitted coefficients are:<table class=\"ex\"><tr><th>Word feature</th><th>Coefficient</th></tr><tr><td>delay</td><td>&minus;1.4</td></tr><tr><td>friendly</td><td>+1.1</td></tr><tr><td>seat</td><td>0.0</td></tr><tr><td>good</td><td>+0.8</td></tr></table>(1) Calculate the held-out accuracy. (2) Interpret the coefficients of \"delay\" and \"seat\". (3) Give one reason why the coefficient of \"good\" may mislead, and one reason why the star-based labels need validating.",
+   "formula": "Accuracy = correctly classified reviews / all held-out reviews.",
+   "reference": "(1) 430 / 500 = 0.86, so held-out accuracy is 86%, measured on reviews not used in training as in Week 4. (2) Holding the other features fixed, a higher \"delay\" weight lowers the predicted probability of positive sentiment; \"seat\" has a zero coefficient, so changing it does not change the predicted probability. These are associations in the model, not levers. (3) Unigram features omit word order, so \"good\" gets the same feature in \"good crew\" and \"not good\"; phrases should be read in real reviews before interpreting the association. Star ratings are noisy proxy labels: a sarcastic 5-star or a neutral 4-star text would teach the model the wrong lesson, so the target definition should be validated against provided labels.",
+   "marking": "Award 1 mark for 86%. Award 1 mark for the \"delay\" interpretation including direction and 1 mark for \"seat\" (zero, no change); deduct nothing extra if \"holding other features fixed\" is stated once for both. Award 1 mark for the word-order / negation problem with \"good\". Award 2 marks for label quality: 1 for stars being noisy proxy labels, 1 for a supported reason or remedy (sarcasm, neutral text at 4 stars, validate the target definition). A causal reading such as \"remove the word delay to raise satisfaction\" earns no interpretation mark."
+  },
+  {
+   "id": "w7-b11",
+   "topic": "Method 3: zero-shot analysis with a large language model",
+   "tests": "Costing an all-LLM approach versus the combined workflow, the requested output fields, and what to check",
+   "title": "Combined workflow: LLM to explore, cheaper model to score",
+   "stem": "Mosaic Mart, an online marketplace, receives 400,000 reviews a month in Chinese and English. Zero-shot LLM analysis costs 3.00 per 1,000 reviews; a validated supervised model costs 0.05 per 1,000 reviews. The team considers (A) sending every review to the LLM, or (B) the combined workflow: the LLM explores a sample of 10,000 reviews to find themes and aspects, and the supervised model scores all 400,000.<br>(1) Calculate the monthly cost of A and of B. (2) Describe the combined workflow and list the output fields the LLM request should specify, explaining why a fixed structure helps. (3) Give two things to check about the LLM's outputs before relying on them.",
+   "formula": "Cost = (number of reviews / 1,000) &times; cost per 1,000 reviews.",
+   "reference": "(1) A: 400 &times; 3.00 = 1,200 per month. B: LLM sample 10 &times; 3.00 = 30, plus supervised scoring 400 &times; 0.05 = 20, total 50 per month. (2) The LLM explores a sample to find the themes and aspects customers mention, including sarcasm and mixed language; a validated lower-cost model then scores all reviews at scale. The request should specify sentiment (pos, neg or mixed), aspects with a sentiment for each, a sarcasm flag (true or false) and a short reason (for example 12 words maximum). A fixed structure makes errors easier to inspect, because fields can be counted, compared and checked against the review. (3) Check output consistency, since answers can vary between runs, and check the explanations against the original review text (and against ratings), because explanations need checking; cost growth with volume should also be monitored.",
+   "marking": "Award 1 mark for 1,200 and 1 mark for 50 (accept 30 + 20 shown). Award 1 mark for describing the combined workflow (explore with LLM, score at scale with a validated cheaper model). Award 1 mark for at least three of the four output fields and 1 mark for why a fixed structure helps. Award 1 mark for two valid checks (consistency, checking explanations or responses against the review, cost). Error carried forward applies to the cost comparison."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w7-c01",
+   "topics": [
+    "TF-IDF: weighting words by frequency and rarity",
+    "N-grams: keeping local word order",
+    "Stop words: what to remove and what to keep"
+   ],
+   "tests": "TF-IDF computation and interpretation across five reviews; bigrams and retained negation for 'not loud'; deciding what to investigate from a distinctive term",
+   "name": "Tidewave Audio",
+   "scenario": "<p>Tidewave Audio sells portable Bluetooth speakers. After a recent companion-app update, the product team wants to know what distinguishes individual reviews before deciding where to spend engineering time. The analyst lowercases and lemmatizes five recent reviews and removes stop words, but keeps the negation term \"not\". Exhibit 1 shows the reviews and Exhibit 2 the counts of six selected terms after cleaning.</p><p>The product manager has two proposals. First, because \"loud\" occurs in three of the five reviews, the marketing team wants to advertise loudness as a feature customers praise. Second, if \"crackle\" turns out to be the most distinctive term in any review, the manager wants to fund a hardware redesign of the speaker driver.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Five reviews",
+     "html": "<table class=\"ex\"><tr><th>Review</th><th>Text</th></tr><tr><td>r1</td><td>\"Speaker is loud and the bass is deep.\"</td></tr><tr><td>r2</td><td>\"Speaker is not loud enough outdoors.\"</td></tr><tr><td>r3</td><td>\"Speaker crackles after the app update, then crackles again; the app froze.\"</td></tr><tr><td>r4</td><td>\"Love this speaker, deep bass, loud at parties.\"</td></tr><tr><td>r5</td><td>\"The speaker is not bad, but the app is slow.\"</td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 2: Counts of selected terms after cleaning (TF)",
+     "html": "<table class=\"ex\"><tr><th>Review</th><th>speaker</th><th>bass</th><th>loud</th><th>app</th><th>crackle</th><th>not</th></tr><tr><td>r1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>r2</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>r3</td><td>1</td><td>0</td><td>0</td><td>2</td><td>2</td><td>0</td></tr><tr><td>r4</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>r5</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr></table>",
+     "note": "TF-IDF(t, d) = TF(t, d) &times; IDF(t), with IDF(t) = ln(N / df(t)); TF = number of times t appears in d; N = number of documents; df(t) = number of documents containing t. ln is the natural logarithm. Round each IDF to two decimal places before multiplying."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Using Exhibit 2, compute the document frequency and IDF of \"speaker\", \"loud\", \"app\" and \"crackle\". Then compute the TF-IDF weights of \"speaker\", \"app\" and \"crackle\" in r3. Which term is most distinctive in r3, and why does \"speaker\" receive the weight it does?",
+     "answer": "Document frequencies (N = 5): speaker 5, loud 3 (r1, r2, r4), app 2 (r3, r5), crackle 1 (r3). IDF: speaker = ln(5/5) = 0; loud = ln(5/3) = 0.51; app = ln(5/2) = 0.92; crackle = ln(5/1) = 1.61. Weights in r3: speaker = 1 &times; 0 = 0; app = 2 &times; 0.92 = 1.84; crackle = 2 &times; 1.61 = 3.22. \"crackle\" is the most distinctive term in r3: it is repeated in r3 and appears in no other review. \"speaker\" appears in every review, so its IDF is ln(1) = 0 and it distinguishes no review, whatever its count. \"app\" is second: it is repeated but also occurs in r5.",
+     "marking": "Award 1 mark for the four document frequencies. Award 3 marks for the four IDF values (1 mark for speaker = 0; 1 mark for loud = 0.51; 1 mark for app = 0.92 and crackle = 1.61 together). Award 2 marks for the three r3 weights (all three correct = 2; two correct = 1; accept 1.83 for app). Award 1 mark for identifying crackle as most distinctive with the joint TF and IDF reason. Award 1 mark for explaining speaker's zero weight through df = N. Apply error carried forward: a wrong IDF used correctly loses only the IDF mark. Log base 10 throughout loses the IDF marks but can earn the remaining marks if applied consistently."
+    },
+    {
+     "marks": 6,
+     "stem": "Evaluate the marketing proposal about loudness. In your answer, list the bigrams of r2 after cleaning (tokens: speaker, not, loud, enough, outdoors), identify which bigram matters, and explain what would have happened if \"not\" had been removed as a stop word. State one cost of adding bigram features.",
+     "answer": "A unigram count shows \"loud\" in three reviews but cannot tell how it is used. The bigrams of r2 are speaker not, not loud, loud enough, enough outdoors. \"not loud\" shows that r2 complains about loudness, so only r1 and r4 praise it: 2 of the 5 reviews, with one explicit complaint. The proposal overstates the evidence. If \"not\" had been removed as a stop word, r2 would read as \"speaker loud enough outdoors\", turning a complaint into apparent praise, and even with \"not\" kept, a unigram count records only that a negator appeared somewhere in the review. Bigrams keep local word order, so \"not loud\" becomes its own feature. The cost is a larger, sparser vocabulary: more columns, most of them zero for any one review.",
+     "marking": "Award 1 mark for the four bigrams of r2. Award 1 mark for identifying \"not loud\" as the bigram that reverses the meaning. Award 1 mark for concluding that only two reviews praise loudness, so the proposal overstates the evidence. Award 1 mark for explaining that removing \"not\" would turn the complaint into apparent praise. Award 1 mark for explaining that unigram counts lose word order while bigrams keep it. Award 1 mark for the larger, sparser vocabulary cost. Do not award the conclusion mark for simply repeating \"loud appears three times\"."
+    },
+    {
+     "marks": 6,
+     "stem": "\"crackle\" is the most distinctive term in r3. Advise the product manager whether to fund the hardware redesign now. Recommend a specific next step supported by Exhibit 1, and give one limitation of using TF-IDF weights for this decision.",
+     "answer": "Do not fund the redesign yet. A high TF-IDF weight means \"crackle\" is distinctive in r3, not that crackling is common or that the hardware is the cause. Reading r3 shows the crackling started after the app update and the app froze; r5 also says the app is slow. A supported next step is to have the app team investigate the recent update (for example, test playback with the previous and current app version) and to search all recent reviews for crackle and app terms to see how often they occur together. Limitation: TF-IDF measures distinctiveness within one review relative to the collection, not frequency across customers or sentiment; with five reviews, one mention cannot show how widespread the problem is.",
+     "marking": "Award 1 mark for a clear decision not to fund the redesign now (or to defer it), and 1 mark for justifying it with distinctiveness not being frequency or cause. Award 2 marks for a specific next step tied to Exhibit 1: 1 for linking crackling to the app update in r3 (or app problems in r5), 1 for a concrete investigation (test the update, check how many reviews mention it). Award 2 marks for a limitation with its consequence, such as a small sample, weights not measuring frequency, or weights not measuring sentiment. A recommendation to \"improve the speaker\" without a concrete step earns no next-step marks."
+    }
+   ]
+  },
+  {
+   "id": "w7-c02",
+   "topics": [
+    "Embeddings and cosine similarity",
+    "Choosing a representation, and review search"
+   ],
+   "tests": "Cosine similarity with hand-assigned vectors; zero query vector in TF-IDF search; choosing a representation; high cosine is not the same complaint",
+   "name": "Nestwell Smart Home",
+   "scenario": "<p>Nestwell Smart Home sells a home-automation hub. Its support team wants a search tool that finds earlier tickets describing the same problem as a new ticket, so that known fixes can be suggested. The analyst compares two prototypes on the same tickets.</p><p>Prototype 1 uses TF-IDF over the words in past tickets. Prototype 2 uses hand-assigned three-dimensional vectors: coordinates chosen by the analyst on the dimensions (connectivity, power, noise); no model has been trained. The new ticket is: \"Hub keeps dropping off the Wi-Fi\". The operations manager proposes to automatically merge any ticket with a cosine of 0.90 or more into the query's complaint and close it as a duplicate.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Prototype 2 vectors (hand-assigned)",
+     "html": "<table class=\"ex\"><tr><th>Item</th><th>Text</th><th>Vector (connectivity, power, noise)</th></tr><tr><td>Query</td><td>\"Hub keeps dropping off the Wi-Fi\"</td><td>(6, 2, 3)</td></tr><tr><td>T1</td><td>\"Router link lost every night\"</td><td>(2, 1, 2)</td></tr><tr><td>T2</td><td>\"Hub beeps loudly when power is low\"</td><td>(1, 2, 2)</td></tr><tr><td>T3</td><td>\"Fan in the hub is noisy\"</td><td>(0, 0, 5)</td></tr><tr><td>T4</td><td>\"Hub drops Wi-Fi, again and again the hub drops Wi-Fi\"</td><td>(12, 4, 6)</td></tr></table>",
+     "note": "cos &theta; = (a &middot; b) / (&#8214;a&#8214; &#8214;b&#8214;); a &middot; b = sum of products of matching coordinates; &#8214;a&#8214; = square root of the sum of squared coordinates."
+    },
+    {
+     "title": "Exhibit 2: Prototype 1 (TF-IDF) results for three test queries",
+     "html": "<table class=\"ex\"><tr><th>Query</th><th>Query words found in ticket vocabulary</th><th>Result</th></tr><tr><td>\"Wi-Fi\"</td><td>Wi-Fi</td><td>Ranked list; top tickets contain \"Wi-Fi\"</td></tr><tr><td>\"keeps disconnecting\"</td><td>none</td><td>No ranking shown</td></tr><tr><td>\"hub offline\"</td><td>hub</td><td>Ranked list; most tickets contain \"hub\", so scores are low and close together</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Using Exhibit 1, compute the cosine similarity between the query and each of T1 to T4, to two decimal places, and rank the tickets. Show your working for at least T1. Explain why T4 obtains its score.",
+     "answer": "&#8214;Query&#8214; = &radic;(36 + 4 + 9) = 7. T1: dot = 12 + 2 + 6 = 20, &#8214;T1&#8214; = &radic;9 = 3, cos = 20 / 21 = 0.95. T2: dot = 6 + 4 + 6 = 16, &#8214;T2&#8214; = 3, cos = 16 / 21 = 0.76. T3: dot = 0 + 0 + 15 = 15, &#8214;T3&#8214; = 5, cos = 15 / 35 = 0.43. T4: dot = 72 + 8 + 18 = 98, &#8214;T4&#8214; = &radic;196 = 14, cos = 98 / 98 = 1.00. Ranking: T4 (1.00), T1 (0.95), T2 (0.76), T3 (0.43). T4's vector is exactly twice the query vector, so it points in the same direction; cosine divides by the vector lengths, so the longer, repetitive ticket scores 1. Length does not affect cosine.",
+     "marking": "Award 1 mark for the query length of 7. Award 4 marks for the four cosines, 1 each (accept 0.95, 0.76, 0.43, 1.00 within &plusmn;0.01). Award 1 mark for full working shown for T1 (dot product, both lengths, division). Award 1 mark for the ranking T4, T1, T2, T3. Award 1 mark for explaining T4 through same direction and length invariance. Carry forward arithmetic errors into the ranking without a second penalty."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, explain why Prototype 1 shows no ranking for \"keeps disconnecting\" and why \"hub offline\" gives weak results. Then explain which representation the course recommends as a starting point and when to move to embeddings, including one cost.",
+     "answer": "None of the words in \"keeps disconnecting\" are in the ticket vocabulary, so the TF-IDF query vector is all zeros. A zero vector has no direction, so its cosine with every ticket is undefined and no ranking can be made; tickets using different words for the same problem (such as \"dropping off the Wi-Fi\") are missed. For \"hub offline\", only \"hub\" is found, and it appears in most tickets, so its IDF is low and it distinguishes tickets weakly, giving low, close scores. The course's starting point is TF-IDF as a low-cost baseline, adding n-grams for local phrases. Embeddings are worth considering when the task needs meaning-based search, as here where customers describe the same fault in different words; they cost more computation and data and must be validated on the task.",
+     "marking": "Award 1 mark for the zero query vector and 1 mark for undefined cosine (not zero) and no ranking. Award 1 mark for explaining the weak \"hub offline\" result through low IDF of a common word. Award 1 mark for TF-IDF as the baseline starting point. Award 1 mark for when to use embeddings (meaning-based search, different words for the same problem). Award 1 mark for a cost (computation and data, or need for validation). Stating that the cosine is 0 does not earn the undefined mark."
+    },
+    {
+     "marks": 6,
+     "stem": "Evaluate the manager's proposal to merge and close every ticket with cosine of 0.90 or more. Recommend how the search should be used instead, and give one limitation of Prototype 2.",
+     "answer": "Under the rule, T4 (1.00) and T1 (0.95) would be merged and closed. T4 is the same complaint, but T1 is a router link problem, which may be the customer's router rather than the hub, so closing it could lose a different fault. High cosine shows a similar vector direction, not the same complaint, the same cause or the same sentiment. Recommendation: use the cosine ranking to suggest candidate earlier tickets and known fixes to an agent, who reads the original tickets and decides whether to merge; check the threshold on a sample of ticket pairs judged by staff before any automation. Limitation: Prototype 2's coordinates were chosen by hand on three dimensions, so the ranking follows the analyst's mapping rather than learned relations, and it needs task-specific validation before use.",
+     "marking": "Award 1 mark for identifying which tickets the rule would close (T4 and T1, following the student's own cosines). Award 1 mark for explaining that T1 may be a different problem, and 1 mark for the general point that high cosine is not proof of the same complaint. Award 2 marks for a recommendation: 1 for using the ranking as suggestions read by a person, 1 for validating the threshold on a judged sample. Award 1 mark for a limitation of Prototype 2 (hand-assigned coordinates, only three dimensions, no trained model). Error carried forward applies to the list of tickets."
+    }
+   ]
+  },
+  {
+   "id": "w7-c03",
+   "topics": [
+    "Topic models and latent Dirichlet allocation (LDA)",
+    "Sentiment analysis at scale"
+   ],
+   "tests": "Completing a topic-word distribution, computing a word probability from LDA mixtures, labeling topics from top words, separating praise/complaint/question within one topic, and choosing K and an action",
+   "name": "Larkspur Meal Kits",
+   "scenario": "<p>Larkspur Meal Kits delivers boxes of ingredients and recipes. The insights team fitted a latent Dirichlet allocation (LDA) model with K = 3 topics to 6,000 reviews, after cleaning and stop-word removal. The model returns unnamed topics T1, T2 and T3. Exhibit 1 shows their probabilities for six words; one cell was lost when the table was copied. Review R7's estimated mixture is T1 = 0.6, T2 = 0.1, T3 = 0.3.</p><p>T1 accounts for the largest share of words in the collection. The operations director wants to switch courier companies because \"the delivery topic is the biggest one\". The team also fitted K = 8, which has lower perplexity, but the team found several of its topics hard to interpret.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Topic-word probabilities (only the six words shown are in this illustrative vocabulary)",
+     "html": "<table class=\"ex\"><tr><th>Word</th><th>T1</th><th>T2</th><th>T3</th></tr><tr><td>fresh</td><td>0.04</td><td>0.35</td><td>0.10</td></tr><tr><td>box</td><td>0.06</td><td>0.40</td><td>0.05</td></tr><tr><td>late</td><td>0.40</td><td>0.05</td><td>0.05</td></tr><tr><td>driver</td><td>0.35</td><td>0.05</td><td>0.02</td></tr><tr><td>recipe</td><td>0.05</td><td>0.05</td><td>?</td></tr><tr><td>easy</td><td>0.10</td><td>0.10</td><td>0.30</td></tr></table>",
+     "note": "P(w = v | &theta;<sub>d</sub>, &Phi;) = &Sigma;<sub>k=1..K</sub> &theta;<sub>dk</sub> &phi;<sub>kv</sub>; &theta;<sub>dk</sub> = share of topic k in review d; &phi;<sub>kv</sub> = probability of word v in topic k."
+    },
+    {
+     "title": "Exhibit 2: Five reviews with the highest share of T1",
+     "html": "<table class=\"ex\"><tr><th>Review</th><th>Text</th></tr><tr><td>S1</td><td>\"The driver is always on time and so polite.\"</td></tr><tr><td>S2</td><td>\"Box arrived three hours late, the chicken was warm.\"</td></tr><tr><td>S3</td><td>\"What time will the driver arrive on Sundays?\"</td></tr><tr><td>S4</td><td>\"Late again, the driver left the box in the rain.\"</td></tr><tr><td>S5</td><td>\"Can I change the delivery slot after ordering?\"</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Find the missing probability of \"recipe\" in T3 and explain how you know. Compute the probability that a word drawn from R7 is \"late\", and state which topic contributes most. Propose a candidate label for each of T1, T2 and T3 from its top words.",
+     "answer": "Each topic is a probability distribution over the same words, so each column sums to 1. T3 without recipe: 0.10 + 0.05 + 0.05 + 0.02 + 0.30 = 0.52, so P(recipe | T3) = 1 &minus; 0.52 = 0.48. P(late | R7) = 0.6 &times; 0.40 + 0.1 &times; 0.05 + 0.3 &times; 0.05 = 0.240 + 0.005 + 0.015 = 0.26 (26%). T1 contributes 0.24 of the 0.26: it is the largest share of R7 and \"late\" is very likely within it. Candidate labels: T1 (late, driver) = Delivery timing; T2 (box, fresh) = Packaging and freshness; T3 (recipe, easy) = Cooking and recipes. The labels are added by people after inspecting top words and original reviews; the model does not name topics.",
+     "marking": "Award 1 mark for 0.48 and 1 mark for the reason that each topic's probabilities sum to 1. Award 1 mark for the correct setup of the sum and 1 mark for 0.26. Award 1 mark for T1 as the main contributor with the 0.24 figure or equivalent reason. Award 2 marks for three sensible labels supported by top words (1 mark for two correct). Award 1 mark for noting that labels are a human judgement after inspection. Error carried forward applies from a wrong missing value."
+    },
+    {
+     "marks": 6,
+     "stem": "Classify each review in Exhibit 2 as praise, complaint or question, and state what each type means for the business. Explain why the size of T1 alone does not show that Larkspur has a delivery problem.",
+     "answer": "S1 is praise (a product strength: reliable, polite drivers). S2 and S4 are complaints (reports to investigate: late boxes, warm chicken, a box left in the rain). S3 and S5 are questions (information needs about arrival times and changing slots). A topic groups words that appear together, not attitudes: praise, complaints and questions about delivery all use words such as driver, late and box, so they fall in the same topic. A large T1 shows that customers talk about delivery a lot, not how they feel or what they want; sentiment and reading of the reviews are needed before acting.",
+     "marking": "Award 3 marks for the classification: 1 for S1 as praise, 1 for S2 and S4 as complaints, 1 for S3 and S5 as questions. Award 1 mark for stating the business meaning of the three types (strength, report to investigate, information need). Award 2 marks for explaining why topic size is not a problem measure: 1 for topics grouping words not attitudes, 1 for needing sentiment or reading reviews before acting."
+    },
+    {
+     "marks": 6,
+     "stem": "Advise the operations director on the courier switch and on whether to adopt the K = 8 model. Recommend specific next steps and give one limitation of the analysis.",
+     "answer": "Do not switch couriers on the basis of topic size. Next steps: run sentiment analysis on reviews with a high T1 share, ideally at aspect level, to measure how many are complaints about lateness or handling versus praise and questions; read a random sample of these reviews; then decide. The questions in S3 and S5 suggest a cheaper action as well: publish clear delivery-time windows and slot-change rules. On K: lower perplexity need not produce clearer topics, so K = 8 should not be adopted just for its fit; compare K values, preprocessing and repeated fits and keep the version whose topics staff can interpret and use (here K = 3). Limitation: topic mixtures are estimates that can change with K, preprocessing and repeated fits, and Exhibit 2 shows only five reviews, so they illustrate meanings but do not measure how common each is.",
+     "marking": "Award 1 mark for rejecting the immediate courier switch with the topic-size reason. Award 2 marks for specific next steps: 1 for sentiment or aspect analysis of T1 reviews, 1 for a concrete action or check (reading a sample, publishing delivery windows, investigating late deliveries). Award 1 mark for the K decision with the perplexity point. Award 1 mark for mentioning comparison across K, preprocessing or repeated fits. Award 1 mark for one limitation explained (unstable topics, five illustrative reviews, labels are human judgements). A recommendation to \"improve delivery\" without a concrete step earns at most 1 of the 2 next-step marks."
+    }
+   ]
+  },
+  {
+   "id": "w7-c04",
+   "topics": [
+    "Method 1: lexicon scoring, and its failures",
+    "Method 2: supervised learning on text",
+    "Comparing the three methods and routing reviews",
+    "Method 3: zero-shot analysis with a large language model"
+   ],
+   "tests": "Lexicon scoring with and without a negation rule and its remaining failure families; agreement rate and reading a confusion matrix; costing a routing rule that sends hard reviews to an LLM",
+   "name": "PulseRidge",
+   "scenario": "<p>PulseRidge sells fitness trackers and receives about 200,000 reviews a month in English and Chinese. Its dashboard currently scores English reviews with a small lexicon (Exhibit 1). Version 1 has no negation rule; Version 2 flips the sign of a hit when \"not\" or \"never\" appears immediately before it.</p><p>The team has also evaluated a validated lower-cost classifier on 400 held-out English reviews with provided sentiment labels (Exhibit 2). The product director wants a monthly routing rule: reviews whose lexicon score is positive but whose rating is 1 or 2 stars, and reviews mixing Chinese and English, are flagged for zero-shot LLM analysis; all other reviews are scored by the lower-cost classifier. About 6% of reviews are flagged. LLM analysis costs 4.00 per 1,000 reviews and the classifier 0.10 per 1,000 reviews.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Lexicon and five reviews",
+     "html": "<table class=\"ex\"><tr><th>List</th><th>Words</th></tr><tr><td>Positive</td><td>great, love, accurate, comfy, easy</td></tr><tr><td>Negative</td><td>bad, broken, slow, inaccurate, sick</td></tr></table><br><table class=\"ex\"><tr><th>Review</th><th>Stars</th><th>Text</th></tr><tr><td>R1</td><td>5</td><td>\"Love it, comfy strap and accurate sleep data.\"</td></tr><tr><td>R2</td><td>1</td><td>\"Great, the screen cracked on day two.\"</td></tr><tr><td>R3</td><td>4</td><td>\"Not bad, and pairing is easy.\"</td></tr><tr><td>R4</td><td>2</td><td>\"Heart rate is never accurate and the app is slow.\"</td></tr><tr><td>R5</td><td>5</td><td>\"GPS is sick, way faster than my old watch.\"</td></tr></table>",
+     "note": "score = positive hits &minus; negative hits; score above 0 = positive, below 0 = negative, 0 = neutral."
+    },
+    {
+     "title": "Exhibit 2: Classifier on 400 held-out labeled English reviews",
+     "html": "<table class=\"ex\"><tr><th>Provided label</th><th>Predicted negative</th><th>Predicted positive</th><th>Row total</th></tr><tr><td>Negative</td><td>90</td><td>30</td><td>120</td></tr><tr><td>Positive</td><td>50</td><td>230</td><td>280</td></tr></table>",
+     "note": "Agreement rate = reviews on the diagonal / all reviews. Cost = (reviews / 1,000) &times; cost per 1,000 reviews."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Score R1 to R5 under Version 1 and Version 2 and give each class. Which reviews does Version 2 still classify in a way that conflicts with the star rating? Name the lexicon limitation behind each.",
+     "answer": "Version 1: R1 = love + comfy + accurate = +3, positive. R2 = great = +1, positive. R3 = bad (&minus;1) + easy (+1) = 0, neutral. R4 = accurate (+1) + slow (&minus;1) = 0, neutral. R5 = sick = &minus;1, negative. Version 2: R1 +3 positive; R2 +1 positive; R3 \"not bad\" flips to +1, plus easy +1 = +2, positive; R4 \"never accurate\" flips to &minus;1, plus slow &minus;1 = &minus;2, negative; R5 &minus;1, negative. The negation rule fixes R3 and R4. Still in conflict: R2, scored positive with 1 star, is sarcasm (positive wording describing a cracked screen; \"cracked\" is not on the list). R5, scored negative with 5 stars, is slang (\"sick\" is praise here but on the negative list).",
+     "marking": "Award 2 marks for the five Version 1 scores and classes (all correct = 2; four correct = 1). Award 2 marks for Version 2: 1 for R3 = +2 positive, 1 for R4 = &minus;2 negative (R1, R2, R5 unchanged). Award 1 mark for stating that the rule fixes R3 and R4. Award 1 mark for identifying R2 and R5 as the remaining conflicts. Award 2 marks for naming sarcasm for R2 and slang for R5 with a reason, 1 each. Apply error carried forward to the conflict identification."
+    },
+    {
+     "marks": 6,
+     "stem": "From Exhibit 2, calculate the classifier's agreement rate and the percentage of reviews labeled negative that it predicts as positive. Which kinds of language would you inspect among those negative-labeled, positive-predicted reviews, and what validation steps should precede reporting its scores?",
+     "answer": "Agreement = (90 + 230) / 400 = 320 / 400 = 80%. Of the 120 negative-labeled reviews, 30 are predicted positive: 30 / 120 = 25%. Among these, inspect sarcasm (praise words describing failures, as in R2) and negation (a positive word preceded by \"not\" or \"never\", as in R4), and domain words the model may misread. Before reporting: inspect about 50 randomly selected cases, examine positive wording beside 1-star ratings, and evaluate rule or threshold changes separately before changing either; continue evaluating as language changes.",
+     "marking": "Award 1 mark for 80% and 1 mark for 25% (accept 30 of 120 with the percentage). Award 2 marks for two relevant language types with a brief reason (sarcasm, negation, slang, domain words), 1 each. Award 2 marks for validation steps: at least two of the three course steps, 1 each. Using 30 / 400 = 7.5% for the second figure earns 0 for that mark, but the remaining marks are available."
+    },
+    {
+     "marks": 6,
+     "stem": "Calculate the monthly cost of the director's routing rule and of sending all 200,000 reviews to the LLM. Recommend whether to adopt the rule, explaining how it matches the course's routing guide, and give one limitation or check.",
+     "answer": "Flagged reviews: 6% &times; 200,000 = 12,000; LLM cost = 12 &times; 4.00 = 48.00. Other reviews: 188,000 scored by the classifier = 188 &times; 0.10 = 18.80. Routing total = 66.80 per month, against 200 &times; 4.00 = 800.00 for an all-LLM approach. Adopt the rule: it follows the routing guide, sending clean standard language to a low-cost validated method and sarcasm or mixed language to LLM-assisted analysis, at a fraction of the cost, and keeps most scoring auditable. The LLM requests should specify fixed fields (sentiment, aspects, sarcasm flag, short reason). Limitation or check: the flag catches sarcasm only when a rating is available and disagrees, so sarcastic reviews without ratings are missed; LLM output consistency must be checked on repeated runs and against the review text, and the classifier's held-out errors (80% agreement) should be monitored as language changes.",
+     "marking": "Award 1 mark for 48.00 and 1 mark for 18.80 with the total 66.80. Award 1 mark for 800.00. Award 2 marks for the recommendation: 1 for a clear decision, 1 for linking it to the routing guide (situations, methods) or cost and auditability. Award 1 mark for one explained limitation or check (missed sarcasm without ratings, LLM consistency, classifier errors, maintenance). Error carried forward applies to the cost comparison."
+    }
+   ]
+  }
+ ]
+}
