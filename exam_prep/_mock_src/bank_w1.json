@@ -1,0 +1,763 @@
+{
+ "week": 1,
+ "mcq": [
+  {
+   "id": "w1-a01",
+   "topic": "What the field is: one definition, three branches",
+   "tests": "Assign a data-infrastructure scenario to the information systems branch",
+   "stem": "A team at a fictional short-video platform is redesigning how the recommendation system's click logs are stored and passed every hour to the analysts' data warehouse. Under the course's definition of the field, which branch does this work belong to most directly?",
+   "formula": "",
+   "options": [
+    "Business, because it concerns how the platform creates and captures value.",
+    "Information systems, because it concerns the technologies and data infrastructures.",
+    "Marketing, because it concerns how the platform reaches and measures people.",
+    "Business, because the platform will later monetise the logs it stores."
+   ],
+   "answer": "b",
+   "explanation": "Storing logs and building the pipeline that brings them to analysts is about technologies and data infrastructures, which is the information systems branch (platforms and recommendation, data pipelines, AI and AIGC)."
+  },
+  {
+   "id": "w1-a02",
+   "topic": "What the field is: one definition, three branches",
+   "tests": "Spot the mismatch between a branch and its listed content",
+   "stem": "Which pairing of a branch with its content does <b>not</b> match the course's definition of new media technology and analytics?",
+   "formula": "",
+   "options": [
+    "Business: platform business models; pricing, channels and monetisation.",
+    "Information systems: platforms and recommendation; data pipelines; AI and AIGC.",
+    "Marketing: consumers, engagement and targeting; campaign measurement.",
+    "Information systems: pricing, channels and monetisation."
+   ],
+   "answer": "d",
+   "explanation": "Pricing, channels and monetisation belong to the business branch (how firms create and capture value). The other three pairings are exactly as the course lists them."
+  },
+  {
+   "id": "w1-a03",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Recall the course's tag for AI and AIGC",
+   "stem": "The course gives each of the four technologies rewriting marketing a short tag. Which tag belongs to AI and AIGC?",
+   "formula": "",
+   "options": [
+    "“Scaled attention”",
+    "“Shows with checkout”",
+    "“The invisible curator”",
+    "“The next interface”"
+   ],
+   "answer": "c",
+   "explanation": "AI and AIGC is “the invisible curator”: feeds decide what you see. Social media is scaled attention, livestreaming is shows with checkout, and XR is the next interface."
+  },
+  {
+   "id": "w1-a04",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Identify host performance in the livestreaming data trail",
+   "stem": "A fictional agency wants to compare its livestream hosts with each other. In the course's livestreaming data trail, which logged record describes host performance?",
+   "formula": "",
+   "options": [
+    "Conversion, and gross merchandise value (GMV) per hour.",
+    "Traffic and engagement, logged second by second.",
+    "Commerce, logged per product and per minute.",
+    "Follows and mentions between the host accounts."
+   ],
+   "answer": "a",
+   "explanation": "The data trail has three parts: traffic and engagement (second by second), commerce (per product, per minute) and host performance (conversion and GMV per hour). Follows and mentions are network ties of a social platform."
+  },
+  {
+   "id": "w1-a05",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Name the new data XR generates",
+   "stem": "A fictional furniture brand adds an AR try-on feature that places a sofa in the customer's living room through the phone camera. Which new data does the course associate with this technology?",
+   "formula": "",
+   "options": [
+    "Danmaku: bullet comments flying across the video.",
+    "Traffic of a live show, logged second by second.",
+    "Network ties: the accounts the user follows and mentions.",
+    "Gaze and dwell: where the user looks and how long they stay."
+   ],
+   "answer": "d",
+   "explanation": "XR (AR, VR, MR) is used for try-on and virtual stores, and the new data it produces are gaze and dwell. Danmaku is text, second-by-second traffic is the livestream trail, and follows are social network ties."
+  },
+  {
+   "id": "w1-a06",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Frame AIGC detection as a classification problem",
+   "stem": "A beauty platform suspects that many new product reviews are written by AI. According to the course, what kind of analytic problem is detecting such content?",
+   "formula": "",
+   "options": [
+    "An association problem: finding items that occur together in reviews.",
+    "A classification problem: assigning each review to generated or genuine.",
+    "A clustering problem: grouping reviews when no labels exist at all.",
+    "A regression problem: predicting how many words each review has."
+   ],
+   "answer": "b",
+   "explanation": "The course lists three consequences of AIGC for analytics: generated content floods the data stream, authenticity becomes an analytic problem, and detection is a classification problem (Week 4)."
+  },
+  {
+   "id": "w1-a07",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Order the four steps of one purchase across the four technologies",
+   "stem": "Which sequence matches the course's “one purchase, four technologies” journey?",
+   "formula": "",
+   "options": [
+    "You join the livestream; a feed surfaces the product; you use AR try-on; you check reviews, some AI-written, and check out.",
+    "A feed surfaces the product; you check reviews, some AI-written; you join the livestream; you use AR try-on and check out.",
+    "A feed surfaces the product; you join the livestream; you check reviews, some AI-written; you use AR try-on and one-tap checkout.",
+    "You check reviews, some AI-written; a feed surfaces the product; you use AR try-on; you join the livestream and check out."
+   ],
+   "answer": "c",
+   "explanation": "The course order is discover (feed, social media), watch (livestream), check (reviews, some AI-written: AI and AIGC), try (AR try-on and one-tap checkout: XR), the same order as the list of four technologies."
+  },
+  {
+   "id": "w1-a08",
+   "topic": "Four technologies, two tracks, and the data each one leaves",
+   "tests": "Place follows and mentions in the network-ties layer of social platform data",
+   "stem": "On a fictional social app, a user follows a sportswear brand account and later mentions it in a post. In the course's four layers of data a social platform generates, which layer records this follow-and-mention link?",
+   "formula": "",
+   "options": [
+    "Network ties",
+    "Profiles",
+    "Transactions",
+    "Content and engagement only"
+   ],
+   "answer": "a",
+   "explanation": "The four layers are profiles (who the user is), content and engagement (every action, timestamped), transactions (orders and refunds) and network ties (follows and mentions). A follow and a mention link two accounts, so they are network ties."
+  },
+  {
+   "id": "w1-a09",
+   "topic": "The five data types and the platform shift",
+   "tests": "Classify danmaku as text among the five data types",
+   "stem": "Viewers of a fictional live show type bullet comments (danmaku) that fly across the video. Which of the course's five common-core data types is this?",
+   "formula": "",
+   "options": [
+    "Behavioural events",
+    "Networks",
+    "Profiles",
+    "Text"
+   ],
+   "answer": "d",
+   "explanation": "The five data types are behavioural events, text, networks, transactions and profiles; the course lists comments, reviews and danmaku under text."
+  },
+  {
+   "id": "w1-a10",
+   "topic": "The five data types and the platform shift",
+   "tests": "Use the tell to recognise the feeds shift",
+   "stem": "Users of a fictional app mostly watch clips that the algorithm picks for them rather than clips from accounts they subscribed to. Which platform shift does this tell point to?",
+   "formula": "",
+   "options": [
+    "Mobile",
+    "Feeds",
+    "Creators",
+    "All three shifts equally, so no single shift"
+   ],
+   "answer": "b",
+   "explanation": "The tell for the feeds shift is that you watch what the algorithm picks, not whom you subscribed to. Mobile is told by short sessions anywhere with location and motion; creators by the platform producing nothing you consume. “All three” is not an answer under the removal test."
+  },
+  {
+   "id": "w1-a11",
+   "topic": "Marketing analytics: the ladder and the process",
+   "tests": "Recognise that the analytics process must start from a business question",
+   "stem": "A fictional snack brand's analyst downloads every table the platform offers, runs a model, and only then asks the marketing manager what question the results could answer. Which principle of the course's five-step analytics process does this break?",
+   "formula": "",
+   "options": [
+    "The data must be prepared after modelling, so the model can show what to clean.",
+    "The process should end at the model, because deciding is left to managers.",
+    "The process starts from a business question, which decides which data is needed.",
+    "Data should only be collected once the final decision has already been taken."
+   ],
+   "answer": "c",
+   "explanation": "The process is question, data, prepare, model, decide. The question comes first because it decides which data you need, and the decision comes last; stopping at the model is not enough."
+  },
+  {
+   "id": "w1-a12",
+   "topic": "From screen to dataset: objects, attributes and values",
+   "tests": "Know the synonyms for attribute versus object",
+   "stem": "Books use several names for the columns of a dataset. Which term does <b>not</b> refer to an attribute?",
+   "formula": "",
+   "options": [
+    "Record",
+    "Variable",
+    "Field",
+    "Feature"
+   ],
+   "answer": "a",
+   "explanation": "An attribute (one column) is also called a variable, field or feature. A record, like a case, sample or observation, is a name for the object (one row)."
+  },
+  {
+   "id": "w1-a13",
+   "topic": "From screen to dataset: objects, attributes and values",
+   "tests": "Distinguish an attribute from the scale (measurement rule) that maps it to a value",
+   "stem": "One analyst records a stream's hours live as 2.5 and another records the same stream as 150. What does the course say this illustrates?",
+   "formula": "",
+   "options": [
+    "Two different attributes that happen to describe the same stream.",
+    "A measurement error, because one of the two recorded values must be wrong.",
+    "Two different objects, because each recorded value creates a new row.",
+    "One attribute measured with two different rules that map the property to a value."
+   ],
+   "answer": "d",
+   "explanation": "A scale is the rule mapping a property to a value. Hours live in hours (2.5) or in minutes (150) is the course's example of one attribute with two measurement rules."
+  },
+  {
+   "id": "w1-a14",
+   "topic": "Four measurement scales and the operations ladder",
+   "tests": "Recognise a date as an interval attribute",
+   "stem": "In the course's labelled streamer table, which attribute is classified as interval?",
+   "formula": "",
+   "options": [
+    "Number of followers",
+    "Category (Film &amp; TV, Gaming, ...)",
+    "Date of the last live stream",
+    "Tier (Master, Elite, Warrior)"
+   ],
+   "answer": "c",
+   "explanation": "Gaps between dates are meaningful but there is no “zero date”, so the course labels last live as interval. Followers are ratio, category is nominal and tier is ordinal."
+  },
+  {
+   "id": "w1-a15",
+   "topic": "Four measurement scales and the operations ladder",
+   "tests": "Apply the operations ladder to an ordinal attribute",
+   "stem": "Hosts are ranked into tiers Master, Elite and Warrior. Using the course's operations ladder, which statement is valid?",
+   "formula": "",
+   "options": [
+    "A Master host ranks above an Elite host, but the gap between tiers cannot be subtracted.",
+    "Master minus Elite equals Elite minus Warrior, because the tiers are one step apart.",
+    "A Master host is twice as good as an Elite host, because the tier codes are 2 and 1.",
+    "Tiers allow only “same or different”, so no order between them can be stated."
+   ],
+   "answer": "a",
+   "explanation": "Tier is ordinal: it allows distinct (= &ne;) and order (&lt; &gt;) but not add/subtract or multiply/divide. Ordinal carries order, not gaps."
+  },
+  {
+   "id": "w1-a16",
+   "topic": "Four measurement scales and the operations ladder",
+   "tests": "Classify an attribute on both independent splits (discrete/continuous and scale)",
+   "stem": "How should the attribute “number of words in a comment” be described on the course's two independent splits?",
+   "formula": "",
+   "options": [
+    "Continuous and ratio",
+    "Discrete and ratio",
+    "Discrete and nominal",
+    "Continuous and interval"
+   ],
+   "answer": "b",
+   "explanation": "Words in a comment take countable integer values (the course's own discrete example), and zero words means none, so ratios are meaningful: ratio scale. The two splits answer different questions: how many values, and what they mean."
+  },
+  {
+   "id": "w1-a17",
+   "topic": "One summary per scale, and the superstar problem",
+   "tests": "Pick and compute the course's summary for an ordinal attribute",
+   "stem": "Seven hosts have the tiers Warrior, Warrior, Warrior, Elite, Elite, Master, Master (ranked Warrior &lt; Elite &lt; Master). Which summary does the course assign to this attribute, and what is its value?",
+   "formula": "",
+   "options": [
+    "The mean, which is 1.86 on a 1 to 3 coding.",
+    "The median, which is Elite.",
+    "The median, which is Warrior.",
+    "The mode, which is Master."
+   ],
+   "answer": "b",
+   "explanation": "Tier is ordinal, so the course's summary is the median (and percentiles). Sorted, the 4th of 7 values is Elite. A mean of tier codes is not allowed, and the most frequent tier is Warrior, not Master."
+  },
+  {
+   "id": "w1-a18",
+   "topic": "One summary per scale, and the superstar problem",
+   "tests": "Quantify how one superstar moves the mean but not the median",
+   "stem": "Five creators have 8K, 10K, 12K, 14K and 16K followers. A superstar with 100K followers joins the group. Which statement is correct?",
+   "formula": "",
+   "options": [
+    "The mean and the median both rise from 12K to about 26.7K, as every value counts.",
+    "The median rises from 12K to about 26.7K, while the mean moves only from 12K to 13K.",
+    "The mean rises from 12K to about 26.7K, while the median moves only from 12K to 13K.",
+    "The mean rises from 12K to about 20K, while the median rises from 12K to about 14K."
+   ],
+   "answer": "c",
+   "explanation": "Mean before = 60/5 = 12K; after = 160/6 = 26.7K. Median before = 12K; after = (12 + 14)/2 = 13K. One superstar more than doubles the mean, while the median is robust to extremes."
+  },
+  {
+   "id": "w1-a19",
+   "topic": "One summary per scale, and the superstar problem",
+   "tests": "Read a percentile correctly",
+   "stem": "A host's 40 orders per hour ranks at the 80th percentile among 200 hosts on a fictional platform. What does this mean?",
+   "formula": "",
+   "options": [
+    "80% of the hosts had more orders per hour than this host.",
+    "The host is ranked in 80th place out of the 200 hosts.",
+    "The host generated 80% of all the hosts' orders per hour.",
+    "80% of the hosts had fewer orders per hour than this host."
+   ],
+   "answer": "d",
+   "explanation": "A percentile is a position in the sorted ranks. As in the course example (85 gifts ranks 95th of 100: 95% received fewer), the 80th percentile means 80% of hosts had fewer orders per hour."
+  },
+  {
+   "id": "w1-a20",
+   "topic": "Entropy: how much information is in an answer",
+   "tests": "Compute entropy for an unequal four-value split",
+   "stem": "Among 8 viewers, the payment method is WeChat Pay for 4, Alipay for 2, card for 1 and cash for 1. What is the entropy of payment method? (log<sub>2</sub> 2 = 1, log<sub>2</sub> 4 = 2, log<sub>2</sub> 8 = 3)",
+   "formula": "H(U) = &minus;Σ p<sub>i</sub> log<sub>2</sub> p<sub>i</sub>, where p<sub>i</sub> is the share of each value",
+   "options": [
+    "1.75 bits",
+    "2.00 bits",
+    "1.50 bits",
+    "1.25 bits"
+   ],
+   "answer": "a",
+   "explanation": "H = 1/2 &times; 1 + 1/4 &times; 2 + 1/8 &times; 3 + 1/8 &times; 3 = 0.5 + 0.5 + 0.375 + 0.375 = 1.75 bits. 2.00 would need four equally likely values."
+  },
+  {
+   "id": "w1-a21",
+   "topic": "Entropy: how much information is in an answer",
+   "tests": "Separate highest entropy from business usefulness",
+   "stem": "A sample has 8 streamers. All 8 stream on Douyin; 4 are female and 4 are male; each has a unique streamer ID. Which statement is correct under the course's reading of entropy?",
+   "formula": "H(U) = &minus;Σ p<sub>i</sub> log<sub>2</sub> p<sub>i</sub>, where p<sub>i</sub> is the share of each value",
+   "options": [
+    "Platform has the highest entropy, because every streamer shares exactly the same value.",
+    "Gender has the highest entropy (1 bit), because it splits the sample into two equal halves.",
+    "Streamer ID has the highest entropy (3 bits), so it is the best attribute to explain sales.",
+    "Streamer ID has the highest entropy (3 bits), but that does not make it useful for explaining sales."
+   ],
+   "answer": "d",
+   "explanation": "Platform: H = 0 (always Douyin, nothing to learn). Gender: 1 bit. Streamer ID: 8 equal shares, H = log<sub>2</sub> 8 = 3 bits, the hardest to guess. But entropy measures unpredictability, not whether an attribute explains an outcome; an ID explains nothing about why a stream sells."
+  },
+  {
+   "id": "w1-a22",
+   "topic": "The chi-square test: are two attributes linked?",
+   "tests": "Compute one expected count under the no-link assumption",
+   "stem": "In a survey of 400 viewers, 150 watched on a tablet and 80 bought something. If device and buying were unrelated, how many viewers who watched on a tablet <i>and</i> bought would you expect?",
+   "formula": "e = row total &times; column total / n",
+   "options": [
+    "37.5",
+    "30",
+    "80",
+    "20"
+   ],
+   "answer": "b",
+   "explanation": "e = 150 &times; 80 / 400 = 30. If there were no link, tablet viewers would buy at the overall rate of 80/400 = 20%, and 20% of 150 is 30."
+  },
+  {
+   "id": "w1-a23",
+   "topic": "The chi-square test: are two attributes linked?",
+   "tests": "Apply degrees of freedom and the decision rule, and phrase the verdict correctly",
+   "stem": "A platform tests whether a streamer's home platform (3 values) is linked to content category (3 values). The test gives χ<sup>2</sup> = 8.2. Critical values at α = 0.05: df = 3: 7.81; df = 4: 9.49. Which conclusion is correct?",
+   "formula": "df = (rows &minus; 1) &times; (columns &minus; 1)",
+   "options": [
+    "No evidence of a link at this level, because 8.2 is below 9.49 with df = 4.",
+    "Evidence of a link, because 8.2 is above the critical value 7.81 with df = 3.",
+    "The two attributes are proven unrelated, because 8.2 is below 9.49 with df = 4.",
+    "Evidence of a link, because any positive χ<sup>2</sup> shows that observed counts differ."
+   ],
+   "answer": "a",
+   "explanation": "df = (3 &minus; 1) &times; (3 &minus; 1) = 4, so compare with 9.49. Since 8.2 &lt; 9.49 there is no evidence of a link; this is not proof that the attributes are unrelated."
+  },
+  {
+   "id": "w1-a24",
+   "topic": "Rank correlation: do two orderings move together?",
+   "tests": "Choose Spearman's rank correlation for two ordinal rankings",
+   "stem": "A fictional agency ranks its ten hosts by on-camera charisma (judged by a panel, 1 = best) and, separately, by last month's sales (1 = highest). It wants to know whether the two rankings move together. Which course tool fits?",
+   "formula": "",
+   "options": [
+    "A chi-square test of the two host rankings",
+    "The entropy of each of the two rankings",
+    "Spearman's rank correlation of the two rankings",
+    "The Euclidean distance between the hosts"
+   ],
+   "answer": "c",
+   "explanation": "Two ordinal attributes call for correlating the ranks, not the raw values: Spearman's r<sub>s</sub>. Chi-square is for two categorical attributes, entropy measures how hard one attribute is to guess, and distance compares objects, not rankings."
+  },
+  {
+   "id": "w1-a25",
+   "topic": "Rank correlation: do two orderings move together?",
+   "tests": "Compute Spearman's r_s for four objects",
+   "stem": "Four creators are ranked by audience fit (x) and by sales (y). Ranks: A (x 1, y 1), B (x 2, y 3), C (x 3, y 2), D (x 4, y 4). What is r<sub>s</sub>?",
+   "formula": "r<sub>s</sub> = 1 &minus; 6Σd<sub>i</sub><sup>2</sup> / (n(n<sup>2</sup> &minus; 1)), where d<sub>i</sub> = x<sub>i</sub> &minus; y<sub>i</sub> is the gap between the two ranks",
+   "options": [
+    "0.2",
+    "0.6",
+    "0.8",
+    "&minus;0.8"
+   ],
+   "answer": "c",
+   "explanation": "d = 0, &minus;1, 1, 0, so Σd<sup>2</sup> = 2. n(n<sup>2</sup> &minus; 1) = 4 &times; 15 = 60. r<sub>s</sub> = 1 &minus; 12/60 = 1 &minus; 0.2 = 0.8: the rankings move together strongly. 0.2 is only the fraction, before subtracting from 1."
+  },
+  {
+   "id": "w1-a26",
+   "topic": "Beyond tables: the data shapes of new media",
+   "tests": "Match items bought together to the basket data shape",
+   "stem": "A fictional grocery app wants to study which products customers put into the same order. Which data shape does the course assign to this question?",
+   "formula": "",
+   "options": [
+    "Baskets (Week 3)",
+    "Time series (Weeks 5 and 9)",
+    "Networks (Week 8)",
+    "Comments as words (Week 7)"
+   ],
+   "answer": "a",
+   "explanation": "The course's data shapes are record (tables), baskets (items bought or viewed together, Week 3), comments as words (Week 7), networks (Week 8) and time series (Weeks 5 and 9). Items in the same order form a basket."
+  },
+  {
+   "id": "w1-a27",
+   "topic": "Data quality: platform data is not neutral",
+   "tests": "Classify aged data as a timeliness problem on the application side",
+   "stem": "A clean, documented dataset of engagement on a fictional platform was collected two years ago. Since then the platform has changed its feed algorithm. Using this dataset today to plan a campaign raises which data-quality problem, on which side?",
+   "formula": "",
+   "options": [
+    "Measurement error, on the collection side",
+    "Timeliness, on the application side",
+    "Noise, on the collection side",
+    "Relevance, on the collection side"
+   ],
+   "answer": "b",
+   "explanation": "Data ages after collection; using good but old data after the platform changed is timeliness, one of the three application-side problems (timeliness, relevance, documentation). Relevance is also application-side, not collection-side."
+  },
+  {
+   "id": "w1-a28",
+   "topic": "Preprocessing: aggregate, discretize, binarize",
+   "tests": "Apply equal-width discretization to place one value",
+   "stem": "Heat values of a set of streams run from a minimum of 0 to a maximum of 120. An analyst discretizes them into Low, Mid and High using equal width. Into which grade does a stream with heat 85 fall?",
+   "formula": "Equal width: every interval covers the same range of values; width = (maximum &minus; minimum) / number of grades",
+   "options": [
+    "Mid: each grade is 40 wide, so Mid covers 60 to 100.",
+    "Mid: each grade must hold the same number of streams.",
+    "Low: each grade is 85 wide, so Low covers 0 to 85.",
+    "High: each grade is 40 wide, so High covers 80 to 120."
+   ],
+   "answer": "d",
+   "explanation": "Width = (120 &minus; 0)/3 = 40, so Low is 0 to 40, Mid 40 to 80 and High 80 to 120; 85 is High. “Same number of streams per grade” describes equal frequency, a different method."
+  },
+  {
+   "id": "w1-a29",
+   "topic": "Preprocessing: aggregate, discretize, binarize",
+   "tests": "Read the category, integer, bits route of binarization",
+   "stem": "A platform has eight content categories coded 0 to 7 and binarizes them into three bit columns x1, x2, x3 by writing each integer in binary (code 1 is written 0, 0, 1). What are x1, x2, x3 for the category coded 6?",
+   "formula": "",
+   "options": [
+    "1, 1, 0",
+    "0, 1, 1",
+    "1, 0, 1",
+    "1, 1, 1"
+   ],
+   "answer": "a",
+   "explanation": "6 = 4 + 2 + 0, so in binary it is 110: x1 = 1, x2 = 1, x3 = 0. 011 is 3, 101 is 5 and 111 is 7."
+  },
+  {
+   "id": "w1-a30",
+   "topic": "Similarity and distance between streamers",
+   "tests": "Compute a two-attribute Euclidean distance",
+   "stem": "Streamer A has popularity score 1 and tier score 4; streamer B has popularity score 4 and tier score 0. What is the distance between them, to two decimal places?",
+   "formula": "d(p, q) = √( Σ<sub>k</sub> (p<sub>k</sub> &minus; q<sub>k</sub>)<sup>2</sup> )",
+   "options": [
+    "7.00",
+    "5.00",
+    "25.00",
+    "2.65"
+   ],
+   "answer": "b",
+   "explanation": "Gaps are 3 and 4, so d = √(9 + 16) = √25 = 5.00. 7.00 adds the gaps without squaring (city-block), 25.00 forgets the square root."
+  },
+  {
+   "id": "w1-a31",
+   "topic": "The analytics ladder: describe, diagnose, predict, prescribe",
+   "tests": "Separate predict from prescribe when no action is chosen",
+   "stem": "A manager asks: “Which of our viewers are likely to buy the new tea set next month?” Which rung of the analytics ladder is this?",
+   "formula": "",
+   "options": [
+    "Prescribe, because the answer will be used to plan next month's campaign.",
+    "Diagnose, because it looks for the driver that makes viewers buy.",
+    "Predict, because it scores future cases without choosing an action.",
+    "Describe, because it lists viewers who appear in the current log."
+   ],
+   "answer": "c",
+   "explanation": "Predict uses patterns in past data to score future cases (classification: buy?). It becomes prescribe only when an action is chosen and options compared, such as shifting budget to the flagged viewers."
+  },
+  {
+   "id": "w1-a32",
+   "topic": "The metric taxonomy and the toolkit",
+   "tests": "Place metrics in the engagement, conversion and retention families",
+   "stem": "Which metric is placed in the <b>wrong</b> family of the course's metric taxonomy?",
+   "formula": "",
+   "options": [
+    "Engagement: shares",
+    "Conversion: click-through rate (CTR)",
+    "Retention: churn",
+    "Engagement: refunds"
+   ],
+   "answer": "d",
+   "explanation": "Engagement is views, likes, comments and shares; conversion is CTR, GMV and refunds; retention is repeat purchase and churn. Refunds belong to conversion."
+  }
+ ],
+ "short": [
+  {
+   "id": "w1-b01",
+   "topic": "What the field is: one definition, three branches",
+   "tests": "Sort three manager questions into the three branches by their key verb, and explain 'entry point, not a fence'",
+   "title": "Three branches in one outdoor-gear project",
+   "stem": "Fernway Outdoor, a fictional camping-gear brand, sells through livestreams. Its project team lists three questions:<ul><li>(i) “Should we keep paying the livestream platform a 15% commission, or open our own mini-program store?”</li><li>(ii) “How do order events from our livestreams reach the warehouse dashboard every hour?”</li><li>(iii) “Did the spring campaign bring new buyers, or only views?”</li></ul>Using the course's three branches of new media technology and analytics, assign each question to its main branch and justify each assignment. Then explain what the course means by “each field is an entry point, not a fence” for this project.",
+   "formula": "",
+   "reference": "Question (i) belongs to the business branch: it is about how the firm captures value, through channels, pricing and who keeps the margin. Question (ii) belongs to information systems: it is about the technologies and data infrastructures, here the pipeline that carries order events to a dashboard. Question (iii) belongs to marketing: it is about reaching and measuring people, here campaign measurement of buyers versus views. “Entry point, not a fence” means each team member can start from the branch closest to their background, but the project needs all three: the commission decision in (i) depends on the measured buyers in (iii), which depend on the pipeline in (ii).",
+   "marking": "1 mark for each correct branch: (i) business, (ii) information systems, (iii) marketing (3 marks). 2 marks for justifications that link the wording of the question to the branch (value capture/channel/monetisation; data pipeline/infrastructure; reach/measure/campaign): 1 mark each for any two correctly justified questions. 1 mark for explaining that a background is a starting point while real problems connect all three branches, ideally shown with a link between the questions. Do not award a branch mark for a question placed in “all three” without naming a main branch."
+  },
+  {
+   "id": "w1-b02",
+   "topic": "The five data types and the platform shift",
+   "tests": "Apply the removal test to find an app's primary platform shift and name the new data it logs",
+   "title": "The removal test for a voice-room app",
+   "stem": "Hummo is a fictional app launched three years ago. Users join live audio rooms that are hosted by other users; the app itself produces no shows. The home screen lists rooms chosen by an algorithm, and most people listen on their phones while commuting. A classmate says Hummo is explained by “all three shifts: mobile, feeds and creators”. Explain why this answer is not enough under the course's decision rule. Apply the removal test to identify Hummo's primary shift, and state one thing Hummo logs that its predecessor, a radio call-in show, could not.",
+   "formula": "",
+   "reference": "Most apps born in the last five years carry all three shifts, so “all three” does not explain anything; the course's rule is that the primary shift is the one whose removal kills the app. Remove the algorithmic home screen and Hummo still works as a list of rooms you follow; remove the phone and people could still join rooms on a computer, if less often. Remove the user hosts, however, and there is nothing to listen to, because the platform produces nothing you consume, so creators is the primary shift. Hummo logs, for every listener, which room they joined, when they joined and left, and whom they gifted or followed; a radio call-in show could not see individual listeners at all.",
+   "marking": "1 mark for explaining that most new apps carry all three shifts, so the primary one must be picked with the removal test. 2 marks for applying the removal test to at least two shifts with a reason (1 mark per shift). 1 mark for naming a primary shift consistent with the test. Creators is the reference answer; accept feeds or mobile only if the removal argument genuinely supports it. 2 marks for one new logged data item (1) and why the predecessor could not record it (1), e.g. individual join/leave times, per-listener gifts, follows, location while commuting."
+  },
+  {
+   "id": "w1-b03",
+   "topic": "Four measurement scales and the operations ladder",
+   "tests": "Classify three attributes on the four scales and give the summary each scale allows",
+   "title": "Scales and summaries for a pet-supplies order table",
+   "stem": "Glowfin Pets, a fictional pet-supplies seller, keeps one row per customer with these three attributes:<ul><li>Payment method (WeChat Pay, Alipay, card)</li><li>Membership tier (Bronze, Silver, Gold)</li><li>Number of orders last month (0, 1, 2, ...)</li></ul>For each attribute, name its measurement scale with a reason, and name one summary statistic the course says you may use for it.",
+   "formula": "",
+   "reference": "Payment method is nominal: the values are labels that only tell same or different, so the course's summary is the mode (the most used payment method). Membership tier is ordinal: Gold ranks above Silver above Bronze, but the gaps between tiers have no fixed size, so the median (or percentiles) fits. Number of orders is ratio: it is a count with a true zero (no orders) and equal gaps, so 4 orders is twice 2 orders, and the mean and standard deviation are allowed (the median is still useful if a few customers order a lot).",
+   "marking": "For each of the three attributes: 1 mark for the correct scale with a brief reason (labels only; order without fixed gaps; true zero) and 1 mark for a summary allowed for that scale (nominal: mode; ordinal: median or percentiles; ratio: mean, standard deviation, or median). Total 6. Do not award the summary mark for a mean of payment codes or a mean of tier codes. Calling number of orders interval earns no scale mark, but the summary mark can still be earned for the mean."
+  },
+  {
+   "id": "w1-b04",
+   "topic": "One summary per scale, and the superstar problem",
+   "tests": "Use the mean when a total is needed and the median for a typical creator, in skewed data",
+   "title": "Mean or median for a creator roster",
+   "stem": "Copperleaf MCN, a fictional creator agency, offers a brand a roster of eight creators. Their average monthly views (in thousands) are 10, 12, 14, 16, 20, 22, 26 and 280. Calculate the mean and the median. Brand A will hire <b>one</b> creator from the roster for a fixed fee; Brand B will sponsor <b>all eight</b> and wants to plan total monthly views. State which summary each brand should use and explain why.",
+   "formula": "mean = sum of values / number of values; median = middle of the sorted values (average of the two middle values when n is even)",
+   "reference": "The total is 400K views, so the mean is 400/8 = 50K. The median is the average of the 4th and 5th sorted values, (16 + 20)/2 = 18K. The one 280K creator pulls the mean up: seven of the eight creators are below 50K, and without the superstar the mean would be 120/7 = 17.1K. Brand A, hiring one typical creator, should use the median of 18K, which is robust to the extreme. Brand B needs the total, and the mean is exactly the total divided by the count, so mean &times; 8 = 400K views is the right planning figure for the whole roster.",
+   "marking": "1 mark for the mean of 50K (with working). 1 mark for the median of 18K. 1 mark for explaining that the single 280K creator pulls the mean up while the median is robust (accept evidence such as seven of eight below the mean, or the mean without the superstar, 17.1K). 1 mark for recommending the median to Brand A with a reason. 2 marks for Brand B: 1 for choosing the mean (or the total) and 1 for explaining that mean &times; count gives total views (400K). Carry forward arithmetic slips to the recommendations."
+  },
+  {
+   "id": "w1-b05",
+   "topic": "Entropy: how much information is in an answer",
+   "tests": "Compute and compare entropies of two attributes and reject 'highest entropy = best predictor'",
+   "title": "Entropy of payment method and delivery slot",
+   "stem": "Saffron Bowl, a fictional food-delivery kitchen, looks at its last 8 orders. Payment method: WeChat Pay 4, Alipay 2, card 2. Delivery slot: lunch 6, dinner 2. Every order also has a unique order ID. Calculate the entropy of payment method and of delivery slot (log<sub>2</sub> 2 = 1, log<sub>2</sub> 4 = 2, log<sub>2</sub>(4/3) = 0.415). Say which answer tells you more and why. A manager suggests using order ID to explain tips because it has the highest entropy; respond.",
+   "formula": "H(U) = &minus;Σ p<sub>i</sub> log<sub>2</sub> p<sub>i</sub>, where p<sub>i</sub> is the share of each value",
+   "reference": "Payment method: shares 1/2, 1/4, 1/4, so H = 1/2 &times; 1 + 1/4 &times; 2 + 1/4 &times; 2 = 0.5 + 0.5 + 0.5 = 1.5 bits. Delivery slot: shares 3/4 and 1/4, so H = 3/4 &times; 0.415 + 1/4 &times; 2 = 0.311 + 0.5 = 0.81 bits. Payment method has the higher entropy: it is harder to guess (you would guess lunch and be right three times out of four), so hearing the answer tells you more. Order ID has the highest entropy of all, log<sub>2</sub> 8 = 3 bits, only because every order is unique; entropy measures unpredictability, not whether an attribute explains an outcome, so an ID says nothing about why customers tip.",
+   "marking": "2 marks for payment method: 1 for the correct setup with shares 1/2, 1/4, 1/4 and 1 for 1.5 bits. 2 marks for delivery slot: 1 for the setup with shares 3/4, 1/4 and 1 for 0.81 bits (accept 0.8 to 0.82). 1 mark for stating that payment method carries more information because it is harder to guess. 1 mark for rejecting the manager's idea: high entropy reflects uniqueness, not explanatory value. Apply error carried forward to the comparison."
+  },
+  {
+   "id": "w1-b06",
+   "topic": "The chi-square test: are two attributes linked?",
+   "tests": "Run a full 2x2 chi-square test that ends in 'no evidence of a link' and phrase it correctly",
+   "title": "Chi-square: new versus returning viewers",
+   "stem": "Brightloom, a fictional online craft-course seller, records 400 viewers of one livestream.<br><table class=\"ex\"><tr><th></th><th>Bought</th><th>Did not buy</th><th>Total</th></tr><tr><td>New viewers</td><td>54</td><td>186</td><td>240</td></tr><tr><td>Returning viewers</td><td>46</td><td>114</td><td>160</td></tr><tr><td>Total</td><td>100</td><td>300</td><td>400</td></tr></table>Calculate the four expected counts and χ<sup>2</sup>. The critical value at α = 0.1 with df = 1 is 2.71. State the degrees of freedom and your conclusion, and explain what the conclusion does and does not mean for the seller.",
+   "formula": "e = row total &times; column total / n; χ<sup>2</sup> = Σ (f &minus; e)<sup>2</sup> / e; df = (rows &minus; 1) &times; (columns &minus; 1)",
+   "reference": "Expected counts: new and bought 240 &times; 100 / 400 = 60; new and not 240 &times; 300 / 400 = 180; returning and bought 160 &times; 100 / 400 = 40; returning and not 160 &times; 300 / 400 = 120. Each gap is 6 in size, so χ<sup>2</sup> = 36/60 + 36/180 + 36/40 + 36/120 = 0.6 + 0.2 + 0.9 + 0.3 = 2.0. df = (2 &minus; 1) &times; (2 &minus; 1) = 1. Since 2.0 &lt; 2.71 there is no evidence of a link between viewer type and buying at α = 0.1. Returning viewers bought a little more often (46/160 = 28.75% versus 54/240 = 22.5%), but this sample does not show that difference clearly; it does not prove that viewer type is unrelated to buying, and a larger sample could reach a different verdict.",
+   "marking": "1 mark for all four expected counts (60, 180, 40, 120). 2 marks for χ<sup>2</sup>: 1 for the correct (f &minus; e)<sup>2</sup>/e terms and 1 for 2.0. 1 mark for df = 1. 1 mark for comparing 2.0 with 2.71 and concluding no evidence of a link. 1 mark for stating this is not proof of no relationship (or that a larger sample might differ). Do not award the last mark for “new and returning viewers buy the same”. Error carried forward: a wrong χ<sup>2</sup> followed by a correct comparison earns the comparison mark."
+  },
+  {
+   "id": "w1-b07",
+   "topic": "Rank correlation: do two orderings move together?",
+   "tests": "Compute a negative Spearman r_s and connect it to engagement versus conversion",
+   "title": "Likes rank against sales rank",
+   "stem": "Tidewell Home, a fictional home-goods brand, ranks its five livestream hosts by total likes (1 = most likes) and by GMV (1 = highest GMV).<br><table class=\"ex\"><tr><th>Host</th><th>Likes rank (x)</th><th>GMV rank (y)</th></tr><tr><td>V</td><td>1</td><td>5</td></tr><tr><td>W</td><td>2</td><td>3</td></tr><tr><td>X</td><td>3</td><td>4</td></tr><tr><td>Y</td><td>4</td><td>1</td></tr><tr><td>Z</td><td>5</td><td>2</td></tr></table>Calculate Spearman's r<sub>s</sub>, interpret it, and explain what it implies for a plan to pay hosts a bonus per thousand likes.",
+   "formula": "r<sub>s</sub> = 1 &minus; 6Σd<sub>i</sub><sup>2</sup> / (n(n<sup>2</sup> &minus; 1)), where d<sub>i</sub> = x<sub>i</sub> &minus; y<sub>i</sub> is the gap between the two ranks",
+   "reference": "The gaps d = x &minus; y are &minus;4, &minus;1, &minus;1, 3 and 3, so Σd<sup>2</sup> = 16 + 1 + 1 + 9 + 9 = 36. With n = 5, n(n<sup>2</sup> &minus; 1) = 5 &times; 24 = 120. r<sub>s</sub> = 1 &minus; 6 &times; 36 / 120 = 1 &minus; 1.8 = &minus;0.8. This is close to &minus;1: the two rankings move in opposite directions, so the hosts with the most likes tend to sell the least. A bonus per thousand likes would reward engagement, not conversion, and could steer hosts away from selling; the brand should tie bonuses to GMV or conversion instead, keeping in mind that five hosts is a small sample.",
+   "marking": "1 mark for the five rank gaps. 1 mark for Σd<sup>2</sup> = 36. 2 marks for r<sub>s</sub>: 1 for the correct substitution and 1 for &minus;0.8. 1 mark for interpreting a strong negative value as rankings moving in opposite directions. 1 mark for the business implication: likes (engagement) are not sales (conversion), so a likes bonus is poorly aligned. Error carried forward from a wrong Σd<sup>2</sup> to the interpretation."
+  },
+  {
+   "id": "w1-b08",
+   "topic": "Data quality: platform data is not neutral",
+   "tests": "Diagnose three data-quality problems in a vendor dataset by name and side, and choose a missing-value option with its cost",
+   "title": "Data-quality audit of a vendor dataset",
+   "stem": "Quillon Skincare, a fictional brand, buys a creator dataset from a data vendor and finds three issues:<ul><li>(i) One creator gained 40,000 followers in a single week, mostly new accounts with no posts.</li><li>(ii) 18% of the audience rows have no age, because users refused to give it.</li><li>(iii) The file has no description of how its “engagement score” was calculated.</li></ul>Name the course's data-quality problem behind each issue and the side (collection or application) on which it arises. Choose one of the course's three options for the missing ages and state its cost. Say what Quillon should do before using the dataset to choose creators.",
+   "formula": "",
+   "reference": "Issue (i) is measurement error on the collection side: bots or a water army inflate the follower count, so the recorded value differs from the actual audience. Issue (ii) is missing values, also on the collection side. Issue (iii) is documentation, on the application side: a dataset should ship with a description, otherwise the score cannot be interpreted. For the ages, Quillon could drop the rows without age, which loses 18% of the data and can bias the sample if people who refuse differ from the rest (alternatives: estimate a likely age, which adds a guess; or ignore the gap and use the other attributes, so some results rest on fewer values). Before choosing creators, it should ask the vendor how the engagement score is built and remove or discount the suspect follower spike.",
+   "marking": "3 marks: 1 for each issue with the correct problem and side (measurement error or bot-inflated numbers / collection; missing values / collection; documentation / application). Both parts are needed for the mark. 2 marks for the missing-value choice: 1 for naming drop, estimate or ignore, 1 for its correct cost. 1 mark for a sensible pre-use action tied to the issues (verify the follower spike, request documentation). Accept “noise” for issue (i) only if the answer explains why the error is random, which here it is not, so normally award it no mark."
+  },
+  {
+   "id": "w1-b09",
+   "topic": "Preprocessing: aggregate, discretize, binarize",
+   "tests": "Choose the right preprocessing operation for each need and the discretization method for skewed data",
+   "title": "Preprocessing a bookshop's livestream log",
+   "stem": "Marlow Books, a fictional bookshop, has a raw event log from its livestreams with one row per event (viewer, stream, event type such as view or order, book genre, time). The analyst needs three things:<ul><li>(i) one row per stream with total orders and total viewers;</li><li>(ii) viewers' weekly watch minutes turned into Light / Regular / Heavy;</li><li>(iii) book genre (Fiction, Comics, Kids, Study, Poetry) turned into 0/1 columns for a model.</li></ul>Name the course's preprocessing operation for each need. The watch minutes include a few extreme values above 1,000; recommend a discretization method for (ii) and explain why. Give one caution about the integer codes used in (iii).",
+   "formula": "",
+   "reference": "Need (i) is aggregate: single events are rolled up into per-stream totals, which also decides that one object is now one stream. Need (ii) is discretize: a continuous value becomes a grade. Need (iii) is binarize: category, then integer, then bits (five genres need three bits). Because a few extreme values stretch the range, equal width would put almost everyone in Light and leave Heavy nearly empty; equal frequency (same number of viewers per grade) or k-means (cuts in the natural gaps) gives more useful grades. The integer codes are labels for a nominal attribute: Poetry coded 4 is not four times Comics coded 1, so they must not be averaged or treated as amounts.",
+   "marking": "1 mark each for aggregate, discretize and binarize matched to (i), (ii), (iii) (3 marks). 2 marks for the method: 1 for recommending equal frequency or k-means, 1 for explaining that extreme values stretch equal-width intervals so most viewers fall in one grade. 1 mark for the caution that integer codes of a nominal attribute carry no amount or order. Recommending equal width earns the method marks only with a convincing argument that the extremes are removed first."
+  },
+  {
+   "id": "w1-b10",
+   "topic": "Similarity and distance between streamers",
+   "tests": "Show numerically how an unscaled large-unit column dominates Euclidean distance",
+   "title": "Distance with and without follower counts",
+   "stem": "Juniper Snacks, a fictional brand, looks for a creator similar to its best creator, Hero. Two attributes are scored 0 to 10: engagement score and price-fit score. Followers are in thousands.<br><table class=\"ex\"><tr><th>Creator</th><th>Engagement</th><th>Price fit</th><th>Followers (K)</th></tr><tr><td>Hero</td><td>6</td><td>8</td><td>300</td></tr><tr><td>P</td><td>9</td><td>4</td><td>320</td></tr><tr><td>Q</td><td>5</td><td>6</td><td>900</td></tr></table>Calculate the distance from Hero to P and to Q using engagement and price fit only, and again using all three columns as given (to two decimal places). Explain the change in the result and how to fix it.",
+   "formula": "d(p, q) = √( Σ<sub>k</sub> (p<sub>k</sub> &minus; q<sub>k</sub>)<sup>2</sup> )",
+   "reference": "With two attributes: Hero to P = √(3<sup>2</sup> + 4<sup>2</sup>) = √25 = 5.00; Hero to Q = √(1<sup>2</sup> + 2<sup>2</sup>) = √5 = 2.24, so Q is the closer match. With all three columns: Hero to P = √(9 + 16 + 20<sup>2</sup>) = √425 = 20.62; Hero to Q = √(1 + 4 + 600<sup>2</sup>) = √360,005 = 600.00, so P now looks far closer. The result flipped only because followers are in much bigger units: the distance is now almost entirely the follower difference, and the two 0 to 10 scores barely count. The fix is to put the columns on comparable scales before computing distances (for example, standardize each column, as Week 6 does).",
+   "marking": "2 marks for the two-attribute distances (5.00 and 2.24, 1 each). 2 marks for the three-column distances (20.62 and 600.00, 1 each; accept 600.0). 1 mark for explaining that the large-unit followers column dominates and flips the nearest creator. 1 mark for the fix: rescale or standardize the columns to comparable scales. Error carried forward on arithmetic slips."
+  },
+  {
+   "id": "w1-b11",
+   "topic": "Discussion: one question for the six streamers",
+   "tests": "Sort four requests onto the ladder, pick the starting column, and explain how a describe question climbs to predict",
+   "title": "Four requests on the analytics ladder",
+   "stem": "The manager of Orchid Lane, a fictional flower shop selling through six livestream hosts, sends four requests:<ul><li>(i) “How much GMV did each host make last month?”</li><li>(ii) “Why did Host 3's conversion rate fall in October?”</li><li>(iii) “Which first-time viewers will place a second order within 30 days?”</li><li>(iv) “Should we move 30% of the boosting budget from Host 5 to Host 2?”</li></ul>Place each request on the analytics ladder. For request (i), name the column you would start with and why. Explain how request (i) could become a predict question later.",
+   "formula": "",
+   "reference": "Request (i) is describe (what happened), (ii) is diagnose (why it happened), (iii) is predict (scoring future cases) and (iv) is prescribe (choosing an action between options). For (i) I would start with the orders (or GMV) column per host, because it is data the shop already holds and it answers the question directly. Once the log grows over several months, the same orders column can train a model that forecasts next month's GMV per host, so today's describe question becomes next term's predict question.",
+   "marking": "1 mark for each correct rung: describe, diagnose, predict, prescribe (4 marks). 1 mark for a starting column that the shop already holds (orders, GMV or viewers) with a reason. 1 mark for explaining that a longer log turns the describe question into a predict question. Do not award (iv) for “predict”: it chooses between actions."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w1-c01",
+   "topics": [
+    "From screen to dataset: objects, attributes and values",
+    "Four measurement scales and the operations ladder",
+    "One summary per scale, and the superstar problem",
+    "The metric taxonomy and the toolkit",
+    "The analytics ladder: describe, diagnose, predict, prescribe"
+   ],
+   "tests": "Object and scales of a host table and the ratio claim on an interval attribute; mean versus median GMV with a superstar; conversion rate and a prescribe-rung host choice",
+   "name": "Kitebird Live",
+   "scenario": "<p>Kitebird Live is a fictional agency that manages six livestream hosts. Exhibit 1 is its dashboard for last month, one row per host. Tier is the agency's ranking (Bronze &lt; Silver &lt; Gold). The heat index is the platform's popularity score: it can be negative, and 0 is a reference point, not “no heat”.</p><p>Kitebird is pitching its hosts to brands. Its sales pitch says that “a typical Kitebird host brings &yen;60,000 GMV a month”. A snack brand now wants to pay one host to sell its new snack box next month.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Kitebird host dashboard, last month",
+     "html": "<table class=\"ex\"><tr><th>Host</th><th>Category</th><th>Tier</th><th>Heat index</th><th>Viewers</th><th>Orders</th><th>GMV (&yen; thousand)</th></tr><tr><td>H1</td><td>Beauty</td><td>Gold</td><td>90</td><td>20,000</td><td>600</td><td>180</td></tr><tr><td>H2</td><td>Snacks</td><td>Silver</td><td>60</td><td>8,000</td><td>320</td><td>40</td></tr><tr><td>H3</td><td>Beauty</td><td>Bronze</td><td>45</td><td>5,000</td><td>100</td><td>20</td></tr><tr><td>H4</td><td>Home</td><td>Silver</td><td>30</td><td>10,000</td><td>250</td><td>50</td></tr><tr><td>H5</td><td>Snacks</td><td>Bronze</td><td>&minus;10</td><td>4,000</td><td>160</td><td>30</td></tr><tr><td>H6</td><td>Fashion</td><td>Silver</td><td>50</td><td>12,000</td><td>240</td><td>40</td></tr></table>",
+     "note": "Conversion rate = orders / viewers. GMV = gross merchandise value, the total value of orders placed."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "What is the object in Exhibit 1? Classify Category, Tier, Heat index and Orders on the four measurement scales, with a brief reason for each. A colleague writes: “H1 (heat 90) is twice as hot as H3 (heat 45).” Evaluate this claim using the operations ladder.",
+     "answer": "The object is one host: each row describes one host and each column is an attribute. Category is nominal (labels, same or different only). Tier is ordinal (Gold above Silver above Bronze, but no fixed gaps). Heat index is interval (equal gaps, but 0 is only a reference point and values can be negative, as H5's &minus;10 shows). Orders is ratio (a count with a true zero). The claim is invalid: “twice” is a ratio, and the operations ladder allows multiply/divide only for ratio data; interval data allows add/subtract. The valid statement is that H1's heat is 45 points higher than H3's.",
+     "marking": "1 mark for the object (one host / one row). 4 marks: 1 for each correct scale with a reason (nominal, ordinal, interval, ratio). 2 marks for rejecting the claim: 1 for saying heat has no true zero (interval), 1 for the valid alternative (a 45-point difference) or an equivalent correct statement. 1 mark for citing the ladder: interval allows add/subtract but not multiply/divide. A scale named without any reason earns the mark only if correct and the reason is evident elsewhere in the answer."
+    },
+    {
+     "marks": 6,
+     "stem": "Calculate the mean and the median GMV per host. Evaluate the sales-pitch claim that “a typical Kitebird host brings &yen;60,000 GMV a month”, and say which summary a brand hiring one host should ask for.",
+     "answer": "Total GMV is 180 + 40 + 20 + 50 + 30 + 40 = 360, so the mean is 360/6 = &yen;60 thousand. Sorted GMV is 20, 30, 40, 40, 50, 180, so the median is (40 + 40)/2 = &yen;40 thousand. The claim is arithmetically the mean, but it is pulled up by one superstar, H1 (&yen;180K): five of the six hosts made less than &yen;60K, and without H1 the mean would be 180/5 = &yen;36K. A brand hiring one host is likely to get a typical host, so it should ask for the median (&yen;40K), which is robust to extremes, and ideally the full list.",
+     "marking": "1 mark for the mean of &yen;60K. 1 mark for the median of &yen;40K. 1 mark for identifying H1 as the superstar that pulls the mean up. 1 mark for supporting evidence (five of six below the mean, or the mean without H1 of &yen;36K). 1 mark for explaining that the median is robust to extremes. 1 mark for recommending the median for a brand hiring one host. Error carried forward from arithmetic slips."
+    },
+    {
+     "marks": 6,
+     "stem": "Calculate the conversion rates of H1, H2 and H5. Which rung of the analytics ladder does the snack brand's question sit on? Recommend one host for the snack box and give one limitation of your recommendation.",
+     "answer": "H1: 600/20,000 = 3.0%. H2: 320/8,000 = 4.0%. H5: 160/4,000 = 4.0%. Choosing which host gets next month's budget is prescribe: it turns the evidence into an action and compares options. I recommend H2: it shares the highest conversion rate (4%) with H5, already sells snacks, and reaches twice as many viewers (8,000 versus 4,000). H1 has the biggest GMV but sells beauty and converts less well. Limitation: the rates depend on how viewers are counted (a viewer who joins twice may be counted twice), and they come from one month of different products; GMV may also include orders later refunded.",
+     "marking": "2 marks for the three conversion rates (all three correct 2; two correct 1). 1 mark for prescribe. 2 marks for a recommendation: 1 for the choice and 1 for supporting it with conversion and at least one other piece of evidence (reach, category fit). H2 is the reference; accept H5 or H1 if the argument uses the computed rates consistently and addresses category fit. 1 mark for one valid limitation (viewer definition, one month only, refunds, bots inflating viewers, a different product next month). Do not award the limitation mark for “data may be wrong” without saying how."
+    }
+   ]
+  },
+  {
+   "id": "w1-c02",
+   "topics": [
+    "The chi-square test: are two attributes linked?",
+    "Rank correlation: do two orderings move together?"
+   ],
+   "tests": "Full 2x3 chi-square test with expected counts, df and verdict; Spearman r_s for host rankings; a channel-budget decision with association-not-causation and small-sample limits",
+   "name": "Lanterna Tea",
+   "scenario": "<p>Lanterna Tea is a fictional bubble-tea chain. Last month it gave a discount coupon to 300 new customers. Each customer first saw the coupon in one of three places: a feed ad, a livestream, or a creator's post. The marketing team wants to know whether the channel where customers first saw the coupon is linked to whether they redeemed it (Exhibit 1).</p><p>Lanterna also works with five livestream hosts. Before the campaign, an agency ranked them by an “audience-fit score”; after the campaign, the team ranked the same hosts by the share of their viewers who redeemed (Exhibit 2). Next month the team must decide where to put the coupon budget and how to choose hosts.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Coupon redemption by first channel (300 customers)",
+     "html": "<table class=\"ex\"><tr><th></th><th>Feed ad</th><th>Livestream</th><th>Creator post</th><th>Total</th></tr><tr><td>Redeemed coupon</td><td>24</td><td>48</td><td>18</td><td>90</td></tr><tr><td>Did not redeem</td><td>76</td><td>72</td><td>62</td><td>210</td></tr><tr><td>Total</td><td>100</td><td>120</td><td>80</td><td>300</td></tr></table>",
+     "note": "e = row total &times; column total / n; χ<sup>2</sup> = Σ (f &minus; e)<sup>2</sup> / e; df = (rows &minus; 1) &times; (columns &minus; 1). Critical values at α = 0.05: df = 2: 5.99; df = 3: 7.81; df = 6: 12.59."
+    },
+    {
+     "title": "Exhibit 2: Two rankings of five hosts (1 = best)",
+     "html": "<table class=\"ex\"><tr><th>Host</th><th>Audience-fit rank (x)</th><th>Redemption-rate rank (y)</th></tr><tr><td>Lin</td><td>1</td><td>3</td></tr><tr><td>Mo</td><td>2</td><td>1</td></tr><tr><td>Pei</td><td>3</td><td>2</td></tr><tr><td>Qiu</td><td>4</td><td>5</td></tr><tr><td>Rui</td><td>5</td><td>4</td></tr></table>",
+     "note": "r<sub>s</sub> = 1 &minus; 6Σd<sub>i</sub><sup>2</sup> / (n(n<sup>2</sup> &minus; 1)), where d<sub>i</sub> = x<sub>i</sub> &minus; y<sub>i</sub>."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Using Exhibit 1, calculate the expected count for each of the six cells and the χ<sup>2</sup> statistic (to two decimal places). State the degrees of freedom and your conclusion at α = 0.05.",
+     "answer": "Expected counts (row total &times; column total / 300): redeemed: feed 90 &times; 100/300 = 30, livestream 90 &times; 120/300 = 36, creator 90 &times; 80/300 = 24; not redeemed: 70, 84, 56. Terms (f &minus; e)<sup>2</sup>/e: redeemed: (24 &minus; 30)<sup>2</sup>/30 = 1.20, (48 &minus; 36)<sup>2</sup>/36 = 4.00, (18 &minus; 24)<sup>2</sup>/24 = 1.50; not redeemed: 36/70 = 0.51, 144/84 = 1.71, 36/56 = 0.64. χ<sup>2</sup> = 9.57. df = (2 &minus; 1) &times; (3 &minus; 1) = 2. Since 9.57 &gt; 5.99, there is evidence of a link between first channel and redemption at α = 0.05. The livestream cell contributes most: 48 of 120 livestream customers redeemed (40%) against 24% for feed ads and 22.5% for creator posts.",
+     "marking": "2 marks for the expected counts (all six correct 2; at least three correct 1). 2 marks for the six (f &minus; e)<sup>2</sup>/e terms (all correct 2; at least three correct 1). 1 mark for χ<sup>2</sup> = 9.57 (accept 9.56 to 9.58). 1 mark for df = 2. 1 mark for comparing with 5.99. 1 mark for the verdict “evidence of a link”, ideally naming the livestream cell as the main source. Error carried forward: a wrong χ<sup>2</sup> compared correctly with 5.99 earns the last two marks. Using df = 6 or 5 earns no df mark but the comparison mark can follow consistently."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, calculate Spearman's r<sub>s</sub> between the audience-fit ranking and the redemption ranking. Interpret the value and give one caution.",
+     "answer": "Gaps d = x &minus; y: Lin &minus;2, Mo 1, Pei 1, Qiu &minus;1, Rui 1. Σd<sup>2</sup> = 4 + 1 + 1 + 1 + 1 = 8. n(n<sup>2</sup> &minus; 1) = 5 &times; 24 = 120. r<sub>s</sub> = 1 &minus; 6 &times; 8/120 = 1 &minus; 0.4 = 0.6. The value is positive and fairly far from 0: hosts with a better audience-fit rank tended to have a better redemption rank, so the two rankings move together, though not perfectly (Lin, ranked first on fit, was only third on redemption). Caution: with only five hosts a single swapped rank changes r<sub>s</sub> a lot, and a rank correlation shows association, not that fit causes redemption.",
+     "marking": "1 mark for the five rank gaps. 1 mark for Σd<sup>2</sup> = 8. 2 marks for r<sub>s</sub>: 1 for correct substitution, 1 for 0.6. 1 mark for interpreting direction and strength (positive, rankings move together, not perfectly). 1 mark for one caution (small n, association not cause, ranks not raw values). Error carried forward from Σd<sup>2</sup>."
+    },
+    {
+     "marks": 6,
+     "stem": "Using both exhibits, recommend where to put next month's coupon budget and how to use the audience-fit score when choosing hosts. Give two limitations of your recommendation.",
+     "answer": "The chi-square test shows evidence that redemption is linked to the first channel, and livestream customers redeemed most (40% against 24% and 22.5%), so I would move a larger share of the coupon budget to livestreams, while keeping some spend in the other channels as a comparison group. The audience-fit ranking moves fairly closely with redemption (r<sub>s</sub> = 0.6), so it is a reasonable first screen for picking hosts, but not the only one: Lin shows a top-fit host can still be third on redemption. Limitations: first, the test shows an association, not that livestreams cause redemption; customers who watch a livestream may already be keener buyers. Second, the evidence is one month and, for hosts, only five hosts, so the next campaign should check whether the pattern repeats.",
+     "marking": "2 marks for a budget recommendation supported by the chi-square verdict and the redemption rates (1 for the decision, 1 for citing both pieces of evidence). 1 mark for using the fit score as a screen supported by r<sub>s</sub> with an appropriate reservation. 1 mark for an actionable element such as keeping a comparison channel or testing the shift. 2 marks for two distinct limitations (association not causation or self-selection into channels; one month; five hosts; coupons only seen once). Do not award a limitation mark for “more data is always better” with no link to the case."
+    }
+   ]
+  },
+  {
+   "id": "w1-c03",
+   "topics": [
+    "Entropy: how much information is in an answer",
+    "Preprocessing: aggregate, discretize, binarize",
+    "Data quality: platform data is not neutral"
+   ],
+   "tests": "Entropy of two attributes and the ID trap; equal-width versus equal-frequency grades under an extreme value; data-quality diagnosis feeding a targeting decision",
+   "name": "Pebblefit",
+   "scenario": "<p>Pebblefit is a fictional app that runs live home-workout classes. Its growth team exported a sample of nine members (Exhibit 1) and wants to send a free personal-coach session to its “High activity” members, to encourage them to stay. First it wants to understand the attributes, then turn weekly minutes into Low / Mid / High grades.</p><p>While checking the export, an engineer notes that M9's tablet was left playing classes overnight on two nights, and that the export was taken just before last month's redesign of the class schedule. M4 refused to give an age.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Sample of nine Pebblefit members",
+     "html": "<table class=\"ex\"><tr><th>Member</th><th>Plan</th><th>Device</th><th>Weekly minutes</th><th>Age</th></tr><tr><td>M1</td><td>Free</td><td>Phone</td><td>0</td><td>24</td></tr><tr><td>M2</td><td>Free</td><td>Phone</td><td>15</td><td>31</td></tr><tr><td>M3</td><td>Basic</td><td>Tablet</td><td>30</td><td>45</td></tr><tr><td>M4</td><td>Free</td><td>Phone</td><td>45</td><td>(refused)</td></tr><tr><td>M5</td><td>Basic</td><td>Phone</td><td>60</td><td>29</td></tr><tr><td>M6</td><td>Premium</td><td>Tablet</td><td>75</td><td>38</td></tr><tr><td>M7</td><td>Basic</td><td>Phone</td><td>90</td><td>27</td></tr><tr><td>M8</td><td>Premium</td><td>Phone</td><td>120</td><td>35</td></tr><tr><td>M9</td><td>Premium</td><td>Tablet</td><td>300</td><td>52</td></tr></table>",
+     "note": "H(U) = &minus;Σ p<sub>i</sub> log<sub>2</sub> p<sub>i</sub>. Useful values: log<sub>2</sub> 3 = 1.585, log<sub>2</sub>(3/2) = 0.585, log<sub>2</sub> 9 = 3.170. Equal width: each grade covers the same range, width = (maximum &minus; minimum) / 3. Equal frequency: each grade holds the same number of members."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 7,
+     "stem": "Calculate the entropy of Plan and of Device (to two decimal places). Which attribute is harder to guess, and why? A product manager says Member ID would have an even higher entropy, so it should be the first attribute used to explain who stays. Respond.",
+     "answer": "Plan: Free 3, Basic 3, Premium 3, each share 1/3. H = 3 &times; (1/3 &times; 1.585) = 1.585, about 1.58 bits. Device: phone 6, tablet 3, shares 2/3 and 1/3. H = 2/3 &times; 0.585 + 1/3 &times; 1.585 = 0.390 + 0.528 = 0.918, about 0.92 bits. Plan is harder to guess: it has three equally likely values, while for device you would guess phone and be right two times out of three, so an answer about plan tells you more. Member ID would indeed have H = log<sub>2</sub> 9 = 3.17 bits, because every member is unique, but entropy measures how unpredictable an attribute is, not whether it explains an outcome; an ID carries no reason why a member stays.",
+     "marking": "2 marks for Plan: 1 for the shares and setup, 1 for 1.58 (accept 1.58 or 1.59). 2 marks for Device: 1 for the setup, 1 for 0.92. 1 mark for naming Plan as harder to guess with the reason (more, equally likely values). 1 mark for Member ID's high entropy coming from uniqueness (3.17 bits not required). 1 mark for stating that high entropy does not mean explanatory or business value. Error carried forward on arithmetic."
+    },
+    {
+     "marks": 7,
+     "stem": "Discretize weekly minutes into Low / Mid / High (i) by equal width and (ii) by equal frequency, listing the members in each grade. Which method would you use for this sample, and why?",
+     "answer": "(i) Equal width: range 300 &minus; 0 = 300, width 100. Low (0 to under 100): M1 to M7; Mid (100 to under 200): M8; High (200 to 300): M9. (ii) Equal frequency: nine members, three per grade in sorted order. Low: M1, M2, M3 (0, 15, 30); Mid: M4, M5, M6 (45, 60, 75); High: M7, M8, M9 (90, 120, 300). The single extreme value of 300 stretches the range, so equal width puts seven of nine members in Low and leaves High with one member. Equal frequency (or a k-means cut in the natural gap below 300) gives more useful grades for targeting, so I would use equal frequency here.",
+     "marking": "1 mark for width 100. 2 marks for the equal-width grades (all three correct 2; one grade wrong 1). 2 marks for the equal-frequency grades (same rule). 2 marks for the choice: 1 for preferring equal frequency or k-means, 1 for explaining that the extreme value 300 stretches equal-width intervals. Accept equal width only with an argument that M9 is first corrected."
+    },
+    {
+     "marks": 6,
+     "stem": "Name the course's data-quality problem behind M9's 300 minutes and behind M4's missing age, with the side on which each arises, and choose an option for M4's age with its cost. Then recommend who should receive the coach session and give one limitation.",
+     "answer": "M9's 300 minutes is measurement error on the collection side: the recorded value (classes playing overnight) differs from the actual workout time. M4's age is a missing value, also on the collection side. Age is not needed for the activity grade, so I would ignore the gap and keep M4 in the sample; the cost is that any age summary uses only eight members (dropping M4 would lose one of only nine members). Recommendation: correct or exclude M9's overnight minutes first, then send the coach session to the members in the equal-frequency High grade after correction (currently M7, M8 and M9), checking that M9 really belongs there. Limitation: nine members is a very small sample, and the export predates the schedule redesign, so the grades may already be out of date (timeliness).",
+     "marking": "1 mark for measurement error for M9; 1 mark for collection side (for both M9 and M4). 1 mark for missing values with a chosen option (drop, estimate or ignore) and 1 mark for its correct cost. 1 mark for a recommendation that handles M9 before targeting. 1 mark for one limitation (small sample, timeliness after the redesign, minutes do not show intent to stay). Accept “noise” for M9 only if the answer argues the error is random; the reference is measurement error."
+    }
+   ]
+  },
+  {
+   "id": "w1-c04",
+   "topics": [
+    "Similarity and distance between streamers",
+    "Four technologies, two tracks, and the data each one leaves",
+    "The five data types and the platform shift",
+    "The analytics ladder: describe, diagnose, predict, prescribe"
+   ],
+   "tests": "Euclidean distance to a reference creator and why city-block ties; mapping data items to technology and data type; a prescribe-rung creator choice with limitations",
+   "name": "Mirra Eyewear",
+   "scenario": "<p>Mirra Eyewear is a fictional glasses brand. Shoppers discover its frames in their feeds, watch its Douyin live shows, read reviews (some now AI-written) and try frames on with AR in the Mirra app before checking out with one tap.</p><p>Mirra wants to sign one more creator for next quarter's launch who resembles “Star”, its best-performing creator. An agency scored candidate creators on two attributes already put on the same 0 to 6 scale: audience match and engagement score (Exhibit 1). The agency's own tool measures closeness by adding the absolute gaps on each attribute (city-block distance) and reports a tie. Mirra's analysts also list the data items they collect (Exhibit 2).</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Creator scores (same 0 to 6 scale)",
+     "html": "<table class=\"ex\"><tr><th>Creator</th><th>Audience match (x)</th><th>Engagement score (y)</th></tr><tr><td>Star (current best)</td><td>2</td><td>1</td></tr><tr><td>A</td><td>5</td><td>5</td></tr><tr><td>B</td><td>3</td><td>3</td></tr><tr><td>C</td><td>0</td><td>4</td></tr><tr><td>D</td><td>2</td><td>4</td></tr></table>",
+     "note": "Euclidean distance: d(p, q) = √( Σ<sub>k</sub> (p<sub>k</sub> &minus; q<sub>k</sub>)<sup>2</sup> ). City-block distance: Σ<sub>k</sub> |p<sub>k</sub> &minus; q<sub>k</sub>|."
+    },
+    {
+     "title": "Exhibit 2: Data items Mirra collects",
+     "html": "<table class=\"ex\"><tr><th>Data item</th><th>Description</th></tr><tr><td>(i)</td><td>Seconds each shopper spends looking at each frame model during AR try-on in the app</td></tr><tr><td>(ii)</td><td>Comments typed by viewers during the brand's Douyin live show</td></tr><tr><td>(iii)</td><td>List of accounts that follow each creator</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Calculate the Euclidean distance from Star to each of A, B, C and D (to two decimal places). Which creator is most similar to Star, and how do you read a distance? Show which creators tie under the agency's city-block distance, and explain why the Euclidean distance separates them.",
+     "answer": "Star (2, 1). A (5, 5): gaps 3 and 4, d = √25 = 5.00. B (3, 3): gaps 1 and 2, d = √5 = 2.24. C (0, 4): gaps 2 and 3, d = √13 = 3.61. D (2, 4): gaps 0 and 3, d = √9 = 3.00. B is most similar: distance is 0 for identical objects and grows as they differ, so the smallest distance means the most alike. City-block: B = 1 + 2 = 3 and D = 0 + 3 = 3, a tie. The Euclidean distance squares the gaps, so one large gap (D's 3 on engagement) counts more than two smaller gaps (B's 1 and 2): 9 against 1 + 4 = 5, which separates B (2.24) from D (3.00).",
+     "marking": "4 marks: 1 for each distance (5.00, 2.24, 3.61, 3.00). 1 mark for choosing B. 1 mark for reading distance (0 = identical, smaller = more alike; accept the contrast with similarity, where 1 = identical). 1 mark for showing the city-block tie B = D = 3. 1 mark for explaining that squaring weights a single large gap more heavily. Error carried forward on the choice."
+    },
+    {
+     "marks": 6,
+     "stem": "For each data item in Exhibit 2, name the new media technology that generates it and the course's data type (one of the five common-core types) it belongs to.",
+     "answer": "(i) Seconds spent looking at each frame during AR try-on are gaze and dwell, generated by XR; the data type is behavioural events (timed actions in the event log). (ii) Comments typed during the Douyin live show come from livestreaming; the data type is text (comments and danmaku). (iii) Who follows each creator comes from social media; the data type is networks (follows, mentions, shares).",
+     "marking": "For each of the three items: 1 mark for the technology (XR; livestreaming; social media) and 1 mark for the data type (behavioural events; text; networks). Total 6. For (ii), accept social media as the technology only if the answer notes the live show runs on a social platform; for (i), do not accept “profiles” or “transactions”."
+    },
+    {
+     "marks": 6,
+     "stem": "The marketing director asks: “Which creator should we sign for next quarter's launch?” Name the rung of the analytics ladder, recommend one creator using your earlier results, and give two limitations of basing the decision on Exhibit 1.",
+     "answer": "This is prescribe: it turns analysis into an action and compares options. I recommend B, the creator closest to Star (2.24, against 3.00 for D and more for the others), ideally with a short paid trial whose conversion is compared with Star's before a full contract. Limitations: first, similarity on two attributes is not proof of sales; Star's success may come from things not measured, such as product category or posting time. Second, the scores must stay on comparable scales; if raw follower counts were added, that column would dominate the distance. Engagement scores may also be inflated by bots or by AI-written comments, so they should be checked.",
+     "marking": "1 mark for prescribe. 2 marks for the recommendation: 1 for B (or the creator closest under the student's own distances) and 1 for supporting it with the distance comparison. 1 mark for an action that tests the choice (trial campaign, compare conversion). 2 marks for two distinct limitations (only two attributes; similarity is not causation of sales; scaling of added columns; bot- or AI-inflated engagement; scores from one agency at one time). Error carried forward from the earlier distances."
+    }
+   ]
+  }
+ ]
+}

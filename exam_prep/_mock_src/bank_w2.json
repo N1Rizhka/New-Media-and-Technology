@@ -1,0 +1,773 @@
+{
+ "week": 2,
+ "mcq": [
+  {
+   "id": "w2-a01",
+   "topic": "Porter's five forces, platform edition",
+   "tests": "Buyer power: near-zero switching cost lets buyers press on price (one swipe to the next shop)",
+   "stem": "Tallow &amp; Wick, a fictional candle shop on a short-video platform, raises its price by 3 yuan. Within a day its sales fall sharply: shoppers find near-identical candles from other shops one swipe away in the same app, and switching costs them nothing. Which of the five forces does the <i>shoppers'</i> behaviour show most directly?",
+   "formula": "",
+   "options": [
+    "Supplier power, because the platform supplies the shop with its traffic.",
+    "Threat of new entrants, because any shop can open a channel in a day.",
+    "Buyer power, because buyers can switch at almost no cost to them.",
+    "Threat of substitutes, because candles compete with other kinds of gifts."
+   ],
+   "answer": "c",
+   "explanation": "The pressure comes from the people who buy from the shop and can switch in one swipe, which is buyer power (\"one swipe to the next shop\"). Nothing in the stem describes a different product doing the same job or new shops opening."
+  },
+  {
+   "id": "w2-a02",
+   "topic": "Porter's five forces, platform edition",
+   "tests": "Threat of substitutes: different media competing for one marketing budget, distinguished from rivalry",
+   "stem": "Lanternfish Live, a fictional agency, sells livestream selling slots to brands. This year several of its brand clients keep the same total marketing budget but move part of it from livestream slots to short-video adverts and search adverts. Which force is putting pressure on Lanternfish's revenue?",
+   "formula": "",
+   "options": [
+    "Threat of substitutes: other media do the same job for one budget.",
+    "Industry rivalry: other livestream agencies are cutting the price of their slots.",
+    "Supplier power: top hosts raise the fee they charge the agency for each stream.",
+    "Threat of new entrants: new agencies can open a livestream channel in one day."
+   ],
+   "answer": "a",
+   "explanation": "Short-video and search adverts are different products doing the same job (reaching buyers) and compete for one budget, the course's substitute example (\"short video, stream and search ads split one budget\"). The stem says nothing about other livestream agencies, hosts or new agencies."
+  },
+  {
+   "id": "w2-a03",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Cost leadership defined as total cost below every rival and above-average profit, not lowest price (compute unit margins)",
+   "stem": "Four fictional sellers sell the same basic hand blender in one platform category. Which seller is the cost leader in the course's sense?<table class=\"ex\"><tr><th>Seller</th><th>Selling price (yuan)</th><th>Total unit cost (yuan)</th></tr><tr><td>North</td><td>200</td><td>160</td></tr><tr><td>East</td><td>200</td><td>130</td></tr><tr><td>South</td><td>175</td><td>160</td></tr><tr><td>West</td><td>190</td><td>150</td></tr></table>",
+   "formula": "Unit margin = selling price &minus; total unit cost",
+   "options": [
+    "South, because its 175-yuan price is the lowest in the category.",
+    "East, with cost below every rival and the top margin of 70 yuan.",
+    "West, because it pairs a below-market price with a 40-yuan margin.",
+    "North, because it holds the full market price of 200 yuan per blender."
+   ],
+   "answer": "b",
+   "explanation": "Margins are North 40, East 70, South 15 and West 40 yuan (average 41.25). East has the lowest total cost and an above-average margin, which is cost leadership: \"win the margin game, not the price tag\". South is cheapest but has the thinnest margin."
+  },
+  {
+   "id": "w2-a04",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Five routes to cost leadership: recognise material saving",
+   "stem": "A fictional shampoo maker keeps its formula, its bottle and its staffing unchanged. It replaces an imported fragrance oil with a cheaper local oil of the same quality and needs less of it per bottle. Which of the five routes to cost leadership is this?",
+   "formula": "",
+   "options": [
+    "Material saving: less material, or cheaper material.",
+    "Simplified product: fewer features and fewer parts.",
+    "Lower labor cost: fewer or cheaper working hours per unit.",
+    "Improved design: a design that is cheaper to make."
+   ],
+   "answer": "a",
+   "explanation": "The firm uses less and cheaper input with the same product and design, which is material saving. No feature is removed, the design is unchanged and labour is unchanged."
+  },
+  {
+   "id": "w2-a05",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Cost focus versus cost leadership and differentiation focus (narrow target, won cheaper)",
+   "stem": "Stitchly, a fictional livestream shop, only alters school uniforms, only for families in one city. It promises the lowest alteration price in that city and keeps its own costs down by sharing one workshop. Which generic strategy is Stitchly running?",
+   "formula": "",
+   "options": [
+    "Cost leadership, because it competes on having the lowest cost.",
+    "Differentiation focus, because it serves only one narrow niche.",
+    "Differentiation, because no rival offers exactly the same service.",
+    "Cost focus, because it serves one narrow target more cheaply."
+   ],
+   "answer": "d",
+   "explanation": "Two questions decide: how wide (one product use in one region, a niche) and cheaper or better (cheaper). Narrow plus cheaper is cost focus; cost leadership would need the whole market."
+  },
+  {
+   "id": "w2-a06",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Focus is cost or uniqueness applied to a narrow target; low share is one of its four forms",
+   "stem": "Which statement about the focus strategy is consistent with the course's framework?",
+   "formula": "",
+   "options": [
+    "Focus applies lower cost or uniqueness to one narrow target.",
+    "Focus is a third way to win, separate from both lower cost and uniqueness.",
+    "Focus means serving the whole market with one tightly managed product line.",
+    "Focus requires the firm to hold the largest share of the total market."
+   ],
+   "answer": "a",
+   "explanation": "Focus is not a third way to win: it is cost (cost focus) or uniqueness (differentiation focus) applied to one buyer group, product use or region. Its four forms are product line, customer, region and low share, so it does not require the largest share."
+  },
+  {
+   "id": "w2-a07",
+   "topic": "Segmentation: from mass market to a segment of one",
+   "tests": "Segmentation spectrum: recognise the custom level (one buyer, one offer)",
+   "stem": "On a fictional pet app, each buyer uploads a photo of their own dog and receives one embroidered blanket made only for that order. Where on the course's segmentation spectrum does this offer sit?",
+   "formula": "",
+   "options": [
+    "Mass: one offer for everyone.",
+    "Segment: a few large groups.",
+    "Niche: narrow, defined, served deep.",
+    "Custom: one buyer, one offer."
+   ],
+   "answer": "d",
+   "explanation": "Each blanket is made for one buyer's order, the \"segment of one\" end of the spectrum, like print-on-demand where one buyer prints one shirt."
+  },
+  {
+   "id": "w2-a08",
+   "topic": "Segmentation: from mass market to a segment of one",
+   "tests": "Segmentation definition: needs must differ between segments (a cut that separates no needs is useless)",
+   "stem": "An analyst at a fictional snack brand splits its buyers into twelve groups by star sign. The twelve groups buy the same products, in the same pack sizes, at the same frequency. Why is this a poor segmentation under the course's definition?",
+   "formula": "",
+   "options": [
+    "Needs do not differ between the groups, so there is no reason to split them.",
+    "Twelve groups are too many, because the course allows at most four segments in total.",
+    "Star sign is a demographic variable, and segmentation must always use behavior alone.",
+    "Buyers inside each group are too different, so one offer could never serve them all."
+   ],
+   "answer": "a",
+   "explanation": "Segmentation cuts a market into sub-markets whose needs differ. Here the groups behave identically, so the cut separates nothing. The course sets no limit of four segments, and nothing shows buyers within a group differ."
+  },
+  {
+   "id": "w2-a09",
+   "topic": "Disruption enters from below",
+   "tests": "Christensen's disruption sequence: place an entrant at the low-end step and name the next step",
+   "stem": "Mid-market rice-cooker brands keep adding app control and twenty cooking modes that most buyers never use, and they price for these features. A factory-direct seller now offers a basic, good-enough cooker at half the price to buyers those brands ignore. In Christensen's sequence, which step is the factory-direct seller at now, and what comes next?",
+   "formula": "",
+   "options": [
+    "Overshoot; next it will serve the low end of the market cheaply.",
+    "Low end; next it will climb into the incumbents' own segments.",
+    "Climb; next it will overshoot what most of its buyers need.",
+    "Low end; next the incumbents will start to overshoot buyers' needs."
+   ],
+   "answer": "b",
+   "explanation": "The incumbents have already overshot; the entrant is serving the low end cheaply. The third step is the climb into the incumbents' segments (\"disruption enters from below\")."
+  },
+  {
+   "id": "w2-a10",
+   "topic": "Four variable families for cutting a market",
+   "tests": "Four variable families: identify the psychographic cut among geographic, demographic and behavioral cuts",
+   "stem": "A fictional skincare brand considers four ways to cut its market. Which one uses a psychographic variable?",
+   "formula": "",
+   "options": [
+    "Buyers in first-tier cities versus buyers in third-tier cities.",
+    "Buyers aged 18 to 24 versus buyers aged 35 to 44.",
+    "Label readers who check every ingredient versus trend chasers.",
+    "Buyers who reorder every month versus buyers who bought only once."
+   ],
+   "answer": "c",
+   "explanation": "Psychographic variables capture lifestyle and values, such as ingredient purists versus trend chasers. City tier is geographic, age is demographic and reorder frequency (loyalty) is behavioral."
+  },
+  {
+   "id": "w2-a11",
+   "topic": "Three targeting strategies",
+   "tests": "Differentiated targeting: a different mix and product per segment, not a coverage pattern",
+   "stem": "FitBarn, a fictional protein-powder brand, runs one weekly stream for gym beginners with small starter packs, and a second weekly stream for marathon runners with endurance blends at a different price. Which targeting strategy is FitBarn using?",
+   "formula": "",
+   "options": [
+    "Undifferentiated targeting.",
+    "Concentrated targeting.",
+    "Differentiated targeting.",
+    "Full-coverage targeting."
+   ],
+   "answer": "c",
+   "explanation": "A different mix, and here a different product, for each of two segments is differentiated targeting. Concentrated would put all strength behind one segment; full coverage is a coverage pattern, not one of the three targeting strategies."
+  },
+  {
+   "id": "w2-a12",
+   "topic": "Coverage: five product-market patterns",
+   "tests": "Coverage grid: one full row is product specialization",
+   "stem": "A fictional brand marks the cells it serves on its product-segment grid (&#10003; = served). Which coverage pattern is this?<table class=\"ex\"><tr><th>Product \\ Segment</th><th>Students</th><th>Office workers</th><th>Outdoor runners</th></tr><tr><td>Sunscreen stick</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr><tr><td>Lip balm</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr><tr><td>Hand cream</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td></tr></table>",
+   "formula": "",
+   "options": [
+    "Market specialization.",
+    "Product specialization.",
+    "Selective specialization.",
+    "Single-segment concentration."
+   ],
+   "answer": "b",
+   "explanation": "One product (the sunscreen stick) is sold to every segment: one full row, which is product specialization. Market specialization would be one full column."
+  },
+  {
+   "id": "w2-a13",
+   "topic": "Coverage: five product-market patterns",
+   "tests": "Coverage grid: one full column is market specialization",
+   "stem": "Another fictional brand marks the cells it serves on the same kind of grid (&#10003; = served). Which coverage pattern is this?<table class=\"ex\"><tr><th>Product \\ Segment</th><th>Students</th><th>Office workers</th><th>Outdoor runners</th></tr><tr><td>Sunscreen stick</td><td>&#10003;</td><td>&ndash;</td><td>&ndash;</td></tr><tr><td>Lip balm</td><td>&#10003;</td><td>&ndash;</td><td>&ndash;</td></tr><tr><td>Hand cream</td><td>&#10003;</td><td>&ndash;</td><td>&ndash;</td></tr></table>",
+   "formula": "",
+   "options": [
+    "Market specialization.",
+    "Product specialization.",
+    "Full coverage.",
+    "Selective specialization."
+   ],
+   "answer": "a",
+   "explanation": "All three products are sold to one segment (students): one full column, many products for one segment, which is market specialization."
+  },
+  {
+   "id": "w2-a14",
+   "topic": "Choosing a targeting strategy: the six factors",
+   "tests": "Six-factor table: a profile matching every cell of the undifferentiated row",
+   "stem": "A fictional bottled-water brand has this profile on the six factors. Which targeting strategy does the six-factor table point to?<table class=\"ex\"><tr><th>Factor</th><th>Firm strength</th><th>Product homogeneity</th><th>Market homogeneity</th><th>PLC stage</th><th>Rival strategy</th><th>Rival count</th></tr><tr><td>Profile</td><td>strong</td><td>high</td><td>high</td><td>growth</td><td>mixed</td><td>few</td></tr></table>",
+   "formula": "",
+   "options": [
+    "Concentrated, because a product in its growth stage needs a single segment.",
+    "Differentiated, because a strong firm should always serve segments separately.",
+    "Concentrated, because few rivals means the whole market is too small.",
+    "Undifferentiated, because every factor fits that row of the table."
+   ],
+   "answer": "d",
+   "explanation": "The undifferentiated row reads strong, high, high, intro and growth, any, few, which matches this profile. Buyers see the product as alike and want the same thing, so one product and one mix is enough and cheapest."
+  },
+  {
+   "id": "w2-a15",
+   "topic": "Choosing a targeting strategy: the six factors",
+   "tests": "Firm strength works as a gate: limited strength leaves only concentrated even when other factors fit differentiated",
+   "stem": "A fictional two-person studio sells handmade ceramic mugs. The product is in maturity, buyers' tastes vary widely, the mugs vary a lot, and many rivals already run differentiated strategies. Apart from firm strength, every factor matches the differentiated row of the six-factor table. Which targeting strategy should the studio choose?",
+   "formula": "",
+   "options": [
+    "Differentiated, because five of the six factors match that row of the table.",
+    "Undifferentiated, because one mix is the cheapest way to serve all buyers.",
+    "Concentrated, because limited strength rules out the other two.",
+    "Differentiated, because a firm should copy the strategy its rivals already use."
+   ],
+   "answer": "c",
+   "explanation": "Both undifferentiated and differentiated need a strong firm; only concentrated has \"limited\". A firm without resources for several mixes cannot choose differentiated targeting, however well the other factors fit."
+  },
+  {
+   "id": "w2-a16",
+   "topic": "Five ways to position the brand",
+   "tests": "Positioning: share means openly coexisting beside the leader's slot",
+   "stem": "A fictional noodle brand tells its viewers: \"Hotpot King is the city's favourite. We are the clear number two, so we try harder for every bowl.\" Which positioning strategy is this?",
+   "formula": "",
+   "options": [
+    "Excavate.",
+    "Reposition.",
+    "Consolidate.",
+    "Share."
+   ],
+   "answer": "d",
+   "explanation": "The brand accepts the leader's slot and stands openly beside it, the \"we-try-harder number two\": share. It does not attack what the leader's slot means (reposition) or dig out an unowned attribute (excavate)."
+  },
+  {
+   "id": "w2-a17",
+   "topic": "Five ways to position the brand",
+   "tests": "Positioning: reposition changes what the rival's slot means (contrast with excavate and share)",
+   "stem": "A leading fictional vitamin gummy owns the slot \"tastes like candy\". A challenger runs streams arguing that \"tastes like candy\" really means \"full of sugar\", so that buyers rethink the leader's slot. Which positioning strategy is the challenger using?",
+   "formula": "",
+   "options": [
+    "Reposition.",
+    "Share.",
+    "Excavate.",
+    "First place."
+   ],
+   "answer": "a",
+   "explanation": "The challenger changes what the rival's slot means, which is reposition. It is not looking for an unowned attribute (excavate) or living beside the leader (share)."
+  },
+  {
+   "id": "w2-a18",
+   "topic": "STP in the feed: the herbal tea example, and STP before the 4Ps",
+   "tests": "STP first, then the 4Ps execute: setting the mix first reverses the rule",
+   "stem": "The team at a fictional juice start-up has already fixed its price, its bottle size and its stream calendar. It now plans to look for a segment that fits this mix. What does the course's rule say about this plan?",
+   "formula": "",
+   "options": [
+    "It is sound, because the 4Ps are controllable levers and should be set first.",
+    "It reverses the rule: STP comes first, and then the 4Ps execute it.",
+    "It is sound, as long as the segment is then found with behavioral variables.",
+    "It reverses the rule: positioning has to be decided before segmentation."
+   ],
+   "answer": "b",
+   "explanation": "The rule is \"STP first, then the 4Ps execute\". Price, pack and promotion only make sense once the firm knows who it serves and which word it owns."
+  },
+  {
+   "id": "w2-a19",
+   "topic": "STP in the feed: the herbal tea example, and STP before the 4Ps",
+   "tests": "Herbal tea example: map 'target them alone' to concentrated targeting and single-segment concentration",
+   "stem": "In the course's herbal tea example, the brand segments by behavior, serves late-night workers who buy calming tea and no one else, and positions itself as \"the three-in-the-morning tea\". Which pair correctly names its targeting strategy and its coverage pattern?",
+   "formula": "",
+   "options": [
+    "Differentiated targeting; market specialization.",
+    "Concentrated targeting; product specialization.",
+    "Concentrated targeting; single-segment concentration.",
+    "Undifferentiated targeting; single-segment concentration."
+   ],
+   "answer": "c",
+   "explanation": "Serving one segment alone is concentrated targeting, and one product for one segment is a single filled cell on the grid: single-segment concentration."
+  },
+  {
+   "id": "w2-a20",
+   "topic": "The rest of the marketing toolkit: value, satisfaction, brand, product and price",
+   "tests": "Cost-plus pricing: margin on price divides (contrast with markup on cost)",
+   "stem": "A fictional retailer buys a desk lamp at a unit cost of 120 yuan and wants a 25% margin on the retail price. What retail price does the course's margin-on-price formula give?",
+   "formula": "Markup on cost: price = unit cost &times; (1 + markup rate). Margin on price: price = unit cost / (1 &minus; margin rate).",
+   "options": [
+    "145 yuan.",
+    "150 yuan.",
+    "160 yuan.",
+    "180 yuan."
+   ],
+   "answer": "c",
+   "explanation": "120 / (1 &minus; 0.25) = 160 yuan, and the 40-yuan margin is 25% of 160. 150 yuan is the 25% markup on cost (120 &times; 1.25), the slip the course warns about: \"markup multiplies, margin divides\"."
+  },
+  {
+   "id": "w2-a21",
+   "topic": "The rest of the marketing toolkit: value, satisfaction, brand, product and price",
+   "tests": "DREK grid: high stature but low strength is the declining quadrant",
+   "stem": "Surveys show that almost everyone knows a fictional 40-year-old camera brand and still respects it, but few buyers now see it as different from rivals or relevant to how they take photos. In the course's DREK grid, where does the brand sit?",
+   "formula": "",
+   "options": [
+    "Leaders: high strength and high stature.",
+    "Declining: low strength but high stature.",
+    "Niche potential: high strength but low stature.",
+    "New or unfocused: low strength and low stature."
+   ],
+   "answer": "b",
+   "explanation": "Knowledge and esteem (stature) are high; differentiation and relevance (strength) are low. That is the declining quadrant: still known and respected, but no longer pulling buyers."
+  },
+  {
+   "id": "w2-a22",
+   "topic": "The rest of the marketing toolkit: value, satisfaction, brand, product and price",
+   "tests": "Customer delivered value: cutting time and energy costs can beat a price cut (compute value minus four costs)",
+   "stem": "A buyer's view of a fictional online cooking course, in illustrative points: total customer value 300; costs: money 180, time 40, energy 30, psychic 20. Option X cuts the price by 20 points. Option Y adds one-click checkout and instant access, cutting time cost by 25 and energy cost by 10. Which statement is correct?",
+   "formula": "Customer delivered value = total customer value &minus; total customer cost (money + time + energy + psychic)",
+   "options": [
+    "X raises delivered value more, from 30 to 50, because money is the largest cost.",
+    "Both leave delivered value at 30, because total customer value is unchanged.",
+    "Y raises delivered value from 30 to 55, which is 5 points more than X.",
+    "Y raises delivered value more, from 30 to 65 (X gives 50)."
+   ],
+   "answer": "d",
+   "explanation": "Now 300 &minus; 270 = 30. X: 300 &minus; 250 = 50. Y: 300 &minus; (180 + 15 + 20 + 20) = 300 &minus; 235 = 65. Money is only one of four costs, so removing time and energy cost does more here."
+  },
+  {
+   "id": "w2-a23",
+   "topic": "The 4Ps, the 4Cs and the AISAS loop",
+   "tests": "AISAS is a loop: one buyer's share feeds the next buyer's attention",
+   "stem": "A buyer of a fictional hair clip posts a try-on video after buying it. One of her followers sees the video and starts looking into the clip. In the AISAS loop, which step of the first buyer feeds which step of the follower?",
+   "formula": "",
+   "options": [
+    "The first buyer's action feeds the follower's search.",
+    "The first buyer's share feeds the follower's attention.",
+    "The first buyer's search feeds the follower's interest.",
+    "The first buyer's share feeds the follower's action."
+   ],
+   "answer": "b",
+   "explanation": "Posting after buying is share, and noticing the clip is attention: \"share feeds the next person's attention\", which is why the journey is a loop, not a funnel."
+  },
+  {
+   "id": "w2-a24",
+   "topic": "Four shapes of new media data",
+   "tests": "Four data shapes: nested JSON must be flattened into a table before table methods",
+   "stem": "A fictional app's export stores each post as one record that holds a list of its comments, and each comment holds its own author and time. Which data shape is this, and what must happen before most of the course's table methods can use it?",
+   "formula": "",
+   "options": [
+    "A network; the follower graph has to be drawn first.",
+    "Text and video; each comment must get a sentiment label first.",
+    "Nested JSON; it has to be flattened into a table first.",
+    "A table; it can be summed column by column as it stands."
+   ],
+   "answer": "c",
+   "explanation": "Data inside data (a post holding its comments) is nested JavaScript Object Notation (JSON). Name the shape first: it must be flattened into rows and columns before methods built for tables can read it."
+  },
+  {
+   "id": "w2-a25",
+   "topic": "Variable types and three traps",
+   "tests": "A 1-to-5 rating is ordinal, so the median or the top-two share is the safer summary",
+   "stem": "A fictional delivery app asks buyers to rate service from 1 (very poor) to 5 (excellent). How does the course classify this variable, and which summary is safer?",
+   "formula": "",
+   "options": [
+    "Ordinal; the median, or the share of 4s and 5s.",
+    "Continuous; the mean, as every step is the same size.",
+    "Nominal; only the mode, since labels have no order.",
+    "Discrete; the mean, as ratings are whole-number counts."
+   ],
+   "answer": "a",
+   "explanation": "The levels are ordered but the step from 4 to 5 is not a fixed amount of satisfaction, so the rating is ordinal; the median or the share of 4s and 5s is safer than the mean."
+  },
+  {
+   "id": "w2-a26",
+   "topic": "Variable types and three traps",
+   "tests": "Identifier trap: an average ID is meaningless and signals a reporting bug",
+   "stem": "A dashboard for a fictional shop shows \"average product_id = 1,054.5\" beside average order value and average units per order. What does the course say about this figure?",
+   "formula": "",
+   "options": [
+    "It is a valid summary, because product_id is stored as a number.",
+    "It is valid only if the product IDs were assigned in date order.",
+    "It should be replaced by the median product_id, which is robust.",
+    "It means nothing: an ID is a name, so the report has a bug."
+   ],
+   "answer": "d",
+   "explanation": "Identifiers are names, not quantities, so neither their mean nor their median says anything. Any report that shows an average ID has a bug."
+  },
+  {
+   "id": "w2-a27",
+   "topic": "Variable types and three traps",
+   "tests": "Small-base ratio trap: compute both rates and report the base beside the rate",
+   "stem": "A fictional brand compares two hosts' conversion. Which reading follows the course?<table class=\"ex\"><tr><th>Host</th><th>Viewers</th><th>Orders</th></tr><tr><td>Pia</td><td>12</td><td>6</td></tr><tr><td>Quan</td><td>4,000</td><td>600</td></tr></table>",
+   "formula": "Conversion = orders / viewers",
+   "options": [
+    "Pia converts at 50% against 15%, so the budget should move to Pia.",
+    "Pia's 50% rests on 12 viewers; report each base beside its rate.",
+    "Both hosts convert at about 15% once the rates are rounded.",
+    "Pia's 50% must be caused by bots, so her row should be deleted."
+   ],
+   "answer": "b",
+   "explanation": "Pia: 6 / 12 = 50%; Quan: 600 / 4,000 = 15%. A rate on a tiny denominator looks big and says little, so the base must be reported; nothing in the data shows bots."
+  },
+  {
+   "id": "w2-a28",
+   "topic": "From export to a dataset you trust: the cleaning order",
+   "tests": "Dedupe before judging missingness: duplicated gaps are double-counted (compute the remaining missing count)",
+   "stem": "A fictional jewellery brand ran 30 streams, but its export has 32 rows. Before any cleaning, a count finds 5 missing values in avg_watch_min. Two streams each appear twice with every field identical: one of them has a missing watch time in both copies, the other has a watch time in both. How many missing watch times remain after deduplication?",
+   "formula": "",
+   "options": [
+    "5, because removing duplicates never changes the missing count.",
+    "3, because each of the two duplicated streams removes one gap.",
+    "2, because both copies of the gap disappear with the duplicate.",
+    "4, because one gap had been counted twice through its copy."
+   ],
+   "answer": "d",
+   "explanation": "Dropping the two extra rows leaves 30 rows. Only one duplicated stream had a gap, and its copy counted it a second time, so 5 &minus; 1 = 4 remain; that is why the course dedupes before judging missingness."
+  },
+  {
+   "id": "w2-a29",
+   "topic": "From export to a dataset you trust: the cleaning order",
+   "tests": "Fix units before judging outliers: convert a seconds value that looks like an outlier",
+   "stem": "In a fictional session export, average watch times for the other streams range from 3 to 8 minutes. One 120-minute stream shows avg_watch_min = 330. What is the right reading?",
+   "formula": "",
+   "options": [
+    "An outlier of 330 minutes, so it should be deleted.",
+    "A unit error: 330 seconds is 5.5 minutes; fix and log it.",
+    "A real extreme of 330 minutes, so it should be flagged.",
+    "A missing value, so the row should be dropped everywhere."
+   ],
+   "answer": "b",
+   "explanation": "An average viewer cannot watch 330 minutes of a 120-minute stream, so the value is in seconds: 330 / 60 = 5.5 minutes, inside the normal range. Units come before outliers because wrong units look like outliers."
+  },
+  {
+   "id": "w2-a30",
+   "topic": "From export to a dataset you trust: the cleaning order",
+   "tests": "Never silently fill: mean imputation leaves the mean unchanged, so the invention is invisible",
+   "stem": "Average watch times (minutes) for five streams are 4, 6, 5, <i>missing</i> and 7. An analyst fills the gap with the mean of the four known values. What happens to the mean, and what does the course say?",
+   "formula": "Mean = sum of values / number of values",
+   "options": [
+    "The mean rises to 5.6, which reveals that a value was filled in.",
+    "The mean falls to 4.4, because there are now five values instead of four.",
+    "The mean stays 5.5, so filling with the mean is the accepted fix for a gap.",
+    "The mean stays 5.5, so nothing signals that a value was invented."
+   ],
+   "answer": "d",
+   "explanation": "Known mean = 22 / 4 = 5.5; after filling, (22 + 5.5) / 5 = 5.5. The headline number gives no sign of the invented value, which is why the course says drop or flag, never silently fill."
+  },
+  {
+   "id": "w2-a31",
+   "topic": "The lab demo: open, clean, reshape",
+   "tests": "Melt row count: SKUs times named value columns, and the extra rows when value columns are not named",
+   "stem": "A fictional wide export has 6 rows (one per SKU) and the columns sku, product_name, price and gmv_w1 to gmv_w5. The analyst melts it with sku and product_name as identifiers and the five GMV columns named as value columns. How many rows does the long table have, and how many would it have if the analyst forgot to name the value columns?",
+   "formula": "Rows after melting = rows in the wide table &times; number of columns melted",
+   "options": [
+    "30 rows; 36 rows if the value columns were not named.",
+    "30 rows; still 30 rows if the value columns were not named.",
+    "11 rows; 12 rows if the value columns were not named.",
+    "6 rows; 36 rows if the value columns were not named."
+   ],
+   "answer": "a",
+   "explanation": "Each SKU appears once per week: 6 &times; 5 = 30 rows. Without the named list, every non-identifier column is melted, so price becomes a sixth \"week\": 6 &times; 6 = 36 rows."
+  },
+  {
+   "id": "w2-a32",
+   "topic": "Week 2 in ten terms",
+   "tests": "GMV is total order value before refunds, not net sales or profit",
+   "stem": "A host reports that a fictional stream produced 80,000 yuan of GMV. Later, 12,000 yuan of those orders are refunded. Which statement matches the course's definition?",
+   "formula": "",
+   "options": [
+    "GMV falls to 68,000 yuan once the refunds have been processed.",
+    "GMV of 80,000 yuan is the profit the stream earned for the brand.",
+    "GMV stays 80,000 yuan, as it is measured before refunds.",
+    "GMV becomes 92,000 yuan, since refunded orders are added back in."
+   ],
+   "answer": "c",
+   "explanation": "GMV (gross merchandise value) is total order value before refunds, so it stays 80,000; net of refunds the stream sold 80,000 &minus; 12,000 = 68,000 yuan. GMV is not profit."
+  }
+ ],
+ "short": [
+  {
+   "id": "w2-b01",
+   "topic": "Porter's five forces, platform edition",
+   "tests": "Name the force behind three platform pressures and compute how supplier power cuts the unit margin",
+   "title": "Three pressures and a host fee squeeze",
+   "stem": "Glowpatch, a fictional brand, sells acne patches at 50 yuan a box through livestreams. Product and delivery cost 30 yuan a box. This quarter it faces three pressures:<ul><li>The four hosts who bring most of its traffic raise their commission from 8% to 15% of the selling price.</li><li>Shoppers leave for a rival's near-identical patch that is 1 yuan cheaper and one swipe away.</li><li>Three new patch shops opened in the category this month, each set up within a day.</li></ul>Name the force behind each pressure. Calculate Glowpatch's margin per box before and after the commission rise. Explain what these forces together imply for the attractiveness of the category.",
+   "formula": "Margin per box = selling price &minus; product and delivery cost &minus; commission rate &times; selling price",
+   "reference": "The hosts' commission rise is supplier power (\"top hosts name their price\"): the hosts supply the key selling input and are scarce. Shoppers leaving for a cheaper patch one swipe away is buyer power, and the three new shops are the threat of new entrants (\"a channel opens in a day\"). Before the rise the margin is 50 &minus; 30 &minus; 0.08 &times; 50 = 50 &minus; 30 &minus; 4 = 16 yuan; after it, 50 &minus; 30 &minus; 7.5 = 12.5 yuan, a fall of 3.5 yuan (about 22%). With several forces strong at once, profit leaks away from every firm in the category, so the category is unattractive unless Glowpatch finds a way to win, such as lower total cost or a difference buyers value.",
+   "marking": "Award 1 mark for supplier power for the host commission, with the reason that hosts supply a scarce key input. Award 1 mark for buyer power for shoppers switching at almost no cost. Award 1 mark for threat of new entrants for the new shops. Award 1 mark for the margin before, 16 yuan. Award 1 mark for the margin after, 12.5 yuan (accept a stated fall of 3.5 yuan). Award 1 mark for explaining that strong forces drain profit from the whole industry, making it less attractive. Do not accept industry rivalry for the second pressure unless the answer explains that the pressure comes from the buyers' ability to switch. Apply error carried forward to the second margin if the first is wrong only through the same slip."
+  },
+  {
+   "id": "w2-b02",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Price cutting without a cost advantage is not cost leadership: compare unit and total margins and name cost routes",
+   "title": "Cutting the price is not cost leadership",
+   "stem": "In a fictional coffee-capsule category the usual price is 3.00 yuan per capsule and most sellers have a total unit cost of 2.40 yuan. Brewnest, with the same 2.40-yuan cost, cuts its price to 2.60 yuan and calls itself \"the category's cost leader\". A rival, Kettlebay, sells through a factory-direct stream with the middle tiers cut, has a total unit cost of 1.90 yuan and still sells at 3.00 yuan. Each seller expects to sell 100,000 capsules this quarter. Calculate the unit margin and the quarterly margin of Brewnest, Kettlebay and a typical seller. Explain which firm is the cost leader in the course's sense and why Brewnest's claim is wrong. Name two of the five routes to cost leadership Brewnest could use.",
+   "formula": "Unit margin = price &minus; total unit cost; quarterly margin = unit margin &times; units sold",
+   "reference": "Brewnest earns 2.60 &minus; 2.40 = 0.20 yuan per capsule, or 20,000 yuan on 100,000 capsules; Kettlebay earns 3.00 &minus; 1.90 = 1.10 yuan, or 110,000 yuan; a typical seller earns 0.60 yuan, or 60,000 yuan. Cost leadership means total cost below every rival and profit above the industry average, so Kettlebay is the cost leader even though it does not have the lowest price. Brewnest only gives away margin: its cost equals everyone else's and its profit falls below the average, which is what \"win the margin game, not the price tag\" warns against. To become a cost leader it would need a real cost advantage, for example material saving (cheaper capsule material) or production innovation and automation (a faster filling line); a simplified product, improved design or lower labor cost are equally valid routes.",
+   "marking": "Award 2 marks for the three unit margins and quarterly margins (1 mark if only the unit margins, or only the quarterly margins, are correct). Award 1 mark for naming Kettlebay as the cost leader with reference to cost below every rival and above-average profit. Award 1 mark for explaining that Brewnest's lower price with an unchanged cost is not cost leadership. Award 2 marks for two correctly named routes from the five, 1 mark each, applied to capsules. Accept any two of simplified product, improved design, material saving, lower labor cost, production innovation and automation. \"Cut the price further\" is not a route and earns no mark. Carry arithmetic errors forward into the comparison."
+  },
+  {
+   "id": "w2-b03",
+   "topic": "Cost leadership, differentiation and focus",
+   "tests": "Apply the five conditions for differentiation to a firm and recommend differentiation focus",
+   "title": "Does differentiation fit here?",
+   "stem": "Quillmere, a fictional start-up, plans to sell fountain pens through livestreams. Buyers care about nib width, ink colour and engraving. Calligraphy hobbyists want fine flexible nibs, while students want cheap, sturdy pens. Of thirty rival shops in the category, only one offers engraving and none targets calligraphers. Quillmere is new, so buyers have never heard of its quality, and its marketing team is one part-time person. Using the course's five conditions for when differentiation fits, judge whether a differentiation strategy fits Quillmere. Give a recommendation and the first thing Quillmere must fix.",
+   "formula": "",
+   "reference": "Three market conditions hold: there are many valued ways to differ (nib, ink colour, engraving), needs differ (calligraphers versus students), and few rivals differentiate (one of thirty offers engraving and none serves calligraphers). The two firm conditions fail for now: Quillmere has no quality or technology reputation, and one part-time marketer is not strong marketing, so buyers may not believe or even notice the difference. Differentiation is therefore attractive but not yet supported by the firm. A sensible recommendation is differentiation focus: serve one niche, the calligraphers, better than anyone, rather than differentiating across the whole market. The first fix is reputation, for example streams in which a known calligrapher tests the nibs, so that the difference is visible \"where buyers look\".",
+   "marking": "Award 2 marks for identifying the three market conditions that hold, with evidence (1 mark for two of them). Award 2 marks for identifying that reputation and marketing are missing, 1 mark each. Award 1 mark for a recommendation consistent with the analysis, such as differentiation focus on calligraphers. Award 1 mark for a concrete first fix that addresses a missing firm condition. A recommendation of plain differentiation across the whole market earns the recommendation mark only if the answer explains how the missing firm conditions will be met. Listing the five conditions without applying them to Quillmere earns at most 2 marks."
+  },
+  {
+   "id": "w2-b04",
+   "topic": "Disruption enters from below",
+   "tests": "Map an incumbent's market to the three disruption steps and explain why an ignored low end is a threat",
+   "title": "Overshoot, low end, climb",
+   "stem": "Arcvale, a fictional mid-market headphone brand, sells 600-yuan headphones with six noise-cancelling modes. A survey shows 70% of its buyers use only basic playback. Two years ago a factory-direct livestream seller began selling basic headphones for 150 yuan to buyers Arcvale had never targeted; its share of the under-200-yuan segment rose from 5% to 40%. Last month it launched a 350-yuan model with one noise-cancelling mode. Arcvale's managers say the entrant \"only sells to buyers we never wanted\". Using Christensen's three steps, explain what is happening, with evidence for each step. Explain why the managers' view is risky and suggest one response.",
+   "formula": "",
+   "reference": "Overshoot: Arcvale's six modes exceed what most buyers need, since 70% use only basic playback, yet buyers pay for them. Low end: the factory-direct seller entered by serving the low end cheaply, at 150 yuan, and grew from 5% to 40% of that segment while Arcvale ignored it. Climb: the 350-yuan model with noise cancelling is the entrant moving up toward Arcvale's own buyers. The managers' view is risky because disruption enters from below: a segment the leaders ignore is not small forever, it is the door through which a future rival enters. One response is to offer a simpler, cheaper Arcvale line for the 70% who need only basic playback, rather than adding more modes.",
+   "marking": "Award 1 mark for overshoot with the 70% evidence. Award 1 mark for low end with the 150-yuan entry or the share growth. Award 1 mark for climb with the 350-yuan model. Award 2 marks for explaining why ignoring the low end is risky: the entrant improves and moves up into the incumbent's segments (1 mark for the idea, 1 for linking it to the evidence). Award 1 mark for a concrete response that addresses the overshoot or the low end. Steps named without evidence from the scenario earn no more than 1 of the 3 step marks. Do not accept \"cut all prices to 150 yuan\" as a response without explaining how Arcvale would keep a margin."
+  },
+  {
+   "id": "w2-b05",
+   "topic": "Four variable families for cutting a market",
+   "tests": "Classify two cuts into variable families and use data to test whether needs differ between the groups",
+   "title": "Which cut actually separates needs?",
+   "stem": "Loomly, a fictional yarn shop, tests two ways to cut its buyers.<table class=\"ex\"><tr><th>Cut</th><th>Group</th><th>Average basket (yuan)</th><th>Repeat rate</th><th>Share buying premium yarn</th></tr><tr><td rowspan=\"2\">City tier</td><td>First-tier cities</td><td>86</td><td>30%</td><td>22%</td></tr><tr><td>Third-tier cities</td><td>84</td><td>31%</td><td>21%</td></tr><tr><td rowspan=\"2\">Usage occasion</td><td>Knitting a gift</td><td>168</td><td>18%</td><td>72%</td></tr><tr><td>Everyday knitting</td><td>56</td><td>45%</td><td>15%</td></tr></table>Name the variable family of each cut. Using the data, judge which cut meets the course's definition of segmentation. Give one reason why platform sellers are encouraged to segment by this family.",
+   "formula": "Basket ratio = larger average basket / smaller average basket",
+   "reference": "City tier is a geographic variable; usage occasion is a behavioral variable. Segmentation needs groups whose needs differ, with similar buyers inside each group. The city-tier groups are almost identical (baskets of 86 and 84 yuan, repeat rates of 30% and 31%, premium shares of 22% and 21%), so this cut separates nothing. The usage-occasion groups clearly differ: gift knitters spend 168 / 56 = 3 times as much per basket and 72% buy premium yarn, while everyday knitters return more often (45% against 18%), so each group needs a different offer. Platforms record behavior directly in every click, watch and order, which is why the course's rule is \"segment by behavior\".",
+   "marking": "Award 1 mark for geographic for city tier. Award 1 mark for behavioral for usage occasion. Award 1 mark for using the numbers to show that the city-tier groups do not differ. Award 2 marks for using the numbers to show that the usage-occasion groups differ, including the basket ratio of 3 (1 mark without the ratio). Award 1 mark for the reason that platforms record behavior directly. Do not accept psychographic for usage occasion. A judgement without any figure from the table earns at most 1 of the 3 data marks."
+  },
+  {
+   "id": "w2-b06",
+   "topic": "Choosing a targeting strategy: the six factors",
+   "tests": "Six factors for a strong firm in a mature, varied market: choose differentiated and rebut an undifferentiated proposal",
+   "title": "A strong firm in a mature market",
+   "stem": "Ferrowind, a fictional household-fan brand, has a large budget and a team of eighty. Fans are a mature product. Buyers differ widely: renters want small quiet fans, families want tower fans with timers, and gamers want desk fans with lights; the fans themselves differ a lot. The category has many rivals, most of them running separate lines for separate buyer groups. The new chief executive wants to save cost with one fan and one campaign for everyone. Mark Ferrowind on each of the six factors and choose a targeting strategy. Explain why the chief executive's proposal is weak, and name one cost of your choice.",
+   "formula": "",
+   "reference": "Firm strength is strong, product homogeneity is low, market homogeneity is low, the PLC stage is maturity, rival strategy is differentiated and rival count is many. All six cells match the differentiated row, so Ferrowind should use differentiated targeting: a different mix, and here a different fan, for renters, families and gamers. The chief executive's undifferentiated plan needs high product and market homogeneity and few rivals; here buyers want different things and rivals already serve each group separately, so one fan and one campaign would fit nobody well and lose each segment to a specialised rival. The cost of differentiated targeting is that each segment needs its own product, streams and messages, so it is more expensive than one mix.",
+   "marking": "Award 2 marks for marking the six factors correctly (1 mark for four or five correct). Award 1 mark for choosing differentiated targeting and linking it to the matching row. Award 2 marks for explaining why undifferentiated is weak using at least two factors, 1 mark each. Award 1 mark for one cost of differentiated targeting, such as the expense of separate mixes. Concentrated targeting is not acceptable here unless the answer gives a reason grounded in the case; Ferrowind's strength is not limited."
+  },
+  {
+   "id": "w2-b07",
+   "topic": "Five ways to position the brand",
+   "tests": "Compare a share move and an excavate move with reachable-buyer arithmetic, and name the leader's defence",
+   "title": "Share the leader's slot or dig out a new one?",
+   "stem": "Nookbrew, a fictional cold-brew coffee start-up, sells in a category of 200,000 buyers. The leader owns the slot \"strongest coffee\"; 45% of buyers say strength matters most to them, and the leader already holds 80% of those buyers. A second brand owns \"cheapest\". In a survey, 15% of buyers say \"low acid for sensitive stomachs\" matters most, and no brand claims it. Nookbrew considers Plan A: \"the strong coffee that tries harder, right behind the leader\", and Plan B: \"the low-acid cold brew\". Name the positioning strategy of each plan. Calculate the buyers each plan could realistically win, assuming Plan A can only win strength buyers the leader does not hold. Recommend a plan, name the strategy the leader is likely to use to keep its slot, and give one limitation of the survey figures.",
+   "formula": "Reachable buyers = category buyers &times; share who value the attribute &times; share not held by an owner",
+   "reference": "Plan A is share: Nookbrew coexists with the leader's slot as the try-harder number two. Plan B is excavate: it finds an attribute buyers care about that nobody owns and takes it. Plan A can reach 200,000 &times; 45% &times; (1 &minus; 80%) = 18,000 buyers, while Plan B can reach 200,000 &times; 15% = 30,000 buyers with no owner to fight. Plan B is the better recommendation for a start-up, and the leader will probably consolidate, defending and deepening its \"strongest\" slot. A limitation is that stated importance in a survey is not purchase behaviour: some of the 15% may not switch or pay more for low acid.",
+   "marking": "Award 1 mark for share for Plan A. Award 1 mark for excavate for Plan B. Award 2 marks for the two reachable-buyer figures, 18,000 and 30,000, 1 mark each. Award 1 mark for a recommendation supported by the figures, together with consolidate as the leader's strategy. Award 1 mark for one valid limitation of the survey figures. Accept first place for Plan B only if the answer argues that the low-acid slot is empty and Nookbrew is first to claim it, and still contrasts it with Plan A. Carry arithmetic errors forward into the recommendation."
+  },
+  {
+   "id": "w2-b08",
+   "topic": "Coverage: five product-market patterns",
+   "tests": "Name current and planned coverage patterns on the grid and weigh the strength and risk of each expansion path",
+   "title": "Two ways to grow on the grid",
+   "stem": "Kitepost, a fictional three-person stationery brand, today sells one product, a weekly planner, to one segment, university students. It has two growth plans for next year. Plan 1: add stickers and gel pens, still sold only to students. Plan 2: sell the same planner to office workers and to teachers as well. Name the coverage pattern Kitepost is in today and the pattern each plan would create. Give one strength and one risk of each plan, and recommend one plan for a firm of Kitepost's size.",
+   "formula": "",
+   "reference": "Today Kitepost is in single-segment concentration: one product for one segment, one filled cell on the grid. Plan 1 creates market specialization (many products for one segment, one full column); its strength is deep knowledge of students and one audience to reach, and its risk is that all sales depend on one segment and the firm must make new kinds of product. Plan 2 creates product specialization (one product for many segments, one full row); its strength is that Kitepost reuses one proven product and its production skill, and its risk is that a rival planner maker or a new technology can hit the whole business at once, and new segments need new messages. For a small firm Plan 2 is a reasonable choice because it carries an existing line to new segments without building new product skills, the same path the course sketches from single-segment concentration to product specialization.",
+   "marking": "Award 1 mark for single-segment concentration today. Award 1 mark for market specialization for Plan 1. Award 1 mark for product specialization for Plan 2. Award 2 marks for one valid strength and one valid risk for each plan (1 mark per plan, both elements needed). Award 1 mark for a recommendation justified by Kitepost's size or capabilities. Accept Plan 1 as the recommendation if it is justified, for example by deep knowledge of students and a single audience. Swapping the names of market and product specialization loses both naming marks for the plans."
+  },
+  {
+   "id": "w2-b09",
+   "topic": "The 4Ps, the 4Cs and the AISAS loop",
+   "tests": "Use the 4Cs as an audit: map each C to its P, find the weakest C and link the fix to customer cost",
+   "title": "Auditing a stream with the 4Cs",
+   "stem": "Marrowleaf, a fictional cooking creator, sells spice kits in her streams. A team audit scores her latest stream on the 4Cs from 1 (poor) to 5 (strong): customer solution 4, cost to the customer 4, convenience 4, communication 1. During the stream, viewers asked forty questions in the comments about allergens and spice level; none were answered, and the host only read from a script. Map each of the 4Cs to the P it replaces. Identify the weakest C and propose the first change. Explain, using customer delivered value, why this change could raise sales even though the price stays the same, and name one measure to check it.",
+   "formula": "Customer delivered value = total customer value &minus; total customer cost (money, time, energy, psychic)",
+   "reference": "Customer solution replaces product, cost to the customer replaces price, convenience replaces place and communication replaces promotion. Communication is the weakest C at 1: in the 4Cs it should be two-way by default, in the comments, but forty questions went unanswered. The first change is to answer comment questions live, for example with a co-host who reads out and answers allergen and spice-level questions. Unanswered allergen questions raise the psychic cost (worry about a bad reaction) and the time and energy cost of finding the answer elsewhere; answering them lowers total customer cost, so delivered value rises with no price cut. Marrowleaf could compare the share of viewers who place an order, or the share of comment questions answered, before and after the change.",
+   "marking": "Award 2 marks for the four C-to-P pairs (1 mark for two or three correct pairs). Award 1 mark for identifying communication as the weakest C with evidence from the stream. Award 1 mark for a concrete first change that makes communication two-way. Award 1 mark for explaining that the change lowers a non-money cost (psychic, time or energy) and so raises delivered value. Award 1 mark for a relevant measure compared before and after the change. A generic \"post more videos\" proposal does not answer the communication gap. The answer need not use the word \"psychic\" if it explains the worry or risk cost accurately."
+  },
+  {
+   "id": "w2-b10",
+   "topic": "From export to a dataset you trust: the cleaning order",
+   "tests": "Diagnose a cleaning log done in the wrong order: restore the order, fix a unit error and recount missing values",
+   "title": "Repairing a cleaning log",
+   "stem": "Harborlight, a fictional lamp brand, ran 25 streams; its export has 27 rows. A junior analyst's cleaning log reads:<ul><li>Step 1: deleted outliers: S08 (avg_watch_min = 420 for a 150-minute stream) and S15 (11,000 likes on a festival-night giveaway, against fewer than 2,500 for every other stream).</li><li>Step 2: filled the 4 missing watch times with the mean watch time.</li><li>Step 3: removed 2 duplicate rows.</li></ul>One of the duplicated streams has a missing watch time in both copies. Give the correct cleaning order and the reason for each of its two order rules. State what should have happened to S08 and to S15. Say how many missing watch times there really are, and what should be done with them instead of filling.",
+   "formula": "Minutes = seconds / 60",
+   "reference": "The course order is tidy, duplicates, missing values, units and coding, outliers, and every fix is logged. Duplicates come before missing values because copies double-count gaps, and units come before outliers because a value in the wrong unit looks like an outlier. S08 is a unit error, not an outlier: an average viewer cannot watch 420 minutes of a 150-minute stream, so it is 420 seconds = 7 minutes, which should be fixed and logged. S15 is an extreme but real value (a giveaway night), so it should be kept and flagged, with the median reported beside the mean. After removing the 2 duplicate rows (27 to 25), one gap was a copy, so there are 4 &minus; 1 = 3 missing watch times; they should be dropped from watch-time questions only, or kept and flagged, never silently filled.",
+   "marking": "Award 1 mark for the correct order. Award 1 mark for both order-rule reasons (duplicates double-count gaps; wrong units look like outliers). Award 1 mark for S08 as a unit error converted to 7 minutes. Award 1 mark for keeping and flagging S15 as a real extreme. Award 1 mark for 3 missing watch times after deduplication. Award 1 mark for drop for watch-time questions or flag, with no silent fill. The order mark needs at least duplicates before missing values and units before outliers. Accept the order without \"tidy\" if the rest is correct. Do not accept deleting S15 \"because it distorts the mean\"."
+  },
+  {
+   "id": "w2-b11",
+   "topic": "Variable types and three traps",
+   "tests": "Critique a report that makes three variable-type errors: percent change on an ordinal rating, a bot-inflated rate and a small-base rate",
+   "title": "Three claims, three traps",
+   "stem": "A fictional tea brand's monthly report makes three claims.<ul><li>\"Average rating (1 to 5 stars) rose from 4.0 to 4.5, so satisfaction rose by 12.5%.\"</li><li>\"Stream 14 had 5,000 comments for 10,000 viewers, an engagement rate of 50%, up from our usual 20%.\" A check shows 3,000 of those comments came from 40 accounts within two minutes.</li><li>\"New host Lan converted 3 of 8 viewers (37.5%), far above our main host's 360 of 3,000 (12%), so Lan should take over the main slot.\"</li></ul>Explain what is wrong with each claim and what the report should say instead.",
+   "formula": "Engagement rate = comments / viewers; conversion = orders / viewers",
+   "reference": "The rating is ordinal: the levels are ordered but the step from 4 to 5 is not a fixed amount of satisfaction, so 0.5 / 4.0 = 12.5% is not a meaningful percentage rise in satisfaction; the report should give the median or the share of 4- and 5-star ratings. The comment burst looks like bots: without the 3,000 comments from 40 accounts in two minutes, engagement is 2,000 / 10,000 = 20%, the usual level, so the 50% is inflated and should be reported with the suspicious comments removed or flagged. Lan's 37.5% is a small-base ratio: it rests on 8 viewers, while 12% rests on 3,000, so one more or one fewer order would move it by 12.5 points. The report should show the base beside each rate and wait for more of Lan's streams before moving the main slot.",
+   "marking": "Award 1 mark for explaining that the rating is ordinal so the percentage change is not meaningful. Award 1 mark for a safer summary for the rating, such as the median or the share of 4s and 5s. Award 1 mark for identifying the bot trap. Award 1 mark for recomputing engagement as 20% without the burst. Award 1 mark for identifying the small-base trap for Lan's rate. Award 1 mark for recommending that the base be reported and more evidence gathered before the decision. Accept \"likely fake or paid accounts\" for bots. Do not require the 12.5-point sensitivity figure."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w2-c01",
+   "topics": [
+    "Four variable families for cutting a market",
+    "Choosing a targeting strategy: the six factors",
+    "Coverage: five product-market patterns",
+    "Five ways to position the brand",
+    "STP in the feed: the herbal tea example, and STP before the 4Ps"
+   ],
+   "tests": "Classify segmentation variables and compare segments by value and crowding; apply the six factors with a gate and mismatches; choose a positioning move and let the 4Ps follow STP",
+   "name": "Brindle and Oak",
+   "scenario": "<p>Brindle and Oak is a fictional three-person company that makes dog food and sells it only through its own livestreams. Its marketing budget for next year is 200,000 yuan. Dog food buyers differ widely in what they want, and the food itself varies a lot in recipe and texture. The category is still growing fast; there are many rival brands, and most of them already run separate recipes and streams for different owner groups.</p><p>The founders have sized four candidate segments (Exhibit 1) and summarised their firm on the six targeting factors (Exhibit 2). Inside segment S3 they have also listed how the two existing rivals position themselves and what owners say in comments (Exhibit 3). They want to decide whom to serve and how to stand out before they design their recipes, prices and stream calendar.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Four candidate segments",
+     "html": "<table class=\"ex\"><tr><th>Segment</th><th>Variable used to define it</th><th>Buyers</th><th>Average annual spend per buyer (yuan)</th><th>Rival brands serving it</th></tr><tr><td>S1</td><td>City tier: owners in first-tier cities</td><td>40,000</td><td>1,500</td><td>25</td></tr><tr><td>S2</td><td>Age: owners aged 25 to 34</td><td>60,000</td><td>1,200</td><td>30</td></tr><tr><td>S3</td><td>Benefit sought: food that is gentle on an older dog's digestion</td><td>8,000</td><td>2,500</td><td>2</td></tr><tr><td>S4</td><td>Values: owners who want only raw, natural ingredients</td><td>15,000</td><td>2,000</td><td>12</td></tr></table>",
+     "note": "Annual segment value = buyers &times; average annual spend. Value per rival = annual segment value / number of rival brands (a rough measure of crowding)."
+    },
+    {
+     "title": "Exhibit 2: Brindle and Oak on the six factors",
+     "html": "<table class=\"ex\"><tr><th>Firm strength</th><th>Product homogeneity</th><th>Market homogeneity</th><th>PLC stage</th><th>Rival strategy</th><th>Rival count</th></tr><tr><td>limited</td><td>low</td><td>low</td><td>growth</td><td>differentiated</td><td>many</td></tr></table>",
+     "note": "Course table: undifferentiated = strong, high, high, intro and growth, any, few; differentiated = strong, low, low, maturity, differentiated, many; concentrated = limited, low, low, decline, any, many."
+    },
+    {
+     "title": "Exhibit 3: Positions inside segment S3",
+     "html": "<table class=\"ex\"><tr><th>Brand</th><th>Slot it owns in owners' minds</th></tr><tr><td>Rival A</td><td>\"vet-recommended\"</td></tr><tr><td>Rival B</td><td>\"lowest price for senior dogs\"</td></tr><tr><td>Owner comments (sample)</td><td>\"Nothing settles his stomach\"; \"I just want one food that is easy on an old tummy\"</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Name the variable family used for each of the four segments. Calculate the annual value and the value per rival for each segment. Explain what these two measures together suggest about S2 and S3.",
+     "answer": "Families: S1 geographic (city tier), S2 demographic (age), S3 behavioral (benefit sought), S4 psychographic (values). Annual values: S1 40,000 &times; 1,500 = 60 million yuan, S2 60,000 &times; 1,200 = 72 million, S3 8,000 &times; 2,500 = 20 million, S4 15,000 &times; 2,000 = 30 million. Value per rival: S1 60 / 25 = 2.4 million, S2 72 / 30 = 2.4 million, S3 20 / 2 = 10 million, S4 30 / 12 = 2.5 million. S2 is the largest segment, but with thirty rivals it is crowded and each rival's slice is small. S3 is the smallest segment by value but by far the least crowded, about four times the value per rival of any other, which makes it the place where a small firm could win a high share of a small market.",
+     "marking": "Award 2 marks for the four variable families (1 mark for two or three correct). Award 2 marks for the four annual values (1 mark for two or three correct). Award 2 marks for the four values per rival (1 mark for two or three correct). Award 2 marks for interpreting S2 as largest but crowded and S3 as small but least crowded, 1 mark each. Values may be given in yuan or in millions of yuan. Apply error carried forward from a wrong annual value to its value per rival. Do not accept demographic for S3: benefit sought is a behavioral variable."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, choose a targeting strategy for Brindle and Oak. Explain which factor decides, name the factors that point to a different strategy and say why they do not change your choice. Name the coverage pattern the firm would start in.",
+     "answer": "Brindle and Oak should use concentrated targeting. Firm strength is limited, and only the concentrated row has \"limited\": undifferentiated and differentiated both need a strong firm, so this one factor acts as a gate and rules them out. Low product and market homogeneity also rule out undifferentiated, and the many rivals fit concentrated. Two factors point elsewhere: the growth stage belongs to the undifferentiated row, and differentiated rivals belong to the differentiated row. They do not change the choice, because a firm with three people and 200,000 yuan cannot run separate mixes for several segments. It would start in single-segment concentration: one product for one segment.",
+     "marking": "Award 1 mark for choosing concentrated targeting. Award 2 marks for explaining that limited firm strength works as a gate ruling out both other strategies (1 mark for naming the factor, 1 for the gate logic). Award 1 mark for using low homogeneity or many rivals as supporting evidence. Award 1 mark for naming the growth stage and differentiated rivals as the mismatches and explaining why they do not change the choice. Award 1 mark for single-segment concentration. Both mismatches must be named for that mark. Differentiated targeting earns no choice mark; its supporting marks can be earned only for correct factor readings."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend the segment Brindle and Oak should target and the positioning strategy it should use there, using Exhibit 3. Give one 4P decision that should follow from your STP choice. State one limitation of the data in Exhibit 1 and what you would check before committing the budget.",
+     "answer": "Target S3, owners who want food that is gentle on an older dog's digestion: it has the highest value per rival (10 million yuan) and suits concentrated targeting. Inside S3 the main slots are taken (\"vet-recommended\" and \"lowest price\"), but the attribute owners keep asking for, \"easy on an old tummy\", has no owner, so the move is excavate: find the unowned attribute and take it, for example as \"the gentle-tummy food for older dogs\". STP comes first and then the 4Ps execute, so one P follows, for example product: a soft, easily digested recipe for older dogs, or promotion: streams in which owners of older dogs show their dog before and after the switch. A limitation is that buyer counts and spend are the founders' estimates, and value per rival assumes the market is split evenly between rivals; Rival A or B may hold most of S3. Before committing the budget, check S3's real size and the rivals' shares, for example with a small test stream and its conversion.",
+     "marking": "Award 1 mark for targeting S3 with a reason from the exhibits. Award 1 mark for excavate with the reason that the main slots are taken and an attribute buyers value is unowned. Award 1 mark for one P decision that follows from the STP choice. Award 2 marks for one limitation of the data with its consequence for the decision (1 mark for a bare limitation). Award 1 mark for a concrete check before committing the budget. Accept S4 as the target only if the answer justifies it with the exhibits and still applies concentrated targeting; the positioning mark then needs a move supported by the case. First place earns the positioning mark only if the answer explains why the slot counts as empty despite the two rivals in S3."
+    }
+   ]
+  },
+  {
+   "id": "w2-c02",
+   "topics": [
+    "The rest of the marketing toolkit: value, satisfaction, brand, product and price",
+    "Cost leadership, differentiation and focus",
+    "Porter's five forces, platform edition"
+   ],
+   "tests": "Compute a three-step cost-plus price chain and distinguish markup from margin; compare unit margins after cutting channel tiers under a competition-based price; link host commission to supplier power and judge a factory-direct switch",
+   "name": "Peakfern",
+   "scenario": "<p>Peakfern is a fictional maker of merino hiking socks. Today it sells through a wholesaler and outdoor retailers. Production costs 24 yuan per pair, and the wholesaler handles delivery. Peakfern sets its factory price with a markup on cost, the wholesaler adds a markup on its purchase price, and the retailer sets the shelf price with a margin on the retail price (Exhibit 1).</p><p>Peakfern is considering a factory-direct livestream channel that cuts the wholesaler and the retailer out. In that channel Peakfern would pay delivery itself and a commission to the host, and it would set its price against three rival sock streams (Exhibit 2). The founder asks whether going direct is a real cost advantage or just a price cut.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Current channel pricing rules",
+     "html": "<table class=\"ex\"><tr><th>Step</th><th>Who sets the price</th><th>Rule</th></tr><tr><td>Factory price</td><td>Peakfern</td><td>25% markup on its production cost</td></tr><tr><td>Wholesale price</td><td>Wholesaler</td><td>20% markup on the factory price</td></tr><tr><td>Retail price</td><td>Retailer</td><td>40% margin on the retail price</td></tr></table>",
+     "note": "Markup on cost: price = cost &times; (1 + markup rate). Margin on price: price = cost / (1 &minus; margin rate)."
+    },
+    {
+     "title": "Exhibit 2: The factory-direct option",
+     "html": "<table class=\"ex\"><tr><th>Item</th><th>Value</th></tr><tr><td>Rival stream prices for similar socks (yuan per pair)</td><td>42, 45, 48</td></tr><tr><td>Peakfern's planned direct price (yuan per pair)</td><td>45, the middle rival price</td></tr><tr><td>Production cost (yuan per pair)</td><td>24</td></tr><tr><td>Delivery paid by Peakfern (yuan per pair)</td><td>5</td></tr><tr><td>Host commission</td><td>10% of the selling price</td></tr></table>",
+     "note": "Direct unit margin = price &minus; production cost &minus; delivery &minus; commission rate &times; price."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Calculate the factory, wholesale and retail prices per pair in the current channel, showing which formula you use at each step. Explain why the retailer's 40% gives a higher price than a 40% markup on its cost would, and what the cost base of pricing does not tell Peakfern.",
+     "answer": "Factory price: 24 &times; (1 + 25%) = 30 yuan (markup on cost). Wholesale price: 30 &times; (1 + 20%) = 36 yuan (markup on cost). Retail price: 36 / (1 &minus; 40%) = 36 / 0.6 = 60 yuan (margin on price). A 40% markup on the retailer's cost would give only 36 &times; 1.4 = 50.4 yuan: \"markup multiplies, margin divides\", because in a margin the percentage lives inside the final price (24 of the 60 yuan, which is 40%), not on the cost. The cost base gives the floor logic, cost plus a markup, but it says nothing about buyers or rivals: a 60-yuan shelf price may be above what the target segment will bear and above rival prices of 42 to 48 yuan.",
+     "marking": "Award 2 marks for the factory price of 30 yuan with the markup formula. Award 1 mark for the wholesale price of 36 yuan. Award 2 marks for the retail price of 60 yuan with the margin formula. Award 1 mark for the contrast with a 40% markup (50.4 yuan) or an equivalent explanation that the margin percentage sits inside the price. Award 2 marks for explaining that the cost base sets a floor but ignores demand or competition, 1 mark each for the floor and for what it ignores. Apply error carried forward through the chain: a wrong factory price carried correctly through the later steps loses only the first mark. Do not accept 36 &times; 1.4 as the retail price."
+    },
+    {
+     "marks": 6,
+     "stem": "Name the pricing basis behind Peakfern's planned direct price. Calculate Peakfern's unit margin in the direct channel and compare it with what it earns per pair today. If the host raises the commission to 20%, recalculate the direct margin and name the force this illustrates.",
+     "answer": "Setting the price at 45 yuan against the three rival streams is the competition base: anchor on the rival, here to meet rival prices rather than undercut them. Direct margin: 45 &minus; 24 &minus; 5 &minus; 0.10 &times; 45 = 45 &minus; 24 &minus; 5 &minus; 4.5 = 11.5 yuan per pair. Today Peakfern earns its factory price minus production cost, 30 &minus; 24 = 6 yuan, so going direct almost doubles its margin while buyers pay 45 instead of 60 yuan. At a 20% commission the margin is 45 &minus; 24 &minus; 5 &minus; 9 = 7 yuan, only 1 yuan above today. This is supplier power: \"top hosts name their price\", and a scarce host can take much of the gain from cutting the tiers.",
+     "marking": "Award 1 mark for the competition base. Award 2 marks for the direct margin of 11.5 yuan (1 mark for a correct setup with an arithmetic slip). Award 1 mark for today's margin of 6 yuan and the comparison. Award 1 mark for the margin of 7 yuan at a 20% commission. Award 1 mark for supplier power with the host as the scarce supplier. Accept \"the 4.5-yuan commission\" shown as a separate line. Do not accept buyer power for the host commission."
+    },
+    {
+     "marks": 6,
+     "stem": "Is the factory-direct channel a real cost advantage in the course's sense, or only a lower price? Recommend whether Peakfern should go direct and state one condition it should set with hosts. Give one force that could erode the advantage over time and one limitation of the figures.",
+     "answer": "It is a real cost advantage: removing two tiers lowers the total cost of getting a pair to the buyer, so Peakfern keeps a bigger margin (11.5 against 6 yuan) even though the buyer's price falls from 60 to 45 yuan; this is \"win the margin game, not the price tag\", the course's factory-direct stream with the tiers cut. Peakfern should go direct, but with the commission capped or agreed in advance, for example at most about 15%, because each 5 points of commission costs 2.25 yuan per pair, and spread its streams across several hosts so no single host can name the price. Over time the threat of new entrants (a channel opens in a day) or buyer power (one swipe to a rival stream) could push the price down and erode the margin. A limitation is that the figures are per pair only: they ignore the volume Peakfern would lose from retail shelves, refunds and the cost of running its own streams, so the total profit of the switch is not yet known.",
+     "marking": "Award 1 mark for judging the switch as a real cost advantage because total cost falls and the margin rises. Award 1 mark for a recommendation consistent with the figures. Award 1 mark for a concrete condition on hosts, such as a commission cap or several hosts. Award 1 mark for one force that could erode the advantage, with a reason. Award 2 marks for one limitation of the figures with its consequence for the decision (1 mark for a bare limitation). A recommendation not to go direct earns the recommendation mark if it is justified, for example by the commission risk. Accept the 15% cap without the 2.25-yuan sensitivity figure; any reasoned cap or host condition earns the mark."
+    }
+   ]
+  },
+  {
+   "id": "w2-c03",
+   "topics": [
+    "From export to a dataset you trust: the cleaning order",
+    "The lab demo: open, clean, reshape",
+    "Variable types and three traps"
+   ],
+   "tests": "Run the cleaning order on a small session export: read the shape, recount missing values after deduplication, fix a unit error before computing a mean; mean versus median with a real outlier and the double-counted total; judge a giveaway decision from cleaned data",
+   "name": "Saltmarsh Kitchen",
+   "scenario": "<p>Saltmarsh Kitchen is a fictional cookware brand that ran 10 livestreams last month, all 90 minutes long except where shown. The platform export of its sessions is reproduced in full in Exhibit 1. On first look, the analyst's tool reports the shape of the table as (11, 6).</p><p>The marketing lead wants to run a big giveaway in every stream from now on. Her reason: \"average comments per stream are 1,800, so our viewers love the giveaway format.\" Only stream S09 included a giveaway. The analyst must clean the export before anyone counts anything.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Session export as received",
+     "html": "<table class=\"ex\"><tr><th>session</th><th>duration_min</th><th>avg_watch_min</th><th>comments</th><th>gmv (yuan)</th><th>note</th></tr><tr><td>S01</td><td>90</td><td>5.0</td><td>1,100</td><td>12,000</td><td></td></tr><tr><td>S02</td><td>90</td><td><i>missing</i></td><td>900</td><td>9,000</td><td></td></tr><tr><td>S03</td><td>90</td><td>6.0</td><td>1,300</td><td>15,000</td><td></td></tr><tr><td>S04</td><td>90</td><td><i>missing</i></td><td>1,000</td><td>10,000</td><td></td></tr><tr><td>S04</td><td>90</td><td><i>missing</i></td><td>1,000</td><td>10,000</td><td></td></tr><tr><td>S05</td><td>90</td><td>4.0</td><td>800</td><td>7,000</td><td></td></tr><tr><td>S06</td><td>90</td><td>5.5</td><td>1,200</td><td>13,000</td><td></td></tr><tr><td>S07</td><td>90</td><td>270</td><td>1,000</td><td>11,000</td><td></td></tr><tr><td>S08</td><td>120</td><td>6.5</td><td>1,400</td><td>16,000</td><td></td></tr><tr><td>S09</td><td>120</td><td>7.0</td><td>8,400</td><td>30,000</td><td>giveaway night</td></tr><tr><td>S10</td><td>90</td><td>3.5</td><td>900</td><td>7,000</td><td></td></tr></table>",
+     "note": "The two S04 rows are identical in every field. Mean = sum / count. Median = middle value of the sorted list (average of the two middle values for an even count). Minutes = seconds / 60."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Explain what the shape (11, 6) tells the analyst before any analysis. In the course's cleaning order, handle the duplicate, the missing watch times and S07: state how many watch times are missing before and after deduplication, and what S07's value really is. Then calculate the mean average watch time across the sessions that have a valid value.",
+     "answer": "Saltmarsh ran 10 streams, but the table has 11 rows, so one row is extra; this is the first clue to check for duplicates before counting anything. The order is duplicates, then missing values, then units, then outliers. Before deduplication 3 watch times look missing (S02 and both S04 rows); after dropping the second S04 row the table has 10 rows and only 2 are missing (S02 and S04), because the copy had counted S04's gap twice. These two are not filled: they are dropped from watch-time questions only and kept for totals such as GMV. S07 shows 270 for a 90-minute stream, which cannot be minutes; it is 270 seconds = 270 / 60 = 4.5 minutes, a unit error to fix and log before judging outliers. The 8 valid values are 5.0, 6.0, 4.0, 5.5, 4.5, 6.5, 7.0 and 3.5, summing to 42, so the mean is 42 / 8 = 5.25 minutes. Had S07 been left at 270, the mean would be 38.4 minutes, a figure no stream could produce.",
+     "marking": "Award 1 mark for reading 11 rows against 10 streams as a sign of a duplicate. Award 1 mark for the cleaning order with duplicates before missing values and units before outliers. Award 2 marks for 3 missing before and 2 after deduplication, with the reason that the copy double-counted the gap (1 mark for the counts without the reason). Award 2 marks for S07 as a unit error converted to 4.5 minutes. Award 2 marks for the mean of 5.25 minutes over the 8 valid sessions (1 mark for a correct method with an arithmetic slip). Award the mean marks for an average over 8 sessions only; filling the gaps and averaging over 10 earns 0 for this band. Carry forward a wrong S07 conversion into the mean without a second penalty. Mentioning the unfixed mean of 38.4 is welcome but not required."
+    },
+    {
+     "marks": 6,
+     "stem": "After deduplication, calculate the mean and the median comments per stream. How should S09 be treated, and which figure better describes a typical stream? Also state the month's total GMV before and after removing the duplicate row, and why the difference matters.",
+     "answer": "The 10 comment counts sum to 18,000, so the mean is 18,000 / 10 = 1,800. Sorted, they are 800, 900, 900, 1,000, 1,000, 1,100, 1,200, 1,300, 1,400 and 8,400, so the median is (1,000 + 1,100) / 2 = 1,050. S09's 8,400 comments came on a real giveaway night, so it is an outlier in the course's sense, an extreme but real value: keep it and flag it, never silently delete it. The single extreme pulls the mean far above the median (without S09 the mean would be 9,600 / 9 = 1,066.7), so the median of 1,050 better describes a typical stream. Total GMV is 140,000 yuan with the duplicate and 130,000 yuan after removing it: the copy overstated sales by 10,000 yuan (about 7.7%), which is why the course says clean before you count.",
+     "marking": "Award 1 mark for the mean of 1,800. Award 1 mark for the median of 1,050. Award 2 marks for keeping and flagging S09 as an extreme but real value, with the reason (1 mark for keep and flag without the reason). Award 1 mark for choosing the median as the typical figure and explaining the pull of the extreme. Award 1 mark for the GMV totals of 140,000 and 130,000 yuan with the point that the duplicate double-counts sales. Do not award the S09 marks for deleting it, or for replacing it with the median. The 1,066.7 figure is not required."
+    },
+    {
+     "marks": 6,
+     "stem": "Evaluate the marketing lead's claim and her proposal to run a giveaway in every stream. Use S09's share of total GMV and compare its GMV with the median GMV of the other nine streams. Give a recommendation and one limitation of this evidence.",
+     "answer": "The claim uses the mean of 1,800 comments, which is driven by one giveaway night; a typical stream has about 1,050 comments, so the data do not show that viewers in general love the format. S09 did sell strongly: 30,000 / 130,000 = 23.1% of the month's GMV came from that one stream, and the other nine streams have a median GMV of 11,000 yuan, so S09 sold about 30,000 / 11,000 = 2.7 times a typical stream. A sensible recommendation is to test the giveaway in a few more streams, for example two or three, and compare them with similar streams without it, rather than switching every stream at once. One limitation is that this is a single event: S09 also ran 30 minutes longer than most streams, and GMV is measured before refunds, so the giveaway's cost and any later returns are not yet counted.",
+     "marking": "Award 1 mark for explaining that the mean of 1,800 is pulled up by one stream and does not describe a typical stream. Award 1 mark for S09's GMV share of 23.1%. Award 1 mark for the median GMV of the other nine streams (11,000) and the comparison of about 2.7 times. Award 1 mark for a recommendation to test before rolling out, or another reasoned recommendation. Award 2 marks for one limitation with its consequence, such as one event only, the longer stream, GMV before refunds or the cost of the giveaway (1 mark for a bare limitation). Accept a GMV share of 23% or 0.23. Apply error carried forward from a GMV total in the previous part. A recommendation to roll out the giveaway everywhere earns the recommendation mark only if it addresses the single-event problem."
+    }
+   ]
+  },
+  {
+   "id": "w2-c04",
+   "topics": [
+    "The lab demo: open, clean, reshape",
+    "Week 2 in ten terms",
+    "The rest of the marketing toolkit: value, satisfaction, brand, product and price"
+   ],
+   "tests": "Reshape a wide weekly table: melt row counts, weekly totals and growth; find which SKU drives and which hides behind the total; net GMV after refunds, the satisfaction ratio of an overpromise, and a host decision",
+   "name": "Velvetine",
+   "scenario": "<p>Velvetine is a fictional nail-polish brand that sells five stock keeping units (SKUs) through livestreams. Its weekly sales export (Exhibit 1) is wide: one row per SKU, with a price column and one GMV column per week. The analyst melts it into a long table, keeping sku and product_name as identifiers and naming gmv_w1 to gmv_w4 as the value columns, and then sums GMV by week.</p><p>In week 4 a new host promoted Gel Shine with the promise \"lasts three weeks without chipping\". Gel Shine GMV doubled that week. By the end of the month, many buyers reported chipping after about one week, and refunds arrived (Exhibit 2). The brand manager wants to give this host all of next month's streams.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Weekly sales export (wide), GMV in yuan",
+     "html": "<table class=\"ex\"><tr><th>sku</th><th>product_name</th><th>price</th><th>gmv_w1</th><th>gmv_w2</th><th>gmv_w3</th><th>gmv_w4</th></tr><tr><td>V1</td><td>Classic Red</td><td>59</td><td>8,000</td><td>9,000</td><td>10,000</td><td>12,000</td></tr><tr><td>V2</td><td>Nude Matte</td><td>59</td><td>6,000</td><td>7,000</td><td>8,000</td><td>9,000</td></tr><tr><td>V3</td><td>Glitter Top</td><td>49</td><td>4,000</td><td>3,000</td><td>2,500</td><td>2,000</td></tr><tr><td>V4</td><td>Gel Shine</td><td>79</td><td>5,000</td><td>6,000</td><td>9,000</td><td>18,000</td></tr><tr><td>V5</td><td>Base Coat</td><td>39</td><td>2,000</td><td>2,000</td><td>2,500</td><td>3,000</td></tr></table>",
+     "note": "Rows after melting = wide rows &times; columns melted. Growth factor = later value / earlier value."
+    },
+    {
+     "title": "Exhibit 2: Refunds by week (yuan)",
+     "html": "<table class=\"ex\"><tr><th></th><th>Week 1</th><th>Week 2</th><th>Week 3</th><th>Week 4</th></tr><tr><td>All refunds</td><td>1,000</td><td>1,000</td><td>1,500</td><td>8,000</td></tr><tr><td>of which Gel Shine</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>7,200</td></tr></table>",
+     "note": "GMV is total order value before refunds. Net sales = GMV &minus; refunds. Satisfaction ratio = performance / expectations."
+    }
+   ],
+   "questions": [
+    {
+     "marks": 7,
+     "stem": "Explain why the export is not tidy and what the melt produces: give the number of rows and the columns of the long table, and the row count if the analyst had forgotten to name the value columns. Calculate the four weekly GMV totals that the grouped sum prints, the growth factor from week 1 to week 4 and the week-on-week increases.",
+     "answer": "The table is not tidy because the week is a variable but it is hidden in the column names (gmv_w1 to gmv_w4), so one cannot group or filter by week. After the melt each SKU appears once per week: 5 &times; 4 = 20 rows, with the columns sku, product_name, week and gmv; price is left out because it is not named as a value column. If the value columns were not named, price would be melted as a fifth \"week\", giving 5 &times; 5 = 25 rows. Weekly totals: week 1 = 8,000 + 6,000 + 4,000 + 5,000 + 2,000 = 25,000; week 2 = 27,000; week 3 = 32,000; week 4 = 44,000 yuan. Growth from week 1 to week 4 is 44,000 / 25,000 = 1.76, a rise of 76%, and the increases are 2,000, then 5,000, then 12,000 yuan, so growth sped up sharply in week 4.",
+     "marking": "Award 1 mark for explaining that the week is hidden in the column names, breaking one column per variable. Award 1 mark for 20 rows with the four columns sku, product_name, week and gmv. Award 1 mark for 25 rows if the value columns are not named, with price melted as a week. Award 2 marks for the four weekly totals (1 mark for two or three correct). Award 1 mark for the growth factor of 1.76 or 76%. Award 1 mark for the three increases and the reading that growth accelerated in week 4. Carry forward errors in a weekly total into the growth figures. Do not require the long table's column order."
+    },
+    {
+     "marks": 6,
+     "stem": "How much of the week-3-to-week-4 increase came from Gel Shine? Which SKU's trend does the total hide, and by how much did it change from week 1 to week 4? Explain what these findings mean for reading the weekly totals.",
+     "answer": "The total rose by 44,000 &minus; 32,000 = 12,000 yuan from week 3 to week 4, and Gel Shine alone rose by 18,000 &minus; 9,000 = 9,000 yuan, so it supplied 9,000 / 12,000 = 75% of the increase. Without Gel Shine, GMV grew from 20,000 to 26,000 yuan over the month, a factor of 1.3, much slower than the headline 1.76. Glitter Top is falling every week: from 4,000 to 2,000 yuan, a 50% drop, which the rising total hides. The weekly total is a sales volume figure that can mix one spike with a quiet decline, so the long table should be read SKU by SKU before any decision; the week-4 acceleration rests mostly on one product and one host.",
+     "marking": "Award 2 marks for Gel Shine's 9,000-yuan rise and its 75% share of the increase (1 mark for 9,000 without the share). Award 2 marks for Glitter Top as the hidden decline with the 50% drop (1 mark for naming it without the figure). Award 1 mark for the growth without Gel Shine (factor 1.3), or an equivalent figure showing that the rest grew more slowly. Award 1 mark for explaining that the total hides SKU-level patterns, so the decision needs the SKU-level view. Accept the growth without Gel Shine expressed as 30% or as the increase of 6,000 yuan. Carry forward errors from the weekly totals."
+    },
+    {
+     "marks": 7,
+     "stem": "Using Exhibit 2, calculate net sales in week 1 and week 4 and the net growth factor, and Gel Shine's refund rate in week 4. Calculate the satisfaction ratio for buyers who expected three weeks of wear and got about one, and explain what it implies. Recommend whether to give this host all of next month's streams, and state one limitation of the refund data.",
+     "answer": "Net sales are 25,000 &minus; 1,000 = 24,000 yuan in week 1 and 44,000 &minus; 8,000 = 36,000 yuan in week 4, a net growth factor of 36,000 / 24,000 = 1.5, against 1.76 for GMV: GMV is measured before refunds and overstated the month. Gel Shine's week-4 refunds were 7,200 / 18,000 = 40% of its GMV. The satisfaction ratio is about 1 week / 3 weeks = 0.33, well below 1, so these buyers are dissatisfied and likely lost; the host's promise set the expectation, and an overpromising host converts today and gets refunds next week. The host should not get all of next month's streams on this evidence; a sensible choice is to keep the host on a trial with an honest claim, such as \"about one week of wear\", and compare refund rates with other hosts. A limitation is that refunds lag sales: some week-4 orders may be refunded in week 5, so the 40% may still rise, and one month with one host is a small base.",
+     "marking": "Award 2 marks for net sales of 24,000 and 36,000 yuan and the net growth factor of 1.5 (1 mark for the two net figures without the factor). Award 1 mark for the refund rate of 40%. Award 2 marks for the satisfaction ratio of about 0.33 and its reading as dissatisfaction caused by the host's promise, 1 mark each. Award 1 mark for a recommendation consistent with the figures. Award 1 mark for one limitation of the refund data, such as refunds lagging sales or a single month or host. Accept a ratio of 1/3 or 33%. A recommendation to give the host all streams earns the recommendation mark only if it requires the claim to be corrected and refunds to be monitored. Carry forward a wrong GMV total from the first question."
+    }
+   ]
+  }
+ ]
+}

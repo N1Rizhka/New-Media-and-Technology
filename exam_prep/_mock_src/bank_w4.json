@@ -1,0 +1,765 @@
+{
+ "week": 4,
+ "mcq": [
+  {
+   "id": "w4-a01",
+   "topic": "The score is a probability; the verdict is a cutoff",
+   "tests": "Moving the threshold changes the verdict, not the model's score; no retraining is needed",
+   "stem": "A comment-spam model gives one comment a spam probability of 0.62. The team has been deleting every comment that scores 0.5 or higher, and now raises the threshold to 0.7 without changing the model. What happens to this comment?",
+   "formula": "verdict = delete if score &ge; t; keep if score &lt; t",
+   "options": [
+    "The model must be retrained before the comment can receive a new verdict.",
+    "Its score is pushed down below 0.7, so the comment is now kept.",
+    "Its score stays 0.62, but its verdict changes from delete to keep.",
+    "It is still deleted, because 0.62 is above the original cutoff of 0.5."
+   ],
+   "answer": "c",
+   "explanation": "The model proposes a probability (0.62) and the threshold disposes: at t = 0.5 the comment is deleted (0.62 &ge; 0.5), at t = 0.7 it is kept (0.62 &lt; 0.7). The score itself does not change and nothing is retrained."
+  },
+  {
+   "id": "w4-a02",
+   "topic": "The score is a probability; the verdict is a cutoff",
+   "tests": "Why stored probabilities matter: verdicts can be recut later only if the scores are kept",
+   "stem": "A video platform's moderation system saved only a keep/delete label for each of last month's comments, cut at 0.5, and threw the spam probabilities away. Management now wants to see what last month would have looked like under a 0.8 threshold. What is the problem?",
+   "formula": "",
+   "options": [
+    "Without the scores the verdicts cannot be recut; the comments must be rescored.",
+    "The 0.5 labels can be turned into 0.8 labels by multiplying each stored label by 1.6.",
+    "Nothing is lost, because each verdict at 0.5 already tells us the verdict at 0.8.",
+    "A 0.8 threshold is not allowed, because a spam threshold must always stay at 0.5."
+   ],
+   "answer": "a",
+   "explanation": "The course's rule is to keep the probability, because the verdict can be recut later. A label cut at 0.5 does not say whether a deleted comment scored 0.55 or 0.95, so the 0.8 verdicts cannot be recovered without the scores."
+  },
+  {
+   "id": "w4-a03",
+   "topic": "Two ways to be wrong: the four cells",
+   "tests": "Naming the cell in a new setting: a wrongly flagged legitimate case is a false positive",
+   "stem": "A food-delivery app uses a classifier to block fraudulent coupon redemptions; a fraudulent redemption is the positive class. A loyal customer's legitimate redemption is blocked. Which cell of the confusion matrix is this?",
+   "formula": "",
+   "options": [
+    "False negative: legitimate, and wrongly allowed through.",
+    "True negative: legitimate, and the filter acted on it.",
+    "True positive: the filter blocked a redemption, so it worked.",
+    "False positive: flagged as fraud, but actually legitimate."
+   ],
+   "answer": "d",
+   "explanation": "The second word is what the filter said: positive, flagged as fraud and blocked. The first word says it was wrong. A legitimate case wrongly flagged is a false positive, the equivalent of a genuine comment deleted."
+  },
+  {
+   "id": "w4-a04",
+   "topic": "The confusion matrix, counted",
+   "tests": "Building the matrix from sentences: deriving TN from totals",
+   "stem": "A marketplace tests a fake-review filter on 1,200 hidden reviews. 240 reviews are truly fake. The filter removes 230 reviews, of which 200 are truly fake. Fake is the positive class. How many true negatives are there?",
+   "formula": "",
+   "options": [
+    "960",
+    "930",
+    "970",
+    "890"
+   ],
+   "answer": "b",
+   "explanation": "Genuine reviews = 1,200 &minus; 240 = 960. Removed genuine (FP) = 230 &minus; 200 = 30. TN = 960 &minus; 30 = 930. Check: TP 200 + FP 30 + FN 40 + TN 930 = 1,200. 960 ignores the false positives; 970 counts every kept review, including the 40 fakes left up."
+  },
+  {
+   "id": "w4-a05",
+   "topic": "The confusion matrix, counted",
+   "tests": "Row totals are fixed by the world; column totals are set by the filter and its threshold",
+   "stem": "A team lays out a spam filter's confusion matrix with the truth in the rows (actually genuine, actually spam) and the filter's action in the columns (keeps, deletes). They then lower the threshold from 0.5 to 0.3 on the same test comments. Which totals can change?",
+   "formula": "",
+   "options": [
+    "Only the column totals, the number kept and the number deleted.",
+    "Only the row totals, the number of genuine and of spam comments.",
+    "Both the row totals and the column totals change together.",
+    "Neither, because the four cells always keep the same counts."
+   ],
+   "answer": "a",
+   "explanation": "The row totals (how many comments are truly genuine or spam) are fixed by the world. The filter and its threshold decide how many are kept and deleted, so only the column totals, and the cells inside them, move."
+  },
+  {
+   "id": "w4-a06",
+   "topic": "The accuracy trap",
+   "tests": "Accuracy must be read against each stream's own majority baseline: a higher accuracy on a more lopsided stream can show less skill",
+   "stem": "Two vendors report the accuracy of their spam filters, each on a different client's chat stream. Vendor P: 0.94 on a stream where 7 percent of messages are spam. Vendor Q: 0.90 on a stream where 40 percent of messages are spam. Which reading is correct?",
+   "formula": "accuracy = (TP + TN) / (TP + FP + FN + TN)",
+   "options": [
+    "P's filter is better, because 0.94 is higher than 0.90 whatever the stream.",
+    "Q's filter is worse, because a stream with more spam always gives a better filter.",
+    "Deleting nothing scores 0.93 on P's stream, so P's 0.94 adds very little.",
+    "Both filters are good, because both accuracies are far above a 0.50 coin flip."
+   ],
+   "answer": "c",
+   "explanation": "The majority baseline is the accuracy of deleting nothing: 1 &minus; 0.07 = 0.93 on P's stream and 1 &minus; 0.40 = 0.60 on Q's. P is only 0.01 above doing nothing; Q is 0.30 above. Accuracy must be compared with the baseline, and neither figure says which mistakes were made."
+  },
+  {
+   "id": "w4-a07",
+   "topic": "The accuracy trap",
+   "tests": "Equal accuracy can hide opposite error profiles; the choice depends on the price of each error",
+   "stem": "On 1,000 test comments (100 spam, 900 genuine), filter X leaves 40 spam up and deletes 10 genuine comments; filter Y leaves 10 spam up and deletes 40 genuine comments. Both have accuracy 0.95. Which statement is correct?",
+   "formula": "accuracy = (TP + TN) / (TP + FP + FN + TN)",
+   "options": [
+    "The two filters are equivalent for any brand, because their accuracy is identical.",
+    "Accuracy cannot separate them; the choice depends on which error costs the brand more.",
+    "X is better, because it makes fewer errors in total than Y does.",
+    "Y catches more spam, so Y must also have the higher precision of the two."
+   ],
+   "answer": "b",
+   "explanation": "Both make 50 errors: (60 + 890) / 1,000 = (90 + 860) / 1,000 = 0.95. X misses 30 more spam; Y deletes 30 more customers. Y's precision (90 / 130 = 0.69) is actually lower than X's (60 / 70 = 0.86). Price the two errors, then choose."
+  },
+  {
+   "id": "w4-a08",
+   "topic": "Precision and recall: who feels each",
+   "tests": "Computing precision and reading it as the cleanliness of the delete pile",
+   "stem": "On a test set with 300 spam comments, a filter deletes 250 comments, of which 225 are truly spam. Which is the correct precision and its correct reading?",
+   "formula": "precision = TP / (TP + FP)",
+   "options": [
+    "0.90: the filter caught 90 of every 100 spam comments.",
+    "0.75: of every 100 deleted comments, 75 were truly spam.",
+    "0.10: of every 100 deleted comments, 10 were genuine.",
+    "0.90: of every 100 deleted comments, 90 were truly spam."
+   ],
+   "answer": "d",
+   "explanation": "Precision = 225 / (225 + 25) = 0.90; it audits the delete pile. The share of all spam caught is recall, 225 / 300 = 0.75. The 10 percent of genuine comments in the pile is 1 &minus; precision, not precision."
+  },
+  {
+   "id": "w4-a09",
+   "topic": "Precision and recall: who feels each",
+   "tests": "Computing recall when the false negatives must be read from the text",
+   "stem": "A test set holds 400 spam comments. A filter deletes 380 comments in total; 60 spam comments stay visible. What is the filter's recall?",
+   "formula": "recall = TP / (TP + FN)",
+   "options": [
+    "0.850",
+    "0.895",
+    "0.150",
+    "0.950"
+   ],
+   "answer": "a",
+   "explanation": "TP = 400 &minus; 60 = 340 spam caught. Recall = 340 / (340 + 60) = 0.850. 0.895 = 340 / 380 is precision; 0.150 is the share of spam missed; 0.950 wrongly treats all 380 deletions as spam caught."
+  },
+  {
+   "id": "w4-a10",
+   "topic": "Precision and recall: who feels each",
+   "tests": "Who feels precision: a fall in precision hurts the wrongly deleted commenter and the person re-checking the delete pile",
+   "stem": "After a model update, a brand's comment filter has noticeably lower precision but unchanged recall. Who feels this change most directly?",
+   "formula": "",
+   "options": [
+    "The audience, who now see more scam links under the brand's own videos.",
+    "Commenters whose genuine comments vanished, and whoever re-checks deletions.",
+    "The brand's comment section, which keeps rotting with spam that is not caught.",
+    "Nobody, because precision counts only the comments the filter got right."
+   ],
+   "answer": "b",
+   "explanation": "Precision = TP / (TP + FP); the only error in it is the false positive, a genuine comment deleted. More false alarms land on the commenter and on whoever checks the delete pile by hand. Scam links left up are a recall problem."
+  },
+  {
+   "id": "w4-a11",
+   "topic": "Precision and recall: who feels each",
+   "tests": "Diagnosing a formula mix-up: dividing by all spam gives recall, not precision",
+   "stem": "On a test set a filter has TP = 180, FN = 20 and FP = 45. An analyst reports \"precision = 0.90\". What went wrong?",
+   "formula": "precision = TP / (TP + FP); recall = TP / (TP + FN)",
+   "options": [
+    "Nothing; 0.90 is the precision, and recall is 180 / 225 = 0.80.",
+    "The analyst used FP in the bottom; precision should be 180 / 200 = 0.90.",
+    "The analyst computed recall, 180 / 200; precision is 180 / 225 = 0.80.",
+    "The analyst computed accuracy; precision cannot be found without TN."
+   ],
+   "answer": "c",
+   "explanation": "Dividing TP by spam caught plus spam missed (180 + 20) gives recall, 0.90. Precision divides by everything deleted, TP + FP = 225: 180 / 225 = 0.80. TN is not needed for either."
+  },
+  {
+   "id": "w4-a12",
+   "topic": "You cannot maximise both: the dial and F1",
+   "tests": "Direction of the dial: raising the threshold tends to raise precision and lower recall",
+   "stem": "A brand raises its spam threshold from 0.5 to 0.8. Under the course's dial rule, what should it expect?",
+   "formula": "",
+   "options": [
+    "It deletes more: recall climbs while precision tends to fall.",
+    "Both precision and recall climb, because the filter is now stricter.",
+    "Neither changes, because the model's scores stay exactly the same.",
+    "It deletes less: precision tends to climb while recall falls."
+   ],
+   "answer": "d",
+   "explanation": "Stricter, raise the dial: delete less, re-check more; precision climbs, more spam survives, so recall falls. The scores do not change, but the verdicts do, and so do both measures."
+  },
+  {
+   "id": "w4-a13",
+   "topic": "You cannot maximise both: the dial and F1",
+   "tests": "Computing F1 from precision and recall as a harmonic mean, not an ordinary average",
+   "stem": "A filter has precision 0.80 and recall 0.60. What is its F1 score, to two decimal places?",
+   "formula": "F1 = 2 &times; precision &times; recall / (precision + recall)",
+   "options": [
+    "0.70",
+    "0.69",
+    "0.48",
+    "0.75"
+   ],
+   "answer": "b",
+   "explanation": "F1 = 2 &times; 0.80 &times; 0.60 / (0.80 + 0.60) = 0.96 / 1.40 = 0.6857, about 0.69. 0.70 is the ordinary average; 0.48 is the product without the doubling and division."
+  },
+  {
+   "id": "w4-a14",
+   "topic": "You cannot maximise both: the dial and F1",
+   "tests": "What F1 can and cannot do: it gives both errors equal weight, so it ranks models but cannot set the dial",
+   "stem": "Which statement about the F1 score is correct under the course's teaching?",
+   "formula": "F1 = 2 &times; precision &times; recall / (precision + recall)",
+   "options": [
+    "It weighs a missed spam and a deleted customer equally, so it cannot set the dial.",
+    "It rewards true negatives heavily, so it favours filters that keep most genuine comments.",
+    "It is the ordinary average, so a very high precision can offset a very low recall.",
+    "It is always higher than both precision and recall, so it flatters weak models."
+   ],
+   "answer": "a",
+   "explanation": "F1 = 2TP / (2TP + FP + FN): FP and FN enter with equal weight and TN does not enter at all. It is pulled toward the smaller of precision and recall. It ranks models quickly but never replaces the pricing question."
+  },
+  {
+   "id": "w4-a15",
+   "topic": "The dial in action",
+   "tests": "Reading the change between two rows of a threshold table",
+   "stem": "One filter is tested on comments containing 160 spam:<table class=\"ex\"><tr><th>Threshold</th><th>Spam caught, of 160</th><th>Genuine lost</th></tr><tr><td>0.8</td><td>140</td><td>5</td></tr><tr><td>0.6</td><td>152</td><td>7</td></tr><tr><td>0.3</td><td>156</td><td>31</td></tr></table>What does moving the threshold from 0.6 down to 0.3 do?",
+   "formula": "",
+   "options": [
+    "It catches 16 more spam and deletes 26 more genuine comments.",
+    "It catches 12 more spam and deletes 2 more genuine comments.",
+    "It catches 4 more spam and deletes 24 more genuine comments.",
+    "It catches 4 fewer spam and deletes 24 fewer genuine comments."
+   ],
+   "answer": "c",
+   "explanation": "From 0.6 to 0.3: spam caught 152 to 156 (+4), genuine lost 7 to 31 (+24). The other options read the wrong pair of rows (0.8 to 0.3, or 0.8 to 0.6) or the wrong direction: a lower cutoff can only delete more."
+  },
+  {
+   "id": "w4-a16",
+   "topic": "The dial in action",
+   "tests": "Lowering the threshold can only add deletions, so both counts must be non-decreasing as t falls",
+   "stem": "An analyst types up the results of one filter at four thresholds on the same test comments. Exactly one row contains a typing error:<table class=\"ex\"><tr><th>Threshold</th><th>Spam caught</th><th>Genuine lost</th></tr><tr><td>0.9</td><td>210</td><td>4</td></tr><tr><td>0.7</td><td>245</td><td>6</td></tr><tr><td>0.5</td><td>238</td><td>22</td></tr><tr><td>0.3</td><td>251</td><td>20</td></tr></table>Which row must contain the error?",
+   "formula": "",
+   "options": [
+    "The row for t = 0.9",
+    "The row for t = 0.7",
+    "The row for t = 0.5",
+    "The row for t = 0.3"
+   ],
+   "answer": "c",
+   "explanation": "A lower cutoff deletes everything a higher one did, plus more, so both columns can only stay the same or rise as the threshold drops. Two pairs break this: spam caught falls from 245 at t = 0.7 to 238 at t = 0.5, and genuine lost falls from 22 at t = 0.5 to 20 at t = 0.3. Only the t = 0.5 row is in both pairs, so a single error must be there."
+  },
+  {
+   "id": "w4-a17",
+   "topic": "Two errors, two prices",
+   "tests": "Pricing comes first: if misses are the expensive error, lower the threshold and accept more false alarms",
+   "stem": "Before a big sale, a brand decides that one scam link left under its post costs far more than one genuine comment wrongly deleted. How should it move its spam threshold?",
+   "formula": "",
+   "options": [
+    "Raise it, deleting less so that fewer genuine comments are lost.",
+    "Lower it, deleting more and accepting more genuine comments lost.",
+    "Keep it at 0.5, because 0.5 is the correct default for any brand.",
+    "Set it wherever accuracy peaks, because accuracy prices both errors."
+   ],
+   "answer": "b",
+   "explanation": "Price the two errors separately; then set the dial. If misses are expensive, lower the threshold: recall climbs and more false alarms are accepted. 0.5 is a choice, not a law, and accuracy gives both errors the same price."
+  },
+  {
+   "id": "w4-a18",
+   "topic": "Two errors, two prices",
+   "tests": "Matching a consequence to its error: support tickets and drifting repeat buyers come from false alarms",
+   "stem": "A brand's support desk sees a jump in tickets and public complaints, and some repeat buyers stop commenting. Under the course's pricing of the two errors, which error most likely rose?",
+   "formula": "",
+   "options": [
+    "Misses: spam comments left up.",
+    "True negatives: genuine comments kept.",
+    "True positives: spam comments caught.",
+    "False alarms: genuine comments deleted."
+   ],
+   "answer": "d",
+   "explanation": "The course lists the false alarm's price as a real customer silenced who notices, creators and repeat buyers drifting away, and support tickets and public complaints. The miss's price is scam links seen, eroding trust and fake-looking engagement."
+  },
+  {
+   "id": "w4-a19",
+   "topic": "Every threshold on one picture",
+   "tests": "Computing the false-alarm rate: it divides by all genuine comments, not by the delete pile",
+   "stem": "On 1,100 test comments (300 spam, 800 genuine), a filter deletes 294 comments: 270 spam and 24 genuine. What is its false-alarm rate, the horizontal coordinate of its point on the threshold curve?",
+   "formula": "false-alarm rate = FP / (FP + TN)",
+   "options": [
+    "0.030",
+    "0.082",
+    "0.022",
+    "0.900"
+   ],
+   "answer": "a",
+   "explanation": "FP + TN = all genuine comments = 800, so the false-alarm rate = 24 / 800 = 0.030. 0.082 = 24 / 294 is 1 &minus; precision (dividing by the delete pile); 0.022 divides by all 1,100; 0.900 = 270 / 300 is the catch rate."
+  },
+  {
+   "id": "w4-a20",
+   "topic": "Every threshold on one picture",
+   "tests": "A point on the diagonal is no better than a coin flip",
+   "stem": "On the threshold curve, a new vendor's filter at its chosen setting has a catch rate of 0.40 and a false-alarm rate of 0.40. How should this point be read?",
+   "formula": "catch rate = TP / (TP + FN); false-alarm rate = FP / (FP + TN)",
+   "options": [
+    "It lies in the top-left corner: it catches most spam with very few false alarms.",
+    "It is a balanced filter: equal rates mean the two errors are perfectly priced.",
+    "It sits on the diagonal: it is no better than a coin flip at catching spam.",
+    "It cannot be judged until the filter's accuracy is also reported."
+   ],
+   "answer": "c",
+   "explanation": "The dotted diagonal is a coin flip: a random guesser catches spam at the same rate it deletes genuine comments. Up and left is better; a useful model sits well above the diagonal."
+  },
+  {
+   "id": "w4-a21",
+   "topic": "Every threshold on one picture",
+   "tests": "Choosing between non-dominated points on the curve is a pricing decision, not a technical one",
+   "stem": "Two settings of one filter appear on the threshold curve. Setting A: catch rate 0.90, false-alarm rate 0.02. Setting B: catch rate 0.97, false-alarm rate 0.08. Which statement is correct?",
+   "formula": "",
+   "options": [
+    "B is better, because a higher catch rate always outweighs any extra false alarms.",
+    "A is better, because a lower false-alarm rate always matters more.",
+    "B is better, because it lies further from the top-left corner.",
+    "Neither is better on both axes; the choice depends on what each error costs."
+   ],
+   "answer": "d",
+   "explanation": "B catches more spam but wrongly deletes more customers; A does the reverse. Up and left is better only when one point beats the other on both axes. Choosing between them is a pricing decision."
+  },
+  {
+   "id": "w4-a22",
+   "topic": "Two thresholds make a review queue",
+   "tests": "Moving the upper boundary of a review queue: comments go straight to delete and false positives may rise",
+   "stem": "A brand keeps comments scoring below 0.2, sends 0.2 up to 0.9 to a human reviewer, and deletes 0.9 or higher. To shorten the queue it lowers only the upper boundary to 0.7. True labels of the moved comments are unknown. What follows?",
+   "formula": "",
+   "options": [
+    "Comments scoring 0.7 to 0.9 are now deleted unseen, so wrongly deleted genuine comments may rise.",
+    "Comments scoring 0.7 to 0.9 are now published unseen, so missed spam may rise.",
+    "Comments scoring 0.2 to 0.7 are now deleted unseen, so false alarms will rise by a known amount.",
+    "No comments change route; only the human reviewer's speed changes."
+   ],
+   "answer": "a",
+   "explanation": "Lowering the upper boundary hands the 0.7-0.9 comments from the reviewer to automatic deletion. Some may be genuine, so false positives may rise; without labels we cannot say by how much. Raising the lower boundary would instead risk more missed spam."
+  },
+  {
+   "id": "w4-a23",
+   "topic": "Three models: logistic regression, decision trees, random forests",
+   "tests": "Following a tree path: each case meets only the questions on its own path, with exact boundaries",
+   "stem": "A comment filter is a small decision tree. First question: \"Identical text posted 3 or more times?\" If yes, it asks \"Account younger than 30 days?\" (yes: delete; no: keep). If no, it asks \"Contains a contact keyword?\" (yes: delete; no: keep). Which comment is kept?",
+   "formula": "",
+   "options": [
+    "Identical text posted 4 times, from an account 12 days old.",
+    "Identical text posted 3 times, from an account exactly 30 days old.",
+    "Posted once, from a 400-day-old account, containing a contact keyword.",
+    "Identical text posted 5 times, from an account 2 days old."
+   ],
+   "answer": "b",
+   "explanation": "The 3-repeat comment answers yes at the first question; at \"younger than 30 days?\" an account of exactly 30 days answers no, so it is kept. The 4- and 5-repeat comments from young accounts are deleted; the single post goes to the contact-keyword question and is deleted."
+  },
+  {
+   "id": "w4-a24",
+   "topic": "Three models: logistic regression, decision trees, random forests",
+   "tests": "A split that leaves both branches as mixed as the parent separates nothing, whatever the branch sizes",
+   "stem": "A tree node holds 30 spam and 30 genuine comments. Which candidate split would the tree discard because it separates nothing?",
+   "formula": "",
+   "options": [
+    "Branch 1: 30 spam, 0 genuine. Branch 2: 0 spam, 30 genuine.",
+    "Branch 1: 24 spam, 6 genuine. Branch 2: 6 spam, 24 genuine.",
+    "Branch 1: 10 spam, 10 genuine. Branch 2: 20 spam, 20 genuine.",
+    "Branch 1: 28 spam, 10 genuine. Branch 2: 2 spam, 20 genuine."
+   ],
+   "answer": "c",
+   "explanation": "Both branches of that split are still 50 percent spam, exactly as mixed as the node. Unequal branch sizes do not matter; the mix inside each branch does. The other splits all make at least one branch much purer."
+  },
+  {
+   "id": "w4-a25",
+   "topic": "The TeaPop case: the consultant's report",
+   "tests": "Reading both error columns of a model report: near-equal accuracies hide only a handful of different verdicts",
+   "stem": "A consultant tests three fake-review filters on 2,000 held-out reviews (250 fake, 1,750 genuine):<table class=\"ex\"><tr><th>Filter</th><th>Accuracy</th><th>Fakes caught</th><th>Genuine deleted</th></tr><tr><td>A</td><td>0.981</td><td>228 of 250</td><td>16 of 1,750</td></tr><tr><td>B</td><td>0.982</td><td>230 of 250</td><td>16 of 1,750</td></tr><tr><td>C</td><td>0.983</td><td>232 of 250</td><td>16 of 1,750</td></tr></table>Which conclusion is best supported?",
+   "formula": "",
+   "options": [
+    "Each deletes 16 genuine reviews and they differ by at most 4 missed fakes: a tie.",
+    "C should be shipped, because its accuracy is clearly the highest of the three filters.",
+    "The 0.002 accuracy gap between A and C means C gets 20 more reviews right.",
+    "A deletes the most genuine reviews, which explains its lower accuracy."
+   ],
+   "answer": "a",
+   "explanation": "The error columns show the same number of false positives (16) and misses of 22, 20 and 18. 0.002 of 2,000 is 4 verdicts. Choosing C for its accuracy is choosing on noise; the tie must be broken on another property."
+  },
+  {
+   "id": "w4-a26",
+   "topic": "Strict, balanced, sweep: one filter, three postures",
+   "tests": "Meaning of the STRICT posture: strict about deleting, so it protects customers and misses more spam",
+   "stem": "In the course's three postures of one filter, what does the STRICT setting do?",
+   "formula": "",
+   "options": [
+    "It deletes anything slightly suspicious, so it catches nearly all spam and loses more customers.",
+    "It picks the threshold with the highest accuracy, so both errors are as small as possible.",
+    "It adds a human review band, so that no comment is ever deleted without being read.",
+    "It requires a high score before deleting, so it protects customers and lets more spam through."
+   ],
+   "answer": "d",
+   "explanation": "STRICT is strict about deleting: it needs a high score (0.9 in the course) before removing anything. \"Strict misses more spam; sweep deletes more customers.\" Deleting anything slightly suspicious describes SWEEP."
+  },
+  {
+   "id": "w4-a27",
+   "topic": "The number that flatters, and what the errors cost",
+   "tests": "\"The number lies by omission\": accuracy is true but hides which error was made",
+   "stem": "A report says a do-nothing comment filter is \"already 85 percent accurate\" on a brand's stream. The course says such a number \"lies by omission\". What does that mean?",
+   "formula": "",
+   "options": [
+    "The figure is miscalculated, because accuracy cannot be computed on lopsided streams.",
+    "The figure is correct, but it hides that the filter catches no spam at all.",
+    "The figure omits true negatives, so the real accuracy is much lower than 85 percent.",
+    "The figure omits the spam share, so the true accuracy would be 15 percent."
+   ],
+   "answer": "b",
+   "explanation": "Accuracy flatters on lopsided streams: doing nothing is right on every genuine comment. The number is not false; it leaves out the fact that matters, that every spam comment stays up. Report the two errors separately."
+  },
+  {
+   "id": "w4-a28",
+   "topic": "Your tasks for TeaPop: ship a setting, answer the appeal, write the contract line",
+   "tests": "A contract line must set a floor on spam caught and a ceiling on genuine deleted, measured on held-out data",
+   "stem": "On a brand's stream 92 percent of comments are genuine. Which acceptance criterion rejects both a filter that deletes nothing and a filter that deletes everything?",
+   "formula": "",
+   "options": [
+    "On held-out comments: reach an accuracy of at least 90 percent, counting every verdict equally.",
+    "On held-out comments: catch at least 95 percent of all spam, however many genuine ones are deleted.",
+    "On held-out data: catch at least 95 percent of spam, delete at most 2 percent of genuine.",
+    "On held-out comments: wrongly delete at most 2 percent of genuine ones, whatever spam is missed."
+   ],
+   "answer": "c",
+   "explanation": "Deleting nothing scores 0.92 accuracy and passes a 90 percent accuracy rule; deleting everything catches 100 percent of spam and passes a spam-only rule. Only a criterion naming both errors, on held-out data, kills both. A genuine-only ceiling is passed by deleting nothing."
+  },
+  {
+   "id": "w4-a29",
+   "topic": "The dial is asymmetric",
+   "tests": "Stating the asymmetry of the dial in counts from a posture table",
+   "stem": "One filter on test comments with 450 spam:<table class=\"ex\"><tr><th>Setting</th><th>Threshold</th><th>Spam caught</th><th>Genuine deleted</th></tr><tr><td>STRICT</td><td>0.85</td><td>360</td><td>10</td></tr><tr><td>BALANCED</td><td>0.5</td><td>410</td><td>12</td></tr><tr><td>SWEEP</td><td>0.15</td><td>414</td><td>55</td></tr></table>Which statement correctly describes the two steps away from BALANCED?",
+   "formula": "",
+   "options": [
+    "To STRICT saves 2 customers for 50 more spam missed; to SWEEP catches 4 more spam for 43 more customers deleted.",
+    "Each step changes both errors by similar amounts, so either step is a fair trade for the brand.",
+    "To STRICT saves 50 customers for 2 more spam missed; to SWEEP catches 43 more spam for 4 more customers deleted.",
+    "To STRICT saves 10 customers for 360 more spam missed; to SWEEP catches 414 more spam for 55 more deleted."
+   ],
+   "answer": "a",
+   "explanation": "BALANCED to STRICT: genuine deleted 12 to 10 (2 saved), spam caught 410 to 360 (50 more missed). BALANCED to SWEEP: spam caught 410 to 414 (+4), genuine deleted 12 to 55 (+43). Each step gives up a lot to gain a little: the dial is asymmetric."
+  },
+  {
+   "id": "w4-a30",
+   "topic": "What the report does not say: interpretability is operational",
+   "tests": "What each model can offer when a deletion must be explained: the readable scorecard names the signals that pushed the score up (flowchart for the tree, votes only for the forest)",
+   "stem": "A brand runs a readable scorecard (logistic regression) as its comment filter. A customer publicly asks why her question about ingredients was deleted. What can the brand's reply say about this particular deletion?",
+   "formula": "",
+   "options": [
+    "It can walk her comment down a flowchart of yes/no questions to the leaf that deleted it.",
+    "It can name the signals in her comment whose weights pushed its spam score above the cutoff.",
+    "It can report what share of the model's many trees voted to delete her comment.",
+    "It can only quote the filter's overall accuracy, since no model explains single verdicts."
+   ],
+   "answer": "b",
+   "explanation": "Each signal in the scorecard has one readable weight, so the brand can say which signals pushed this comment's score up. Walking down a flowchart is how the tree answers; votes are all a forest offers, which is no public reply. Interpretability is operational: the appeal is answered line by line only with the tree or the scorecard."
+  },
+  {
+   "id": "w4-a31",
+   "topic": "Who joins the private domain: the same two errors",
+   "tests": "Transferring the two errors: inviting a viewer who never buys again is a false positive costing staff time",
+   "stem": "A cosmetics brand uses a score to invite livestream viewers into its private domain (a WeChat Work group); \"will buy again\" is the positive class. It invites a viewer who only browses and never buys again. Which error is this, and who pays?",
+   "formula": "",
+   "options": [
+    "A false negative: repeat revenue that never arrives.",
+    "A true negative: the viewer was correctly left on public reach.",
+    "A false negative: media spend is wasted on the invitation.",
+    "A false positive: staff time is spent on someone who only browses."
+   ],
+   "answer": "d",
+   "explanation": "Inviting is the positive verdict, and it was wrong: a false positive, paid in staff time. Leaving out a viewer who would have returned is the false negative, paid in lost repeat revenue. Private-domain messages cost no media spend."
+  },
+  {
+   "id": "w4-a32",
+   "topic": "Who joins the private domain: the same two errors",
+   "tests": "The three-tier invitation logic: the middle tier (watches often, bought once) is the uncertain band, so it gets a repeat offer and a review after one month",
+   "stem": "A skincare brand that sells in a nightly livestream sorts viewers into the course's three tiers before inviting anyone into its private domain. One viewer watches often but has bought only once. Which action fits her tier, and why?",
+   "formula": "",
+   "options": [
+    "Invite her at once with a named host, because watching often proves she will buy again.",
+    "Keep her on public reach with no invitation, because one purchase is too weak to justify staff time.",
+    "Move her to a paid advertising audience, because private-domain messages carry media spend.",
+    "Invite her with a first repeat offer and review after a month, because the evidence is mixed."
+   ],
+   "answer": "d",
+   "explanation": "Tier two (watches often, bought once) is the uncertain middle: invite with a first repeat offer, then review after one month, much like a human check in a review queue. A named host is the tier-one action; no invitation is the tier-three action; private-domain messages cost no media spend."
+  }
+ ],
+ "short": [
+  {
+   "id": "w4-b01",
+   "topic": "The confusion matrix, counted",
+   "tests": "Building a confusion matrix from sentences and computing precision and recall with who feels each",
+   "title": "From four sentences to two measures",
+   "stem": "PawPal, a pet-supplies app, tests a fake-review filter on 1,500 hidden reviews. Fake is the positive class. The test shows: 300 reviews were truly fake; the filter removed 270 reviews, 240 of them fake and 30 genuine; 60 fake reviews stayed up; 1,170 genuine reviews were left untouched.<br>(i) Build the confusion matrix with row and column totals. (ii) Calculate precision and recall to three decimal places. (iii) Say in plain words who feels each measure on PawPal.",
+   "formula": "precision = TP / (TP + FP)<br>recall = TP / (TP + FN)",
+   "reference": "(i) TP = 240 (fake, removed), FP = 30 (genuine, removed), FN = 60 (fake, left up), TN = 1,170 (genuine, kept). Rows: actually genuine 1,170 + 30 = 1,200; actually fake 60 + 240 = 300. Columns: kept 1,230, removed 270; total 1,500. (ii) Precision = 240 / 270 = 0.889: of every 100 removed reviews about 89 were fake. Recall = 240 / 300 = 0.800: the filter removed 80 percent of fakes and left 60 visible. (iii) Precision is felt by the 30 honest reviewers whose reviews vanished and by the staff who re-check the removal pile; recall is felt by shoppers who still read the 60 fake reviews and by PawPal, whose review section looks less trustworthy.",
+   "marking": "2 marks for the matrix: 2 if all four cells are correct and placed with truth in rows and action in columns (totals shown or implied), 1 if exactly one cell is wrong or FP/FN are swapped consistently. 1 mark for precision 0.889 (accept 0.89 or 88.9 percent). 1 mark for recall 0.800. 1 mark for linking precision to wrongly removed genuine reviews (the reviewer or the person checking the pile). 1 mark for linking recall to fake reviews left up (shoppers or the brand's review section). Carry forward a wrong cell into (ii) without a second penalty if the formulas are applied correctly. Do not award (iii) marks for generic statements such as \"precision is good\"."
+  },
+  {
+   "id": "w4-b02",
+   "topic": "The accuracy trap",
+   "tests": "Majority baseline versus a vendor's accuracy claim on a 95 percent genuine stream, and what to ask for instead",
+   "title": "A 96 percent filter that misses most spam",
+   "stem": "LoopTalk, a hobby community app, receives a vendor's scam-message filter. The vendor reports: \"96 percent accurate on your 5,000 test messages.\" LoopTalk knows that 4,750 of the 5,000 messages were genuine. The vendor's detailed counts show the filter deleted 150 messages: 100 scam and 50 genuine.<br>(i) Calculate the accuracy of a filter that deletes nothing. (ii) Calculate the vendor filter's recall. (iii) Explain why the 96 percent claim misleads, and state what LoopTalk should ask the vendor to report instead.",
+   "formula": "accuracy = (TP + TN) / (TP + FP + FN + TN)<br>recall = TP / (TP + FN)",
+   "reference": "(i) Deleting nothing is right on all 4,750 genuine messages: 4,750 / 5,000 = 0.95. (ii) Scam messages = 250; TP = 100, FN = 150, so recall = 100 / 250 = 0.40. (Check of the claim: (100 + 4,700) / 5,000 = 0.96.) (iii) The stream is lopsided, so the do-nothing filter already scores 0.95; the vendor's 0.96 is only 0.01 above doing nothing and hides that 150 of 250 scam messages, 60 percent, stay up. Accuracy gives every verdict the same weight and does not say which mistakes were made. LoopTalk should ask for the two errors separately on held-out messages: scam messages missed (150, recall 0.40) and genuine messages deleted (50), and judge them against what each error costs.",
+   "marking": "1 mark for 0.95 with working. 1 mark for recall 0.40 (accept 40 percent). 2 marks for explaining the trap: 1 for comparing 0.96 with the 0.95 baseline (lopsided stream), 1 for stating that accuracy hides that most scam messages are missed. 2 marks for the request: 1 for asking for both error counts (or precision and recall) rather than accuracy, 1 for measuring them on held-out data or pricing each error. Do not award the trap marks for saying only \"accuracy is not enough\" without the baseline or the missed scams."
+  },
+  {
+   "id": "w4-b03",
+   "topic": "You cannot maximise both: the dial and F1",
+   "tests": "F1 as a harmonic mean reverses a ranking given by the ordinary average; F1's limit as a pricing tool",
+   "title": "Why F1 is not the ordinary average",
+   "stem": "Glowfeed, a beauty-tips app, compares two spam filters on the same held-out comments. Filter A: precision 1.00, recall 0.50. Filter B: precision 0.72, recall 0.72.<br>(i) Calculate the ordinary average of precision and recall and the F1 score for each filter (two or three decimal places). (ii) Explain why the two summaries rank the filters differently. (iii) Give one reason why the higher F1 alone should not decide which filter Glowfeed ships.",
+   "formula": "F1 = 2 &times; precision &times; recall / (precision + recall)",
+   "reference": "(i) Ordinary averages: A = (1.00 + 0.50) / 2 = 0.75; B = 0.72. F1: A = 2 &times; 1.00 &times; 0.50 / 1.50 = 1.00 / 1.50 = 0.667; B = 2 &times; 0.72 &times; 0.72 / 1.44 = 0.72. (ii) The average ranks A first, F1 ranks B first. F1 is a harmonic mean, pulled down hard by the smaller value, so A's recall of 0.50 (half the spam left up) cannot hide behind its perfect precision; when precision and recall are equal, as for B, F1 equals that value. (iii) F1 treats a missed spam and a deleted genuine comment as equally bad, and Glowfeed may not price them equally: if deleted customers are very costly, A's precision of 1.00 could still be preferred. F1 ranks models quickly but never replaces the pricing question.",
+   "marking": "2 marks for (i): 1 for both averages (0.75 and 0.72), 1 for both F1 values (0.667, accept 0.67, and 0.72). 2 marks for (ii): 1 for stating the reversed ranking, 1 for explaining that the harmonic mean is pulled toward the smaller of the two values. 2 marks for (iii): 1 for the equal-weight (or ignores true negatives) limitation, 1 for connecting it to Glowfeed's choice of error prices. Carry forward arithmetic slips into (ii) if the ranking follows the student's values."
+  },
+  {
+   "id": "w4-b04",
+   "topic": "Every threshold on one picture",
+   "tests": "Placing threshold points on the catch-rate versus false-alarm-rate curve and reading its shape and rules",
+   "title": "Three points on the threshold curve",
+   "stem": "Kitecast, a podcast app, tests its comment filter on 1,000 held-out comments: 250 spam and 750 genuine.<table class=\"ex\"><tr><th>Threshold</th><th>Spam caught</th><th>Genuine deleted</th></tr><tr><td>0.8</td><td>200</td><td>6</td></tr><tr><td>0.5</td><td>235</td><td>15</td></tr><tr><td>0.2</td><td>245</td><td>60</td></tr></table>(i) Calculate the catch rate and the false-alarm rate at each threshold. (ii) Describe how the curve moves from 0.8 to 0.5 and from 0.5 to 0.2. (iii) Explain what the diagonal of this chart represents and why picking one of the three points is not a technical decision.",
+   "formula": "catch rate = TP / (TP + FN)<br>false-alarm rate = FP / (FP + TN)",
+   "reference": "(i) Catch rates: 200 / 250 = 0.80, 235 / 250 = 0.94, 245 / 250 = 0.98. False-alarm rates: 6 / 750 = 0.008, 15 / 750 = 0.020, 60 / 750 = 0.080. (ii) From 0.8 to 0.5 the curve rises steeply: catch rate +0.14 for only +0.012 in false alarms. From 0.5 to 0.2 it runs almost flat to the right: catch rate +0.04 for +0.060 in false alarms. (iii) The diagonal is a coin flip: a random guesser catches spam at the same rate it wrongly deletes genuine comments, and Kitecast's points sit far above it, up and to the left. Each point is one threshold; none is better on both axes, so the choice depends on what a missed spam and a deleted listener comment cost Kitecast: it is a pricing decision.",
+   "marking": "2 marks for (i): 1 for the three catch rates, 1 for the three false-alarm rates (dividing by 750, not by the delete pile). 2 marks for (ii): 1 for the steep rise from 0.8 to 0.5, 1 for the flat move from 0.5 to 0.2, each supported by numbers. 1 mark for the diagonal as a coin flip (random guessing). 1 mark for explaining that choosing a point weighs two error prices. Accept percentages. Do not accept false-alarm rates computed as 1 &minus; precision."
+  },
+  {
+   "id": "w4-b05",
+   "topic": "Two thresholds make a review queue",
+   "tests": "Sizing the three bands of a two-threshold review queue from cumulative counts, and comparing it with single thresholds",
+   "title": "How big is the review band?",
+   "stem": "Mapleleaf Games runs a player forum. Its spam model was tested on 2,000 held-out posts (400 spam, 1,600 genuine). Posts scoring 0.85 or higher: 330 spam and 10 genuine. Posts scoring 0.15 or higher (this includes the previous group): 390 spam and 90 genuine. The team plans to keep posts below 0.15, send 0.15 up to 0.85 to a moderator, and delete 0.85 or higher.<br>(i) Calculate the number of posts in each band and the spam and genuine counts in the review band. (ii) Compare the plan with a single threshold at 0.85 and with a single threshold at 0.15 in terms of missed spam and genuine deleted, assuming the moderator judges correctly. (iii) State the price of the plan.",
+   "formula": "",
+   "reference": "(i) Review band: 390 &minus; 330 = 60 spam and 90 &minus; 10 = 80 genuine, 140 posts. Delete band: 340 posts (10 genuine). Keep band: 2,000 &minus; 480 = 1,520 posts, of which 400 &minus; 390 = 10 are spam. (ii) A single threshold at 0.85 misses 400 &minus; 330 = 70 spam and deletes 10 genuine; a single threshold at 0.15 misses 10 spam but deletes 90 genuine. The queue misses only 10 spam and deletes only 10 genuine: 60 more spam caught than the 0.85 filter and 80 more players saved than the 0.15 filter. (iii) The price is moderator time on 140 posts per 2,000 (7 percent instead of reading everything), plus the 10 misses in the keep band and the 10 false alarms in the delete band, which the queue does not touch. Automation where the model is sure, human judgement where it is not.",
+   "marking": "2 marks for (i): 1 for the review band of 140 (60 spam, 80 genuine), 1 for the keep band of 1,520 with 10 spam (or the delete band of 340 with 10 genuine; either completes the mark). 2 marks for (ii): 1 for the single-threshold errors (70 missed / 10 deleted at 0.85; 10 missed / 90 deleted at 0.15), 1 for the queue's 10 and 10 with the comparison. 2 marks for (iii): 1 for moderator time on 140 posts, 1 for the errors left in the keep and delete bands or the dependence on correct moderator judgement. Carry forward an error in (i)."
+  },
+  {
+   "id": "w4-b06",
+   "topic": "Two errors, two prices",
+   "tests": "Pricing the two errors differently for two posts of one brand and moving the dial accordingly",
+   "title": "Same brand, two posts, two dials",
+   "stem": "Hearthly, a kitchen-appliance brand, has two posts live this week. Post 1 announces a 24-hour flash sale with a payment link; thousands of bargain hunters are clicking through. Post 2 explains a delivery delay; hundreds of existing buyers are asking where their orders are. Both posts use the same spam model.<br>For each post, explain which error (a missed spam comment or a deleted genuine comment) Hearthly should price higher and who pays it, and say in which direction you would move each post's threshold from 0.5. End with one cost of your choice for each post.",
+   "formula": "",
+   "reference": "Post 1: the miss is the expensive error. Buyers ready to click and pay are an easy target for scam links posing as the sale; a scam left up costs followers money, and they blame Hearthly, while engagement starts to look fake. Lower the threshold (for example toward 0.3): recall rises, at the cost of more genuine comments deleted. Post 2: the false alarm is the expensive error. A genuine buyer asking about a late order who watches the question vanish feels silenced, files a support ticket or complains in public, and may not buy again. Raise the threshold (for example toward 0.8): precision rises, at the cost of more spam left visible. The same model therefore runs two settings: price the two errors separately, then set the dial.",
+   "marking": "2 marks for Post 1: 1 for identifying the miss as the expensive error, 1 for who pays (followers who click, the brand's trust or campaign). 2 marks for Post 2: 1 for identifying the false alarm as the expensive error, 1 for who pays (the silenced buyer, support desk, repeat purchases). 1 mark for moving the dials in the matching directions (lower for Post 1, raise for Post 2). 1 mark for one stated cost for each post (more genuine deleted on Post 1; more spam visible on Post 2); both are needed. A different pricing earns the first marks only if it is argued from who reads each post; moving a dial without a stated pricing earns no direction mark."
+  },
+  {
+   "id": "w4-b07",
+   "topic": "Strict, balanced, sweep: one filter, three postures",
+   "tests": "Defending one posture with both error counts after reading the asymmetric steps away from BALANCED",
+   "title": "Ship one setting and defend it",
+   "stem": "Sproutly, an online plant shop, tests one spam filter on 2,000 held-out comments (600 spam, 1,400 genuine) at three settings.<table class=\"ex\"><tr><th>Setting</th><th>Threshold</th><th>Spam caught, of 600</th><th>Genuine deleted, of 1,400</th></tr><tr><td>STRICT</td><td>0.85</td><td>520</td><td>6</td></tr><tr><td>BALANCED</td><td>0.5</td><td>576</td><td>10</td></tr><tr><td>SWEEP</td><td>0.15</td><td>584</td><td>62</td></tr></table>(i) Calculate the spam missed at each setting and what each step away from BALANCED gains and gives up. (ii) Sproutly has no scam wave and no public row over deletions. Choose one setting and defend it using both error counts.",
+   "formula": "",
+   "reference": "(i) Spam missed: STRICT 600 &minus; 520 = 80, BALANCED 24, SWEEP 16. BALANCED to STRICT saves 10 &minus; 6 = 4 customers but lets 576 &minus; 520 = 56 more spam stay up. BALANCED to SWEEP catches 584 &minus; 576 = 8 more spam but deletes 62 &minus; 10 = 52 more customers. (ii) Ship BALANCED: it misses 24 spam and deletes 10 genuine comments out of 2,000. Moving to STRICT gives up 56 spam to save 4 customers; moving to SWEEP gives up 52 customers to catch 8 spam. With no reason to price one error far above the other, both steps give up a lot to gain a little, so the dial stays at 0.5. STRICT would be worth it only if one deleted customer cost more than 14 visible spam comments; SWEEP only if 8 more caught spam outweighed 52 lost customers.",
+   "marking": "1 mark for the three missed-spam counts (80, 24, 16). 1 mark for the STRICT step (4 saved, 56 more missed). 1 mark for the SWEEP step (8 more caught, 52 more deleted). 1 mark for naming a setting. 2 marks for the defence: 1 for quoting both error counts of the chosen setting, 1 for arguing from the asymmetric steps or from the relative price of the errors. Another setting can earn full marks if defended with both counts and a stated pricing reason; a defence using accuracy alone earns 0 of the 2 defence marks."
+  },
+  {
+   "id": "w4-b08",
+   "topic": "Your tasks for TeaPop: ship a setting, answer the appeal, write the contract line",
+   "tests": "Writing a two-error acceptance criterion and testing it on the do-nothing filter and three candidate settings",
+   "title": "A contract line that kills the do-nothing filter",
+   "stem": "Coralline, a swimwear brand, is hiring a vendor for comment moderation. On 1,000 held-out comments (250 spam, 750 genuine) the vendor shows three settings: P catches 240 spam and deletes 30 genuine; Q catches 230 spam and deletes 9 genuine; R catches 200 spam and deletes 3 genuine. A filter that deletes nothing scores 0.75 accuracy here.<br>(i) Write one sentence of acceptance criterion for the contract, using the two kinds of error. (ii) Test your sentence on the do-nothing filter and on P, Q and R. (iii) Explain why a criterion written in accuracy alone is unsafe here.",
+   "formula": "share of spam caught = spam caught / all spam; share of genuine deleted = genuine deleted / all genuine",
+   "reference": "(i) For example: \"On at least 1,000 held-out comments whose labels were hidden during training, the filter must catch at least 90 percent of spam and wrongly delete no more than 2 percent of genuine comments.\" (ii) Do-nothing: 0 of 250 = 0 percent caught, fails. P: 240 / 250 = 96 percent caught but 30 / 750 = 4.0 percent deleted, fails on genuine deleted. Q: 230 / 250 = 92 percent caught, 9 / 750 = 1.2 percent deleted, passes. R: 200 / 250 = 80 percent caught, fails on spam caught (0.4 percent deleted). (iii) Accuracy gives both errors one price and is flattered by the lopsided stream: doing nothing already scores 0.75, and a rule such as \"accuracy at least 75 percent\" would let a filter that catches no spam pass. Only a floor on spam caught plus a ceiling on genuine deleted rules out both one-sided failures.",
+   "marking": "2 marks for (i): 1 for a floor on spam caught (or recall), 1 for a ceiling on genuine deleted (or false-alarm rate), measured on held-out data; the exact percentages are the student's choice. 3 marks for (ii): 1 for showing the do-nothing filter fails, 2 for correctly testing P, Q and R against the student's own thresholds (1 if one of the three is wrong). 1 mark for (iii): explains that accuracy alone lets the do-nothing filter (0.75) pass or hides which error is made. Test the student's thresholds as written; do not require Q to be the only pass."
+  },
+  {
+   "id": "w4-b09",
+   "topic": "What the report does not say: interpretability is operational",
+   "tests": "Using interpretability to break a near-tie between models when a public appeal must be answered",
+   "title": "Which filter answers the appeal?",
+   "stem": "Velvet Lane, a fashion label, has three candidate comment filters with near-identical results on 1,000 held-out comments: a readable scorecard (logistic regression), accuracy 0.972; a decision tree, 0.970; a random forest, 0.973. All three delete 12 genuine comments in 1,000 at the chosen setting. A creator with 50,000 followers posts that Velvet Lane deleted her question about sizing.<br>(i) Which filter do you want in production when the brand drafts its public reply, and why? (ii) What should the reply concede and what should it say?",
+   "formula": "",
+   "reference": "(i) The tree or the scorecard, not the forest. The accuracies differ by at most 0.003, which is 3 verdicts in 1,000, so the numbers cannot choose. With the tree, Velvet Lane can walk her comment down the flowchart and name the question that sent it to deletion; with the scorecard it can name the signals that pushed its score up. The forest can only say that many trees voted, which is no public reply; its extra 0.001 buys nothing here. (ii) The reply concedes the deletion was an error, the kind every setting makes (about 12 genuine comments per 1,000 at this setting). It says the question is restored and answered, explains in plain words why the filter flagged it, and states what changes, for example sending borderline scores to a human reviewer before deletion.",
+   "marking": "1 mark for choosing the tree or the scorecard. 1 mark for showing the accuracies are effectively tied (difference of about 3 verdicts in 1,000). 1 mark for explaining that the chosen model lets the brand say why this comment was deleted (path or weights). 1 mark for explaining why the forest's votes cannot answer an appeal. 2 marks for the reply: 1 for conceding a false positive with reference to the 12-in-1,000 rate or to the fact that every setting makes such errors, 1 for a concrete step (restore and answer, explain the flag, or add human review of borderline scores). Choosing the forest earns at most the reply marks."
+  },
+  {
+   "id": "w4-b10",
+   "topic": "Who joins the private domain: the same two errors",
+   "tests": "Applying precision and recall to a private-domain invitation list and moving the cut by error price",
+   "title": "Who gets the invitation?",
+   "stem": "Pebble Pet Food sells in a nightly Douyin livestream and invites some viewers into its WeChat Work group, its private domain. Last month 2,000 viewers watched; 300 of them later bought again (\"returners\"). Using a repeat-purchase score, the team invited 500 viewers, of whom 180 were returners.<br>(i) Name the two errors in this setting, give their counts, and say what each costs Pebble. (ii) Calculate the precision and the recall of the invitation list. (iii) Say how the team should move its score cut if staff time becomes scarce, and how if repeat revenue per returner rises sharply.",
+   "formula": "precision = TP / (TP + FP)<br>recall = TP / (TP + FN)",
+   "reference": "(i) False positives: invited viewers who did not return, 500 &minus; 180 = 320; each costs staff time spent on someone who only browses. False negatives: returners not invited, 300 &minus; 180 = 120; each is repeat revenue the group could have nurtured (messages there cost no media spend). (ii) Precision = 180 / 500 = 0.36: about one invitee in three returned. Recall = 180 / 300 = 0.60: the list reached 60 percent of returners. (iii) If staff time is scarce, false positives become dearer: raise the cut, inviting fewer viewers with higher precision and accepting more missed returners. If revenue per returner rises, false negatives become dearer: lower the cut, raising recall at the price of more staff time. As with the spam filter, the cut is set by what each error costs.",
+   "marking": "2 marks for (i): 1 for the false positive (320, staff time), 1 for the false negative (120, lost repeat revenue). 2 marks for (ii): 1 for precision 0.36, 1 for recall 0.60. 2 marks for (iii): 1 for raising the cut when staff time is scarce, 1 for lowering it when repeat revenue rises, each with the error it trades. Accept counts and directions described as tiers rather than score cuts. Do not award (i) marks if FP and FN are swapped."
+  },
+  {
+   "id": "w4-b11",
+   "topic": "The score is a probability; the verdict is a cutoff",
+   "tests": "Turning scores into verdicts at two thresholds, counting the four cells, and seeing precision and recall move with the dial",
+   "title": "Eight comments, two cutoffs",
+   "stem": "Driftwood Records, an indie music label, checks its spam model on eight labelled comments:<table class=\"ex\"><tr><th>Comment</th><th>Spam probability</th><th>Truth</th></tr><tr><td>C1</td><td>0.95</td><td>spam</td></tr><tr><td>C2</td><td>0.82</td><td>spam</td></tr><tr><td>C3</td><td>0.74</td><td>genuine</td></tr><tr><td>C4</td><td>0.66</td><td>spam</td></tr><tr><td>C5</td><td>0.55</td><td>genuine</td></tr><tr><td>C6</td><td>0.41</td><td>spam</td></tr><tr><td>C7</td><td>0.20</td><td>genuine</td></tr><tr><td>C8</td><td>0.05</td><td>genuine</td></tr></table>(i) At threshold 0.5 and at threshold 0.8, list the comments deleted and count TP, FP, FN and TN. (ii) Calculate precision and recall at each threshold. (iii) Explain what changed between the two thresholds and what did not.",
+   "formula": "verdict = delete if score &ge; t<br>precision = TP / (TP + FP)<br>recall = TP / (TP + FN)",
+   "reference": "(i) At 0.5: delete C1-C5. TP = 3 (C1, C2, C4), FP = 2 (C3, C5), FN = 1 (C6), TN = 2 (C7, C8). At 0.8: delete C1 and C2. TP = 2, FP = 0, FN = 2 (C4, C6), TN = 4. (ii) At 0.5: precision = 3 / 5 = 0.60, recall = 3 / 4 = 0.75. At 0.8: precision = 2 / 2 = 1.00, recall = 2 / 4 = 0.50. (iii) Raising the dial made the filter delete less: no genuine comment is lost (precision 0.60 to 1.00), but one more spam stays up (recall 0.75 to 0.50). The probabilities did not change and nothing was retrained; only the person-chosen cutoff moved: the model proposes, the threshold disposes.",
+   "marking": "2 marks for (i): 1 for the correct four counts at 0.5, 1 for those at 0.8. 2 marks for (ii): 1 for both measures at 0.5, 1 for both at 0.8. 2 marks for (iii): 1 for the direction (precision up, recall down when the threshold rises) with the error that moved, 1 for stating that the scores and model stayed the same and only the verdicts were recut. A comment scoring exactly at the cutoff would be deleted, but none does here. Carry forward count errors into (ii)."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w4-c01",
+   "topics": [
+    "The confusion matrix, counted",
+    "The TeaPop case: the consultant's report",
+    "The number that flatters, and what the errors cost",
+    "What the report does not say: interpretability is operational"
+   ],
+   "tests": "Rebuilding a confusion matrix and all four measures from a model report row; the majority baseline and why near-equal accuracies cannot choose; breaking the tie on interpretability with a limitation",
+   "name": "Harbor Reads",
+   "scenario": "<p>Harbor Reads is a book-review platform. Publishers complain that fake five-star reviews are crowding out real readers, so the platform plans to remove suspected fake reviews automatically. A consultant trained three filters on 6,000 past reviews and tested them on 2,000 held-out reviews whose labels were hidden during training: 400 were fake and 1,600 genuine. Fake is the positive class, and \"removed\" is the filter's positive verdict.</p><p>Authors whose genuine reviews disappear can file a public appeal on the platform's forum, and Harbor Reads has promised to answer each one with the reason for the removal. An intern summarises the report: \"Doing nothing is already 80 percent accurate, and the forest is the most accurate filter, so we ship the forest.\"</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Three filters on 2,000 held-out reviews (400 fake, 1,600 genuine)",
+     "html": "<table class=\"ex\"><tr><th>Filter</th><th>Accuracy</th><th>F1</th><th>Fakes caught</th><th>Genuine removed</th></tr><tr><td>Readable scorecard (logistic regression)</td><td>0.964</td><td>0.907</td><td>352 of 400</td><td>24 of 1,600</td></tr><tr><td>Decision tree (depth 5)</td><td>0.963</td><td>0.904</td><td>350 of 400</td><td>24 of 1,600</td></tr><tr><td>Random forest (300 trees)</td><td>0.965</td><td>0.910</td><td>354 of 400</td><td>24 of 1,600</td></tr></table>",
+     "note": "accuracy = (TP + TN) / (TP + FP + FN + TN); precision = TP / (TP + FP); recall = TP / (TP + FN); F1 = 2TP / (2TP + FP + FN)"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "For the readable scorecard, build the confusion matrix (with row and column totals) and calculate its accuracy, precision, recall and F1 to three decimal places. Interpret precision and recall in one sentence each for Harbor Reads.",
+     "answer": "TP = 352 (fake, removed); FN = 400 &minus; 352 = 48 (fake, left up); FP = 24 (genuine, removed); TN = 1,600 &minus; 24 = 1,576 (genuine, kept). Rows: genuine 1,576 + 24 = 1,600; fake 48 + 352 = 400. Columns: kept 1,624; removed 376; total 2,000. Accuracy = (352 + 1,576) / 2,000 = 1,928 / 2,000 = 0.964. Precision = 352 / 376 = 0.936: of every 100 removed reviews about 94 were fake, so about 6 were genuine readers' reviews. Recall = 352 / 400 = 0.880: the filter removes 88 percent of fakes and leaves 48 visible. F1 = 704 / (704 + 24 + 48) = 704 / 776 = 0.907 (or 2 &times; 0.936 &times; 0.880 / 1.816 = 0.907).",
+     "marking": "2 marks for the four cells: 2 if all are correct with truth in rows and action in columns, 1 if one cell is wrong or FP and FN are swapped consistently. 1 mark for the row and column totals (1,600 and 400; 1,624 and 376). 1 mark each for accuracy 0.964, precision 0.936, recall 0.880 and F1 0.907 (4 marks; accept 0.94, 0.88, 0.91 with correct working). 1 mark for interpreting precision as the share of removed reviews that were fake (wrongly removed genuine reviews) and recall as the share of all fakes removed (fakes left up); both are needed for the mark. Carry forward a wrong cell into the measures without a second penalty."
+    },
+    {
+     "marks": 6,
+     "stem": "Check the intern's 80 percent figure. Explain what it hides, how many reviews the accuracy gap between the forest and the scorecard represents, and what the two error columns of Exhibit 1 show about the three filters.",
+     "answer": "Doing nothing is right on all 1,600 genuine reviews: 1,600 / 2,000 = 0.80, the majority baseline. It is correct but lies by omission: it removes 0 of 400 fakes, so every fake stays up, while no genuine review is touched; accuracy hides which error was made. The forest (0.965) beats the scorecard (0.964) by 0.001, which is 0.001 &times; 2,000 = 2 reviews. The error columns show why: all three filters remove exactly 24 genuine reviews and differ only in fakes caught (350, 352, 354), that is 50, 48 and 46 missed. The filters are essentially tied; choosing the forest for its accuracy is choosing on a 2-review difference.",
+     "marking": "1 mark for 0.80 with working. 1 mark for explaining that the baseline catches no fakes (the number hides one error column). 1 mark for converting the 0.001 gap to 2 reviews. 2 marks for reading both columns: 1 for the identical 24 genuine removed, 1 for the misses of 50, 48 and 46 (or catches differing by at most 4). 1 mark for concluding the filters are effectively tied, so accuracy cannot choose. Do not award the last mark for \"the forest is best\"."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend which filter Harbor Reads should deploy, given its promise to answer every author's appeal with a reason. Give one limitation of the consultant's evidence.",
+     "answer": "Deploy the readable scorecard (the decision tree is also defensible). The numbers cannot separate the filters, so the choice rides on what the platform can defend. Interpretability is operational here: when an author appeals, the scorecard shows which signals pushed the review's score up, and the tree shows the questions on its path; the forest can only say that 300 trees voted, which does not keep the promise. The scorecard also catches 2 more fakes than the tree at the same 24 false removals. Limitation: the comparison rests on one held-out set of 2,000 reviews at one threshold; differences of 2-4 reviews may reverse on another sample, and fake-review tactics may change after launch, so the error counts should be re-measured on fresh labelled reviews.",
+     "marking": "1 mark for recommending the scorecard or the tree. 2 marks for the reason: 1 for the effective tie in the numbers, 1 for linking the choice to explaining each removal in an appeal (path or weights). 1 mark for explaining why the forest cannot meet the promise (votes only). 2 marks for one explained limitation (1 for naming it, 1 for its consequence), for example a single test sample and small differences, one threshold only, changing fake-review behaviour, or the costs of the two errors not yet priced. Recommending the forest earns at most the limitation marks."
+    }
+   ]
+  },
+  {
+   "id": "w4-c02",
+   "topics": [
+    "Strict, balanced, sweep: one filter, three postures",
+    "Every threshold on one picture",
+    "The dial is asymmetric",
+    "Two errors, two prices"
+   ],
+   "tests": "Precision, recall and false-alarm rate across three postures; stating the asymmetric steps; pricing the two errors with stated costs to choose a posture that changes with the situation",
+   "name": "Pixel Harbor",
+   "scenario": "<p>Pixel Harbor is a gaming streamer with a large live chat. Scam messages posing as free-skin giveaways appear during every stream. Her moderation tool scores each chat message with a spam probability, and she must choose one of three postures for the same model. The tool was tested on 5,000 labelled chat messages from past streams: 400 scam and 4,600 genuine.</p><p>Her manager has estimated what each error costs, in yuan of refunds, support time and lost subscriptions. In a normal week a missed scam message costs about 30 yuan and a wrongly deleted genuine message about 10 yuan. Next week a sponsor's real giveaway runs on stream, and copycat scams are expected; for that week a missed scam message is estimated at 150 yuan, while a wrongly deleted message still costs 10 yuan.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: One model, three postures, on 5,000 test messages (400 scam, 4,600 genuine)",
+     "html": "<table class=\"ex\"><tr><th>Setting</th><th>Threshold</th><th>Scam caught, of 400</th><th>Genuine deleted, of 4,600</th></tr><tr><td>STRICT</td><td>0.9</td><td>300</td><td>10</td></tr><tr><td>BALANCED</td><td>0.5</td><td>368</td><td>23</td></tr><tr><td>SWEEP</td><td>0.15</td><td>380</td><td>115</td></tr></table>",
+     "note": "precision = TP / (TP + FP); recall = TP / (TP + FN); false-alarm rate = FP / (FP + TN)"
+    },
+    {
+     "title": "Exhibit 2: Estimated cost per error (yuan)",
+     "html": "<table class=\"ex\"><tr><th>Week</th><th>Missed scam message (FN)</th><th>Genuine message deleted (FP)</th></tr><tr><td>Normal week</td><td>30</td><td>10</td></tr><tr><td>Giveaway week</td><td>150</td><td>10</td></tr></table>",
+     "note": "total error cost = FN &times; cost per FN + FP &times; cost per FP"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "For each posture, calculate recall, precision and the false-alarm rate to three decimal places. Describe what happens to precision and recall as the threshold falls, and explain why the false-alarm rate is much smaller than 1 &minus; precision for SWEEP.",
+     "answer": "Recall: STRICT 300 / 400 = 0.750; BALANCED 368 / 400 = 0.920; SWEEP 380 / 400 = 0.950. Precision: STRICT 300 / 310 = 0.968; BALANCED 368 / 391 = 0.941; SWEEP 380 / 495 = 0.768. False-alarm rate: STRICT 10 / 4,600 = 0.002; BALANCED 23 / 4,600 = 0.005; SWEEP 115 / 4,600 = 0.025. As the threshold falls the filter deletes more: recall climbs and precision falls, one dial with two errors moving in opposite directions. For SWEEP, 1 &minus; precision = 115 / 495 = 0.232 divides by the delete pile, whereas the false-alarm rate divides by all 4,600 genuine messages; because genuine messages vastly outnumber scams, the same 115 errors are a small share of all genuine messages but a large share of what was deleted.",
+     "marking": "2 marks for the three recalls (1 if one is wrong). 2 marks for the three precisions (1 if one is wrong). 2 marks for the three false-alarm rates (1 if one is wrong; accept 0.0022 and 0.0050). 1 mark for the direction: recall up and precision down as the threshold falls. 1 mark for explaining the different denominators (delete pile versus all genuine messages). Accept percentages. Carry forward one arithmetic slip without further penalty in the direction mark."
+    },
+    {
+     "marks": 6,
+     "stem": "Describe the two steps away from BALANCED in counts. Explain what the course means by calling the dial asymmetric, using these numbers.",
+     "answer": "BALANCED to STRICT: genuine deleted falls from 23 to 10, saving 13 viewers' messages, but scam caught falls from 368 to 300, so 68 more scams stay in chat. BALANCED to SWEEP: scam caught rises from 368 to 380, 12 more scams caught, but genuine deleted rises from 23 to 115, 92 more genuine messages lost. Asymmetric means the two sides of a move are not the same size: one step strict swaps 13 for 68, one step sweep swaps 12 for 92. Each step gives up much more of one error than it gains in the other, so leaving BALANCED is worth it only if one error is priced far above the other.",
+     "marking": "2 marks for the STRICT step (1 for 13 saved, 1 for 68 more missed). 2 marks for the SWEEP step (1 for 12 more caught, 1 for 92 more deleted). 2 marks for explaining asymmetry: 1 for the unequal sizes of gain and loss, 1 for the implication that a move needs one error to be priced far higher. Do not award the asymmetry marks for \"both errors change\" without comparing magnitudes."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, calculate the total error cost of each posture for a normal week and for the giveaway week. Recommend a posture for each week and state one limitation of this costing.",
+     "answer": "Normal week (30, 10): STRICT 100 &times; 30 + 10 &times; 10 = 3,100; BALANCED 32 &times; 30 + 23 &times; 10 = 1,190; SWEEP 20 &times; 30 + 115 &times; 10 = 1,750 yuan. Giveaway week (150, 10): STRICT 15,000 + 100 = 15,100; BALANCED 4,800 + 230 = 5,030; SWEEP 3,000 + 1,150 = 4,150 yuan. Recommend BALANCED in a normal week and SWEEP for the giveaway week, then return to BALANCED: when a missed scam becomes five times dearer, the 12 extra scams SWEEP catches outweigh its 92 extra deletions. Price the two errors separately, then set the dial. Limitation: the per-error costs are rough estimates; if a deleted message from a loyal subscriber cost, say, 25 yuan instead of 10, SWEEP's giveaway-week cost would be 3,000 + 2,875 = 5,875, above BALANCED's 4,800 + 575 = 5,375, and the choice would flip. The counts also come from past streams, not from a giveaway-week chat.",
+     "marking": "2 marks for the normal-week costs (1 if one is wrong). 1 mark for the giveaway-week costs. 1 mark for recommending BALANCED for a normal week and SWEEP for the giveaway week, consistent with the student's costs. 2 marks for one explained limitation (1 for naming it, 1 for its consequence for the decision): for example uncertain cost estimates, test messages from past streams rather than the giveaway, or costs that are not linear. A recommendation based on accuracy earns 0 for the recommendation mark. Carry forward arithmetic errors into the recommendation."
+    }
+   ]
+  },
+  {
+   "id": "w4-c03",
+   "topics": [
+    "Two thresholds make a review queue",
+    "The score is a probability; the verdict is a cutoff",
+    "Two errors, two prices"
+   ],
+   "tests": "Comparing a single threshold with a two-threshold review queue from banded counts; handling a capacity limit by moving one boundary and counting the error each move adds; recommending a design from error prices",
+   "name": "Northwind News",
+   "scenario": "<p>Northwind News is a subscription news app whose readers comment under every article. Spam comments advertising fake investment schemes are common. The data team scored 4,000 recent comments with its spam model and had them labelled by hand, giving the counts in Exhibit 1. Spam is the positive class.</p><p>The editor proposes a workflow: keep comments scoring below 0.1, send scores from 0.1 up to but not including 0.9 to human moderators, and delete scores of 0.9 or higher. Exhibit 2 shows the moderation team's capacity. Subscribers who see their comments deleted often cancel, and the editor regards a wrongly deleted subscriber comment as clearly worse than a spam comment left up for a few hours.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: 4,000 labelled comments by score band",
+     "html": "<table class=\"ex\"><tr><th>Score band</th><th>Comments</th><th>of which spam</th></tr><tr><td>Below 0.1</td><td>2,860</td><td>16</td></tr><tr><td>0.1 up to but not including 0.5</td><td>440</td><td>64</td></tr><tr><td>0.5 up to but not including 0.9</td><td>300</td><td>190</td></tr><tr><td>0.9 or higher</td><td>400</td><td>390</td></tr><tr><td>Total</td><td>4,000</td><td>660</td></tr></table>",
+     "note": "verdict = delete if score &ge; t; precision = TP / (TP + FP); recall = TP / (TP + FN)"
+    },
+    {
+     "title": "Exhibit 2: Moderation capacity",
+     "html": "<table class=\"ex\"><tr><th>Moderators</th><th>Comments each can review per 4,000 comments</th></tr><tr><td>3</td><td>150</td></tr></table>",
+     "note": ""
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "First assume a single threshold of 0.5 with no human review: calculate TP, FP and FN, and precision and recall to three decimal places. Then, for the editor's three-band workflow, calculate the size of the review queue and its spam and genuine counts, and the missed spam and wrongly deleted genuine comments left after review, assuming moderators judge correctly.",
+     "answer": "Single threshold 0.5: deleted = 300 + 400 = 700 comments. TP = 190 + 390 = 580; FP = (300 &minus; 190) + (400 &minus; 390) = 110 + 10 = 120; FN = 16 + 64 = 80. Precision = 580 / 700 = 0.829; recall = 580 / 660 = 0.879. Three-band workflow: review queue = 440 + 300 = 740 comments, with 64 + 190 = 254 spam and 740 &minus; 254 = 486 genuine. After correct review, the remaining errors are the 16 spam in the keep band (missed) and the 10 genuine in the delete band (wrongly deleted). Compared with the single threshold, the workflow cuts misses from 80 to 16 and false deletions from 120 to 10, at the price of reading 740 comments.",
+     "marking": "1 mark each for TP 580, FP 120 and FN 80 (3 marks). 1 mark for precision 0.829 and recall 0.879 together. 1 mark for the queue of 740. 1 mark for its split, 254 spam and 486 genuine. 1 mark for the remaining 16 missed and 10 wrongly deleted. 1 mark for the comparison with the single threshold (both errors fall, paid for in review time). Carry forward a wrong count."
+    },
+    {
+     "marks": 6,
+     "stem": "Compare the queue with the team's capacity. The team considers two fixes: (A) raise only the lower boundary to 0.5; (B) lower only the upper boundary to 0.5. For each, give the new queue size, where the moved comments go, and the resulting missed spam and wrongly deleted genuine comments on these labelled data.",
+     "answer": "Capacity = 3 &times; 150 = 450, so the 740-comment queue is 290 over. Fix A: the queue becomes the 300 comments scoring 0.5 up to 0.9, within capacity. The 440 comments scoring 0.1 up to 0.5 now publish straight through, including 64 spam, so missed spam rises from 16 to 80; wrongly deleted stays at 10. Fix B: the queue becomes the 440 comments scoring 0.1 up to 0.5, within capacity. The 300 comments scoring 0.5 up to 0.9 are now deleted unseen, including 110 genuine, so wrongly deleted rises from 10 to 120; missed spam stays at 16. Both fixes meet capacity; A adds misses, B adds false deletions.",
+     "marking": "1 mark for capacity 450 and the excess of 290. 2 marks for Fix A: 1 for the queue of 300 with the 440 moved to keep, 1 for misses rising to 80 (10 wrongly deleted unchanged). 2 marks for Fix B: 1 for the queue of 440 with the 300 moved to delete, 1 for wrongly deleted rising to 120 (16 missed unchanged). 1 mark for stating that the two fixes trade different errors. Carry forward the student's counts from the first sub-question."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend fix A or fix B for Northwind News and justify it with both error counts and the editor's pricing. State one limitation of relying on these 4,000 labelled comments when the workflow goes live.",
+     "answer": "Recommend fix A. The editor prices a wrongly deleted subscriber comment above a spam comment left up, and subscribers who lose comments tend to cancel. Fix A keeps wrongly deleted comments at 10 per 4,000 and accepts 80 missed spam; fix B would cut misses to 16 but delete 120 subscribers' comments, twelve times as many. Fix A also leaves 150 review slots unused (300 of 450), which could be used to review part of the 0.1-0.5 band, for example its upper end, to win back some of the 64 misses. Limitation: in live use the labels are unknown, so the counts of 64 spam and 110 genuine in the moved bands are estimates from one sample; spam tactics and score distributions may shift, and moderators also make mistakes, so the team should audit a sample of each band regularly.",
+     "marking": "1 mark for a clear recommendation. 2 marks for the justification: 1 for quoting both error counts of the chosen fix (and ideally the alternative), 1 for linking the choice to the editor's pricing of the two errors. 1 mark for a sensible refinement or for noting the spare capacity. 2 marks for one explained limitation (1 for naming it, 1 for its consequence): live labels unknown, score drift, moderator error, or one sample only. Fix B can earn the justification marks only if the student argues that misses are dearer despite the editor's stated pricing, with numbers."
+    }
+   ]
+  },
+  {
+   "id": "w4-c04",
+   "topics": [
+    "Who joins the private domain: the same two errors",
+    "Two ways to be wrong: the four cells",
+    "Precision and recall: who feels each",
+    "The dial is asymmetric",
+    "The accuracy trap"
+   ],
+   "tests": "Applying the confusion matrix, precision and recall to private-domain invitations; comparing score cuts under a staff-capacity limit and reading the asymmetric steps; designing a tiered invitation from error prices with the accuracy trap and a limitation",
+   "name": "Saffron Kitchen",
+   "scenario": "<p>Saffron Kitchen sells cookware in a nightly Douyin livestream. After each stream it can invite viewers into its private domain, a WeChat Work group where a host messages buyers directly. Messages there cost no media spend, but every invited viewer costs staff time, and the two-person host team can look after at most 700 invited viewers a month.</p><p>An analyst built a repeat-purchase score from viewing and buying history and tested it on last month's 3,000 viewers, of whom 400 later bought again (\"returners\"). \"Invited\" is the positive verdict and \"returner\" the positive class. Exhibit 1 shows what would have happened at three score cuts. A colleague argues: \"Inviting nobody would be 86.7 percent accurate, so the score barely matters.\"</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Invitation cuts tested on last month's 3,000 viewers (400 returners)",
+     "html": "<table class=\"ex\"><tr><th>Invite if score &ge;</th><th>Viewers invited</th><th>Returners among invited</th></tr><tr><td>0.7</td><td>300</td><td>210</td></tr><tr><td>0.5</td><td>600</td><td>300</td></tr><tr><td>0.3</td><td>1,200</td><td>360</td></tr></table>",
+     "note": "precision = TP / (TP + FP); recall = TP / (TP + FN); accuracy = (TP + TN) / (TP + FP + FN + TN)"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "For the cut at 0.5, build the confusion matrix and calculate precision and recall. Name each of the two error cells in Saffron Kitchen's business terms and state what each costs the brand.",
+     "answer": "At 0.5: TP = 300 (returners invited); FP = 600 &minus; 300 = 300 (invited, did not return); FN = 400 &minus; 300 = 100 (returners not invited); TN = 3,000 &minus; 400 &minus; 300 = 2,300 (not invited, did not return). Check: 300 + 300 + 100 + 2,300 = 3,000. Precision = 300 / 600 = 0.50: half of the invitees returned. Recall = 300 / 400 = 0.75: the list reached three quarters of returners. False positive: a viewer who only browses is invited, so host time is spent on someone who never buys again. False negative: a viewer who would have come back is left on public reach, so repeat revenue the group could have nurtured never arrives.",
+     "marking": "3 marks for the matrix: 1 for TP and FP, 1 for FN, 1 for TN (2,300), with truth and verdict correctly placed. 1 mark for precision 0.50. 1 mark for recall 0.75. 3 marks for the errors: 1 for naming the FP in business terms, 1 for naming the FN in business terms, 1 for the two different costs (staff time versus lost repeat revenue). Do not award the error marks if FP and FN are swapped."
+    },
+    {
+     "marks": 6,
+     "stem": "Calculate precision and recall for the cuts at 0.7 and 0.3. Which cuts fit the hosts' capacity? Describe the step from 0.5 to 0.7 and the step from 0.5 to 0.3 in counts, and explain what this says about moving the cut.",
+     "answer": "0.7: precision = 210 / 300 = 0.70, recall = 210 / 400 = 0.525. 0.3: precision = 360 / 1,200 = 0.30, recall = 360 / 400 = 0.90. Capacity is 700, so 0.7 (300 invited) and 0.5 (600) fit; 0.3 (1,200) does not. From 0.5 to 0.7: 210 fewer browsers invited (300 to 90) but 90 fewer returners reached (300 to 210). From 0.5 to 0.3: 60 more returners reached (300 to 360) but 540 more browsers invited (300 to 840). The steps are asymmetric: loosening the cut buys a few returners with a lot of staff time, while tightening saves staff time but gives up a large share of returners. As with the spam threshold, the cut is set by what each error costs, here within a hard staff limit.",
+     "marking": "1 mark for both values at 0.7 and 1 mark for both values at 0.3. 1 mark for identifying that 0.7 and 0.5 fit the capacity and 0.3 does not. 1 mark for the 0.5 to 0.7 step (210 browsers saved, 90 returners lost). 1 mark for the 0.5 to 0.3 step (60 returners gained, 540 more browsers). 1 mark for interpreting the asymmetry as a trade between the two error prices. Carry forward an error from the first sub-question."
+    },
+    {
+     "marks": 6,
+     "stem": "Respond to the colleague's 86.7 percent argument. Then recommend how Saffron Kitchen should use the score, for example as tiers, within its capacity, and give one limitation of the evidence.",
+     "answer": "Inviting nobody is right on all 2,600 non-returners: 2,600 / 3,000 = 0.867. It flatters because returners are a minority: it reaches 0 of 400 returners, so every false negative is incurred, and accuracy hides which error is made. Recommendation: use the score as three tiers, like a review queue. Score 0.7 and above (300 viewers, 70 percent return): invite into the group with a named host. Score 0.5 up to 0.7 (300 viewers, of whom 300 &minus; 210 = 90 return): invite with a first repeat offer and review after one month. Below 0.5: keep on public reach, no staff time. This uses 600 of the 700 places and reaches 300 of 400 returners. Limitation: the score shows who tended to return, not that the invitation causes the return; the test used one month of viewers, so the return rates may not hold for new streams, and the tiers should be re-checked against next month's actual returns.",
+     "marking": "1 mark for 0.867 with working. 1 mark for explaining that it reaches no returners (the number hides the error column). 2 marks for the recommendation: 1 for a tiered or cut-based design that fits within 700 places, 1 for supporting it with counts (precision, recall or returners reached). 2 marks for one explained limitation (1 for naming it, 1 for its consequence): prediction is not causation, one month of data, changing viewer behaviour, or staff costs not priced. A single cut at 0.5 or 0.7 with a costed reason can earn full recommendation marks."
+    }
+   ]
+  }
+ ]
+}

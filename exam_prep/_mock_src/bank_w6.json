@@ -1,0 +1,775 @@
+{
+  "week": 6,
+  "mcq": [
+    {
+      "id": "w6-a01",
+      "topic": "How many groups is a judgment",
+      "tests": "The roles of the evidence when choosing k: the curves nominate, stability cross-examines, the business decides",
+      "stem": "A streaming app's analyst has an elbow plot, a silhouette-by-k table, a stability check across resamples, and a list of planned campaigns. Which statement describes how the course combines these pieces of evidence to choose the number of segments?",
+      "formula": "",
+      "options": [
+        "The elbow decides alone; the other three are only used to describe the chosen segments afterwards.",
+        "The curves nominate a k, stability cross-examines it, and the business tests decide.",
+        "The k with the highest average silhouette is final, because it is the only per-viewer measure.",
+        "The business picks k first, and the curves are then tuned until they agree with that choice."
+      ],
+      "answer": "b",
+      "explanation": "The count of groups is a judgment, not a lookup. The geometric curves (elbow, silhouette) nominate, stability checks whether the answer survives new resamples and seeds, and Kotler's tests and the floor decide."
+    },
+    {
+      "id": "w6-a02",
+      "topic": "The K-means algorithm",
+      "tests": "K-means needs k up front, so a reported segment count is always someone's choice",
+      "stem": "A report for a short-video studio says: 'K-means discovered that our audience contains exactly five segments.' What is the most accurate correction?",
+      "formula": "",
+      "options": [
+        "K-means discovers the number of segments by itself, but only after the features have been standardized.",
+        "The count is correct only if every single viewer has a positive silhouette score at k = 5.",
+        "K-means needs k up front, so someone chose five; the report should say who and on what evidence.",
+        "K-means always returns the true number of segments once its assign-and-update loop has converged."
+      ],
+      "answer": "c",
+      "explanation": "K-means will not suggest a number of groups; it found five because it was told k = 5. A good report states who chose k and which evidence (elbow, silhouette, stability, business tests) supported it."
+    },
+    {
+      "id": "w6-a03",
+      "topic": "The elbow, read as marginal returns",
+      "tests": "Computing WCSS drops per added k and locating the knee",
+      "stem": "A fitness app fits K-means on standardized behavior for k = 1 to 6. The within-cluster sum of squares (WCSS) is:<br><table class=\"ex\"><tr><th>k</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>WCSS</td><td>2,400</td><td>1,500</td><td>900</td><td>780</td><td>700</td><td>650</td></tr></table>Reading the curve as marginal returns, where is the knee?",
+      "formula": "Drop in WCSS from k to k + 1 = WCSS(k) &minus; WCSS(k + 1)",
+      "options": [
+        "k = 6, because it has the lowest WCSS of all six candidates.",
+        "k = 2, because the drop from 1 to 2 (900) is the largest single drop.",
+        "k = 4, because WCSS first falls below 800 at that number of groups.",
+        "k = 3: drops of 900 and 600, then only 120, 80 and 50."
+      ],
+      "answer": "d",
+      "explanation": "Drops: 900, 600, 120, 80, 50. Big returns until k = 3, then small ones, so the knee is at k = 3. The lowest WCSS always belongs to the largest k, and the largest drop only says the first split helps most."
+    },
+    {
+      "id": "w6-a04",
+      "topic": "The elbow, read as marginal returns",
+      "tests": "Why the lowest WCSS cannot choose k: WCSS always falls as k grows",
+      "stem": "A junior analyst proposes choosing the k with the lowest within-cluster sum of squares (WCSS), since lower WCSS means tighter groups. Why does the course reject this rule?",
+      "formula": "",
+      "options": [
+        "WCSS always falls as k grows, so the rule always picks the largest k; at one viewer per group it is zero.",
+        "WCSS can only be computed for k = 2 and k = 3, so the rule cannot fairly compare larger candidates.",
+        "WCSS rises again once k passes the true number of groups, so the lowest value is usually a small k.",
+        "WCSS measures separation between groups, not tightness, so lower values mean groups that overlap more."
+      ],
+      "answer": "a",
+      "explanation": "With more centroids every viewer has a nearer centre, so WCSS keeps falling. That is why the elbow reads the drops (marginal returns), not the levels."
+    },
+    {
+      "id": "w6-a05",
+      "topic": "The elbow, read as marginal returns",
+      "tests": "Meaning of 'keep' in the stopping rule: the business cost of one more segment",
+      "stem": "The course's elbow rule says: stop when the next segment's geometric gain no longer justifies its keep. What does 'keep' refer to?",
+      "formula": "",
+      "options": [
+        "The amount of WCSS that the extra segment removes from the total.",
+        "Its business cost: a campaign, a manager, content and reporting.",
+        "The computing time needed to rerun K-means with one extra centroid.",
+        "The share of viewers who keep the same cluster label after a restart."
+      ],
+      "answer": "b",
+      "explanation": "'Keep' is a business word: every extra segment costs a campaign, a manager, content and reporting. The WCSS drop is the gain, not the keep."
+    },
+    {
+      "id": "w6-a06",
+      "topic": "The silhouette score",
+      "tests": "Computing a positive silhouette and reading it as confident membership",
+      "stem": "A shopper's average distance to the other members of its own cluster is a = 1.5. Its average distance to the members of the nearest other cluster is b = 6.0. What is its silhouette and its reading?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "s = 3.0, very far from the other cluster.",
+        "s = 0.25, near the boundary between two clusters.",
+        "s = 0.75, well inside its own cluster: a confident member.",
+        "s = &minus;0.75, probably filed in the wrong cluster."
+      ],
+      "answer": "c",
+      "explanation": "s = (6.0 &minus; 1.5) / 6.0 = 4.5 / 6.0 = 0.75. Close to +1, so the shopper is well inside its own cluster. 3.0 divides by a instead of the larger value, and 0.25 is a / b."
+    },
+    {
+      "id": "w6-a07",
+      "topic": "The silhouette score",
+      "tests": "Negative silhouette: the denominator is max(a, b), which is a when b < a",
+      "stem": "In a fitted K-means on a recipe app, one user has a = 5.0 (average distance to its own cluster) and b = 4.0 (average distance to the nearest other cluster). What is the user's silhouette?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "+0.20, because the gap is divided by the larger distance.",
+        "&minus;0.25, because the gap is divided by b, the nearer group.",
+        "&minus;1.00, because b is smaller than a, so membership is reversed.",
+        "&minus;0.20: closer to the other cluster, probably misfiled."
+      ],
+      "answer": "d",
+      "explanation": "The larger of a and b is 5.0, so s = (4.0 &minus; 5.0) / 5.0 = &minus;0.20. Dividing by b gives &minus;0.25, the common denominator mistake. Negative means the user sits closer to another cluster."
+    },
+    {
+      "id": "w6-a08",
+      "topic": "The silhouette score",
+      "tests": "Working the silhouette formula backwards to recover a from s and b",
+      "stem": "A viewer's silhouette is s = 0.5, and its average distance to the nearest other group is b = 8.0. Because s is positive, b is the larger distance. What is a, the viewer's average distance to its own group?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "a = 4.0",
+        "a = 16.0",
+        "a = 7.5",
+        "a = 12.0"
+      ],
+      "answer": "a",
+      "explanation": "With b as the maximum, 0.5 = (8.0 &minus; a) / 8.0, so 8.0 &minus; a = 4.0 and a = 4.0. Check: (8 &minus; 4) / 8 = 0.5. a = 16 would make s negative."
+    },
+    {
+      "id": "w6-a09",
+      "topic": "The silhouette score",
+      "tests": "Reading a silhouette near zero as a boundary member",
+      "stem": "A podcast listener has a silhouette of s = 0.03 in a three-cluster solution. What does this score tell the analyst?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "The listener is an outlier who belongs to no cluster at all.",
+        "The listener sits on the boundary between two clusters: a coin flip.",
+        "The listener is a confident member, since any positive score is good.",
+        "The listener was certainly filed in the wrong cluster."
+      ],
+      "answer": "b",
+      "explanation": "Near 0 means a and b are about equal: the listener is barely closer to its own cluster than to the next one. Misfiled requires a negative score, and K-means drafts every point into some cluster."
+    },
+    {
+      "id": "w6-a10",
+      "topic": "The silhouette score",
+      "tests": "Definitions of a and b in the silhouette",
+      "stem": "In the silhouette s = (b &minus; a) / max(a, b), what does b measure for a given viewer?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "The distance from the viewer to the centroid of its own group.",
+        "The average distance from the viewer to every other viewer in the file.",
+        "The average distance to the members of the nearest other group.",
+        "The distance between the two closest centroids in the whole solution."
+      ],
+      "answer": "c",
+      "explanation": "a is the average distance to the other members of the viewer's own group; b is the average distance to the members of the nearest other group, the crowd it would most likely be confused with."
+    },
+    {
+      "id": "w6-a11",
+      "topic": "The silhouette score",
+      "tests": "The silhouette is relative: the largest raw gap b &minus; a is not the most confident member",
+      "stem": "Four learners in the same clustering:<br><table class=\"ex\"><tr><th>Learner</th><th>a</th><th>b</th></tr><tr><td>W</td><td>1.0</td><td>3.0</td></tr><tr><td>X</td><td>5.0</td><td>11.0</td></tr><tr><td>Y</td><td>2.0</td><td>7.0</td></tr><tr><td>Z</td><td>6.0</td><td>10.0</td></tr></table>Which learner is most confidently placed in its own cluster?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "X, because its gap b &minus; a = 6.0 is the largest.",
+        "Z, because it has the largest b of the four learners.",
+        "W, because it has the smallest a of the four learners.",
+        "Y, because its silhouette of about 0.71 is the highest."
+      ],
+      "answer": "d",
+      "explanation": "s: W = 2/3 &asymp; 0.67, X = 6/11 &asymp; 0.55, Y = 5/7 &asymp; 0.71, Z = 4/10 = 0.40. Dividing by max(a, b) makes the score relative, so the largest raw gap (X) is not the most confident."
+    },
+    {
+      "id": "w6-a12",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "Silhouette plot: bars below zero mark misfiled viewers",
+      "stem": "In a silhouette plot of a three-group solution, the third group's sorted bars end with about 30 short bars that extend to the left of zero. What do these bars show?",
+      "formula": "",
+      "options": [
+        "Viewers closer to another group than their own: probably misfiled.",
+        "Viewers who are the most confident members of the third group.",
+        "Viewers with missing values that K-means could not assign anywhere.",
+        "Viewers whose standardized values are below the feature's mean."
+      ],
+      "answer": "a",
+      "explanation": "Each bar is one viewer's silhouette. Bars below zero are negative silhouettes: b < a, so the viewer is closer to another group. Negative z-scores are a different idea."
+    },
+    {
+      "id": "w6-a13",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "Per-group silhouette averages reveal a fuzzy group that the overall average hides",
+      "stem": "A four-group solution has an overall average silhouette of 0.34. The per-group averages are 0.45, 0.39, 0.08 and 0.36. What does this add to the overall number?",
+      "formula": "",
+      "options": [
+        "Nothing new: the overall average already summarises every group fairly.",
+        "The third group is fuzzy, with weak membership that 0.34 hides.",
+        "The first group must be split, because its average is the highest of all.",
+        "All four groups are confidently separated, since every average is positive."
+      ],
+      "answer": "b",
+      "explanation": "The plot (and per-group averages) shows which group is fuzzy. 0.08 is near zero, so many of that group's members are boundary cases, even though the overall 0.34 looks moderate."
+    },
+    {
+      "id": "w6-a14",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "The silhouette-by-k curve starts at k = 2 because b needs another group",
+      "stem": "A silhouette-by-k table for a gaming app starts at k = 2, while its elbow table starts at k = 1. Why is there no average silhouette for k = 1?",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "options": [
+        "With one group, a is always zero, so the silhouette is undefined.",
+        "Software skips k = 1 by convention, but it could be computed as +1.",
+        "With one group there is no other group, so b cannot be measured.",
+        "With one group every viewer is misfiled, so the score is always &minus;1."
+      ],
+      "answer": "c",
+      "explanation": "b is the average distance to the nearest other group. At k = 1 there is no other group, so the silhouette cannot be computed."
+    },
+    {
+      "id": "w6-a15",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "Reading the peak of the silhouette-by-k curve as the k with the most confident membership",
+      "stem": "A language app reports the average silhouette by k:<br><table class=\"ex\"><tr><th>k</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>Average silhouette</td><td>0.41</td><td>0.47</td><td>0.44</td><td>0.30</td><td>0.28</td></tr></table>Which reading is correct?",
+      "formula": "",
+      "options": [
+        "k = 6 is best, because the average silhouette falls steadily as groups become tighter.",
+        "k = 2 is best, because two groups always give the cleanest split.",
+        "No k can be nominated, because all averages are below 0.5.",
+        "The silhouette nominates k = 3, where membership is most confident on average."
+      ],
+      "answer": "d",
+      "explanation": "The average silhouette peaks at k = 3 (0.47): that is where membership is most confident. It nominates; the elbow, stability and business tests still have their say."
+    },
+    {
+      "id": "w6-a16",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "Elbow measures tightness, silhouette measures separation; disagreement signals weak structure",
+      "stem": "For a travel app, the elbow suggests k = 6 but the average silhouette peaks clearly at k = 3. What does the course conclude?",
+      "formula": "",
+      "options": [
+        "The structure is weak, so judgment and the business must carry more weight.",
+        "The elbow is always right, because it uses every viewer's distance to its centroid.",
+        "The silhouette is always right, because it is the only measure computed per viewer.",
+        "The data has no groups at all, so the clustering exercise should be abandoned."
+      ],
+      "answer": "a",
+      "explanation": "'Two evidences, one answer': the elbow measures tightness, the silhouette separation. When structure is real they agree; when they disagree, the structure is weak and the business must carry more of the decision."
+    },
+    {
+      "id": "w6-a17",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "Identifying a failure of the reachable test",
+      "stem": "A news app finds a clearly profiled segment of 9,000 readers with high predicted profit, and the editorial team wants to run a campaign for it. However, these readers arrive only through a partner's website, have no app account, and receive no notifications or emails. Which of Kotler's four tests does the segment fail?",
+      "formula": "",
+      "options": [
+        "Measurable",
+        "Reachable",
+        "Substantial",
+        "Actionable"
+      ],
+      "answer": "b",
+      "explanation": "It is counted and profiled (measurable), profitable (substantial) and someone will run a campaign (actionable), but no channel touches it. A group you cannot reach is a fact, not a segment."
+    },
+    {
+      "id": "w6-a18",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "Substantial means big enough to serve profitably, not a large percentage",
+      "stem": "Which statement about the 'substantial' test is correct under the course's definition?",
+      "formula": "",
+      "options": [
+        "A segment is substantial only if it holds at least 10 percent of the whole file.",
+        "A segment is substantial if its members can be counted and described in a profile.",
+        "A segment is substantial if it is big enough to serve profitably, even if small.",
+        "A segment is substantial if a campaign manager agrees to run a campaign for it."
+      ],
+      "answer": "c",
+      "explanation": "Substantial means big enough to serve profitably: it is about profit, not a percentage on its own. Counting and describing is measurable; someone running a campaign is actionable."
+    },
+    {
+      "id": "w6-a19",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "Identifying a failure of the actionable test",
+      "stem": "An e-learning firm has a counted, profiled, profitable segment that its email channel reaches well. But no team has an offer for it, and nobody is willing to own a campaign. Under Kotler's four tests, what should happen?",
+      "formula": "",
+      "options": [
+        "It earns a budget, because three of the four tests are passed.",
+        "It earns a budget, because its expected profit estimate is positive.",
+        "It is not a segment until it reaches 10 percent of all users.",
+        "It fails 'actionable', so no budget yet: all four must pass."
+      ],
+      "answer": "d",
+      "explanation": "Actionable means someone will run a campaign for it. A segment earns a budget only if it passes all four tests, so three out of four is not enough."
+    },
+    {
+      "id": "w6-a20",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "The floor: the number of planned campaigns sets a lower limit on k",
+      "stem": "A beauty creator's elbow and silhouette both point to k = 3. The marketing team has five distinct campaigns planned, each needing its own audience. What does the course's floor rule say?",
+      "formula": "",
+      "options": [
+        "k is at least 5, whatever the curves say; report both pieces of evidence.",
+        "k should be 3, because two curves that agree always overrule the business plan.",
+        "k should be 4, the average of the curves' answer and the number of campaigns.",
+        "k is at most 5, so any value from 1 to 5 is equally acceptable for the plan."
+      ],
+      "answer": "a",
+      "explanation": "Five campaigns planned means k is at least 5, whatever the curves say: with fewer groups some campaign would have no audience. The floor is a lower limit, and a good answer reports both pieces of evidence."
+    },
+    {
+      "id": "w6-a21",
+      "topic": "When geometry and business disagree",
+      "tests": "When geometry and business disagree, geometry loses: protect a premium niche",
+      "stem": "A hotel loyalty file's average silhouette is highest at k = 2: 'active versus lapsed'. At k = 5 the groups are less cleanly separated, but one of them is a 3 percent niche of premium guests who spend six times the average and match a planned suite campaign. Which k does the course's reasoning support?",
+      "formula": "",
+      "options": [
+        "k = 2, because the silhouette is the most objective criterion available to the analyst.",
+        "k = 5: the silhouette is geometric, and when geometry and business disagree, geometry loses.",
+        "k = 2, then target the premium guests later by picking them out of the active group by hand.",
+        "Neither, because a group holding only 3 percent of guests is always too small to be a segment."
+      ],
+      "answer": "b",
+      "explanation": "The silhouette nominates; it does not decide. k = 2 silently dissolves the premium niche into the mass. A boutique, not a sliver: when geometry and business disagree, geometry loses."
+    },
+    {
+      "id": "w6-a22",
+      "topic": "When geometry and business disagree",
+      "tests": "Why splitting off a valuable niche can lower the average silhouette yet still pay",
+      "stem": "Splitting a small, high-value group out of a large group lowers a solution's average silhouette from 0.48 to 0.39. Why can the split still be the right business choice?",
+      "formula": "",
+      "options": [
+        "Because a lower average silhouette always means the groups have become tighter.",
+        "Because the silhouette always rises again once the targeted campaign has run.",
+        "Because the silhouette rewards distance between groups and ignores margins.",
+        "Because any silhouette above zero is equally good for the business decision."
+      ],
+      "answer": "c",
+      "explanation": "A valuable niche can sit close to a big group in behavior space, so separating it lowers the geometric score. The silhouette knows nothing about prices, margins or campaigns, so it cannot price the niche."
+    },
+    {
+      "id": "w6-a23",
+      "topic": "Stability, and the 2 percent sliver",
+      "tests": "Stability compares segment sizes and profiles across resamples, not just the count",
+      "stem": "An analyst re-runs a clustering pipeline on 10 resamples with different seeds. Every run returns k = 4, but the four groups have different sizes and profiles from run to run. What is the right conclusion?",
+      "formula": "",
+      "options": [
+        "It is stable, because the count of four was the same in every one of the runs.",
+        "It is stable, because the K-means loop converged in every one of the ten runs.",
+        "The resamples are wrong; only the original data should ever be clustered.",
+        "It is not stable: segments must reappear in size and profile, not just count."
+      ],
+      "answer": "d",
+      "explanation": "Stability asks whether the same segments reappear, with similar sizes and profiles. Matching only the count is not enough; an unstable structure is a story about the seed."
+    },
+    {
+      "id": "w6-a24",
+      "topic": "Stability, and the 2 percent sliver",
+      "tests": "Difference between restarts (best run on the same data) and stability (survives new data and seeds)",
+      "stem": "How does a stability check differ from K-means restarts?",
+      "formula": "",
+      "options": [
+        "Restarts keep the best run on the same data; stability tests survival on resamples and seeds.",
+        "Restarts change the data each time; stability keeps the data fixed and changes only the value of k.",
+        "They are the same procedure under two names, and both of them keep the run with the lowest WCSS.",
+        "Restarts compare different values of k; stability compares different sets of standardized features."
+      ],
+      "answer": "a",
+      "explanation": "Restarts pick the best of several runs on the same data. Stability re-runs the whole pipeline on resamples and different seeds and checks whether the same segments reappear."
+    },
+    {
+      "id": "w6-a25",
+      "topic": "Case: Etsy and a buyer's lasting interests",
+      "tests": "What Etsy clusters and with which features",
+      "stem": "In the course's Etsy case, what does K-means group, and using which information?",
+      "formula": "",
+      "options": [
+        "Buyers, using their age, country, income and device type, into a few segments.",
+        "Product listings, using image and text features, into about 1,000 groups.",
+        "Sellers, using their sales volume and customer ratings, into four tiers.",
+        "Search queries, using their click-through rates, into a handful of intent groups."
+      ],
+      "answer": "b",
+      "explanation": "Etsy clusters products, not people: K-means groups listings by their images and descriptions into about 1,000 groups of similar listings, which feed a broader recommendation system."
+    },
+    {
+      "id": "w6-a26",
+      "topic": "Case: Etsy and a buyer's lasting interests",
+      "tests": "How interest groups keep Etsy relevant after a first purchase",
+      "stem": "How do the product interest groups help Etsy stay relevant after a buyer's first purchase?",
+      "formula": "",
+      "options": [
+        "They let Etsy recommend more copies of the exact item the buyer has just bought.",
+        "They let Etsy lower the prices of every listing in the buyer's interest group.",
+        "They let Etsy recommend different listings from the buyer's lasting interest.",
+        "They let Etsy stop showing the buyer any listings once a first purchase is made."
+      ],
+      "answer": "c",
+      "explanation": "Reading purchase history through interest groups shows a lasting interest, not a one-time need. Etsy can recommend different items from that interest instead of 'more of the same', giving the buyer reasons to come back."
+    },
+    {
+      "id": "w6-a27",
+      "topic": "SkillCraft: four crowds and naming the segments",
+      "tests": "Applying the line-up test to candidate segment names",
+      "stem": "A cooking channel must name a segment whose members cook along live, upload photos of every dish, and post the most comments. Which name passes the course's line-up test best?",
+      "formula": "",
+      "options": [
+        "'Cluster 3: the high-engagement group'",
+        "'Moderately engaged users'",
+        "'Mixed-behavior audience'",
+        "'Live cook-alongs'"
+      ],
+      "answer": "d",
+      "explanation": "The line-up test asks whether a stranger could pick this segment out of a line-up. A name built from the extreme behaviors passes; 'cluster 3' and near-average labels carry no behavior."
+    },
+    {
+      "id": "w6-a28",
+      "topic": "SkillCraft: four crowds and naming the segments",
+      "tests": "The name comes from the extremes: pick the column far from the other rows",
+      "stem": "A finance-tips channel profiles its segments in plain units:<br><table class=\"ex\"><tr><th>Segment</th><th>Watch min</th><th>Completion %</th><th>Shares</th><th>Questions</th></tr><tr><td>S1</td><td>130</td><td>40</td><td>0.9</td><td>0.5</td></tr><tr><td>S2</td><td>150</td><td>44</td><td>9.6</td><td>0.7</td></tr><tr><td>S3</td><td>310</td><td>71</td><td>1.2</td><td>3.8</td></tr></table>Which name fits S2 best?",
+      "formula": "",
+      "options": [
+        "'Sharers': near the others on watching, but shares 9.6 against about 1.",
+        "'Deep watchers': the longest watch time and the highest completion rate.",
+        "'Average viewers': watch time and completion sit close to the middle row.",
+        "'Question askers': the most questions asked per viewer of the three groups."
+      ],
+      "answer": "a",
+      "explanation": "The name comes from the extremes. S2's watch time, completion and questions are close to S1, but shares 9.6 against 0.9 and 1.2 stand out. 'Deep watchers' and 'question askers' describe S3; 'average' names nothing."
+    },
+    {
+      "id": "w6-a29",
+      "topic": "One campaign for one segment, and the honesty check",
+      "tests": "Judging a segment campaign against the segment's own baseline, not file conversion",
+      "stem": "An exam-prep app's file converts at 18 percent overall. Its 'exam crammers' segment already converts at 80 percent. A bundle aimed only at the crammers reaches 84 percent conversion in that segment. What is the honest gain?",
+      "formula": "Gain = campaign conversion in segment &minus; baseline conversion",
+      "options": [
+        "66 percentage points, comparing 84 percent with the file rate of 18 percent.",
+        "4 percentage points, comparing 84 percent with the segment's own baseline of 80 percent.",
+        "84 percentage points, since the campaign converted 84 percent of its targets.",
+        "62 percentage points, comparing the segment baseline of 80 with the file rate of 18."
+      ],
+      "answer": "b",
+      "explanation": "The metric is segment conversion, not file conversion; read the baseline before the campaign. The crammers were converting at 80 percent anyway, so the gain is 84 &minus; 80 = 4 points."
+    },
+    {
+      "id": "w6-a30",
+      "topic": "One campaign for one segment, and the honesty check",
+      "tests": "Reading R squared of segment id versus all behaviors: segment as language, behaviors as forecast",
+      "stem": "Predicting next month's watch time, a model using only the segment id has R squared 0.40, and a model using all eight behavior columns has R squared 0.65. Which conclusion follows the course's rule?",
+      "formula": "Gap = R<sup>2</sup>(all behaviors) &minus; R<sup>2</sup>(segment id)",
+      "options": [
+        "The segments are useless, because an R squared of 0.40 is below 0.5.",
+        "The segments are the whole audience; the remaining 0.25 is only noise.",
+        "Segments are real but leave 0.25: segments to talk, behaviors to predict.",
+        "The behavior model should replace the segments in all campaign planning."
+      ],
+      "answer": "c",
+      "explanation": "Four labels explain 40 percent of the variation, which is a lot, but 0.65 &minus; 0.40 = 0.25 lives inside the segments. Segments to talk, behaviors to predict."
+    },
+    {
+      "id": "w6-a31",
+      "topic": "Which segment gets the budget",
+      "tests": "Budget goes where engagement is high and conversion has room to move",
+      "stem": "A podcast app has four named segments. Which one should get the paid-upgrade campaign budget under the course's rule?<br><table class=\"ex\"><tr><th>Segment</th><th>Listening min/day</th><th>Converts now</th></tr><tr><td>Drive-by listeners</td><td>12</td><td>5%</td></tr><tr><td>Weekend bingers</td><td>55</td><td>18%</td></tr><tr><td>Daily devotees</td><td>90</td><td>40%</td></tr><tr><td>Superfans</td><td>85</td><td>90%</td></tr></table>",
+      "formula": "Headroom = 100% &minus; current conversion",
+      "options": [
+        "Drive-by listeners, because they have the most headroom at 95 points.",
+        "Superfans, because they convert best and therefore respond best to spending.",
+        "Weekend bingers, because they are in the middle on both columns.",
+        "Daily devotees: the highest engagement with 60 points of conversion still to win."
+      ],
+      "answer": "d",
+      "explanation": "Value times headroom: daily devotees listen most (90 min) and only 40 percent convert, leaving 60 points. Superfans are already sold (10 points left); drive-by listeners have headroom on paper but weak engagement, so they are expensive to move."
+    },
+    {
+      "id": "w6-a32",
+      "topic": "Distance and standardization",
+      "tests": "Reading a centroid in z-scores to describe and name a cluster",
+      "stem": "Features were standardized as z-scores before clustering. One centroid reads: watch minutes &minus;0.1, completion +0.2, live attendance +2.3, saves &minus;0.4. Which description is correct?",
+      "formula": "z = (x &minus; &mu;) / &sigma;",
+      "options": [
+        "Live-room regulars: live attendance 2.3 standard deviations above average.",
+        "Heavy watchers: they watch 2.3 more hours per week than the average viewer.",
+        "Low savers: saving defines this group, at 0.4 standard deviations below average.",
+        "Average viewers: three of the four values are near zero, so nothing stands out."
+      ],
+      "answer": "a",
+      "explanation": "A z-score counts standard deviations from the mean, so +2.3 on live attendance is the extreme, and it names the group. It is not a raw unit like hours, and &minus;0.4 is too close to average to name anything."
+    }
+  ],
+  "short": [
+    {
+      "id": "w6-b01",
+      "topic": "The elbow, read as marginal returns",
+      "tests": "Full elbow reading from a WCSS table: drops, knee, why not the largest k, and the cost of one more segment",
+      "title": "Reading an elbow as marginal returns",
+      "stem": "MealSpark, a recipe-video app, ran K-means on standardized viewer behavior for k = 1 to 7.<br><table class=\"ex\"><tr><th>k</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr><tr><td>WCSS</td><td>6,000</td><td>3,600</td><td>2,500</td><td>1,900</td><td>1,750</td><td>1,640</td><td>1,560</td></tr></table>Compute the drop in WCSS for each added k and state where the knee is. A colleague wants k = 7 'because it has the lowest WCSS'. Explain why that reasoning fails and what the decision to stop at the knee is actually weighing.",
+      "formula": "Drop from k to k + 1 = WCSS(k) &minus; WCSS(k + 1). WCSS = sum over all viewers of the squared distance to their own centroid.",
+      "reference": "The drops are 2,400 (1 to 2), 1,100 (2 to 3), 600 (3 to 4), 150 (4 to 5), 110 (5 to 6) and 80 (6 to 7). Returns are large up to k = 4 and small afterwards, so the knee is at k = 4. WCSS always falls as k grows, because every viewer gets more centres to choose from, so 'lowest WCSS' would always pick the largest k (at one viewer per group it is zero, perfectly tight and useless). Stopping at the knee weighs the geometric gain of one more segment (only 150 from k = 4 to 5) against its keep: an extra campaign, manager, content and reporting. There is no automatic rule, so the analyst should say 'we stopped at the knee' as a judgment and still check the silhouette, stability and the business tests.",
+      "marking": "Award 2 marks for the six drops (1 mark if at least four are correct). Award 1 mark for the knee at k = 4, supported by the change from large to small drops; accept k = 4 only, but carry forward an arithmetic slip if the knee follows the student's own drops. Award 1 mark for explaining that WCSS always falls with k, so the lowest value cannot choose k. Award 1 mark for explaining that the gain is weighed against the keep (cost of a campaign, manager, content or reporting). Award 1 mark for stating that the knee is a judgment with no automatic rule, or that further evidence (silhouette, stability, business tests) is needed. Do not award the knee mark for 'k = 2 because the drop is largest'."
+    },
+    {
+      "id": "w6-b02",
+      "topic": "The silhouette score",
+      "tests": "Computing and classifying three silhouettes (confident, boundary, misfiled) and choosing an action for each",
+      "title": "Three viewers, three silhouette zones",
+      "stem": "LinguaLoop, a language-learning app, checks three learners after clustering. For each, a is the average distance to the other members of its own cluster and b is the average distance to the members of the nearest other cluster.<br><table class=\"ex\"><tr><th>Learner</th><th>a</th><th>b</th></tr><tr><td>P</td><td>1.2</td><td>4.8</td></tr><tr><td>Q</td><td>3.0</td><td>3.2</td></tr><tr><td>R</td><td>4.5</td><td>3.6</td></tr></table>Compute each learner's silhouette (to two decimal places) and give its reading. Explain which learner deserves a second look before a campaign is aimed at its cluster, and why.",
+      "formula": "s = (b &minus; a) / max(a, b)",
+      "reference": "P: s = (4.8 &minus; 1.2) / 4.8 = 3.6 / 4.8 = 0.75, well inside its own cluster, a confident member. Q: s = (3.2 &minus; 3.0) / 3.2 = 0.2 / 3.2 &asymp; 0.06, on the boundary between two clusters, a coin flip. R: the larger value is a = 4.5, so s = (3.6 &minus; 4.5) / 4.5 = &minus;0.9 / 4.5 = &minus;0.20; R sits closer to the neighbouring cluster and was probably filed in the wrong one. R deserves the closest look, since a campaign aimed at its cluster may not fit it; Q is also uncertain. Many such learners would suggest the clusters themselves are weak.",
+      "marking": "Award 1 mark each for the three silhouettes: 0.75, 0.06 (accept 0.0625) and &minus;0.20. Award 2 marks for the three readings (confident / boundary / misfiled): all three correct earns 2, two correct earns 1. Award 1 mark for identifying R (or R and then Q) as needing a second look, with the reason that it is closer to another cluster. A value of &minus;0.25 for R (dividing by b) earns no calculation mark for R, but the reading mark is available if the negative sign is interpreted correctly."
+    },
+    {
+      "id": "w6-b03",
+      "topic": "Reading a silhouette plot, and silhouette by k",
+      "tests": "Weighted overall silhouette from per-group averages, and what the silhouette plot reveals that one average hides",
+      "title": "One average hides a fuzzy group",
+      "stem": "GlowGrid, a skincare-tutorial channel, has a three-cluster solution for 2,000 viewers. The silhouette plot shows the following.<br><table class=\"ex\"><tr><th>Cluster</th><th>Viewers</th><th>Average silhouette</th><th>Bars below zero</th></tr><tr><td>A</td><td>900</td><td>0.58</td><td>0</td></tr><tr><td>B</td><td>300</td><td>0.12</td><td>40</td></tr><tr><td>C</td><td>800</td><td>0.46</td><td>3</td></tr></table>Compute the overall average silhouette (to three decimal places). Explain what the plot reveals that this single number hides, and what the analyst should do about cluster B before planning a campaign for it.",
+      "formula": "Overall average = &Sigma; (viewers in cluster &times; cluster average) / total viewers",
+      "reference": "Overall average = (900 &times; 0.58 + 300 &times; 0.12 + 800 &times; 0.46) / 2,000 = (522 + 36 + 368) / 2,000 = 926 / 2,000 = 0.463. That looks like a moderate, healthy grouping, but the plot shows the clusters are not equally healthy: A and C have wide bars, while B averages only 0.12, so most of its members are near a boundary, and 40 of its viewers have bars below zero, meaning they were probably filed in the wrong cluster. The single average hides which group is fuzzy. Before funding a campaign for B, the analyst should examine its boundary and negative members, check whether B is stable across resamples and seeds, and consider whether B should be merged with its neighbour or the value of k revisited; B should also pass the four business tests.",
+      "marking": "Award 1 mark for the weighted setup and 1 mark for 0.463 (an unweighted mean of 0.387 earns the setup mark only if weights are mentioned; otherwise 0). Award 1 mark for explaining that B is a weak, boundary-heavy cluster. Award 1 mark for reading the 40 bars below zero as viewers probably filed in the wrong cluster. Award 1 mark for stating that the overall average hides which cluster is fuzzy. Award 1 mark for one sensible action on B (inspect boundary members, check stability, merge or revisit k, apply the business tests). Do not accept 'delete the negative viewers', since K-means drafts every viewer into some group."
+    },
+    {
+      "id": "w6-b04",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "Applying all four Kotler tests to a described segment, with a profit check for substantial, and spotting the failed test",
+      "title": "Four tests for the night-owl segment",
+      "stem": "StudyNest, an exam-prep video platform, found a segment of 3,000 'night owls' who watch mainly after midnight. The team has counted them and profiled their behavior. A tailored offer is expected to convert 10 percent of them at 60 yuan profit per conversion, and the campaign would cost 12,000 yuan. A content manager is ready to own it. However, almost all night owls watch through embedded players on other websites: they have no StudyNest account, and the platform cannot send them a message, notification or email.<br>Compute the expected profit of the campaign. Apply each of Kotler's four tests to the segment and state whether it should receive a budget now.",
+      "formula": "Expected profit = segment size &times; conversion rate &times; profit per conversion &minus; campaign cost",
+      "reference": "Expected profit = 3,000 &times; 0.10 &times; 60 &minus; 12,000 = 18,000 &minus; 12,000 = 6,000 yuan. Measurable: passed, since the team has counted and profiled the segment. Substantial: passed, since the segment is big enough to serve profitably (a positive expected profit of 6,000). Actionable: passed, since a content manager will run the campaign. Reachable: failed, because no StudyNest channel touches these viewers. A segment earns a budget only if it passes all four tests, so the night owls should not receive a budget now; they become a real segment only once a channel (for example, an account sign-up prompt in the embedded player) can reach them.",
+      "marking": "Award 1 mark for the expected profit of 6,000 yuan with setup. Award 1 mark each for correctly applying measurable, substantial (linked to profit) and actionable with a reason from the scenario (3 marks). Award 1 mark for identifying reachable as failed with its reason. Award 1 mark for the decision (no budget now) justified by the rule that all four tests must pass; a decision without that rule earns no decision mark. If the student's profit is wrong but the substantial reasoning follows it, apply error carried forward."
+    },
+    {
+      "id": "w6-b05",
+      "topic": "Kotler's four tests and the floor",
+      "tests": "The floor is a lower limit only: fewer campaigns than the nominated k does not force k down",
+      "title": "When the plan asks for fewer groups than the curves",
+      "stem": "PawPal, a pet-care video app with 25,000 users, has average silhouettes of 0.39 at k = 2, 0.44 at k = 3 and 0.36 at k = 4; the elbow also bends at k = 3. Marketing has only two campaigns planned. A manager says: 'The floor rule says k must equal our number of campaigns, so we must use k = 2.' At k = 3 the third segment holds 8 percent of users.<br>Explain what the floor rule actually says and why the manager's reading is wrong. Compute the size of the third segment and explain what must be checked before deciding whether it gets its own campaign.",
+      "formula": "Segment size = share &times; total users",
+      "reference": "The floor says that if the business has a given number of campaigns planned, k is at least that number, whatever the curves say: it is a lower limit, so here k &ge; 2. It does not say k must equal the number of campaigns, so the floor does not force k down to 2; k = 3, nominated by both the silhouette peak (0.44) and the elbow, satisfies the floor. The third segment holds 0.08 &times; 25,000 = 2,000 users. Whether it gets a campaign depends on Kotler's four tests: it must be measurable, substantial (profitable to serve at 2,000 users), reachable and actionable, and the analyst should confirm it reappears across resamples and seeds. If it fails, it can be served low-touch or folded into a neighbouring campaign while the map keeps k = 3.",
+      "marking": "Award 1 mark for stating that the floor sets a lower limit (k at least the number of campaigns). Award 1 mark for explaining that k = 3 satisfies the floor, so the manager's reading is wrong. Award 1 mark for noting that the silhouette and elbow agree on k = 3. Award 1 mark for 2,000 users. Award 1 mark for applying the four tests to the third segment (at least two tests named and linked to the case). Award 1 mark for a stability check or a sensible fallback (low-touch service or merging into another campaign). Do not award the first mark for 'k must equal the number of campaigns'."
+    },
+    {
+      "id": "w6-b06",
+      "topic": "When geometry and business disagree",
+      "tests": "Quantifying a premium niche's revenue share to argue that geometry loses against business value",
+      "title": "A boutique niche against a beautiful split",
+      "stem": "AirLounge, a travel-rewards app with 40,000 members, finds that its average silhouette is 0.55 at k = 2 ('active versus lapsed') and 0.37 at k = 5. At k = 5, one segment is a premium niche of 3 percent of members who spend 900 yuan a year each; all other members spend 120 yuan a year on average.<br>Compute the niche's size and its share of total annual spending (to one decimal place). Explain which k the analyst should recommend and why the silhouette alone cannot settle it.",
+      "formula": "Niche share of spending = niche spending / (niche spending + rest spending)",
+      "reference": "The niche has 0.03 &times; 40,000 = 1,200 members, spending 1,200 &times; 900 = 1,080,000 yuan. The other 38,800 members spend 38,800 &times; 120 = 4,656,000 yuan. So the niche supplies 1,080,000 / 5,736,000 &asymp; 18.8 percent of spending from 3 percent of members. At k = 2 this niche is silently dissolved into the 'active' mass and could not receive its own offer, so the analyst should recommend k = 5 (provided the niche passes the four tests and reappears across resamples). The silhouette is a geometric criterion: it rewards groups that are far apart and knows nothing about spending or campaigns. When geometry and business disagree, geometry loses.",
+      "marking": "Award 1 mark for 1,200 members. Award 1 mark for the spending setup (1,080,000 and 4,656,000) and 1 mark for 18.8 percent (accept 18.8 or 19 percent). Award 1 mark for recommending k = 5 because k = 2 dissolves the niche. Award 1 mark for explaining that the silhouette is geometric and ignores business value. Award 1 mark for stating 'geometry loses' with a condition or check (four tests, stability). A recommendation of k = 2 earns no recommendation mark, but calculation marks remain."
+    },
+    {
+      "id": "w6-b07",
+      "topic": "Stability, and the 2 percent sliver",
+      "tests": "Reading a stability table to choose between a stable k and a one-seed winner",
+      "title": "Would the same k win again tomorrow?",
+      "stem": "BeatBox, a music-production tutorial channel, re-ran its whole clustering pipeline on five resamples with different seeds, at k = 4 and at k = 5.<br><table class=\"ex\"><tr><th>Run</th><th>Average silhouette, k = 4</th><th>Average silhouette, k = 5</th><th>k = 4: same four segments reappear?</th><th>k = 5: fifth segment reappears?</th></tr><tr><td>1</td><td>0.34</td><td>0.36</td><td>Yes</td><td>Yes</td></tr><tr><td>2</td><td>0.33</td><td>0.29</td><td>Yes</td><td>No</td></tr><tr><td>3</td><td>0.35</td><td>0.30</td><td>Yes</td><td>No</td></tr><tr><td>4</td><td>0.34</td><td>0.35</td><td>Yes</td><td>Yes</td></tr><tr><td>5</td><td>0.33</td><td>0.28</td><td>Yes</td><td>No</td></tr></table>The first analyst reported only run 1 and recommended k = 5. Compute the average silhouette across the five runs for each k. Recommend a k using the stability evidence, and explain how this check differs from simply using restarts.",
+      "formula": "Average across runs = sum of the five run values / 5",
+      "reference": "Average at k = 4: (0.34 + 0.33 + 0.35 + 0.34 + 0.33) / 5 = 1.69 / 5 = 0.338. Average at k = 5: (0.36 + 0.29 + 0.30 + 0.35 + 0.28) / 5 = 1.58 / 5 = 0.316. The four segments at k = 4 reappear in all five runs, while the fifth segment at k = 5 appears in only two of five. So k = 5 winning in run 1 was one seed's opinion, and the recommendation should be k = 4, which is safe to plan campaigns against; stability should be reported next to the silhouette. Restarts keep the lowest-WCSS run on the same data, whereas this check changes both the data (resamples) and the seed and asks whether the same segments survive.",
+      "marking": "Award 1 mark for 0.338 and 1 mark for 0.316. Award 1 mark for noting that the fifth segment appears in only 2 of 5 runs while the four segments always reappear. Award 1 mark for recommending k = 4 because it is stable (a k that wins once may be one seed's opinion). Award 1 mark for reporting stability alongside the silhouette rather than a single run. Award 1 mark for distinguishing restarts (same data, keep the lowest WCSS) from stability (resamples and seeds, same segments reappearing). Apply error carried forward if a slip in the averages does not change the reasoning."
+    },
+    {
+      "id": "w6-b08",
+      "topic": "Stability, and the 2 percent sliver",
+      "tests": "Settling the sliver debate with a profit number, arguing substantial versus actionable",
+      "title": "Is a small sliver worth serving?",
+      "stem": "CodeCamp Live, a programming-course app with 16,000 learners, finds a sliver of 2.5 percent who watch extreme amounts and convert well. A dedicated mentoring offer is expected to convert 30 percent of the sliver at 250 yuan value per conversion, and running a separate campaign for it would cost 18,000 yuan.<br>Compute the sliver's size and the profit from serving it. Argue one point for folding the sliver into the mass and one for serving it, using the tests 'substantial' and 'actionable', and state your decision and one further check.",
+      "formula": "Profit = size &times; conversion &times; value per conversion &minus; campaign cost",
+      "reference": "Size = 0.025 &times; 16,000 = 400 learners. Profit = 400 &times; 0.30 &times; 250 &minus; 18,000 = 30,000 &minus; 18,000 = 12,000 yuan. For folding it in: 2.5 percent is small, so it might fail 'substantial' if it could not pay for its own content and campaign, and it might be a group that appears with one seed and vanishes with another. For serving it: its extreme behavior and high conversion make a campaign easy to design and likely to work, so it is clearly actionable. Since 'substantial' means big enough to serve profitably, and the profit is positive, the sliver passes despite its small share; serve it, a boutique rather than a sliver. Before spending, confirm it reappears across resamples and seeds.",
+      "marking": "Award 1 mark for 400 learners and 1 mark for 12,000 yuan with setup. Award 1 mark for the folding argument linked to 'substantial' (or instability). Award 1 mark for the serving argument linked to 'actionable'. Award 1 mark for a decision consistent with the profit number and the meaning of substantial as profitable, not a percentage. Award 1 mark for a stability check across resamples and seeds (or confirming it is reachable). Error carried forward applies to the decision if the profit was miscalculated."
+    },
+    {
+      "id": "w6-b09",
+      "topic": "Case: Etsy and a buyer's lasting interests",
+      "tests": "Etsy pipeline: products first then buyer, why many fine groups, and how it beats 'more of the same'",
+      "title": "Why Etsy groups products, not people",
+      "stem": "A manager at a fictional handmade-jewellery marketplace, CraftCove, wants to copy the course's Etsy case but plans to cluster buyers into four segments. Describe the four stages of the Etsy pipeline. Explain why Etsy needs about 1,000 groups while a campaign plan needs only a handful, and how the interest groups help a marketplace stay relevant after a buyer's first purchase.",
+      "formula": "",
+      "reference": "Etsy follows the products first, then the buyer: product features (images and descriptions of each listing) are clustered with K-means into interest groups (about 1,000 groups of similar listings); a buyer's history (purchases over time) is then read through those groups; and the result feeds recommendations of items linked to the buyer's lasting interests. Etsy needs many fine groups because the job is recommendation, matching buyers to similar listings, whereas a campaign plan needs only as many segments as it can run campaigns for; 'similar' is a business choice that depends on the job. A single purchase alone suggests 'more of the same item', which is often useless, but several purchases from one interest group reveal a lasting interest, so the marketplace can recommend different listings from that interest and give the buyer reasons to return.",
+      "marking": "Award 2 marks for the four stages in order (product features, interest groups, buyer history, recommendations); 1 mark if two or three are given. Award 2 marks for explaining why about 1,000 groups suit recommendation while campaigns need few, 1 mark for the recommendation job and 1 for linking the number of groups to the business purpose. Award 2 marks for the after-first-purchase logic: 1 for 'lasting interest, not one-time need' from repeated purchases in a group, 1 for recommending different items instead of more of the same. Do not credit answers that say Etsy clusters buyers by demographics."
+    },
+    {
+      "id": "w6-b10",
+      "topic": "SkillCraft: four crowds and naming the segments",
+      "tests": "Naming clusters from the extremes of a z-score centroid table, converting z back to plain units, and why near-average rows name nothing",
+      "title": "From z-scores to segment names",
+      "stem": "TrailTube, a hiking-video channel, standardized six behavior columns as z-scores before clustering. The centroids are:<br><table class=\"ex\"><tr><th>Cluster</th><th>Watch min</th><th>Completion</th><th>Live</th><th>Saves</th><th>Shares</th></tr><tr><td>1</td><td>0.1</td><td>0.0</td><td>1.9</td><td>&minus;0.1</td><td>0.2</td></tr><tr><td>2</td><td>&minus;0.3</td><td>&minus;0.8</td><td>&minus;0.2</td><td>0.1</td><td>2.2</td></tr><tr><td>3</td><td>0.1</td><td>&minus;0.1</td><td>0.0</td><td>0.1</td><td>&minus;0.1</td></tr></table>Shares have a file mean of 3 and a standard deviation of 2. Convert cluster 2's shares back to plain units. Propose names for clusters 1 and 2 from their extremes, and explain why cluster 3 cannot be named from this table and why 'cluster 2' is not an acceptable deliverable.",
+      "formula": "z = (x &minus; &mu;) / &sigma;, so x = &mu; + z &times; &sigma;",
+      "reference": "Cluster 2's shares: x = 3 + 2.2 &times; 2 = 7.4 shares, against a file average of 3. Cluster 1 stands out only on live attendance (1.9 standard deviations above average), so a name such as 'live-room regulars' fits. Cluster 2 shares far more than average (+2.2) but finishes less (&minus;0.8 completion), so 'sharers who skim' fits. Cluster 3 sits near zero on every column, which means near the file average; 'near the average' names nothing because everyone shares it, so it needs plain-unit profiling or other columns before it can be named. 'Cluster 2' is machine output: it tells a campaign manager nothing and fails the line-up test, whereas a segment is a decision-ready sentence with size, value and behavior in plain units.",
+      "marking": "Award 1 mark for 7.4 shares. Award 1 mark for a name for cluster 1 based on live attendance and 1 mark for a name for cluster 2 based on shares (completion as a second extreme is welcome). Award 1 mark for explaining that z near 0 means near average, so cluster 3 has no extreme to name. Award 1 mark for the line-up test or 'cluster 2 tells a campaign manager nothing'. Award 1 mark for stating that a segment needs a plain-unit sentence with size, value and behavior. Names based on non-extreme columns (for example 'low savers') do not earn the naming marks."
+    },
+    {
+      "id": "w6-b11",
+      "topic": "One campaign for one segment, and the honesty check",
+      "tests": "Computing the R squared gap and ratio between segment id and all behaviors, and drawing the 'language versus forecast' rule",
+      "title": "How much do the segments explain?",
+      "stem": "ArtLoop, a drawing-tutorial app, named four learner segments and then asked how well they predict next month's watch time. A regression with the segment id alone gives R squared 0.38; the full model with all eight behavior columns gives R squared 0.62. A manager concludes: 'Our four segments are the audience; everything else is noise.'<br>Compute the gap between the two R squared values and the share of the full model's R squared that the segment id achieves (to two decimal places). Explain what these numbers say and how ArtLoop should use segments and behaviors.",
+      "formula": "Gap = R<sup>2</sup>(all behaviors) &minus; R<sup>2</sup>(segment id). Share = R<sup>2</sup>(segment id) / R<sup>2</sup>(all behaviors)",
+      "reference": "Gap = 0.62 &minus; 0.38 = 0.24. Share = 0.38 / 0.62 &asymp; 0.61. The segments are real: one column with four values explains 38 percent of the variation in next month's watch time, about 61 percent of what the full model explains. But they are not the whole answer: 0.24 of explainable variation lies inside the segments, in behavior columns that the four names ignore, because the columns that separate the segments are not necessarily the columns that drive watch time. The manager's 'noise' claim is wrong: a segment is a compression that throws away predictive detail. ArtLoop should use the segment as the language (for naming, campaigns and reporting) and the behaviors as the forecast.",
+      "marking": "Award 1 mark for 0.24 and 1 mark for 0.61. Award 1 mark for stating the segments carry real signal. Award 1 mark for explaining that the gap lies within segments in the behavior columns (the separating columns are not the columns that drive watch time). Award 1 mark for rejecting the 'noise' claim. Award 1 mark for the rule: segment as the language, behaviors as the forecast. Accept equivalent wording."
+    }
+  ],
+  "cases": [
+    {
+      "id": "w6-c01",
+      "topics": [
+        "How many groups is a judgment",
+        "The elbow, read as marginal returns",
+        "Reading a silhouette plot, and silhouette by k",
+        "Kotler's four tests and the floor",
+        "Stability, and the 2 percent sliver"
+      ],
+      "tests": "Combining elbow drops and silhouette by k into a nominated k; applying the floor and the four tests (with a profit check) to the smallest segment; a final k recommendation with stability evidence and a limitation",
+      "name": "FitLoop",
+      "scenario": "<p>FitLoop is a fictional home-workout app with 12,000 active users. The analytics team clustered users on seven standardized behavior columns (sessions, workout minutes, completion, live classes, saves, programme sign-ups and shares) with K-means, for k = 1 to 7, using many restarts for each k. There is no target column: the segments must come from behavior alone.</p><p>Marketing has three campaigns planned for next quarter. The coaching team says it could also run a fourth, short-format programme if a suitable audience exists. Exhibit 1 gives the fit by k; Exhibit 2 summarises the four-segment solution and a stability check on 10 resamples with different seeds.</p>",
+      "exhibits": [
+        {
+          "title": "Exhibit 1: Fit by number of clusters",
+          "html": "<table class=\"ex\"><tr><th>k</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th></tr><tr><td>WCSS</td><td>84,000</td><td>60,000</td><td>45,000</td><td>36,000</td><td>33,000</td><td>31,000</td><td>29,800</td></tr><tr><td>Average silhouette</td><td>n/a</td><td>0.29</td><td>0.33</td><td>0.38</td><td>0.27</td><td>0.25</td><td>0.24</td></tr></table>",
+          "note": "WCSS = within-cluster sum of squares. Drop from k to k + 1 = WCSS(k) &minus; WCSS(k + 1). Silhouette s = (b &minus; a) / max(a, b), averaged over all users."
+        },
+        {
+          "title": "Exhibit 2: The four-segment solution and its stability",
+          "html": "<table class=\"ex\"><tr><th>Segment</th><th>Share of users</th><th>Reappeared in 10 resamples</th><th>Notes</th></tr><tr><td>Segment 1</td><td>46%</td><td>10 of 10</td><td>Low on all columns</td></tr><tr><td>Segment 2</td><td>28%</td><td>10 of 10</td><td>Live classes high</td></tr><tr><td>Segment 3</td><td>18%</td><td>10 of 10</td><td>Programme sign-ups high</td></tr><tr><td>Segment 4</td><td>8%</td><td>10 of 10</td><td>Short sessions, very frequent; 92% have push notifications on</td></tr></table>",
+          "note": "Segment 4 offer: expected conversion 25%, profit 120 yuan per conversion, campaign cost 20,000 yuan. Expected profit = size &times; conversion &times; profit per conversion &minus; campaign cost. At k = 5, a fifth segment reappeared in only 4 of 10 resamples."
+        }
+      ],
+      "questions": [
+        {
+          "marks": 8,
+          "stem": "Using Exhibit 1, compute the drop in WCSS for each added k from 1 to 7 and identify the knee. Identify the k at which the average silhouette peaks. Explain what each curve measures and what it means that they agree or disagree here.",
+          "answer": "Drops: 24,000 (1 to 2), 15,000 (2 to 3), 9,000 (3 to 4), 3,000 (4 to 5), 2,000 (5 to 6), 1,200 (6 to 7). The drops are large up to k = 4 and small afterwards, so the knee is at k = 4. The average silhouette peaks at k = 4 (0.38), with a clear fall to 0.27 at k = 5. The elbow measures tightness: how much WCSS one more group buys. The silhouette measures separation: how much closer users are to their own group than to the next one. Here the two evidences point to the same answer, k = 4, which suggests the structure is real rather than an artefact. Even so, 0.38 is a moderate separation, and the curves only nominate; the business tests must still decide.",
+          "marking": "Award 2 marks for the six drops (1 mark if at least four are correct). Award 1 mark for the knee at k = 4 supported by large-then-small drops. Award 1 mark for the silhouette peak at k = 4 (0.38). Award 1 mark for elbow = tightness and 1 mark for silhouette = separation. Award 1 mark for 'two evidences, one answer': agreement suggests real structure. Award 1 mark for noting that the curves nominate and the business decides (or that 0.38 is only moderate). Error carried forward applies to the knee if a drop is miscalculated."
+        },
+        {
+          "marks": 6,
+          "stem": "Marketing has three campaigns planned. What does the floor rule imply for k here? Compute the size and expected campaign profit of Segment 4, and apply Kotler's four tests to it using the exhibits and scenario.",
+          "answer": "The floor says that with three campaigns planned, k is at least 3; the nominated k = 4 satisfies this, so the plan does not overrule the curves. Segment 4 has 0.08 &times; 12,000 = 960 users. Expected profit = 960 &times; 0.25 &times; 120 &minus; 20,000 = 28,800 &minus; 20,000 = 8,800 yuan. Measurable: it is counted (960) and profiled (short, very frequent sessions). Substantial: positive expected profit, so it is big enough to serve profitably despite being only 8 percent. Reachable: 92 percent have push notifications on, so FitLoop's channels touch it. Actionable: the coaching team is willing to run a short-format programme. It passes all four tests, so it can earn a budget.",
+          "marking": "Award 1 mark for k at least 3, satisfied by k = 4. Award 1 mark for 960 users and 1 mark for 8,800 yuan with setup. Award 2 marks for applying the four tests with evidence from the case (2 marks for all four, 1 mark for two or three). Award 1 mark for the conclusion that all four pass, so the segment can earn a budget. Error carried forward applies to the substantial judgment."
+        },
+        {
+          "marks": 6,
+          "stem": "Recommend a final number of segments and a plan for Segment 4. Use the stability evidence in Exhibit 2 and state one limitation of the analysis.",
+          "answer": "Recommend k = 4. The elbow and silhouette nominate it, it satisfies the three-campaign floor, and the four segments reappeared in 10 of 10 resamples with different seeds, so it is safe to plan campaigns against. By contrast, the fifth segment at k = 5 appeared in only 4 of 10 resamples, a story about the seed. Segment 4 passes the four tests, so FitLoop can add the coaching team's short-format programme as a fourth campaign aimed only at it, measured by Segment 4's own conversion against its own baseline. Limitation: an average silhouette of 0.38 is moderate, so many users sit near boundaries; also, the profit for Segment 4 rests on an assumed 25 percent conversion that has not been tested.",
+          "marking": "Award 1 mark for recommending k = 4. Award 2 marks for supporting evidence: 1 for stability (10 of 10) and 1 for contrasting the unstable fifth segment or for curve agreement plus the floor. Award 1 mark for a concrete plan for Segment 4 (fourth campaign aimed at it). Award 1 mark for a metric judged against the segment's own baseline. Award 1 mark for one explained limitation (moderate silhouette, assumed conversion, past data, chosen features). A recommendation of k = 5 earns at most 2 marks, and only if the student addresses the stability evidence."
+        }
+      ]
+    },
+    {
+      "id": "w6-c02",
+      "topics": [
+        "SkillCraft: four crowds and naming the segments",
+        "One campaign for one segment, and the honesty check",
+        "Which segment gets the budget"
+      ],
+      "tests": "Naming segments from the extremes of a plain-unit profile; file-wide versus segment conversion as the campaign baseline; budget allocation by engagement and headroom; R squared honesty check as a limitation",
+      "name": "PageTurn",
+      "scenario": "<p>PageTurn is a fictional audiobook app with 8,000 listeners. Its analyst clustered one month of listening behavior on standardized columns and produced four clusters. The marketing director wants four segments, one sentence each, named so that campaign managers can aim at them, and a decision on which segment gets the budget for the premium plan.</p><p>Exhibit 1 profiles the clusters in plain units. Exhibit 2 adds the share of each cluster that already pays for premium; premium status played no part in forming the clusters. Last month, a premium-trial campaign was aimed only at Cluster D, and 82 percent of Cluster D paid for premium afterwards. The campaign manager compares this with the app-wide premium rate and calls it a triumph.</p>",
+      "exhibits": [
+        {
+          "title": "Exhibit 1: Cluster profiles (monthly averages, plain units)",
+          "html": "<table class=\"ex\"><tr><th>Cluster</th><th>n</th><th>Listening hours</th><th>Completion %</th><th>Bookmarks</th><th>Reviews written</th><th>Free samples</th></tr><tr><td>A</td><td>3,600</td><td>4</td><td>28</td><td>0.5</td><td>0.1</td><td>6.2</td></tr><tr><td>B</td><td>2,000</td><td>22</td><td>81</td><td>1.2</td><td>0.2</td><td>1.0</td></tr><tr><td>C</td><td>1,600</td><td>12</td><td>55</td><td>9.4</td><td>0.4</td><td>2.1</td></tr><tr><td>D</td><td>800</td><td>18</td><td>74</td><td>3.0</td><td>4.6</td><td>1.5</td></tr></table>",
+          "note": "Share of file = n / 8,000."
+        },
+        {
+          "title": "Exhibit 2: Premium conversion and an honesty check",
+          "html": "<table class=\"ex\"><tr><th>Cluster</th><th>Pays for premium now</th></tr><tr><td>A</td><td>6%</td></tr><tr><td>B</td><td>38%</td></tr><tr><td>C</td><td>22%</td></tr><tr><td>D</td><td>78%</td></tr></table><br><table class=\"ex\"><tr><th>Model for next month's listening hours</th><th>R squared</th></tr><tr><td>Cluster id alone</td><td>0.41</td></tr><tr><td>All behavior columns</td><td>0.66</td></tr></table>",
+          "note": "App-wide premium rate = &Sigma; (n &times; cluster rate) / 8,000. Headroom = 100% &minus; current rate."
+        }
+      ],
+      "questions": [
+        {
+          "marks": 8,
+          "stem": "Compute each cluster's share of the file. Give each cluster a segment name built from its extremes, quoting the numbers that justify it. Explain why the naming is a deliverable and how the line-up test applies to your names.",
+          "answer": "Shares: A 3,600 / 8,000 = 45%, B 25%, C 20%, D 10%. A: 'sample browsers': the most free samples (6.2 against 1.0 to 2.1) but the lowest listening (4 hours) and completion (28%); nearly half the file samples without committing. B: 'steady finishers': the most listening (22 hours) and highest completion (81%). C: 'bookmarkers' or 'study listeners': bookmarks 9.4 against 0.5 to 3.0. D: 'reviewers': reviews 4.6 against 0.1 to 0.4, with high completion (74%). A cluster is machine output, a row of numbers labelled with a letter, which tells a campaign manager nothing; a segment is a decision-ready sentence with size, value and behavior in plain units. Each name passes the line-up test because a stranger could pick out, say, the people who write reviews; 'Cluster D' would fail.",
+          "marking": "Award 1 mark for the four shares (all correct). Award 4 marks for the names, 1 per cluster, each requiring a name tied to its extreme column with the number quoted; accept equivalent names (for example 'study listeners' for C). Award 1 mark for explaining that a cluster label tells a manager nothing while a segment is a plain-unit sentence. Award 1 mark for applying the line-up test to at least one name. Award 1 mark for naming from extremes rather than near-average columns, stated explicitly. A name based on a column where the cluster is not extreme earns no mark for that cluster."
+        },
+        {
+          "marks": 6,
+          "stem": "Compute the app-wide premium rate (to one decimal place). Evaluate the manager's claim about the Cluster D campaign: state the right metric and baseline, compute the honest gain in percentage points and the number of extra paying listeners it implies.",
+          "answer": "Paying listeners: 3,600 &times; 0.06 + 2,000 &times; 0.38 + 1,600 &times; 0.22 + 800 &times; 0.78 = 216 + 760 + 352 + 624 = 1,952. App-wide rate = 1,952 / 8,000 = 24.4 percent. Comparing 82 percent with 24.4 percent is misleading, because Cluster D was already paying at 78 percent before the campaign. The right metric is segment conversion against the segment's own baseline: 82 &minus; 78 = 4 percentage points, which is 800 &times; 0.04 = 32 extra paying listeners. Read the baseline before you read the campaign. Even the 4 points could partly reflect normal month-to-month variation, since there was no comparison group.",
+          "marking": "Award 1 mark for the setup (four products) and 1 mark for 24.4 percent. Award 1 mark for stating that comparing with the app-wide rate is misleading. Award 1 mark for segment conversion against the segment's own baseline of 78 percent. Award 1 mark for 4 points and 1 mark for 32 listeners. Error carried forward applies."
+        },
+        {
+          "marks": 6,
+          "stem": "Recommend which segment should receive the premium-plan budget and give the call for each of the other three. Use the honesty check in Exhibit 2 to state one limitation of planning only with the segment labels.",
+          "answer": "The budget should go to the steady finishers (B): they have the highest engagement (22 hours, 81% completion) and only 38 percent pay, leaving 62 points of room to move. Reviewers (D) are already sold at 78 percent with only 22 points left, so they get low-touch service. Sample browsers (A) have the most headroom on paper (94 points) but weak engagement (4 hours, 28% completion), so they are expensive to move: free content at the top of the funnel, no paid push. Bookmarkers (C) are moderately engaged at 22 percent: nurture them, for example with study-oriented features. Limitation: the cluster id alone explains R squared 0.41 of next month's listening, against 0.66 for all behaviors, a gap of 0.25. The labels leave much predictive detail inside each segment, so PageTurn should use the segment as the language and the behaviors as the forecast, for example to rank individual listeners within B.",
+          "marking": "Award 1 mark for choosing B and 1 mark for justifying with engagement plus headroom (62 points). Award 1 mark for at least two correct calls for the other segments, with reasons (D already sold; A weak engagement). Award 1 mark for the gap of 0.25. Award 1 mark for explaining that the segment labels omit predictive detail. Award 1 mark for 'segment as the language, behaviors as the forecast' or an equivalent use. Choosing C with a reasoned engagement-and-headroom argument earns 1 of the first 2 marks; choosing D or A earns no choice marks."
+        }
+      ]
+    },
+    {
+      "id": "w6-c03",
+      "topics": [
+        "The silhouette score",
+        "When geometry and business disagree",
+        "Kotler's four tests and the floor",
+        "Stability, and the 2 percent sliver"
+      ],
+      "tests": "Computing and classifying individual silhouettes and their average; choosing k when the silhouette favours a coarse split but a premium niche pays; applying the four tests and stability to the niche",
+      "name": "Brewly",
+      "scenario": "<p>Brewly is a fictional coffee-subscription brand with 30,000 subscribers. Its analyst clustered subscribers on standardized ordering behavior. To check membership quality, she computed silhouette inputs for five sample subscribers in the current solution (Exhibit 1).</p><p>The average silhouette for the whole file is highest at k = 2, a clean split between 'regular subscribers' and 'paused subscribers'. At k = 5, the groups are less cleanly separated, but one of the five is a 4 percent group of 'single-origin connoisseurs' who order rare beans. Brewly's sourcing team is preparing a limited rare-bean box and wants an audience for it (Exhibit 2).</p>",
+      "exhibits": [
+        {
+          "title": "Exhibit 1: Silhouette inputs for five subscribers",
+          "html": "<table class=\"ex\"><tr><th>Subscriber</th><th>a</th><th>b</th></tr><tr><td>S1</td><td>1.0</td><td>4.0</td></tr><tr><td>S2</td><td>2.4</td><td>2.5</td></tr><tr><td>S3</td><td>3.0</td><td>2.0</td></tr><tr><td>S4</td><td>1.8</td><td>3.0</td></tr><tr><td>S5</td><td>2.0</td><td>8.0</td></tr></table>",
+          "note": "a = average distance to the other members of the subscriber's own cluster; b = average distance to the members of the nearest other cluster. s = (b &minus; a) / max(a, b)."
+        },
+        {
+          "title": "Exhibit 2: Two candidate solutions",
+          "html": "<table class=\"ex\"><tr><th></th><th>k = 2</th><th>k = 5</th></tr><tr><td>Average silhouette</td><td>0.54</td><td>0.36</td></tr><tr><td>Connoisseur group visible?</td><td>No (merged into regular subscribers)</td><td>Yes, 4% of subscribers</td></tr><tr><td>Average monthly spend, connoisseurs</td><td colspan=\"2\">60 yuan</td></tr><tr><td>Average monthly spend, all other subscribers</td><td colspan=\"2\">18 yuan</td></tr></table>",
+          "note": "Share of spending = group spending / total spending."
+        }
+      ],
+      "questions": [
+        {
+          "marks": 8,
+          "stem": "Compute the silhouette of each of the five subscribers in Exhibit 1 (to two decimal places) and their average. Classify each as a confident member, a boundary member or probably misfiled, and explain what the analyst should do with the misfiled one.",
+          "answer": "S1: (4.0 &minus; 1.0) / 4.0 = 0.75, confident. S2: (2.5 &minus; 2.4) / 2.5 = 0.04, boundary (a coin flip). S3: the larger value is a = 3.0, so (2.0 &minus; 3.0) / 3.0 = &minus;0.33, probably misfiled: it sits closer to another cluster than to its own. S4: (3.0 &minus; 1.8) / 3.0 = 0.40, a reasonably placed member (positive, inside its group, though less confidently than S1). S5: (8.0 &minus; 2.0) / 8.0 = 0.75, confident. Average = (0.75 + 0.04 &minus; 0.33 + 0.40 + 0.75) / 5 &asymp; 0.32. K-means drafts every subscriber into some group, so S3 cannot be left out; the analyst should look at its profile, check whether its cluster is fuzzy in the silhouette plot, and not aim the cluster's campaign at it blindly.",
+          "marking": "Award 1 mark for each correct silhouette (5 marks): 0.75, 0.04, &minus;0.33, 0.40, 0.75. Award 1 mark for the average of 0.32 (error carried forward). Award 1 mark for correct classification of all five (S4 may be called confident or moderately confident; S2 must be boundary; S3 must be misfiled). Award 1 mark for a sensible action on S3 that recognises it cannot simply be unassigned. A value of &minus;0.50 for S3 (dividing by b) earns no calculation mark for S3."
+        },
+        {
+          "marks": 6,
+          "stem": "Using Exhibit 2, compute the number of connoisseurs and their share of Brewly's total monthly spending (to one decimal place). Recommend k = 2 or k = 5 and justify your choice using the course's rule for when geometry and business disagree.",
+          "answer": "Connoisseurs: 0.04 &times; 30,000 = 1,200 subscribers, spending 1,200 &times; 60 = 72,000 yuan a month. The other 28,800 spend 28,800 &times; 18 = 518,400 yuan. Share = 72,000 / 590,400 &asymp; 12.2 percent of spending from 4 percent of subscribers. Recommend k = 5. At k = 2 the connoisseurs are silently dissolved into the regular subscribers, so the rare-bean box would have no audience of its own. The silhouette (0.54 against 0.36) is a geometric criterion: it rewards groups that are far apart and knows nothing about spending or campaigns. When geometry and business disagree, geometry loses: a boutique, not a sliver.",
+          "marking": "Award 1 mark for 1,200 subscribers. Award 1 mark for the spending setup and 1 mark for 12.2 percent. Award 1 mark for recommending k = 5 because k = 2 dissolves the niche. Award 1 mark for explaining that the silhouette is geometric and blind to value. Award 1 mark for 'geometry loses' applied to this case. A recommendation of k = 2 earns no recommendation marks."
+        },
+        {
+          "marks": 6,
+          "stem": "Before funding the rare-bean box for the connoisseurs, apply Kotler's four tests to the group, state what stability check is needed and why, and give one limitation of this analysis.",
+          "answer": "Measurable: the group can be counted (1,200) and described (rare-bean orders, 60 yuan a month). Substantial: it supplies about 12 percent of spending, but the test is profit, so Brewly should check that the box's expected margin exceeds its cost. Reachable: as subscribers they receive Brewly's emails and app messages, so channels touch them. Actionable: the sourcing team is ready to run the rare-bean box. It earns a budget only if all four pass. Stability: re-run the pipeline on resamples with different seeds and check that a connoisseur group of similar size and profile reappears; otherwise it may be one seed's opinion. Limitation: the k = 5 solution has a lower average silhouette (0.36), so more subscribers sit near boundaries; also, past spending does not guarantee demand for a new product.",
+          "marking": "Award 2 marks for the four tests applied to the group (2 for all four with evidence, 1 for two or three). Award 1 mark for noting that substantial means profitable, requiring a profit check rather than share alone. Award 1 mark for the stability procedure (resamples and seeds, same group reappears in size and profile). Award 1 mark for explaining why (a single run may be one seed's opinion). Award 1 mark for one explained limitation."
+        }
+      ]
+    },
+    {
+      "id": "w6-c04",
+      "topics": [
+        "Distance and standardization",
+        "Stability, and the 2 percent sliver",
+        "SkillCraft: four crowds and naming the segments",
+        "Local solutions, restarts and K-means' opinions"
+      ],
+      "tests": "Reading a standardized centroid in plain units and naming a small group; distinguishing restarts from stability; pricing the 2 percent sliver and deciding substantial versus actionable, including a sensitivity check",
+      "name": "TuneNest",
+      "scenario": "<p>TuneNest is a fictional online music-lesson platform with 6,000 students. Its analyst standardized six behavior columns as z-scores and ran K-means at k = 5 with 20 restarts, keeping the run with the lowest within-cluster sum of squares. Four large segments match the team's existing campaigns. The fifth is a small group of 2 percent of students.</p><p>The analyst then re-ran the whole pipeline on 10 resamples with different seeds (Exhibit 1). The product team is considering a dedicated 'Pro mentorship' offer for the small group (Exhibit 2), but the finance lead says '2 percent is too small to bother with.'</p>",
+      "exhibits": [
+        {
+          "title": "Exhibit 1: The small group's centroid and stability",
+          "html": "<table class=\"ex\"><tr><th>Column</th><th>Centroid (z-score)</th><th>File mean</th><th>File standard deviation</th></tr><tr><td>Practice minutes per week</td><td>+3.4</td><td>140</td><td>50</td></tr><tr><td>Lesson completion %</td><td>+2.1</td><td>60</td><td>15</td></tr><tr><td>Live masterclasses</td><td>+0.2</td><td>1.5</td><td>1.0</td></tr><tr><td>Forum posts</td><td>&minus;0.1</td><td>4</td><td>3</td></tr></table><br>Stability: a group with this profile, of 1.8% to 2.2% of students, reappeared in 9 of 10 resamples.",
+          "note": "z = (x &minus; &mu;) / &sigma;, so x = &mu; + z &times; &sigma;."
+        },
+        {
+          "title": "Exhibit 2: Economics of a dedicated offer",
+          "html": "<table class=\"ex\"><tr><th>Item</th><th>Value</th></tr><tr><td>Expected conversion to Pro mentorship</td><td>45%</td></tr><tr><td>Value per conversion</td><td>400 yuan</td></tr><tr><td>Cost of a dedicated campaign</td><td>15,000 yuan</td></tr></table>",
+          "note": "Profit from serving the group = size &times; conversion &times; value per conversion &minus; campaign cost."
+        }
+      ],
+      "questions": [
+        {
+          "marks": 8,
+          "stem": "Convert the small group's practice minutes and lesson completion back to plain units. Using the extremes, give the group a name and a one-sentence profile with size and behavior in plain units. Explain why the forum-posts and live columns do not belong in the name, and why the features had to be standardized before clustering.",
+          "answer": "Practice minutes: 140 + 3.4 &times; 50 = 310 minutes a week, against a file mean of 140. Completion: 60 + 2.1 &times; 15 = 91.5 percent, against 60. Name: 'practice marathoners'. Profile: about 120 students (2 percent of 6,000) who practise around 310 minutes a week and finish about 91.5 percent of their lessons, while their live attendance and forum activity are average. Live (+0.2) and forum posts (&minus;0.1) are near zero, which means near the file average; near the average names nothing, because everyone shares it. Standardizing gives each column mean 0 and spread 1; without it, practice minutes, measured in hundreds, would dominate the Euclidean distance over columns such as live masterclasses measured in single digits, so the units, not the business, would choose the groups.",
+          "marking": "Award 1 mark for 310 minutes and 1 mark for 91.5 percent. Award 1 mark for a name built from practice and/or completion. Award 1 mark for the size of 120 students and 1 mark for a profile sentence in plain units. Award 1 mark for explaining that z near 0 is near average and names nothing. Award 2 marks for the standardization reason: 1 for the large-unit column dominating the distance, 1 for each feature getting an equal vote (mean 0, spread 1). Names based on live or forum columns earn no naming mark."
+        },
+        {
+          "marks": 6,
+          "stem": "The analyst says: 'I used 20 restarts, so the small group is definitely real.' Explain what restarts do and do not establish, and what the stability result in Exhibit 1 adds.",
+          "answer": "Restarts run K-means from many starts on the same data and keep the run with the lowest WCSS. They protect against an unlucky start freezing a second-best local solution, but the kept run is only the best among these starts, not proof of the best possible grouping, and it says nothing about whether the group would survive different data. Stability asks a different question: re-run the whole pipeline on resamples with different seeds and check whether the same segment reappears in size and profile. Here a group with the same profile and 1.8 to 2.2 percent of students reappeared in 9 of 10 resamples, so it is not one seed's opinion; it is stable enough to plan a campaign against. The analyst should report this stability next to the silhouette.",
+          "marking": "Award 1 mark for what restarts do (many starts, keep lowest WCSS). Award 1 mark for 'best among these starts, not best possible'. Award 1 mark for noting that restarts use the same data and so do not test survival on new data. Award 1 mark for the stability procedure (resamples and seeds, same profile and size). Award 1 mark for reading 9 of 10 as stable. Award 1 mark for reporting stability alongside the silhouette, or for 'safe to plan campaigns against'."
+        },
+        {
+          "marks": 6,
+          "stem": "Compute the size of the small group and the profit from serving it with the dedicated offer. Respond to the finance lead using the tests 'substantial' and 'actionable', and make a recommendation. State how the decision would change if the campaign cost 25,000 yuan, and give one limitation.",
+          "answer": "Size = 0.02 &times; 6,000 = 120 students. Profit = 120 &times; 0.45 &times; 400 &minus; 15,000 = 21,600 &minus; 15,000 = 6,600 yuan. Substantial means big enough to serve profitably, not a large percentage, so a positive profit of 6,600 yuan means the group passes despite its 2 percent share. It is also clearly actionable: its extreme practice and completion make the mentorship offer a natural fit that is likely to work. Recommendation: serve it, a boutique rather than a sliver. At a cost of 25,000 yuan, profit = 21,600 &minus; 25,000 = &minus;3,400 yuan, so the group would fail 'substantial' and should be folded into the mass or served low-touch. Limitation: the 45 percent conversion is an assumption, not a measured result; it should be checked against the group's own baseline after launch.",
+          "marking": "Award 1 mark for 120 students and 1 mark for 6,600 yuan. Award 1 mark for explaining that substantial means profitable rather than a percentage. Award 1 mark for actionable linked to the extreme behavior. Award 1 mark for &minus;3,400 yuan and the reversed decision. Award 1 mark for one explained limitation (assumed conversion, small group, measurement against the segment's own baseline). Error carried forward applies."
+        }
+      ]
+    }
+  ]
+}

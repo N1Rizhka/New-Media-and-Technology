@@ -1,0 +1,775 @@
+{
+ "week": 3,
+ "mcq": [
+  {
+   "id": "w3-a01",
+   "topic": "From co-occurrence to baskets",
+   "tests": "Support counts baskets that contain an item, not units sold (presence, not quantity)",
+   "stem": "A sticker shop's order file records quantities. Across five orders the sticker quantities are 3, 0, 2, 1 and 0. An analyst converts the file into a basket table before mining rules. What is the support of {sticker}?",
+   "formula": "s(I) = &sigma;(I) / N",
+   "options": [
+    "1.20, because six stickers in total were sold across the five orders.",
+    ".60, because three of the five orders contain at least one sticker.",
+    "3, because three of the five orders contain at least one sticker.",
+    ".40, because two of the five orders contain more than one sticker."
+   ],
+   "answer": "b",
+   "explanation": "In a basket table quantity becomes presence (1) or absence (0), so &sigma;({sticker}) = 3 orders and s = 3/5 = .60. Adding units (6/5) is the classic slip; 3 is the support count, not the support."
+  },
+  {
+   "id": "w3-a02",
+   "topic": "From co-occurrence to baskets",
+   "tests": "A rule across periods is a rule by time and needs each person's items kept separate per period",
+   "stem": "A music app wants to test the rule {Lo-fi in the spring term} &rarr; {Jazz in the autumn term}. Which family of rules is this, and what input does it need?",
+   "formula": "",
+   "options": [
+    "By category; total plays per genre summed over both terms.",
+    "By attribute value; a like or skip flag for every single session.",
+    "By time; each listener's genres recorded separately for each term.",
+    "By value; each listener's one most-played track across the whole year."
+   ],
+   "answer": "c",
+   "explanation": "The rule links one period to a later one, so it is a rule by time. It only works if each listener's items stay separate per term; merging the terms or summing plays loses the person link or the time distinction."
+  },
+  {
+   "id": "w3-a03",
+   "topic": "Itemsets and support",
+   "tests": "Computing support of a 3-itemset: a basket 'contains' an itemset if it has every item, possibly with others",
+   "stem": "A craft store's basket table for six shoppers is shown (1 = bought, 0 = not bought).<br><table class=\"ex\"><tr><th>Shopper</th><th>Yarn</th><th>Needles</th><th>Buttons</th><th>Ribbon</th></tr><tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td></tr><tr><td>2</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>3</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>4</td><td>1</td><td>1</td><td>1</td><td>1</td></tr><tr><td>5</td><td>0</td><td>1</td><td>1</td><td>0</td></tr><tr><td>6</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table>What is the support of {Yarn, Needles, Buttons}?",
+   "formula": "s(I) = &sigma;(I) / N",
+   "options": [
+    ".33, because only shoppers 1 and 6 hold exactly these items.",
+    ".67, because four shoppers hold both Yarn and Needles.",
+    ".83, because five of the six shoppers bought Yarn.",
+    ".50, because shoppers 1, 4 and 6 hold all three items."
+   ],
+   "answer": "d",
+   "explanation": "&sigma; = 3 (shoppers 1, 4 and 6; shopper 4 also has Ribbon but still contains the itemset), so s = 3/6 = .50. Counting only exact matches gives .33, which is wrong."
+  },
+  {
+   "id": "w3-a04",
+   "topic": "Itemsets and support",
+   "tests": "An itemset is frequent when s &ge; minsup; converting minsup to a count and treating equality as passing",
+   "stem": "A merchandise shop has 400 orders and sets minsup = .15. Which itemset is frequent?",
+   "formula": "s(I) = &sigma;(I) / N; I is frequent if s(I) &ge; minsup",
+   "options": [
+    "{mug, poster}, found in 60 orders.",
+    "{hoodie, cap}, found in 56 orders.",
+    "{tote, badge}, found in 59 orders.",
+    "{sticker, pin}, found in 45 orders."
+   ],
+   "answer": "a",
+   "explanation": "minsup .15 &times; 400 = 60 orders. Only {mug, poster} reaches it: 60/400 = .15, and s &ge; minsup includes equality. 56/400 = .14, 59/400 = .1475 and 45/400 = .1125 fall short."
+  },
+  {
+   "id": "w3-a05",
+   "topic": "Itemsets and support",
+   "tests": "Recovering the support count from support (&sigma; = s &times; N) and reading which minsup values make it frequent",
+   "stem": "An itemset has support .12 in 2,500 orders. Which statement is correct?",
+   "formula": "s(I) = &sigma;(I) / N",
+   "options": [
+    "It appears in 12 orders and is frequent at minsup .10.",
+    "It appears in 300 orders and is frequent only at minsup .15.",
+    "It appears in 300 orders and is frequent at minsup .10.",
+    "It appears in 208 orders and is frequent at minsup .10."
+   ],
+   "answer": "c",
+   "explanation": "&sigma; = .12 &times; 2,500 = 300 orders. It is frequent for any minsup at or below .12, so at .10 but not at .15. 12 confuses the percentage with a count; 208 comes from dividing 2,500 by 12."
+  },
+  {
+   "id": "w3-a06",
+   "topic": "A rule and its two strength numbers",
+   "tests": "Computing confidence by dividing by &sigma;(X), not by N or &sigma;(Y)",
+   "stem": "A language app has 1,200 learners. 300 study Spanish, 150 study Portuguese and 90 study both. What is the confidence of {Spanish} &rarr; {Portuguese}?",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "options": [
+    ".30",
+    ".075",
+    ".60",
+    "2.40"
+   ],
+   "answer": "a",
+   "explanation": "c = &sigma;(Spanish &cup; Portuguese) / &sigma;(Spanish) = 90/300 = .30. .075 is the support (90/1,200), .60 is the reverse rule's confidence (90/150), and 2.40 is the lift."
+  },
+  {
+   "id": "w3-a07",
+   "topic": "A rule and its two strength numbers",
+   "tests": "Reversing a rule leaves support unchanged but in general changes confidence",
+   "stem": "An analyst compares {X} &rarr; {Y} with the reversed rule {Y} &rarr; {X} on the same baskets. Which number will in general differ between the two rules?",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "options": [
+    "Support only, because its numerator changes from &sigma;(X) to &sigma;(Y).",
+    "Confidence only, because its denominator changes from &sigma;(X) to &sigma;(Y).",
+    "Both numbers, because a rule with a new direction counts a new itemset of baskets.",
+    "Neither number, because both rules are built from the same two items."
+   ],
+   "answer": "b",
+   "explanation": "Both rules share the itemset {X, Y}, so &sigma;(X &cup; Y) / N is the same. Confidence divides by the left side's count, which changes when the arrow is flipped (equal values only by coincidence)."
+  },
+  {
+   "id": "w3-a08",
+   "topic": "A rule and its two strength numbers",
+   "tests": "The two sides of an association rule must be disjoint itemsets",
+   "stem": "A camping store lists four candidate rules. Which one is NOT a valid association rule?",
+   "formula": "",
+   "options": [
+    "{tent} &rarr; {sleeping bag, lantern}",
+    "{tent, stove} &rarr; {gas canister}",
+    "{tent, lantern} &rarr; {lantern}",
+    "{stove} &rarr; {tent}"
+   ],
+   "answer": "c",
+   "explanation": "In X &rarr; Y the itemsets X and Y must share no item. Lantern sits on both sides, so the rule says nothing."
+  },
+  {
+   "id": "w3-a09",
+   "topic": "A rule and its two strength numbers",
+   "tests": "Reading confidence in words: its denominator is the baskets that already contain X",
+   "stem": "On a fitness app, the rule {Pilates class} &rarr; {smoothie bowl} has support .08 and confidence .40. Which sentence correctly reads the confidence?",
+   "formula": "c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "options": [
+    "Of the users who book Pilates, 40% also order a smoothie bowl.",
+    "Of all the app's users, 40% book Pilates and order a smoothie bowl.",
+    "Of the users who order a smoothie bowl, 40% also book Pilates.",
+    "Booking Pilates makes a smoothie order 40% more likely than usual."
+   ],
+   "answer": "a",
+   "explanation": "Confidence divides by &sigma;(X), the Pilates users, so it reads \"after Pilates, 40% also take a smoothie bowl\". \"Of all users\" describes support, \"of the smoothie buyers\" is the reverse rule, and \"40% more likely\" is a lift-style claim."
+  },
+  {
+   "id": "w3-a10",
+   "topic": "Two thresholds and the four readings",
+   "tests": "Filtering on minconf alone admits rules with perfect confidence but tiny support (the seductive trap)",
+   "stem": "An analyst keeps every rule with confidence &ge; .80 and sets no minimum support. What is the main risk of this filter?",
+   "formula": "",
+   "options": [
+    "Rules that point at popular items are removed even when they are useful.",
+    "Rules with high support are removed because they rarely have high confidence.",
+    "Rules can no longer be reversed, because confidence ignores the arrow.",
+    "Rules resting on a handful of baskets can pass with confidence near 1.00."
+   ],
+   "answer": "d",
+   "explanation": "Confidence divides by &sigma;(X); when &sigma;(X) is tiny, one or two baskets can push it to 1.00. Without minsup such \"seductive but thin\" rules pass, which is why the course uses two thresholds."
+  },
+  {
+   "id": "w3-a11",
+   "topic": "Two thresholds and the four readings",
+   "tests": "Both thresholds come from the decision, not the data: wide-reach decisions need higher minsup, narrow prompts care more about minconf",
+   "stem": "Two teams mine the same order data. Team 1 is redesigning the whole home page; Team 2 is writing one \"you may also like\" note under a niche product. Which threshold choice follows the course's reasoning?",
+   "formula": "",
+   "options": [
+    "Both teams use minsup .5 and minconf .5, because thresholds are read off the data.",
+    "Team 1 sets a higher minsup; Team 2 accepts a lower minsup but wants a high minconf.",
+    "Team 1 sets a lower minsup, because the home page is already seen by every shopper.",
+    "Team 2 drops minconf entirely, because niche products always have a low confidence value."
+   ],
+   "answer": "b",
+   "explanation": "A home-page redesign needs patterns that touch many customers (high minsup). A single niche note can live with lower support but must be right often (high minconf). The data stay the same; the thresholds follow the decision."
+  },
+  {
+   "id": "w3-a12",
+   "topic": "Two thresholds and the four readings",
+   "tests": "Applying minsup and minconf together as a filter: a rule must clear both",
+   "stem": "A shop sets minsup = .05 and minconf = .60. Which rules does it keep?<br><table class=\"ex\"><tr><th>Rule</th><th>Support</th><th>Confidence</th></tr><tr><td>R1</td><td>.08</td><td>.55</td></tr><tr><td>R2</td><td>.04</td><td>.90</td></tr><tr><td>R3</td><td>.06</td><td>.62</td></tr><tr><td>R4</td><td>.12</td><td>.75</td></tr><tr><td>R5</td><td>.07</td><td>.66</td></tr></table>",
+   "formula": "keep a rule if s &ge; minsup and c &ge; minconf",
+   "options": [
+    "R2, R3, R4 and R5",
+    "R1, R4 and R5",
+    "R4 only",
+    "R3, R4 and R5"
+   ],
+   "answer": "d",
+   "explanation": "R1 fails minconf (.55 &lt; .60) and R2 fails minsup (.04 &lt; .05). R3, R4 and R5 clear both thresholds."
+  },
+  {
+   "id": "w3-a13",
+   "topic": "The base rate trap",
+   "tests": "Confidence below the base rate of Y means X makes Y less likely, however high the confidence looks",
+   "stem": "A phone-accessory store has 6,000 customers. 2,400 buy a phone case, 4,800 buy a screen protector and 1,800 buy both. Which statement about {phone case} &rarr; {screen protector} is correct?",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "options": [
+    "The rule is strong, because its confidence of .75 is well above the .50 mark.",
+    "The rule is reliable, because its support of .30 covers many customers.",
+    "Case buyers take a protector less often than customers overall (.75 vs .80).",
+    "The rule should be bundled, because both items are bought very often."
+   ],
+   "answer": "c",
+   "explanation": "c = 1,800/2,400 = .75, but the base rate is 4,800/6,000 = .80. Knowing a customer bought a case makes a protector slightly less likely, so the confident-looking rule is worse than guessing the base rate."
+  },
+  {
+   "id": "w3-a14",
+   "topic": "The base rate trap",
+   "tests": "Scoring {X} &rarr; {not Y} and comparing its confidence with the base rate of not-Y",
+   "stem": "A streaming app has 2,000 viewers. 800 watch Cooking, 1,500 watch Travel and 560 watch both. What is the confidence of {Cooking} &rarr; {not Travel}, and how should it be read?",
+   "formula": "c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "options": [
+    ".30, below the .75 share of all viewers who do watch Travel, so it is weaker.",
+    ".12, below the .25 share of all viewers who skip Travel, so it is weaker.",
+    ".25, equal to the share of all viewers who skip Travel, so it is neutral.",
+    ".30, above the .25 share of all viewers who skip Travel, so it fits better."
+   ],
+   "answer": "d",
+   "explanation": "Cooking viewers who skip Travel: 800 &minus; 560 = 240, so c = 240/800 = .30. Overall, 500/2,000 = .25 skip Travel. Since .30 &gt; .25, the not-Travel rule fits the data better than {Cooking} &rarr; {Travel} (.70 &lt; .75). .12 is its support."
+  },
+  {
+   "id": "w3-a15",
+   "topic": "The base rate trap",
+   "tests": "Before trusting a confident rule, compare it with the share of all baskets that contain Y anyway",
+   "stem": "A rule {X} &rarr; {Y} has confidence .82. According to the course, which question must you answer before believing it?",
+   "formula": "",
+   "options": [
+    "What share of all baskets contain Y anyway?",
+    "What share of all baskets contain X anyway?",
+    "Is the confidence above the usual cut-off of .50?",
+    "How many items does the whole catalogue hold?"
+   ],
+   "answer": "a",
+   "explanation": "Confidence has no idea how common the right-hand side is. If .82 is not above s(Y), X adds nothing; this is the base rate trap."
+  },
+  {
+   "id": "w3-a16",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Computing lift from raw counts and recognising support and confidence as distractors",
+   "stem": "In 5,000 orders, 1,000 contain a yoga mat, 500 contain a mat strap and 250 contain both. What is the lift of {yoga mat} &rarr; {mat strap}?",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y) = (&sigma;(X &cup; Y) &times; N) / (&sigma;(X) &times; &sigma;(Y))",
+   "options": [
+    ".05",
+    "2.50",
+    ".25",
+    ".50"
+   ],
+   "answer": "b",
+   "explanation": "c = 250/1,000 = .25 and s(strap) = 500/5,000 = .10, so lift = .25/.10 = 2.50. .05 is the support, .25 the confidence and .50 the reverse confidence (250/500)."
+  },
+  {
+   "id": "w3-a17",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Recovering the base rate of Y from confidence and lift: s(Y) = c / lift",
+   "stem": "A report shows only that {ink cartridge} &rarr; {photo paper} has confidence .48 and lift 3.2. What share of all orders contain photo paper?",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "options": [
+    ".15",
+    ".31",
+    ".52",
+    "1.54"
+   ],
+   "answer": "a",
+   "explanation": "Rearranging lift = c / s(Y) gives s(Y) = .48 / 3.2 = .15. .31 is 1/3.2, .52 is 1 &minus; .48, and 1.54 is .48 &times; 3.2."
+  },
+  {
+   "id": "w3-a18",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Lift is symmetric: lift(X &rarr; Y) = lift(Y &rarr; X)",
+   "stem": "For {podcast mic} &rarr; {pop filter}, confidence is .30 and lift is 2.4. What is the lift of {pop filter} &rarr; {podcast mic}?",
+   "formula": "lift(X &rarr; Y) = s(X &cup; Y) / (s(X) &times; s(Y))",
+   "options": [
+    "0.42, because reversing the rule inverts the lift (1 / 2.4).",
+    "It cannot be found without the reverse rule's confidence.",
+    "0.30, because the lift of a reversed rule equals its confidence.",
+    "2.4, because lift does not depend on the direction of the arrow."
+   ],
+   "answer": "d",
+   "explanation": "Written as s(X &cup; Y) / (s(X) &times; s(Y)), lift is unchanged when X and Y swap. Confidence is the number that changes with the direction."
+  },
+  {
+   "id": "w3-a19",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "A lift below 1 means substitutes: do not bundle, but showing them side by side as alternatives is a valid use",
+   "stem": "Two sunscreen brands sold by a beauty shop have lift .60 with each other. What does the course's reading of lift suggest?",
+   "formula": "",
+   "options": [
+    "Bundle them at a discount, because they are both bought in many baskets.",
+    "Ignore the result, because a lift below 1 carries no useful information at all.",
+    "Do not bundle; they substitute, so show them side by side as alternatives.",
+    "Recommend one after the other, because they go together more than chance."
+   ],
+   "answer": "c",
+   "explanation": "Lift &lt; 1 means buying one makes the other less likely than for a random customer: people choose one or the other. That is still a finding: bundling makes no sense, but presenting them as alternatives does."
+  },
+  {
+   "id": "w3-a20",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Computing lift from shares, s(X &cup; Y) / (s(X) s(Y)), and reading lift above 1 as 'times as likely as a random basket'",
+   "stem": "In a bookshop, s({cookbook, apron}) = .06, s({cookbook}) = .20 and s({apron}) = .15. Which statement about {cookbook} &rarr; {apron} is correct?",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y), with c(X &rarr; Y) = s(X &cup; Y) / s(X)",
+   "options": [
+    "Lift is .30: the rule is right for 30% of the cookbook buyers.",
+    "Lift is 2.00: cookbook buyers take aprons twice as often as average.",
+    "Lift is .40: 40% of the apron buyers also take a cookbook.",
+    "Lift is .50: cookbooks and aprons substitute for one another in baskets."
+   ],
+   "answer": "b",
+   "explanation": "c = .06/.20 = .30 and lift = .30/.15 = 2.00, above 1, so they go together. .30 is the confidence and .40 the reverse confidence (.06/.15)."
+  },
+  {
+   "id": "w3-a21",
+   "topic": "Trust this rule? Three verdicts",
+   "tests": "Kill verdict: a rule with high support and confidence but lift below 1 got its confidence from Y being common",
+   "stem": "A rule has support .25, confidence .70 and lift .88. Which verdict and reason match the course's three verdicts?",
+   "formula": "",
+   "options": [
+    "Kill: lift below 1 shows the confidence came from Y being common.",
+    "Keep and act: support and confidence are both comfortably high here.",
+    "Ignore: the support is too thin for the rule to matter at all.",
+    "Keep as a seductive but thin rule, worth a small trial first."
+   ],
+   "answer": "a",
+   "explanation": "Like the course's {Gaming} &rarr; {Comedy} (s .40, c .67, lift .89), lift below 1 means the items appear together slightly less than independence predicts. The confidence (.70) is below the base rate of Y (.70/.88 &asymp; .80)."
+  },
+  {
+   "id": "w3-a22",
+   "topic": "Trust this rule? Three verdicts",
+   "tests": "Ignore verdict: near-perfect confidence on thin support with lift near 1 carries no signal",
+   "stem": "A rule has support .015, confidence .95 and lift 1.03. Which verdict and reason fit best?",
+   "formula": "",
+   "options": [
+    "Kill: the lift is below 1, so the two items substitute for each other.",
+    "Ignore: few baskets back the confidence, and lift near 1 shows no signal.",
+    "Keep and act: a confidence of .95 means the rule is nearly always right in use.",
+    "Keep and act: any lift above 1 means an association worth acting on."
+   ],
+   "answer": "b",
+   "explanation": "This is the shape of the course's {streamer 1} &rarr; {streamer 99} (s .02, c 1.00, lift 1.02). Lift 1.03 is essentially the independence value, and the support is thin, so there is nothing to act on."
+  },
+  {
+   "id": "w3-a23",
+   "topic": "Trust this rule? Three verdicts",
+   "tests": "No single number decides: the rule to act on combines real support, high confidence and lift far above 1",
+   "stem": "A pet store's analyst shows four rules. Which one should the store keep and act on?<br><table class=\"ex\"><tr><th>Rule</th><th>Support</th><th>Confidence</th><th>Lift</th></tr><tr><td>R1</td><td>.30</td><td>.62</td><td>.95</td></tr><tr><td>R2</td><td>.02</td><td>1.00</td><td>1.01</td></tr><tr><td>R3</td><td>.07</td><td>.74</td><td>6.20</td></tr><tr><td>R4</td><td>.18</td><td>.45</td><td>1.05</td></tr></table>",
+   "formula": "",
+   "options": [
+    "R1, because it has the highest support and a confidence above one half.",
+    "R2, because a confidence of 1.00 means the rule can never fail in use.",
+    "R3: its support is real, its confidence high and its lift far above 1.",
+    "R4, because its lift is above 1 and its support is the second highest."
+   ],
+   "answer": "c",
+   "explanation": "R1 wins on support but lift .95 says no link; R2 wins on confidence but is thin with lift &asymp; 1; R4's lift 1.05 is near chance. R3, like matcha_powder &rarr; bamboo_whisk, is the one where lift shows a real association."
+  },
+  {
+   "id": "w3-a24",
+   "topic": "Real baskets: the bakery and the doilies decoy",
+   "tests": "A decoy item: the highest support with lift near 1 against every other item is popular, not associated",
+   "stem": "In a hardware store, packing tape is in 31% of orders, more than any other item. Its lift with each of the other 40 items lies between .88 and 1.09. How should the analyst read packing tape?",
+   "formula": "",
+   "options": [
+    "It is the best anchor for bundles, being the most bought.",
+    "It substitutes for every other item in the catalogue.",
+    "It has the strongest associations in the whole shop.",
+    "It rides along with everything and predicts nothing."
+   ],
+   "answer": "d",
+   "explanation": "High support puts the item in many baskets, but every lift sits inside the band around 1, the chance level. Like the course's doilies (support .280, lifts .850 to 1.073), it is a decoy, not a bundle anchor."
+  },
+  {
+   "id": "w3-a25",
+   "topic": "Real baskets: the bakery and the doilies decoy",
+   "tests": "Why a best-seller's rules have high confidence but lift near 1: lift divides by the item's own high base rate",
+   "stem": "Rules that point at a shop's best-selling item tend to show fairly high confidence, yet their lift stays close to 1. Why?",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "options": [
+    "Confidence is computed over all baskets, while lift is computed over the X baskets only.",
+    "Lift ignores the item's popularity and measures only how often X itself is bought.",
+    "Confidence rises with the item's popularity; lift divides by that same base rate.",
+    "High support always pulls lift below 1, so popular items are always substitutes."
+   ],
+   "answer": "c",
+   "explanation": "A popular Y is in most baskets, so c(X &rarr; Y) is high almost whatever X is. Lift = c / s(Y) divides by the equally high s(Y), the two effects cancel, and lift lands near 1. Hence rules tables are sorted by lift, not by support or confidence."
+  },
+  {
+   "id": "w3-a26",
+   "topic": "Real baskets: the bakery and the doilies decoy",
+   "tests": "Why a niche item paired with its tool has the highest lift: the consequent's base rate is low but it is very likely given X",
+   "stem": "In the course's bakery rules, matcha_powder &rarr; bamboo_whisk (support .089, confidence .810, lift 7.80) is called the strongest rule, although cake_mold &rarr; parchment_roll has higher support (.101). What best explains its top lift?",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "options": [
+    "Matcha powder is the shop's most-bought item, so every rule it starts scores well.",
+    "Few orders hold a whisk (about .104), yet most matcha orders do, a big gap from chance.",
+    "Its support is the highest in the table once rounding of the counts is taken into account.",
+    "Its lift is high because two-item rules always score higher than one-item rules."
+   ],
+   "answer": "b",
+   "explanation": "s(whisk) = .810 / 7.80 &asymp; .104: the whisk is rare overall but very likely when matcha is bought. That gap between \"with X\" and the base rate is what lift measures; support is not the reason."
+  },
+  {
+   "id": "w3-a27",
+   "topic": "Finding rules is a search problem",
+   "tests": "Computing the number of possible rules R for a given number of items d",
+   "stem": "A shop wants to score every possible rule over its 9 products by brute force. How many rules is that?",
+   "formula": "R = 3<sup>d</sup> &minus; 2<sup>d+1</sup> + 1",
+   "options": [
+    "19,683",
+    "19,172",
+    "511",
+    "18,660"
+   ],
+   "answer": "d",
+   "explanation": "R = 3<sup>9</sup> &minus; 2<sup>10</sup> + 1 = 19,683 &minus; 1,024 + 1 = 18,660. 19,683 is 3<sup>9</sup> alone, 19,172 uses 2<sup>9</sup> instead of 2<sup>10</sup>, and 511 is the number of non-empty itemsets."
+  },
+  {
+   "id": "w3-a28",
+   "topic": "Finding rules is a search problem",
+   "tests": "In R = &Sigma; C(d,k)(2<sup>d&minus;k</sup> &minus; 1), the &minus;1 removes the empty consequent",
+   "stem": "The rule count is derived as R = &Sigma;<sub>k</sub> C(d, k) &middot; (2<sup>d&minus;k</sup> &minus; 1). What does the &minus;1 inside the bracket remove?",
+   "formula": "R = &Sigma;<sub>k</sub> C(d, k) &middot; (2<sup>d&minus;k</sup> &minus; 1)",
+   "options": [
+    "The empty set as a consequent, since a rule needs a non-empty right side.",
+    "The antecedent itself, since the left side cannot appear on the right side.",
+    "The full catalogue as an antecedent, since the right side would be empty.",
+    "Any rule that fails minconf, since such rules are never kept in the end."
+   ],
+   "answer": "a",
+   "explanation": "After choosing k items for the antecedent, the consequent is any subset of the d &minus; k remaining items: 2<sup>d&minus;k</sup> subsets, one of which is empty. Subtracting 1 leaves only non-empty consequents."
+  },
+  {
+   "id": "w3-a29",
+   "topic": "Finding rules is a search problem",
+   "tests": "Rule generation is cheap because all rules from one frequent itemset share its support; only confidence remains, from known counts",
+   "stem": "Brute-force search is split into frequent itemset generation and rule generation. Why is the second step cheap?",
+   "formula": "",
+   "options": [
+    "It only scores rules whose left side holds a single item, which are few.",
+    "It stops as soon as the first rule passing minconf has been found.",
+    "Rules from one frequent itemset share its support; only confidence is checked.",
+    "It uses lift instead of confidence, which needs no counts at all."
+   ],
+   "answer": "c",
+   "explanation": "Every rule from one itemset has that itemset's support, so they already pass minsup. Confidence uses counts already found in step 1, so no new pass over the data is needed; step 1 is where the cost explodes."
+  },
+  {
+   "id": "w3-a30",
+   "topic": "The Apriori principle and candidate pruning",
+   "tests": "Apriori pruning: one infrequent pair is enough to discard a triple without counting it",
+   "stem": "In 300 baskets with minimum support 10%, the pairs of {A, B, C} have counts AB 41, AC 35 and BC 28. What does the Apriori principle say about {A, B, C}?",
+   "formula": "minimum count = minimum support &times; number of baskets",
+   "options": [
+    "Discard it without counting, because BC falls below 30 baskets.",
+    "Keep it as frequent, because two of its three pairs reach 30.",
+    "Count it, because the average of its pair counts exceeds 30.",
+    "Keep it, because its count is the sum of its three pair counts."
+   ],
+   "answer": "a",
+   "explanation": "Minimum count = .10 &times; 300 = 30. BC appears in 28 baskets, so it is infrequent, and every superset of an infrequent set is infrequent. {A, B, C} can occur in at most 28 baskets."
+  },
+  {
+   "id": "w3-a31",
+   "topic": "The Apriori principle and candidate pruning",
+   "tests": "Anti-monotone support: an itemset cannot appear in more baskets than its least frequent subset",
+   "stem": "A shop knows &sigma;({A, B}) = 52, &sigma;({A, C}) = 47 and &sigma;({B, C}) = 39. What is the largest value &sigma;({A, B, C}) could possibly take?",
+   "formula": "",
+   "options": [
+    "47",
+    "52",
+    "138",
+    "39"
+   ],
+   "answer": "d",
+   "explanation": "Every basket holding A, B and C also holds B and C, so &sigma;({A, B, C}) &le; &sigma;({B, C}) = 39. Adding an item can never add baskets."
+  },
+  {
+   "id": "w3-a32",
+   "topic": "The Apriori principle and candidate pruning",
+   "tests": "Level-wise Apriori: candidate pairs are built only from frequent single items",
+   "stem": "A shop has 7 products. At level 1, 5 of them are frequent and 2 are not. How many candidate pairs does Apriori count at level 2?",
+   "formula": "number of pairs from n items = C(n, 2) = n(n &minus; 1) / 2",
+   "options": [
+    "21, because every pair of the 7 products must be counted once.",
+    "10, because pairs are built only from the 5 frequent products.",
+    "15, because the 2 infrequent products may still pair with others.",
+    "5, because each frequent product is paired with one partner."
+   ],
+   "answer": "b",
+   "explanation": "An infrequent single condemns all its supersets, so pairs are joined only from the 5 survivors: C(5, 2) = 10, instead of C(7, 2) = 21."
+  }
+ ],
+ "short": [
+  {
+   "id": "w3-b01",
+   "topic": "A rule and its two strength numbers",
+   "tests": "Computing support and both confidences of a rule and its reverse from a basket table; why support is direction-free but confidence is not",
+   "title": "Support versus confidence when the arrow is flipped",
+   "stem": "<b>PantryPal</b>, a recipe app, records which recipe categories each of eight users saved last week (1 = saved).<br><table class=\"ex\"><tr><th>User</th><th>Baking</th><th>Vegan</th><th>Grill</th><th>Dessert</th></tr><tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><td>2</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><td>3</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><td>4</td><td>0</td><td>0</td><td>0</td><td>1</td></tr><tr><td>5</td><td>1</td><td>1</td><td>0</td><td>1</td></tr><tr><td>6</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>7</td><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>8</td><td>0</td><td>1</td><td>0</td><td>0</td></tr></table>(i) Compute &sigma;({Baking, Dessert}) and the support of {Baking} &rarr; {Dessert}. (ii) Compute the confidence of {Baking} &rarr; {Dessert} and of {Dessert} &rarr; {Baking}. (iii) Explain why the two rules share one support but have different confidences, and state in words what each confidence means.",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "reference": "Users 1, 3 and 5 saved both, so &sigma;({Baking, Dessert}) = 3 and support = 3/8 = .375 for either direction. Baking was saved by 5 users (1, 2, 3, 5, 7), so c(Baking &rarr; Dessert) = 3/5 = .60. Dessert was saved by 4 users (1, 3, 4, 5), so c(Dessert &rarr; Baking) = 3/4 = .75. Support describes the set {Baking, Dessert}, which has no direction, and divides by all 8 users. Confidence divides by the left-hand side's count, which is 5 in one direction and 4 in the other. Read: 60% of the users who saved Baking also saved Dessert; 75% of the users who saved Dessert also saved Baking.",
+   "marking": "1 mark for &sigma; = 3 and support .375 (accept 3/8 or 37.5%). 1 mark for c(Baking &rarr; Dessert) = .60. 1 mark for c(Dessert &rarr; Baking) = .75. 1 mark for explaining that support is a property of the itemset and is the same in both directions. 1 mark for explaining that confidence changes because its denominator is &sigma;(X), which differs (5 versus 4). 1 mark for correct readings of both confidences that name the right reference group (Baking savers, Dessert savers); a reading \"of all users\" earns 0 for this mark. Carry an incorrect count forward without a second penalty if the method is right."
+  },
+  {
+   "id": "w3-b02",
+   "topic": "Two thresholds and the four readings",
+   "tests": "Minsup and minconf come from the decision: the same rule passes one decision's thresholds and fails another's; thin support makes confidence fragile",
+   "title": "One rule, two decisions, two threshold settings",
+   "stem": "<b>Kestrel Outdoor</b>, an online camping store, has 3,000 orders. 15 orders contain an ultralight stove, and 12 of those also contain a titanium spork. Two teams look at the rule {ultralight stove} &rarr; {titanium spork}. The marketing team is choosing pairs to feature on the home-page banner seen by every visitor and uses minsup .05 and minconf .60. The product team is writing a one-line suggestion on the stove's own page and uses minsup .002 and minconf .75.<br>(i) Compute the rule's support and confidence. (ii) State whether the rule passes each team's thresholds. (iii) Explain why the two teams are right to use different thresholds, and give one reason to be cautious about the confidence value.",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "reference": "Support = 12/3,000 = .004 and confidence = 12/15 = .80. For the marketing team the rule fails, because .004 is far below minsup .05, even though .80 clears .60. For the product team it passes both thresholds (.004 &ge; .002 and .80 &ge; .75). The thresholds come from the decision, not the data: a home-page banner must touch many customers, so it needs common patterns, while a note shown only to stove viewers can accept low support but must usually be right. Caution: the confidence rests on only 15 stove orders, so it is a low-support, high-confidence rule; if just two fewer of those orders had a spork, confidence would fall to 10/15 &asymp; .67.",
+   "marking": "1 mark for support .004. 1 mark for confidence .80. 1 mark for marketing: fails because of support (must name support as the reason). 1 mark for product team: passes both. 1 mark for explaining that thresholds follow the decision (reach versus reliability), not the data. 1 mark for one valid caution tied to thin support, such as the small &sigma;(X) of 15 making confidence unstable, or the rule being \"seductive but thin\". Accept a caution that lift should also be checked if it is explained. Do not award the last mark for a generic \"more data is better\"."
+  },
+  {
+   "id": "w3-b03",
+   "topic": "The base rate trap",
+   "tests": "Working the base rate trap: confidence below P(Y), and showing that {X} &rarr; {not Y} fits better by comparing with P(not Y)",
+   "title": "A confident rule that is worse than the base rate",
+   "stem": "<b>Glimmer Live</b>, a streaming platform, has 4,000 viewers. 1,600 watch Cooking, 3,000 watch Travel and 1,120 watch both. The content team wants to show a Travel stream under every Cooking stream because \"70% of Cooking viewers watch Travel\".<br>(i) Compute the support and confidence of {Cooking} &rarr; {Travel} and the base rate of Travel. (ii) Compute the confidence of {Cooking} &rarr; {not Travel} and compare it with the share of all viewers who do not watch Travel. (iii) Explain what this means for the team's plan.",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); base rate P(Y) = &sigma;(Y) / N",
+   "reference": "Support = 1,120/4,000 = .28 and confidence = 1,120/1,600 = .70; the base rate of Travel is 3,000/4,000 = .75. Cooking viewers who skip Travel number 1,600 &minus; 1,120 = 480, so c(Cooking &rarr; not Travel) = 480/1,600 = .30, against 1,000/4,000 = .25 of all viewers. So Cooking viewers watch Travel less often than a random viewer (.70 &lt; .75) and skip it more often (.30 &gt; .25): the not-Travel rule fits the data better. The 70% figure only looks strong because Travel is watched by most viewers anyway. Placing Travel under Cooking would aim it at an audience slightly less interested than average, so the plan should not be justified by this rule.",
+   "marking": "1 mark for support .28 and confidence .70 (both needed). 1 mark for base rate .75. 1 mark for c(not Travel) = .30 with the count 480. 1 mark for the comparison with .25 and the conclusion that the not-Travel rule fits better. 1 mark for explaining that confidence ignores how common Y is (the base rate trap). 1 mark for a decision consistent with this: do not justify the placement by this rule (accept: look for categories with lift above 1 instead). Accept a correct lift calculation (.70/.75 &asymp; .93) as supporting evidence, but it is not required."
+  },
+  {
+   "id": "w3-b04",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Computing a lift below 1 from counts and turning 'they substitute' into a business decision (alternatives, not a bundle)",
+   "title": "Lift below 1 and a proposed bundle",
+   "stem": "<b>Brewlane</b>, a coffee-pod subscription shop, has 2,500 orders. 600 contain oat-latte pods, 1,000 contain dark-roast pods and 120 contain both. The manager wants a discounted \"oat + dark\" bundle because \"120 orders already buy both\".<br>(i) Compute the support, confidence and lift of {oat-latte} &rarr; {dark-roast}. (ii) Interpret the lift. (iii) Recommend what to do instead of, or in addition to, the bundle, and state one limitation of the evidence.",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "reference": "Support = 120/2,500 = .048, confidence = 120/600 = .20 and s(dark-roast) = 1,000/2,500 = .40, so lift = .20/.40 = .50. A lift of .50 means oat-latte buyers take dark roast only half as often as a random customer: the two substitute, with customers tending to choose one or the other. A bundle would push a product at the customers least likely to want it, so it should not be built on this pair. Instead, show the two pods side by side as alternatives on the product pages, and look for bundle partners with lift clearly above 1. Limitation: association is not causation, and the counts come from one set of past orders, so the pattern should be tested before acting at scale.",
+   "marking": "1 mark for support .048. 1 mark for confidence .20. 1 mark for lift .50 (accept the count form 120 &times; 2,500 / (600 &times; 1,000)). 1 mark for reading lift below 1 as substitution, less likely than a random customer. 1 mark for a recommendation consistent with it (no bundle; present as alternatives, or find pairs with lift &gt; 1). 1 mark for one valid limitation (association is not causation; one period; untested). Error carried forward: a wrong lift with a consistent reading earns the reading mark."
+  },
+  {
+   "id": "w3-b05",
+   "topic": "Trust this rule? Three verdicts",
+   "tests": "Applying the three verdicts (kill, ignore, keep and act) to new rules, each with the number that justifies it",
+   "title": "Three rules, three verdicts",
+   "stem": "<b>Tidewater Books</b>, an online bookshop, must choose which rules to use for \"customers also bought\" prompts.<br><table class=\"ex\"><tr><th>Rule</th><th>Support</th><th>Confidence</th><th>Lift</th></tr><tr><td>R1 {bestselling thriller} &rarr; {bookmark set}</td><td>.32</td><td>.71</td><td>.93</td></tr><tr><td>R2 {rare map atlas} &rarr; {archival sleeve}</td><td>.001</td><td>1.00</td><td>1.04</td></tr><tr><td>R3 {calligraphy primer} &rarr; {nib set}</td><td>.06</td><td>.78</td><td>6.50</td></tr></table>Give a verdict for each rule (kill, ignore, or keep and act on it) and justify each from the numbers. Then compute the share of all orders containing a nib set and explain what it says about R3.",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "reference": "R1: kill. Its support and confidence look strong, but lift .93 is below 1, so thriller buyers take bookmark sets slightly less often than a random customer; the confidence came from bookmark sets being common. R2: ignore. Confidence 1.00 rests on about one order in a thousand, and lift 1.04 is essentially the independence value, so the pairing carries no signal. R3: keep and act on it. Support .06 is thin but real, confidence .78 is high, and lift 6.50 shows the two travel together far more often than chance. s(nib set) = .78/6.50 = .12: only about one order in eight has a nib set, yet 78% of primer orders do, which is why the lift is so high.",
+   "marking": "R1: 1 mark for \"kill\", 1 mark for using lift below 1 (confidence reflects a common consequent). R2: 1 mark for \"ignore\" with thin support and lift near 1 both mentioned (one of the two earns the mark only if it is clearly argued). R3: 1 mark for \"keep and act\" with lift far above 1 and high confidence. 1 mark for s(nib set) = .12. 1 mark for explaining that the gap between .78 and the .12 base rate is what lift measures. Accept \"discard\" or \"drop\" for kill; do not accept \"keep\" for R1 even with a caveat."
+  },
+  {
+   "id": "w3-b06",
+   "topic": "Real baskets: the bakery and the doilies decoy",
+   "tests": "Showing with numbers why a high-support item is a decoy (confidence moderate, lift about 1) versus a niche partner with high lift",
+   "title": "A best-seller as a bundle anchor",
+   "stem": "<b>Fernhollow Garden</b>, an online plant shop, has 3,000 orders. Potting soil is in 960 of them, more than any other item, and its lift with each of the other 30 items lies between .90 and 1.08. 250 orders contain an orchid; 85 of these also contain potting soil and 60 contain orchid bark mix, which appears in 150 orders in total. The manager wants every \"bundle of the month\" to be built around potting soil.<br>(i) Compute the confidence and lift of {orchid} &rarr; {potting soil} and of {orchid} &rarr; {orchid bark mix}. (ii) Use these and the lift range to advise the manager.",
+   "formula": "c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)",
+   "reference": "s(potting soil) = 960/3,000 = .32. c(orchid &rarr; soil) = 85/250 = .34, so lift = .34/.32 &asymp; 1.06. s(bark mix) = 150/3,000 = .05. c(orchid &rarr; bark mix) = 60/250 = .24, so lift = .24/.05 = 4.80. Potting soil is a decoy: it is in about a third of all orders, so it co-occurs with almost everything, but all its lifts sit near 1, so no item makes customers more likely to buy it. It rides along with everything and predicts nothing, so it should not anchor bundles. Bundles should be built on pairs with lift well above 1, such as orchid with bark mix (4.80), even though their support is lower.",
+   "marking": "1 mark for c(orchid &rarr; soil) = .34. 1 mark for lift &asymp; 1.06. 1 mark for c(orchid &rarr; bark mix) = .24 and lift 4.80 (both needed). 1 mark for identifying potting soil as popular but not associated (lift near 1 in every pair). 1 mark for explaining why: high base rate raises confidence but lift divides by it. 1 mark for a recommendation: do not anchor on soil; build bundles on high-lift pairs such as orchid and bark mix. An answer that keeps soil as anchor because \"everyone buys it\" earns 0 for the last two marks."
+  },
+  {
+   "id": "w3-b07",
+   "topic": "Finding rules is a search problem",
+   "tests": "Computing R for two catalogue sizes, explaining the steps of the rule-count formula, and why the search is split into two steps",
+   "title": "How fast the rule search grows",
+   "stem": "<b>Quillmark</b>, a stationery brand, sells 5 products and plans to grow to 10. Its analyst wants to score every possible rule by brute force.<br>(i) Compute the number of possible rules for 5 and for 10 products. (ii) Explain in words what the first form of the count, R = &Sigma;<sub>k</sub> C(d, k) &middot; (2<sup>d&minus;k</sup> &minus; 1), adds up. (iii) Explain which of the two steps of the search suffers from this growth and why the other step is cheap.",
+   "formula": "R = 3<sup>d</sup> &minus; 2<sup>d+1</sup> + 1; R = &Sigma;<sub>k</sub> C(d, k) &middot; (2<sup>d&minus;k</sup> &minus; 1)",
+   "reference": "For d = 5, R = 243 &minus; 64 + 1 = 180. For d = 10, R = 59,049 &minus; 2,048 + 1 = 57,002, more than 300 times as many after doubling the catalogue. The sum picks an antecedent of k items out of d in C(d, k) ways, then a consequent that is any non-empty subset of the d &minus; k items left; the &minus;1 removes the empty subset, and the sides stay disjoint. Step 1, frequent itemset generation, suffers: there are 2<sup>d</sup> possible itemsets (1,024 for 10 products) to check against minsup. Step 2, rule generation, is cheap because every rule split from a frequent itemset shares that itemset's support, so only confidence is checked, from counts already found.",
+   "marking": "1 mark for 180. 1 mark for 57,002. 1 mark for the antecedent choice C(d, k). 1 mark for the consequent as a non-empty subset of the remaining items (the &minus;1). 1 mark for naming frequent itemset generation as the expensive step and linking it to the exponential number of itemsets. 1 mark for explaining why rule generation is cheap (shared support, confidence from known counts). A correct formula with one arithmetic slip earns the method marks; accept 3<sup>d</sup> reasoning (left, right or out) as an equivalent explanation of the count."
+  },
+  {
+   "id": "w3-b08",
+   "topic": "Finding rules is a search problem",
+   "tests": "Rule generation from one frequent itemset: listing its 2<sup>k</sup> &minus; 2 rules, their shared support, and filtering them on minconf without rescanning",
+   "title": "Splitting a frequent itemset into rules",
+   "stem": "<b>Lanternfly Games</b>, an accessories shop, found that {console skin (K), controller grip (G), charging dock (D)} is frequent: it appears in 60 of 1,000 orders. Counts already collected: K 200, G 150, D 120; {K, G} 90, {K, D} 75, {G, D} 80. Minimum confidence is .70.<br>(i) How many rules with non-empty sides can be split from this itemset, and what is the support of each? (ii) Compute the confidence of every such rule and state which pass minconf. (iii) Explain why this step needs no new pass over the order data.",
+   "formula": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); rules from a k-itemset = 2<sup>k</sup> &minus; 2",
+   "reference": "A 3-itemset gives 2<sup>3</sup> &minus; 2 = 6 rules, and each has support 60/1,000 = .06, the support of {K, G, D}. Confidences: K &rarr; {G, D} = 60/200 = .30; G &rarr; {K, D} = 60/150 = .40; D &rarr; {K, G} = 60/120 = .50; {K, G} &rarr; D = 60/90 &asymp; .67; {K, D} &rarr; G = 60/75 = .80; {G, D} &rarr; K = 60/80 = .75. Only {K, D} &rarr; G and {G, D} &rarr; K pass .70. No new pass is needed because all six rules share the itemset's support, which already cleared minsup, and every confidence uses counts found during frequent itemset generation.",
+   "marking": "1 mark for 6 rules. 1 mark for support .06 for every rule. 2 marks for the six confidences (all six correct = 2; four or five correct = 1). 1 mark for identifying exactly {K, D} &rarr; G and {G, D} &rarr; K as passing. 1 mark for the explanation (shared support; counts known from step 1). Carry forward: if confidences are miscalculated, award the selection mark when it follows the student's values."
+  },
+  {
+   "id": "w3-b09",
+   "topic": "The Apriori principle and candidate pruning",
+   "tests": "Apriori at level 1 to 2: converting minsup to a count, pruning infrequent singles, and counting the candidate pairs saved",
+   "title": "Pruning at the first level",
+   "stem": "<b>Saffron Street</b>, an online spice shop, has 500 orders and sets minimum support at 8%. Single-item counts: cumin 180, turmeric 150, saffron 35, chili 120, cardamom 60, sumac 22.<br>(i) Convert the minimum support to a count and list the frequent single items. (ii) How many candidate pairs does Apriori count at the next level, and how many pairs does it skip compared with counting every pair? (iii) A colleague argues that {saffron, cardamom} should still be counted because cardamom is frequent. Respond.",
+   "formula": "minimum count = minimum support &times; number of baskets; C(n, 2) = n(n &minus; 1) / 2",
+   "reference": "Minimum count = .08 &times; 500 = 40 orders. Cumin, turmeric, chili and cardamom are frequent; saffron (35) and sumac (22) are not. Pairs are built only from the four frequent items, C(4, 2) = 6 candidates, instead of C(6, 2) = 15, so 9 pairs are never counted. The colleague is wrong: every order containing saffron and cardamom also contains saffron, so the pair can appear in at most 35 orders, below 40. Support is anti-monotone, so one infrequent subset condemns the whole set, whatever the other item's count.",
+   "marking": "1 mark for 40. 1 mark for the four frequent items (all four, nothing extra). 1 mark for 6 candidate pairs. 1 mark for 9 pairs skipped (15 &minus; 6). 1 mark for rejecting the colleague's argument with the bound of 35. 1 mark for stating the principle (a set cannot be more frequent than any subset; an infrequent subset prunes all supersets). Carry forward from an incorrect minimum count if the rest is consistent."
+  },
+  {
+   "id": "w3-b10",
+   "topic": "Lift: the number that compares against chance",
+   "tests": "Moving between confidence, lift and base rates in both directions; lift is symmetric, so confidence decides which way to point a recommendation",
+   "title": "Using lift and confidence together to point a recommendation",
+   "stem": "<b>Orbitfit</b>, a fitness app, reports two rules: {Yoga} &rarr; {Meditation} with confidence .45 and lift 3.0, and {Meditation} &rarr; {Yoga} with confidence .60 and lift 3.0.<br>(i) Find the share of users doing Meditation, the share doing Yoga and the support of {Yoga, Meditation}. (ii) Explain why both rules show the same lift. (iii) The app can show one prompt. Should it suggest Meditation to Yoga users or Yoga to Meditation users? Justify.",
+   "formula": "lift(X &rarr; Y) = c(X &rarr; Y) / s(Y); c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X)",
+   "reference": "s(Meditation) = .45/3.0 = .15 and s(Yoga) = .60/3.0 = .20. s({Yoga, Meditation}) = c(Yoga &rarr; Meditation) &times; s(Yoga) = .45 &times; .20 = .09 (check: .09/.15 = .60). Lift equals s(X &cup; Y) / (s(X) &times; s(Y)), which does not change when the sides swap, so lift only says the two activities go together, three times as often as chance. Confidence differs by direction: a prompt to Meditation users is right 60% of the time, against 45% for a prompt to Yoga users. So the app should suggest Yoga to Meditation users, using lift to confirm the association and confidence to choose the direction.",
+   "marking": "1 mark for s(Meditation) = .15. 1 mark for s(Yoga) = .20. 1 mark for s({Yoga, Meditation}) = .09. 1 mark for explaining lift's symmetry (the formula does not depend on direction). 1 mark for choosing to suggest Yoga to Meditation users. 1 mark for justifying the choice with the higher confidence (.60 versus .45) while lift is equal. Accept the opposite choice only if it is argued explicitly on reach (Yoga users are the larger group, .20 versus .15) and still compares the two confidences; without a confidence comparison the justification mark is not earned. Carry forward a wrong base rate into part (i)'s later values without a second penalty."
+  },
+  {
+   "id": "w3-b11",
+   "topic": "Two thresholds and the four readings",
+   "tests": "Placing rules in the support-confidence 2&times;2 grid against given thresholds and explaining why the mixed cells are traps",
+   "title": "The four readings of support and confidence",
+   "stem": "<b>Marigold Kids</b>, a toy e-shop, uses minsup .05 and minconf .60 to define \"high\".<br><table class=\"ex\"><tr><th>Rule</th><th>Support</th><th>Confidence</th></tr><tr><td>R1 {puzzle mat} &rarr; {foam letters}</td><td>.14</td><td>.72</td></tr><tr><td>R2 {crayons} &rarr; {colouring book}</td><td>.11</td><td>.31</td></tr><tr><td>R3 {robot kit} &rarr; {spare servo}</td><td>.008</td><td>.95</td></tr><tr><td>R4 {kite} &rarr; {rain boots}</td><td>.01</td><td>.20</td></tr></table>Give the course's reading for each rule. Explain why R3 is called a trap, and why even R1 should not be acted on before one more number is checked.",
+   "formula": "keep a rule if s &ge; minsup and c &ge; minconf",
+   "reference": "R1 has high support and high confidence: act on it. R2 has high support but low confidence: a weak rule, since many baskets show the pattern but knowing crayons tells little about colouring books. R3 has low support and high confidence: seductive but thin. R4 is low on both: ignore. R3 is a trap because confidence divides by &sigma;(robot kit), and when that count is tiny a few baskets push confidence near 1, so the reliable-looking arrow rests on little evidence. Even R1 must be checked against lift: if foam letters are in most baskets anyway, a confidence of .72 could sit below their base rate, and lift would be below 1.",
+   "marking": "4 marks: 1 for each correct reading (act on it, weak rule, seductive but thin, ignore); accept equivalent wording that matches the cell. 1 mark for explaining R3's trap through the small denominator &sigma;(X). 1 mark for naming lift (or the base rate of foam letters) as the check for R1 and saying why. Do not award the last mark for \"check more data\"."
+  }
+ ],
+ "cases": [
+  {
+   "id": "w3-c01",
+   "topics": [
+    "The Apriori principle and candidate pruning",
+    "Lift: the number that compares against chance"
+   ],
+   "tests": "Apriori pruning from singles to triples with named justifying subsets; a pruning survivor that fails when counted; computing lift above and below 1 and turning it into bundle versus alternatives decisions",
+   "name": "Wickford Candles",
+   "scenario": "<p>Wickford Candles is an online shop that sells soy candles (A), wick trimmers (B), candle snuffers (C), wax melts (D) and matchboxes (E). The team wants to find combinations frequent enough to justify a \"candle care\" bundle test. It has 250 orders from last quarter; each item is recorded once per order, whatever the quantity.</p><p>The analyst sets minimum support at 12%. Exhibit 1 gives the single-item counts and Exhibit 2 the pair counts among A to D. Before any three-item set was counted, a colleague announced that every three-item set whose pairs are all frequent is \"a confirmed bundle\". The analyst has since counted the one surviving three-item set; the result is in Exhibit 3.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Orders containing each item (N = 250)",
+     "html": "<table class=\"ex\"><tr><th>Item</th><th>A soy candle</th><th>B wick trimmer</th><th>C candle snuffer</th><th>D wax melts</th><th>E matchbox</th></tr><tr><td>Orders</td><td>120</td><td>70</td><td>64</td><td>95</td><td>26</td></tr></table>",
+     "note": "Minimum count = minimum support &times; number of orders."
+    },
+    {
+     "title": "Exhibit 2: Orders containing both items",
+     "html": "<table class=\"ex\"><tr><th>Pair</th><th>A, B</th><th>A, C</th><th>A, D</th><th>B, C</th><th>B, D</th><th>C, D</th></tr><tr><td>Orders</td><td>48</td><td>33</td><td>41</td><td>36</td><td>22</td><td>27</td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 3: Count of the surviving three-item set",
+     "html": "<table class=\"ex\"><tr><th>Itemset</th><th>Orders</th></tr><tr><td>A, B, C</td><td>28</td></tr></table>",
+     "note": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); lift(X &rarr; Y) = c(X &rarr; Y) / s(Y) = (&sigma;(X &cup; Y) &times; N) / (&sigma;(X) &times; &sigma;(Y))"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Convert the minimum support to a minimum count. Using Exhibits 1 and 2 and the Apriori principle, state which item is pruned at the first level and how many pairs that saves, which pairs are frequent, and which of the four three-item sets ABC, ABD, ACD and BCD must be discarded without counting, naming the pair that justifies each discard. Explain the principle you used.",
+     "answer": "Minimum count = .12 &times; 250 = 30 orders. Matchboxes (E, 26 orders) are infrequent, so every set containing E is pruned; the four pairs AE, BE, CE and DE are never counted. Frequent pairs: AB (48), AC (33), AD (41) and BC (36); BD (22) and CD (27) are below 30. Discard ABD because BD is infrequent; discard ACD because CD is infrequent; discard BCD because BD (and CD) are infrequent. ABC survives, since AB, AC and BC all reach 30, and remains a candidate to be counted. Principle: support is anti-monotone. Every order holding a larger set also holds each of its subsets, so a set can never appear in more orders than any subset; if one subset is infrequent, the set and all its supersets are infrequent.",
+     "marking": "1 mark for 30. 1 mark for pruning E with the four E-pairs never counted (accept \"4 pairs saved\"). 1 mark for the four frequent pairs, with BD and CD identified as infrequent. 1 mark for ABD with BD. 1 mark for ACD with CD. 1 mark for BCD with BD or CD (naming both earns no extra mark). 1 mark for ABC kept as a candidate. 1 mark for stating the anti-monotone principle. Each discard needs both the set and a correct infrequent pair. Carry forward an incorrect minimum count if the classification follows from it."
+    },
+    {
+     "marks": 6,
+     "stem": "Use Exhibit 3 to assess the colleague's claim about ABC. Then compute the support, confidence and lift of {wick trimmer} &rarr; {candle snuffer} (two decimal places for lift) and interpret the lift.",
+     "answer": "ABC appears in 28 orders, below the minimum of 30, so it is not frequent and the colleague's claim was wrong. Passing the pruning only shows that ABC could be frequent: frequent pairs are a necessary condition, not a guarantee that all three items occur together often enough. For {B} &rarr; {C}: support = 36/250 = .144; confidence = 36/70 &asymp; .51; s(C) = 64/250 = .256, so lift = .514/.256 &asymp; 2.01 (or 36 &times; 250 / (70 &times; 64) = 9,000/4,480). Wick-trimmer buyers take a snuffer about twice as often as a random customer: the two go together.",
+     "marking": "1 mark for ABC not frequent (28 &lt; 30). 1 mark for explaining that surviving pruning is necessary but not sufficient. 1 mark for support .144. 1 mark for confidence .51 (accept .514). 1 mark for lift 2.01 (accept 2.0). 1 mark for reading lift above 1 as going together, about twice chance. Error carried forward for the lift if the confidence was miscalculated but the method is right."
+    },
+    {
+     "marks": 6,
+     "stem": "The manager also proposes a soy candle plus wax melts bundle. Compute the lift of {soy candle} &rarr; {wax melts} (two decimal places). Recommend what Wickford should do with the trimmer-snuffer pair and with the candle-melts pair, and state one limitation of this evidence.",
+     "answer": "c(A &rarr; D) = 41/120 &asymp; .342 and s(D) = 95/250 = .38, so lift = .342/.38 &asymp; .90 (41 &times; 250 / (120 &times; 95) = 10,250/11,400). A lift below 1 means candle buyers take wax melts slightly less often than a random customer: the two substitute, which makes sense because both scent a room. Recommendation: test a \"candle care\" bundle or side-by-side placement of the trimmer and snuffer (lift about 2.01, support .144), and do not bundle candles with wax melts; show them as alternatives instead. Limitation: the rules show association, not causation, from one quarter's 250 orders, so a bundle test should measure whether it actually lifts sales.",
+     "marking": "1 mark for the setup and 1 mark for lift .90 (accept .899). 1 mark for reading lift below 1 as substitution. 1 mark for a recommendation on B-C supported by its lift above 1. 1 mark for not bundling A-D, with alternatives as an acceptable use. 1 mark for one explained limitation (association is not causation; one quarter; small sample; thresholds chosen by the team). Do not award the A-D mark for \"bundle because 41 orders already buy both\"."
+    }
+   ]
+  },
+  {
+   "id": "w3-c02",
+   "topics": [
+    "The base rate trap",
+    "Lift: the number that compares against chance",
+    "Trust this rule? Three verdicts"
+   ],
+   "tests": "Base rate trap with a high-support category; scoring the not-Y rule; lift from counts; the ignore verdict on perfect confidence with thin support; choosing rules for a recommendation sidebar",
+   "name": "Velvet Arcade",
+   "scenario": "<p>Velvet Arcade is a live-streaming platform with 10,000 monthly viewers. Its product team is redesigning the \"you might also like\" sidebar shown beside each stream and wants to base the sidebar on association rules between content categories and channels watched in the same month.</p><p>An intern has proposed three rules (Exhibit 2) and ranked them by confidence, putting the retro-channel rule first because \"it is never wrong\".</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Viewers by category or channel (N = 10,000)",
+     "html": "<table class=\"ex\"><tr><th>Category or channel</th><th>Viewers</th></tr><tr><td>Gaming</td><td>6,000</td></tr><tr><td>Music</td><td>4,000</td></tr><tr><td>Anime</td><td>1,500</td></tr><tr><td>Cosplay</td><td>800</td></tr><tr><td>Retro channel P</td><td>12</td></tr><tr><td>Retro channel Q</td><td>9,500</td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 2: Proposed rules with joint counts",
+     "html": "<table class=\"ex\"><tr><th>Rule</th><th>Viewers watching both sides</th></tr><tr><td>{Music} &rarr; {Gaming}</td><td>2,200</td></tr><tr><td>{Anime} &rarr; {Cosplay}</td><td>480</td></tr><tr><td>{Retro channel P} &rarr; {Retro channel Q}</td><td>12</td></tr></table>",
+     "note": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Compute the support, confidence and lift of {Music} &rarr; {Gaming} and of {Anime} &rarr; {Cosplay} (two decimal places for lift). Explain why the confidence of {Music} &rarr; {Gaming} is misleading.",
+     "answer": "{Music} &rarr; {Gaming}: support = 2,200/10,000 = .22; confidence = 2,200/4,000 = .55; s(Gaming) = .60, so lift = .55/.60 &asymp; .92. {Anime} &rarr; {Cosplay}: support = 480/10,000 = .048; confidence = 480/1,500 = .32; s(Cosplay) = .08, so lift = .32/.08 = 4.00. The confidence .55 looks respectable and the support is large, but 60% of all viewers watch Gaming anyway. A Music viewer is less likely than a random viewer to watch Gaming, so the confidence comes from Gaming being common, not from a link: the base rate trap. Lift below 1 confirms it.",
+     "marking": "6 marks: 1 for each of the six values (.22, .55, .92; .048, .32, 4.00). 1 mark for comparing .55 with the base rate .60. 1 mark for explaining that confidence ignores how common Gaming is, so the rule is worse than guessing the base rate. Accept lift .917; accept 4 for 4.00. Error carried forward for lift if a confidence slip is made."
+    },
+    {
+     "marks": 6,
+     "stem": "Compute the confidence of {Music} &rarr; {not Gaming} and compare it with the share of viewers who do not watch Gaming. Then give the course's verdict on the intern's top-ranked retro-channel rule, supported by its support, confidence and lift (two decimal places for lift).",
+     "answer": "Music viewers who skip Gaming: 4,000 &minus; 2,200 = 1,800, so c(Music &rarr; not Gaming) = 1,800/4,000 = .45, against 4,000/10,000 = .40 of all viewers who skip Gaming. Since .45 &gt; .40, the not-Gaming rule fits the data better. Retro rule: support = 12/10,000 = .0012, confidence = 12/12 = 1.00, s(Q) = .95, so lift = 1.00/.95 &asymp; 1.05. Verdict: ignore. Perfect confidence rests on 12 viewers, and lift close to 1 shows no signal, because channel Q is watched by almost everyone. Ranking by confidence was the error.",
+     "marking": "1 mark for 1,800 and .45. 1 mark for the base .40 and the conclusion that the not-Gaming rule fits better. 1 mark for the retro support .0012 and confidence 1.00. 1 mark for lift 1.05. 1 mark for the verdict \"ignore\". 1 mark for justifying it through thin support and lift near 1 (both needed). Do not accept \"keep\" or \"act\" for the retro rule."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend which of the three rules the sidebar should use and how the intern's ranking should change. Give one limitation of using these rules for the sidebar.",
+     "answer": "Use {Anime} &rarr; {Cosplay}: its support (.048) is thin but real at 480 viewers, and lift 4.00 shows Anime viewers watch Cosplay four times as often as a random viewer. Kill {Music} &rarr; {Gaming}, whose lift .92 shows no link despite its large support. Ignore the retro rule. Rules should be ranked by lift, with support and confidence read alongside, not by confidence alone. Limitation: the rules show co-occurrence in one month, not causation; showing Cosplay to Anime viewers may not change what they watch, so the sidebar should be tested, for example by comparing click-through with the current sidebar.",
+     "marking": "2 marks for selecting Anime-Cosplay with lift as the main reason and support noted. 1 mark for rejecting Music-Gaming with its lift below 1. 1 mark for not using the retro rule and for replacing confidence ranking with lift ranking. 2 marks for a limitation with its consequence (a bare limitation earns 1). Accept other valid limitations, such as one month of data or category-level rules hiding channel differences."
+    }
+   ]
+  },
+  {
+   "id": "w3-c03",
+   "topics": [
+    "Real baskets: the bakery and the doilies decoy",
+    "Lift: the number that compares against chance",
+    "A rule and its two strength numbers"
+   ],
+   "tests": "Converting min_support to a count; completing a rules table (support, confidence, lift) and ranking by lift; recognising a high-support decoy; recommending bundles from lift with a limitation",
+   "name": "Brushwood Art Supplies",
+   "scenario": "<p>Brushwood Art Supplies sells painting materials through its own online store. It mined 3,200 orders from the last six months with min_support 0.04 and 25 products. The merchandising team wants to choose two \"complete your kit\" bundles for the home page.</p><p>The store manager points out that masking tape is the best-selling item and suggests that both bundles include it. The analyst notes that masking tape's lift with each of the other 24 items lies between .87 and 1.08.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Orders containing each item (N = 3,200)",
+     "html": "<table class=\"ex\"><tr><th>Item</th><th>Orders</th></tr><tr><td>watercolour_pad</td><td>432</td></tr><tr><td>round_brush</td><td>576</td></tr><tr><td>gold_leaf</td><td>200</td></tr><tr><td>gilding_size</td><td>240</td></tr><tr><td>canvas_board</td><td>480</td></tr><tr><td>acrylic_set</td><td>800</td></tr><tr><td>masking_tape</td><td>960</td></tr></table>",
+     "note": ""
+    },
+    {
+     "title": "Exhibit 2: Rules output (some cells to be completed)",
+     "html": "<table class=\"ex\"><tr><th>Rule</th><th>Orders with both</th><th>Support</th><th>Confidence</th><th>Lift</th></tr><tr><td>watercolour_pad &rarr; round_brush</td><td>272</td><td>.085</td><td>.63</td><td>3.50</td></tr><tr><td>gold_leaf &rarr; gilding_size</td><td>150</td><td>?</td><td>?</td><td>?</td></tr><tr><td>canvas_board &rarr; acrylic_set</td><td>240</td><td>.075</td><td>?</td><td>?</td></tr><tr><td>round_brush &rarr; masking_tape</td><td>180</td><td>.056</td><td>?</td><td>?</td></tr></table>",
+     "note": "s(X &rarr; Y) = &sigma;(X &cup; Y) / N; c(X &rarr; Y) = &sigma;(X &cup; Y) / &sigma;(X); lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Convert min_support 0.04 into a number of orders. Complete the gold_leaf and canvas_board rows of Exhibit 2 (support to three decimal places, lift to two). Rank the first three rules by lift and explain why the top-ranked rule scores so high although its support is the lowest.",
+     "answer": "Minimum count = .04 &times; 3,200 = 128 orders. gold_leaf &rarr; gilding_size: support = 150/3,200 &asymp; .047 (clears .04, 150 &ge; 128); confidence = 150/200 = .75; s(gilding_size) = 240/3,200 = .075, so lift = .75/.075 = 10.00. canvas_board &rarr; acrylic_set: confidence = 240/480 = .50; s(acrylic_set) = 800/3,200 = .25, so lift = .50/.25 = 2.00. Ranking by lift: gold_leaf &rarr; gilding_size (10.00), watercolour_pad &rarr; round_brush (3.50), canvas_board &rarr; acrylic_set (2.00). Gilding size is rare overall (7.5% of orders) because almost nobody needs it without gold leaf, yet three in four gold-leaf orders contain it; like matcha powder and its whisk, a niche item paired with its tool gives a large gap over chance.",
+     "marking": "1 mark for 128. 1 mark for gold-leaf support .047. 1 mark for its confidence .75. 1 mark for its lift 10.00. 1 mark for canvas confidence .50. 1 mark for canvas lift 2.00. 1 mark for the correct ranking. 1 mark for explaining the top lift through the low base rate of gilding size combined with high confidence. Error carried forward into the ranking."
+    },
+    {
+     "marks": 6,
+     "stem": "Complete the masking_tape row of Exhibit 2 (lift to two decimal places). Using this row and the analyst's lift range, assess the manager's suggestion.",
+     "answer": "Confidence = 180/576 = .3125 &asymp; .31; s(masking_tape) = 960/3,200 = .30, so lift = .3125/.30 &asymp; 1.04. Masking tape is in 30% of orders, so it appears alongside almost everything and any rule pointing at it has a sizeable confidence. But lift divides by that same high base rate, and every lift lies between .87 and 1.08, at the chance level: buying a brush, or anything else, does not make tape more likely. Masking tape is a decoy: it rides along with everything and predicts nothing, so it should not anchor the bundles.",
+     "marking": "1 mark for confidence .31. 1 mark for lift 1.04. 1 mark for explaining that high support raises confidence but lift divides by the base rate. 1 mark for interpreting the .87 to 1.08 range as chance level. 2 marks for rejecting the suggestion as a decoy argument (1 for the verdict, 1 for linking it to the numbers). A rejection based only on \"tape is cheap\" earns 0 for the verdict marks."
+    },
+    {
+     "marks": 6,
+     "stem": "Recommend the two home-page bundles, justifying each from Exhibit 2, and give one limitation of the evidence.",
+     "answer": "Bundle 1: gold leaf with gilding size, the strongest association (lift 10.00, confidence .75), with support .047, thin but real at 150 orders. Bundle 2: watercolour pad with round brush (lift 3.50, confidence .63) and the highest support of the real rules (.085), so it reaches more customers. Canvas board with acrylic set (lift 2.00) is a reasonable placement idea but weaker. Masking tape should not be included. Limitation: these are associations in six months of past orders, not causes, so the bundles may not raise sales; the store should test them, for example against the current home page.",
+     "marking": "2 marks for the gold-leaf bundle justified by lift (1) with support or confidence noted (1). 1 mark for a justified second bundle (watercolour-brush preferred; canvas-acrylic acceptable if justified by lift above 1). 1 mark for excluding masking tape. 2 marks for a limitation with its consequence (a bare limitation earns 1). Do not award bundle marks for choices justified by support alone."
+    }
+   ]
+  },
+  {
+   "id": "w3-c04",
+   "topics": [
+    "Finding rules is a search problem",
+    "Two thresholds and the four readings",
+    "Lift: the number that compares against chance"
+   ],
+   "tests": "Size of the brute-force rule search and the meaning of each step of its derivation; applying two decision-specific threshold sets to the same rules; checking passing rules with lift before acting",
+   "name": "ChordTrail",
+   "scenario": "<p>ChordTrail is a music-learning app with 2,000 active learners. It offers 8 lesson categories and plans to grow to 12. Its analyst wants to mine rules of the form \"learners who take lesson category X also take Y\" and first considers scoring every possible rule by brute force.</p><p>Two teams will use the rules. The growth team plans a push notification sent to all learners and uses minsup .20 and minconf .50. The lesson team plans a short hint shown at the end of one specific lesson and uses minsup .03 and minconf .70. Exhibit 1 lists four candidate rules; Exhibit 2 gives category counts.</p>",
+   "exhibits": [
+    {
+     "title": "Exhibit 1: Candidate rules (N = 2,000 learners)",
+     "html": "<table class=\"ex\"><tr><th>Rule</th><th>Support</th><th>Confidence</th></tr><tr><td>R1 {Guitar basics} &rarr; {Music theory}</td><td>.24</td><td>.60</td></tr><tr><td>R2 {Ukulele} &rarr; {Fingerstyle}</td><td>.04</td><td>.80</td></tr><tr><td>R3 {Chord charts} &rarr; {Ear training}</td><td>.21</td><td>.75</td></tr><tr><td>R4 {Drum pad} &rarr; {Metronome}</td><td>.019</td><td>.95</td></tr></table>",
+     "note": "Keep a rule if s &ge; minsup and c &ge; minconf."
+    },
+    {
+     "title": "Exhibit 2: Learners taking each consequent category",
+     "html": "<table class=\"ex\"><tr><th>Category</th><th>Music theory</th><th>Fingerstyle</th><th>Ear training</th><th>Metronome</th></tr><tr><td>Learners</td><td>1,000</td><td>200</td><td>600</td><td>1,800</td></tr></table>",
+     "note": "R = 3<sup>d</sup> &minus; 2<sup>d+1</sup> + 1; lift(X &rarr; Y) = c(X &rarr; Y) / s(Y)"
+    }
+   ],
+   "questions": [
+    {
+     "marks": 8,
+     "stem": "Compute the number of possible rules with 8 and with 12 lesson categories, and the number of possible itemsets with 12 categories (empty set included). Explain in words the three steps by which the rule count is derived, and why this count leads the analyst to split the search into two steps.",
+     "answer": "d = 8: R = 6,561 &minus; 512 + 1 = 6,050. d = 12: R = 531,441 &minus; 8,192 + 1 = 523,250. Itemsets with 12 categories: 2<sup>12</sup> = 4,096. Step 1: choose the antecedent as k of the d items, C(d, k) ways, then the consequent as j of the d &minus; k items left, summed over k and j, so the sides are disjoint and non-empty. Step 2: the inner sum is every non-empty subset of the remaining items, 2<sup>d&minus;k</sup> &minus; 1. Step 3: the binomial theorem collapses the sum to 3<sup>d</sup> &minus; 2<sup>d+1</sup> + 1. Adding four categories multiplies the rules by more than 80, so brute force is hopeless. The search is split into frequent itemset generation (find itemsets clearing minsup, the expensive step) and rule generation (split each frequent itemset into rules clearing minconf, cheap once the counts are known).",
+     "marking": "1 mark for 6,050. 1 mark for 523,250. 1 mark for 4,096. 1 mark each for the three derivation steps (antecedent then consequent from the rest; non-empty subsets with &minus;1; binomial collapse). 1 mark for explaining the two-step split with the expensive step identified. Accept the left-right-out (3<sup>d</sup>) explanation in place of the binomial step if it is correct."
+    },
+    {
+     "marks": 6,
+     "stem": "Apply each team's thresholds to the four rules in Exhibit 1 and state which rules each team keeps. Explain why the teams are right to use different thresholds, and what R4's numbers illustrate.",
+     "answer": "Growth team (minsup .20, minconf .50): keeps R1 (.24, .60) and R3 (.21, .75); R2 and R4 fail on support. Lesson team (minsup .03, minconf .70): keeps R2 (.04, .80) and R3 (.21, .75); R1 fails on confidence (.60 &lt; .70) and R4 on support (.019 &lt; .03). Thresholds come from the decision, not the data: a push to every learner needs patterns that touch many learners, while a hint after one lesson can accept lower support but must usually be right. R4 is seductive but thin: confidence .95 rests on about 40 drum-pad learners, so a handful of learners determines the number.",
+     "marking": "1 mark for each rule classified correctly for both teams (4 marks; a rule earns its mark only if both team verdicts are right). 1 mark for explaining that thresholds follow the decision (reach versus reliability). 1 mark for R4 as high confidence on thin support. Accept \"low support, high confidence\" for \"seductive but thin\"."
+    },
+    {
+     "marks": 6,
+     "stem": "Using Exhibit 2, compute the lift of R1, R2 and R3 (two decimal places). Recommend one rule for the push notification and one for the lesson hint, and give one limitation.",
+     "answer": "R1: lift = .60 / (1,000/2,000 = .50) = 1.20. R2: lift = .80 / (200/2,000 = .10) = 8.00. R3: lift = .75 / (600/2,000 = .30) = 2.50. Push notification: R3, which passes the growth team's thresholds and has a clearly higher lift than R1; R1's confidence mostly reflects that half of all learners take Music theory anyway. Lesson hint: R2, which passes the lesson team's thresholds and has by far the highest lift (8.00): ukulele learners take Fingerstyle eight times as often as a random learner. Limitation: association is not causation; learners who take both may share an underlying interest, so the push and the hint should be tested before rollout.",
+     "marking": "3 marks: 1 for each lift (1.20, 8.00, 2.50). 1 mark for choosing R3 for the push with lift and threshold reasoning (R1 acceptable only if the student argues reach and acknowledges its lower lift). 1 mark for choosing R2 for the hint with lift reasoning. 1 mark for a relevant limitation with its consequence. Error carried forward for lifts into the recommendation."
+    }
+   ]
+  }
+ ]
+}
